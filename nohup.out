@@ -1,0 +1,181 @@
+Watching for file changes with StatReloader
+[15/Feb/2022 23:32:06] "GET /main HTTP/1.1" 200 7969
+[15/Feb/2022 23:32:24] "GET /reportes?idRep=3&idTipo=1 HTTP/1.1" 200 13157
+[15/Feb/2022 23:33:46] "GET / HTTP/1.1" 200 3084
+[15/Feb/2022 23:33:51] "GET /main HTTP/1.1" 200 7969
+[15/Feb/2022 23:34:00] "GET /main HTTP/1.1" 200 7969
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 15, 2022 - 23:36:20
+Django version 4.0.2, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
+[15/Feb/2022 23:36:55] "GET /sr HTTP/1.1" 200 12932
+[15/Feb/2022 23:36:58] "GET /reportes?idRep=3&idTipo=1 HTTP/1.1" 200 13157
+[15/Feb/2022 23:38:21] "GET /admin/reportInfra/tipofalla/ HTTP/1.1" 200 8020
+[15/Feb/2022 23:38:21] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:21] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:23] "GET /admin/auth/group/ HTTP/1.1" 200 6713
+[15/Feb/2022 23:38:24] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:25] "GET /admin/auth/user/ HTTP/1.1" 200 14560
+[15/Feb/2022 23:38:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:36] "GET /admin/auth/user/?is_staff__exact=0 HTTP/1.1" 200 14713
+[15/Feb/2022 23:38:36] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:38] "GET /admin/auth/user/? HTTP/1.1" 200 14560
+[15/Feb/2022 23:38:38] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:38] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:41] "GET /admin/auth/user/12/change/ HTTP/1.1" 200 18521
+[15/Feb/2022 23:38:41] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:47] "POST /admin/auth/user/12/change/ HTTP/1.1" 302 0
+[15/Feb/2022 23:38:47] "GET /admin/auth/user/ HTTP/1.1" 200 14762
+[15/Feb/2022 23:38:47] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:47] "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[15/Feb/2022 23:38:53] "GET /sr HTTP/1.1" 200 12932
+[15/Feb/2022 23:39:05] "GET /reportes?idRep=3&idTipo=1 HTTP/1.1" 200 13157
+[15/Feb/2022 23:39:11] "GET /reportes?idRep=2&idTipo=2 HTTP/1.1" 200 27713
+[15/Feb/2022 23:39:17] "GET /reportes?idRep=4&idTipo=3 HTTP/1.1" 200 26252
+[15/Feb/2022 23:39:25] "GET /reportes?idRep=3&idTipo=1 HTTP/1.1" 200 13157
+[15/Feb/2022 23:39:55] "GET /reportes?idRep=3&idTipo=1 HTTP/1.1" 200 13187
+[15/Feb/2022 23:40:11] "GET /reportes?idRep=2&idTipo=2 HTTP/1.1" 200 28083
+[15/Feb/2022 23:40:30] "GET /reportes?idRep=0&idTipo=0 HTTP/1.1" 200 44365
+[16/Feb/2022 09:43:36] "GET /main HTTP/1.1" 200 7969
+[16/Feb/2022 09:43:37] "GET /static/img/logo-triara-02.png HTTP/1.1" 304 0
+/home/birkoff/Projects/dashboard/reportInfra/views.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 15, 2022 - 23:36:39
+Django version 4.0.2, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+DE SOFTWARE
+<RawQuerySet: select * from reportinfra_reportefallas where TipoFalla_id = 3>
+DE SOFTWARE
+<RawQuerySet: select * from reportinfra_reportefallas where TipoFalla_id = 3>
+DE HARDWARE
+<RawQuerySet: select * from reportinfra_reportefallas where TipoFalla_id = 2>
+DE VMWARE
+<RawQuerySet: select * from reportinfra_reportefallas where TipoFalla_id = 4>
+DE SOFTWARE
+<RawQuerySet: select * from reportinfra_reportefallas where TipoFalla_id = 3>
+DE SOFTWARE
+<RawQuerySet: select * from reportinfra_reportefallas where TipoFalla_id = 3>
+DE HARDWARE
+<RawQuerySet: select * from reportinfra_reportefallas where TipoFalla_id = 2>
+
+<RawQuerySet: select * from reportinfra_reportefallas>
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 124, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/management/base.py", line 438, in check
+    all_issues = checks.run_checks(
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/checks/registry.py", line 77, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/urls/resolvers.py", line 448, in check
+    for pattern in self.url_patterns:
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/urls/resolvers.py", line 634, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/urls/resolvers.py", line 627, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/birkoff/Projects/dashboard/mysite/urls.py", line 21, in <module>
+    path('', include('reportInfra.urls')),
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/birkoff/Projects/dashboard/reportInfra/urls.py", line 2, in <module>
+    from reportInfra import views
+  File "/home/birkoff/Projects/dashboard/reportInfra/views.py", line 35, in <module>
+    @login_required(login_url='/')
+NameError: name 'login_required' is not defined
+/home/birkoff/Projects/dashboard/reportInfra/views.py changed, reloading.
+Performing system checks...
+
+Watching for file changes with StatReloader
+Exception in thread django-main-thread:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/threading.py", line 932, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.8/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/utils/autoreload.py", line 64, in wrapper
+    fn(*args, **kwargs)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/management/commands/runserver.py", line 124, in inner_run
+    self.check(display_num_errors=True)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/management/base.py", line 438, in check
+    all_issues = checks.run_checks(
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/checks/registry.py", line 77, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/checks/urls.py", line 13, in check_url_config
+    return check_resolver(resolver)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/core/checks/urls.py", line 23, in check_resolver
+    return check_method()
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/urls/resolvers.py", line 448, in check
+    for pattern in self.url_patterns:
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/urls/resolvers.py", line 634, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/utils/functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/urls/resolvers.py", line 627, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/birkoff/Projects/dashboard/mysite/urls.py", line 21, in <module>
+    path('', include('reportInfra.urls')),
+  File "/home/birkoff/Projects/dashboard/env/lib/python3.8/site-packages/django/urls/conf.py", line 34, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python3.8/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1014, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 848, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/birkoff/Projects/dashboard/reportInfra/urls.py", line 2, in <module>
+    from reportInfra import views
+  File "/home/birkoff/Projects/dashboard/reportInfra/views.py", line 40, in <module>
+    @login_required(login_url='/')
+NameError: name 'login_required' is not defined

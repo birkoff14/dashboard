@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">SERVICE REQUESTS GENERALES</h3>
+          </div>
+          <form class="needs-validation" name="form1" action="#" method="POST">
+            <div class="card-body">
+              <fieldset>
+                {% csrf_token %}
+                {{ form|crispy }}                
+                <input type="submit" name="submit" class='btn btn-primary' id="submit_btn" value="Agregar datos" />
+              </fieldset>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{% static 'js/pages/dashboard3.js' %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#id_Vendor").on("change", getLocalidades);
+        $("#id_Componente").html("<option value='' selected='selected'>---------</option>");        
+    });
+
+    function getLocalidades() {
+            var id_Vendor = $("#id_Vendor").val();
+            
+            if (id_Vendor) {
+                // Eliminamos las opciones anteriores del select
+                //$("#id_Componente").html("");
+                var request = $.ajax({
+                    type: "GET",
+                    url: "{% url 'get_componentes' %}",                    
+                    data: {
+                        "id_Vendor": id_Vendor,
+                    },
+                });              
+                
+                request.done(function(response) {
+                    // Agregamos los resultados al select
+                    //alert(response.Componente)
+                    //$("#id_Componente").html("<option value='' selected='selected'>---------</option>");
+                    $("#id_Componente").html(response.componentes);
+                    $("#id_Componente").trigger("change");
+                });
+            } else {
+                $("#id_Componente").html("<option value='' selected='selected'>---------</option>");
+                $("#id_Componente").trigger("change");
+            }
+        }
+</script>
+
+{% endblock %}
