@@ -2,6 +2,13 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block css%}
+
+<!-- daterange picker -->
+<link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+
+{% endblock %}
+
 {% block content %}
 
 <section class="content">
@@ -14,12 +21,54 @@
             <h3 class="card-title">SERVICE REQUESTS GENERALES</h3>
           </div>
           <form class="needs-validation" name="form1" action="#" method="POST">
-            <div class="card-body">
+            <div class="card-body">              
               <fieldset>
                 {% csrf_token %}
-                {{ form|crispy }}                
+                <div class="form-group">
+                  <label>Service Request</label>
+                {{ form.SR }}
+              </div>
+              <div class="form-group">
+                <label>Fecha</label>
+                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                  {{ form.Fecha }}
+                  <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  </div>
+                </div>
+              </div>
+                <div class="form-group">
+                  <label>Tipo de falla</label>
+                {{ form.TipoFalla }}
+              </div>
+              <div class="form-group">
+                <label>Usuario</label>
+                {{ form.Usuario }}
+              </div>
+              <div class="form-group">
+                <label>Proveedor</label>
+                {{ form.Vendor }}
+              </div>
+              <div class="form-group">
+                <label>Componente</label>
+                {{ form.Componente }}
+              </div>
+              <div class="form-group">
+                <label>Ambiente</label>
+                {{ form.Ambiente }}
+              </div>
+              <div class="form-group">
+                <label>Reemplazo de Hardware</label>
+                {{ form.CambioHW }}
+              </div>
+              <div class="form-group">
+                <label>Descripción</label>
+                {{ form.descripcion }}
+              </div>
+
                 <input type="submit" name="submit" class='btn btn-primary' id="submit_btn" value="Agregar datos" />
               </fieldset>
+            
             </div>
           </form>
         </div>
@@ -36,37 +85,147 @@
 <script src="{% static 'js/pages/dashboard3.js' %}"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#id_Vendor").on("change", getLocalidades);
-        $("#id_Componente").html("<option value='' selected='selected'>---------</option>");        
+  $(document).ready(function () {
+    $("#id_Vendor").on("change", getLocalidades);
+    $("#id_Componente").html("<option value='' selected='selected'>---------</option>");
+  });
+
+  function getLocalidades() {
+    var id_Vendor = $("#id_Vendor").val();
+
+    if (id_Vendor) {
+      // Eliminamos las opciones anteriores del select
+      $("#id_Componente").html("");
+      var request = $.ajax({
+        type: "GET",
+        url: "{% url 'get_componentes' %}",
+        data: {
+          "id_Vendor": id_Vendor,
+        },
+      });
+
+      request.done(function (response) {
+        // Agregamos los resultados al select                    
+        $("#id_Componente").html(response.componentes);
+        $("#id_Componente").trigger("change");
+      });
+    } else {
+      $("#id_Componente").html("<option value='' selected='selected'>---------</option>");
+      $("#id_Componente").trigger("change");
+    }
+  }
+</script>
+
+<script>
+  var b = document.getElementById("id_Fecha");
+  b.setAttribute("class", "form-control datetimepicker-input");
+  b.setAttribute("data-target", "#reservationdate");
+
+  var txt = document.getElementById('id_SR');
+  txt.setAttribute("class", "form-control");
+
+  var c = document.getElementById("id_TipoFalla");
+  c.setAttribute("class", "form-control");
+
+  var d = document.getElementById("id_Usuario");
+  d.setAttribute("class", "form-control");
+
+  var e = document.getElementById("id_Vendor");
+  e.setAttribute("class", "form-control");
+
+  var f = document.getElementById("id_Componente");
+  f.setAttribute("class", "form-control");
+
+  var g = document.getElementById("id_Ambiente");
+  g.setAttribute("class", "form-control");
+
+  var h = document.getElementById("id_CambioHW");
+  h.setAttribute("class", "form-control");
+
+  var i = document.getElementById("id_descripcion");
+  i.setAttribute("class", "form-control");
+
+</script>
+
+<!-- date-range-picker -->
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date picker
+    $('#reservationdate').datetimepicker({
+      format: 'L'
     });
 
-    function getLocalidades() {
-            var id_Vendor = $("#id_Vendor").val();
-            
-            if (id_Vendor) {
-                // Eliminamos las opciones anteriores del select
-                //$("#id_Componente").html("");
-                var request = $.ajax({
-                    type: "GET",
-                    url: "{% url 'get_componentes' %}",                    
-                    data: {
-                        "id_Vendor": id_Vendor,
-                    },
-                });              
-                
-                request.done(function(response) {
-                    // Agregamos los resultados al select
-                    //alert(response.Componente)
-                    //$("#id_Componente").html("<option value='' selected='selected'>---------</option>");
-                    $("#id_Componente").html(response.componentes);
-                    $("#id_Componente").trigger("change");
-                });
-            } else {
-                $("#id_Componente").html("<option value='' selected='selected'>---------</option>");
-                $("#id_Componente").trigger("change");
-            }
-        }
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges: {
+          'Today': [moment(), moment()],
+          'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month': [moment().startOf('month'), moment().endOf('month')],
+          'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate: moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function (event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    })
+
+    $("input[data-bootstrap-switch]").each(function () {
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    })
+
+  })
 </script>
 
 {% endblock %}

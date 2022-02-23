@@ -60,3 +60,10 @@ class reporteFallas(models.Model):
     Componente = models.ForeignKey(Componente, on_delete=models.CASCADE, null=True, verbose_name="Componente")
     TipoFalla = models.ForeignKey(TipoFalla, on_delete=models.CASCADE, null=True, verbose_name="Tipo de falla")
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")
+    def __str__(self):
+        return self.SR
+
+class cierreFalla(models.Model):
+    idFAlla = models.ForeignKey(reporteFallas, on_delete=models.CASCADE, null=True, verbose_name="id_Falla")
+    ComentarioCierre = models.TextField(null=True, verbose_name="Comentario")
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")

@@ -4,7 +4,6 @@ from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente
 import datetime
 from django.forms import ModelChoiceField
 from bootstrap_datepicker_plus.widgets import DatePickerInput
-from .widget import DatePickerInput, TimePickerInput, DateTimePickerInput
 
 class MyDatePickerInput(DatePickerInput):
     template_name = 'templates/date-picker.html'
@@ -20,7 +19,7 @@ class addData(forms.ModelForm):
 
         SR = forms.CharField()        
         #Fecha = forms.DateTimeField(initial=datetime.date.today().strftime("%Y-%m-%d"), required=False, label="Fecha orale")
-        Fecha = forms.DateField(widget=DatePickerInput)
+        Fecha = forms.CharField()
         TipoFalla = forms.CharField()
         Usuario = UserModelChoiceField(queryset=User.objects.filter(is_active=True).order_by('username'))
         Vendor = ModelChoiceField(queryset=Vendor.objects.all().order_by('NombreVendor'))
