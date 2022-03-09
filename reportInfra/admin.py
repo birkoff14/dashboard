@@ -5,8 +5,8 @@ from .models import *
 # Register your models here.
 
 @admin.register(Vendor)
-class VendorAdmin(admin.ModelAdmin):
-    pass
+class VendorAdmin(ImportExportModelAdmin):
+    list_display = ("idVendor", "idCategoria", "NombreVendor")
 
 @admin.register(Ambiente)
 class AmbienteAdmin(admin.ModelAdmin):
@@ -16,14 +16,14 @@ class AmbienteAdmin(admin.ModelAdmin):
 class CambioHWAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(TipoFalla)
-class TipoFallaAdmin(admin.ModelAdmin):
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Componente)
-class ComponenteAdmin(admin.ModelAdmin):
-    pass
+class ComponenteAdmin(ImportExportModelAdmin):
+    list_display = ("idVendor", "Componente")
 
 @admin.register(reporteFallas)
 class reporteFallasAdmin(ImportExportModelAdmin):
-    list_display = ("SR", "descripcion", "Usuario", "Fecha", "Vendor", "Componente", "Ambiente", "CambioHW", "timestamp")
+    list_display = ("SR", "descripcion", "Usuario", "Fecha", "Vendor", "Categoria", "Componente", "Ambiente", "CambioHW", "timestamp")

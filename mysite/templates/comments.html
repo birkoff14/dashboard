@@ -1,0 +1,39 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">{{ Titulo }} : {{ txtSR }}</h5>
+            <button type="button" onclick="return cerrar_modal()" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr align="center">
+                            <th scope="col">ID</th>
+                            <th scope="col">Comentarios</th>
+                            <th scope="col">Fecha</th>                                                   
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dt in qry %}
+                        <tr align="center">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ dt.ComentarioCierre }} </td>
+                            <td>{{ dt.timestamp }}</td>                   
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="return cerrar_modal()" class="btn btn-secondary"
+                data-dismiss="modal">Cerrar</button>
+        </div>
+    </div>
+</div>

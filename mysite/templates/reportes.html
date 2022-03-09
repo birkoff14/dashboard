@@ -25,7 +25,7 @@
                         <h3 class="card-title">{{ title }}</h3>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body">
+                    <div class="card-body">                        
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -35,11 +35,15 @@
                                     <th>Fecha</th>
                                     <th>Vendor</th>
                                 </tr>
-                            </thead>
+                            </thead>                            
                             <tbody>
                                 {% for dt in qry %}
-                                <tr>
-                                    <td>{{ dt.SR }}</td>
+                                <tr>                                    
+                                    <td>
+                                        <a href="#" onclick="return abrir_modal('{% url 'detailSR' dt.SR %}');">{{ dt.SR }}</a>
+                                        <hr />
+                                        <a href="" onclick="return abrir_modal('{% url 'cierre' dt.SR %}');">Comentarios</a>
+                                    </td>
                                     <td>{{ dt.descripcion }}</td>
                                     <td>{{ dt.Usuario }}</td>
                                     <td>{{ dt.Fecha }}</td>
@@ -56,7 +60,7 @@
                                     <th>Vendor</th>
                                 </tr>
                             </tfoot>
-                        </table>
+                        </table>                                      
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -71,6 +75,11 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<div class="modal fade" id="ventana_modal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+</div>
 
 {% endblock %}
 
@@ -106,6 +115,39 @@
             "responsive": true,
         });
     });
+</script>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
+<script>
+    function abrir_modal(url) {
+        $('#ventana_modal').load(url, function () {
+            $(this).modal({
+                backdrop: 'static',
+                keyboard: false,
+                success: function () {
+                    document.getElementById("SR") = 'block';
+                }
+            })
+
+            $(this).modal('show');
+        });
+
+        return false;
+
+    }
+
+    function cerrar_modal() {
+
+        $('#ventana_modal').modal('hide');
+
+        return false;
+    }
+
 </script>
 
 {% endblock %}

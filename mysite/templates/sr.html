@@ -37,14 +37,14 @@
                   </div>
                 </div>
               </div>
-                <div class="form-group">
-                  <label>Tipo de falla</label>
-                {{ form.TipoFalla }}
-              </div>
               <div class="form-group">
                 <label>Usuario</label>
                 {{ form.Usuario }}
               </div>
+                <div class="form-group">
+                  <label>Categoría</label>
+                {{ form.Categoria }}
+              </div>              
               <div class="form-group">
                 <label>Proveedor</label>
                 {{ form.Vendor }}
@@ -86,11 +86,46 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
-    $("#id_Vendor").on("change", getLocalidades);
+    $("#id_Categoria").on("change", getVendors);
+    $("#id_Vendor").html("<option value='' selected='selected'>---------</option>");
+  });
+
+  function getVendors() {
+    var id_Categoria = $("#id_Categoria").val();
+
+    if(id_Categoria){
+      // Eliminamos las opciones anteriores del select
+      $("#id_Vendor").html("");
+      var request = $.ajax({
+        type: "GET",
+        url: "{% url 'get_vendors' %}",
+        data: {
+          "id_Categoria": id_Categoria,
+        },
+      });
+
+      request.done(function (response) {
+        // Agregamos los resultados al select                    
+        $("#id_Vendor").html(response.categorias);
+        $("#id_Vendor").trigger("change");
+      });
+    } else {
+      $("#id_Vendor").html("<option value='' selected='selected'>---------</option>");
+      $("#id_Vendor").trigger("change");
+    }
+  }
+
+
+
+
+
+
+  $(document).ready(function () {
+    $("#id_Vendor").on("change", getComponentes);
     $("#id_Componente").html("<option value='' selected='selected'>---------</option>");
   });
 
-  function getLocalidades() {
+  function getComponentes() {
     var id_Vendor = $("#id_Vendor").val();
 
     if (id_Vendor) {
@@ -124,7 +159,7 @@
   var txt = document.getElementById('id_SR');
   txt.setAttribute("class", "form-control");
 
-  var c = document.getElementById("id_TipoFalla");
+  var c = document.getElementById("id_Categoria");
   c.setAttribute("class", "form-control");
 
   var d = document.getElementById("id_Usuario");

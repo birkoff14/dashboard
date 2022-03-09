@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.http import HttpResponse
 
-from .models import Componente
+from .models import Componente, Vendor
 
 def get_componentes(request):
     id_Vendor = request.GET.get('id_Vendor')
@@ -10,18 +10,29 @@ def get_componentes(request):
     options = '<option value="" selected="selected">---------</option>'
     if id_Vendor:
         componentes = Componente.objects.filter(idVendor=id_Vendor)   
-        print(componentes.query)
     for componente in componentes:
         options += '<option value="%s">%s</option>' % (
             componente.idComponente,
             componente.Componente
         )
-        print(options)
-    else:
-        print("no entro")
+    
     response = {}
     response['componentes'] = options
-    #print(response)
+    return JsonResponse(response)
+
+def get_vendors(request):
+    id_Categoria = request.GET.get('id_Categoria')
+    categorias = Vendor.objects.none()
+    options = '<option value="" selected="selected">---------</option>'
+    if id_Categoria:
+        categorias = Vendor.objects.filter(idCategoria=id_Categoria)
+    for categoria in categorias:
+        options += '<option value="%s">%s</option>' % (
+            categoria.idVendor,
+            categoria.NombreVendor
+        )
+    response = {}
+    response['categorias'] = options
     return JsonResponse(response)
 
 

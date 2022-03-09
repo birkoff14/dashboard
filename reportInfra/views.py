@@ -90,7 +90,7 @@ def reportes(request):
     if request.GET.get("idRep", "") == "0":
         queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas")
     else:
-        queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas where TipoFalla_id = " + idFalla)
+        queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas where Categoria_id = " + idFalla)
     print(queryset)
     context = {
         "qry" : queryset,
@@ -103,4 +103,56 @@ def reportes(request):
 @login_required(login_url='/')
 def kpis(request):
 
-    return render(request, 'kpis.html')
+    qry = reporteFallas.objects.raw("""select 1 as id, count(*) Total, b.NombreVendor from reportinfra_reportefallas a
+                inner join reportinfra_vendor b
+                on a.Vendor_id = b.idVendor 
+                group by NombreVendor """)
+
+
+    qryVM = reporteFallas.objects.raw("""select 1 as id, count(*) Total, b.Componente , c.NombreVendor  
+                                            from reportinfra_reportefallas a inner join reportinfra_componente b
+                                            on a.Componente_id = b.idComponente inner join reportinfra_vendor c
+                                            on a.Vendor_id = c.idVendor 
+                                            group by b.Componente , c.NombreVendor""")
+    
+    context = {
+        "qry" : qry,
+        "qryVM" : qryVM,
+    }   
+
+    return render(request, 'kpis.html', context)
+
+def detailSR(request, idSR):
+
+    form = comments(request.POST or None)
+
+    if request.method == "POST":
+        if form.is_valid():            
+            print("Si entra")
+            frm = form.save(commit=False)
+            frm.save()
+        else:            
+            print("No se grabo nada :(")
+
+    context = {
+        "Titulo" : "Agregar comentarios de cierre",
+        "idSR" : idSR,
+        "form": form,
+
+    }
+    return render(request, "modal.html", context)
+
+def cierre(request, idSR):
+
+    txtSR = idSR
+    qry = reporteFallas.objects.raw("select * from reportinfra_cierrefalla where idFalla = '" + idSR + "'")
+
+    print(idSR)
+
+    context = {
+        "Titulo" : "Comentarios para el SR",
+        "qry" : qry,
+        "txtSR" : txtSR,
+    }
+
+    return render(request, "comments.html", context)
