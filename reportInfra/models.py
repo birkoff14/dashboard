@@ -60,9 +60,8 @@ class reporteFallas(models.Model):
     CambioHW = models.ForeignKey(CambioHW, on_delete=models.CASCADE, null=True, verbose_name="Cambio de hardware")    
     Categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True, verbose_name="Categoria")
     Componente = models.ForeignKey(Componente, on_delete=models.CASCADE, null=True, verbose_name="Componente")
+    RMA = models.CharField(max_length=50, blank=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")
-    def __str__(self):
-        return self.SR
 
 class cierreFalla(models.Model):
     idFalla = models.CharField(max_length=150, blank=True, verbose_name="Service Request")

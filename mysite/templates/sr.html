@@ -5,8 +5,26 @@
 {% block css%}
 
 <!-- daterange picker -->
+<link rel="stylesheet" href="{% static 'css/tagsinput.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
 <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
 
+<link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bs-stepper/css/bs-stepper.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/dropzone/min/dropzone.min.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -21,54 +39,58 @@
             <h3 class="card-title">SERVICE REQUESTS GENERALES</h3>
           </div>
           <form class="needs-validation" name="form1" action="#" method="POST">
-            <div class="card-body">              
+            <div class="card-body">
               <fieldset>
                 {% csrf_token %}
                 <div class="form-group">
                   <label>Service Request</label>
-                {{ form.SR }}
-              </div>
-              <div class="form-group">
-                <label>Fecha</label>
-                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                  {{ form.Fecha }}
-                  <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                  {{ form.SR }}
+                </div>
+
+                <div class="form-group">
+                  <label>Fecha</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                    </div>
+                    {{ form.Fecha }}
                   </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label>Usuario</label>
-                {{ form.Usuario }}
-              </div>
+                <div class="form-group">
+                  <label>Usuario</label>
+                  {{ form.Usuario }}
+                </div>
                 <div class="form-group">
                   <label>Categoría</label>
-                {{ form.Categoria }}
-              </div>              
-              <div class="form-group">
-                <label>Proveedor</label>
-                {{ form.Vendor }}
-              </div>
-              <div class="form-group">
-                <label>Componente</label>
-                {{ form.Componente }}
-              </div>
-              <div class="form-group">
-                <label>Ambiente</label>
-                {{ form.Ambiente }}
-              </div>
-              <div class="form-group">
-                <label>Reemplazo de Hardware</label>
-                {{ form.CambioHW }}
-              </div>
-              <div class="form-group">
-                <label>Descripción</label>
-                {{ form.descripcion }}
-              </div>
-
+                  {{ form.Categoria }}
+                </div>
+                <div class="form-group">
+                  <label>Proveedor</label>
+                  {{ form.Vendor }}
+                </div>
+                <div class="form-group">
+                  <label>Componente</label>
+                  {{ form.Componente }}
+                </div>
+                <div class="form-group">
+                  <label>Ambiente</label>
+                  {{ form.Ambiente }}
+                </div>
+                <div class="form-group">
+                  <label>Reemplazo de Hardware</label>
+                  {{ form.CambioHW }}
+                </div>
+                <div class="form-group">
+                  <label>RMA</label>
+                  {{ form.RMA }}
+                </div>
+                <div class="form-group">
+                  <label>Descripción</label>
+                  {{ form.descripcion }}
+                </div>
                 <input type="submit" name="submit" class='btn btn-primary' id="submit_btn" value="Agregar datos" />
               </fieldset>
-            
+
             </div>
           </form>
         </div>
@@ -81,8 +103,8 @@
 
 {% block js %}
 
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{% static 'js/pages/dashboard3.js' %}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes)
+<script src="{% static 'js/pages/dashboard3.js' %}"></script> -->
 
 <script type="text/javascript">
   $(document).ready(function () {
@@ -93,7 +115,7 @@
   function getVendors() {
     var id_Categoria = $("#id_Categoria").val();
 
-    if(id_Categoria){
+    if (id_Categoria) {
       // Eliminamos las opciones anteriores del select
       $("#id_Vendor").html("");
       var request = $.ajax({
@@ -114,11 +136,6 @@
       $("#id_Vendor").trigger("change");
     }
   }
-
-
-
-
-
 
   $(document).ready(function () {
     $("#id_Vendor").on("change", getComponentes);
@@ -154,7 +171,10 @@
 <script>
   var b = document.getElementById("id_Fecha");
   b.setAttribute("class", "form-control datetimepicker-input");
-  b.setAttribute("data-target", "#reservationdate");
+  b.setAttribute("data-inputmask-alias", "datetime");
+  b.setAttribute("data-inputmask-inputformat", "dd/mm/yyyy");
+  b.setAttribute("data-mask", "");
+  b.setAttribute("inputmode", "numeric");
 
   var txt = document.getElementById('id_SR');
   txt.setAttribute("class", "form-control");
@@ -180,10 +200,35 @@
   var i = document.getElementById("id_descripcion");
   i.setAttribute("class", "form-control");
 
+  var j = document.getElementById("id_RMA");
+  j.setAttribute("class", "form-control bootstrap-tagsinput");
+  j.setAttribute("data-role", "tagsinput");
+  //j.setAttribute("class", "")class="bootstrap-tagsinput"
+
 </script>
 
+<script src="{% static 'js/tagsinput.js' %}"></script>
+
 <!-- date-range-picker -->
+<script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+
+<script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
+
 <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+
+<script src="{% static 'plugins/bs-stepper/js/bs-stepper.min.js' %}"></script>
+
+<script src="{% static 'plugins/dropzone/min/dropzone.min.js' %}"></script>
+
 
 <script>
   $(function () {
