@@ -1,5 +1,5 @@
 from django.urls import path
-from reportInfra import views
+from reportinfra import views
 from django.contrib import admin
 from django.conf.urls import url
 from .ajax import get_componentes, get_vendors
