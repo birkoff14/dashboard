@@ -11,8 +11,15 @@
 {% block content %}
 
 <!-- Main content -->
-<div class="content">
+<div class="content">        
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12"> Filtro por año: |
+                {%for data in qryYear %}  
+                <a href="{% url 'kpis' %}?idY={{ data.yearF }}" >{{ data.yearF }} </a> |
+                {% endfor %}
+              </div>
+        </div><br />
         <div class="row">
             <div class="col-lg-12">
                 <!-- BAR CHART -->
@@ -117,8 +124,8 @@
 
 
             var barChartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            //labels: [{%for data in qry %}'{{data.NombreVendor}}', {% endfor %}], //loop through queryset,
+            //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: [{%for data in qryVM %}'{{data.DateF}}', {% endfor %}], //loop through queryset,
             datasets: [
             {
                 label: 'VMware',
@@ -129,8 +136,8 @@
                 pointStrokeColor: 'rgba(60,141,188,1)',
                 pointHighlightFill: '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
-                //data: [{%for data in qry %}{{ data.Total }}, {% endfor %}]
-                data                : [28, 48, 40, 19, 86, 27, 90]
+                data: [{%for data in qryVM %} {{ data.Total }}, {% endfor %}]
+                //data : [28, 48, 40, 19, 86, 27, 90]
                     },                    
                 ]
             }
