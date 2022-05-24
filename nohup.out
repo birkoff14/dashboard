@@ -528,3 +528,291 @@ Quit the server with CONTROL-C.
 2021
 <RawQuerySet: select 1 as id, count(*) Total, b.NombreVendor from reportinfra_reportefallas a inner join reportinfra_vendor b on a.Vendor_id = b.idVendor where concat(SUBSTRING_INDEX(Fecha, '/', -1)) = '2021' group by NombreVendor>
 Watching for file changes with StatReloader
+Remmina plugin glibsecret (type=Secret) has registered but not yet initialized/activated. Initialization order is 2000.
+[glibsecret] unable to get secret service: Error spawning command line ?dbus-launch --autolaunch= --binary-syntax --close-stderr?: Child process exited with code 1
+StatusNotifier/Appindicator support: not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed
+Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.
+
+(org.remmina.Remmina:6747): Gtk-WARNING **: 11:28:51.298: gtk_menu_attach_to_widget(): menu already attached to GtkMenuItem
+
+(org.remmina.Remmina:6747): Gtk-WARNING **: 11:28:51.447: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:6747): libappindicator-WARNING **: 11:28:51.773: Unable to get the session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:6747): LIBDBUSMENU-GLIB-WARNING **: 11:28:51.773: Unable to get session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+[11:28:59:584] [6747:6770] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:09:59:468] [6747:22504] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:09:59:611] [6747:22504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_PASSWORD_EXPIRED [0x0002000E]
+[16:09:59:612] [6747:22504] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[16:09:59:612] [6747:22504] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[16:10:09:630] [6747:22518] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:10:09:664] [6747:22518] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_PASSWORD_EXPIRED [0x0002000E]
+[16:10:09:664] [6747:22518] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[16:10:09:664] [6747:22518] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[16:10:13:287] [6747:22526] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:12:15:912] [6747:22656] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:12:16:946] [6747:22656] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_LOGON_FAILURE [0x00020014]
+[16:12:16:946] [6747:22656] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[16:12:16:946] [6747:22656] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[16:12:16:994] [6747:22656] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:12:20:906] [6747:22656] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_LOGON_FAILURE [0x00020014]
+[16:12:20:906] [6747:22656] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[16:12:20:907] [6747:22656] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[16:12:21:018] [6747:22656] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:12:23:456] [6747:22656] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_NO_OR_MISSING_CREDENTIALS [0x0002001B]
+[16:12:23:456] [6747:22656] [ERROR][com.freerdp.core.transport] - NLA begin failed
+[16:13:07:601] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[17:17:25:897] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_read returned a system error 0: Success
+[17:17:25:897] [6747:22721] [ERROR][com.freerdp.core] - freerdp_check_fds() failed - 0
+[17:17:25:939] [6747:22526] [ERROR][com.freerdp.core.transport] - BIO_read returned a system error 0: Success
+[17:17:25:940] [6747:22526] [ERROR][com.freerdp.core] - freerdp_check_fds() failed - 0
+[17:17:41:886] [6747:22526] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:17:41:887] [6747:22526] [ERROR][com.freerdp.core] - failed to connect to 172.21.81.33
+[17:17:41:890] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:17:41:890] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[17:17:56:895] [6747:22526] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:17:56:895] [6747:22526] [ERROR][com.freerdp.core] - failed to connect to 172.21.81.33
+[17:17:56:913] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:17:56:913] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[17:18:11:475] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[17:18:11:475] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[17:18:11:476] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[17:18:11:476] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[17:18:11:477] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[17:18:11:552] [6747:22526] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[17:18:11:552] [6747:22526] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[17:18:11:553] [6747:22526] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[17:18:11:553] [6747:22526] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[17:18:11:553] [6747:22526] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[17:18:11:782] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[17:18:11:782] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[17:18:11:782] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[17:18:11:782] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[17:18:11:783] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[17:18:11:822] [6747:22526] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[17:18:11:822] [6747:22526] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[17:18:11:822] [6747:22526] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[17:18:11:822] [6747:22526] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[17:18:11:823] [6747:22526] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[17:18:31:900] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:18:31:900] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[17:18:32:945] [6747:22526] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:18:32:945] [6747:22526] [ERROR][com.freerdp.core] - failed to connect to 172.21.81.33
+[17:18:47:976] [6747:22526] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:18:47:976] [6747:22526] [ERROR][com.freerdp.core] - failed to connect to 172.21.81.33
+[17:18:47:977] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:18:47:977] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[17:19:02:013] [6747:22526] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:19:02:013] [6747:22526] [ERROR][com.freerdp.core] - failed to connect to 172.21.81.33
+[17:19:02:014] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:19:02:014] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[17:19:17:023] [6747:22526] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:19:17:023] [6747:22526] [ERROR][com.freerdp.core] - failed to connect to 172.21.81.33
+[17:19:17:042] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:19:17:042] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[17:19:24:079] [6747:22526] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[17:19:24:081] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[22:03:02:532] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_read returned a system error 0: Success
+[22:03:02:534] [6747:22721] [ERROR][com.freerdp.core] - freerdp_check_fds() failed - 0
+[22:03:05:148] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[22:03:05:149] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[22:03:05:149] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[22:03:05:195] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[22:03:05:195] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[22:03:08:268] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[22:03:08:268] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[22:03:08:268] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[22:03:08:269] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[22:03:08:269] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[09:05:58:941] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:05:58:942] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[09:05:58:942] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[09:05:58:942] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[09:05:58:942] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[09:06:01:911] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:06:01:911] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[09:06:01:911] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[09:06:01:911] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[09:06:01:912] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[09:06:03:486] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:06:03:486] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[09:06:03:487] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[09:06:03:487] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[09:06:03:488] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[09:06:09:951] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:06:09:952] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[09:06:09:952] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[09:06:09:952] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[09:06:09:952] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[09:06:25:048] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:06:25:049] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[09:06:25:049] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[09:06:25:049] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[09:06:25:049] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[09:06:40:329] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[09:06:40:329] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[09:06:54:709] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:06:54:709] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[09:06:54:709] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[09:06:54:709] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[09:06:54:710] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[09:06:55:095] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:06:55:095] [6747:22721] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[09:06:55:095] [6747:22721] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[09:06:55:095] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[09:06:55:096] [6747:22721] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[09:07:14:151] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[09:07:14:151] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[09:07:29:176] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[09:07:29:177] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[09:07:44:201] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[09:07:44:201] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[09:07:59:222] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[09:07:59:222] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[09:08:14:244] [6747:22721] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[09:08:14:244] [6747:22721] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.250
+[09:08:14:277] [6747:22721] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:40:18:835] [6747:1146] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:40:19:020] [6747:1146] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_LOGON_FAILURE [0x00020014]
+[09:40:19:020] [6747:1146] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[09:40:19:020] [6747:1146] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[09:40:19:039] [6747:1146] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:40:22:431] [6747:1146] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_NO_OR_MISSING_CREDENTIALS [0x0002001B]
+[09:40:22:431] [6747:1146] [ERROR][com.freerdp.core.transport] - NLA begin failed
+[09:40:28:721] [6747:1167] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[11:28:59:528] [6747:6770] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[11:28:59:528] [6747:6770] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[11:29:00:347] [6747:6770] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[11:29:00:348] [6747:6770] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[11:29:00:351] [6747:6770] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[16:09:59:447] [6747:22504] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[16:09:59:447] [6747:22504] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[16:10:09:622] [6747:22518] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[16:10:09:622] [6747:22518] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[16:10:13:266] [6747:22526] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[16:10:13:266] [6747:22526] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[16:10:13:590] [6747:22526] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[16:10:13:590] [6747:22526] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[16:10:13:591] [6747:22526] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[16:12:15:908] [6747:22656] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[16:12:15:908] [6747:22656] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[16:12:16:952] [6747:22656] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[16:12:16:952] [6747:22656] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[16:12:21:000] [6747:22656] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[16:12:21:000] [6747:22656] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[16:13:07:599] [6747:22721] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[16:13:07:599] [6747:22721] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[16:13:07:718] [6747:22721] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[16:13:07:719] [6747:22721] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[16:13:07:720] [6747:22721] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[17:19:24:205] [6747:22721] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[17:19:24:347] [6747:22526] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[09:08:14:578] [6747:22721] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[09:08:49:730] [6747:22721] [INFO][com.freerdp.core] - ERRINFO_LOGOFF_BY_USER (0x0000000C):The disconnection was initiated by the user logging off their session on the server.
+[09:40:18:817] [6747:1146] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[09:40:18:817] [6747:1146] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[09:40:19:030] [6747:1146] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[09:40:19:031] [6747:1146] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[09:40:28:712] [6747:1167] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[09:40:28:712] [6747:1167] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[09:40:28:853] [6747:1167] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[09:40:28:853] [6747:1167] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[09:40:28:854] [6747:1167] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[09:40:56:561] [6747:1167] [INFO][com.freerdp.core] - ERRINFO_LOGOFF_BY_USER (0x0000000C):The disconnection was initiated by the user logging off their session on the server.
+[09:41:01:214] [6747:1204] [IN[09:41:01:221] [6747:1204] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[09:41:01:295] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_LOGON_FAILURE [0x00020014]
+[09:41:01:296] [6747:1204] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[09:41:01:296] [6747:1204] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[09:41:01:312] [6747:1204] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[10:03:24:483] [6747:2504] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+
+(org.remmina.Remmina:6747): Gtk-WARNING **: 13:59:05.904: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:6747): Gtk-WARNING **: 13:59:05.984: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[15:33:34:349] [6747:2504] [ERROR][com.freerdp.core.transport] - BIO_read returned a system error 0: Success
+[15:33:34:354] [6747:2504] [ERROR][com.freerdp.core] - freerdp_check_fds() failed - 0
+[15:33:34:354] [6747:1204] [ERROR][com.freerdp.core.transport] - BIO_read returned a system error 0: Success
+[15:33:34:355] [6747:1204] [ERROR][com.freerdp.core] - freerdp_check_fds() failed - 0
+[15:33:35:971] [6747:1204] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:33:35:971] [6747:1204] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:33:35:972] [6747:1204] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[15:33:35:972] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[15:33:35:972] [6747:1204] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[15:33:35:073] [6747:2504] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:33:35:073] [6747:2504] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:33:35:074] [6747:2504] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[15:33:35:074] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[15:33:35:074] [6747:2504] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[15:33:54:079] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:33:54:079] [6747:1204] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.249
+[15:33:55:984] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:33:55:984] [6747:2504] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:34:09:090] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:34:09:090] [6747:1204] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.249
+[15:34:10:058] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:34:10:059] [6747:2504] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:34:11:640] [6747:1204] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:34:11:640] [6747:1204] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:34:11:641] [6747:1204] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[15:34:11:641] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[15:34:11:641] [6747:1204] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[15:34:11:684] [6747:2504] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:34:11:684] [6747:2504] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:34:11:685] [6747:2504] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[15:34:11:685] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[15:34:11:685] [6747:2504] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[15:34:24:221] [6747:2504] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:34:24:221] [6747:2504] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:34:24:221] [6747:2504] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[15:34:24:221] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[15:34:24:221] [6747:2504] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[15:34:24:294] [6747:1204] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:34:24:365] [6747:1204] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:34:24:366] [6747:1204] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[15:34:24:366] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[15:34:24:366] [6747:1204] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[15:34:24:532] [6747:2504] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:34:24:533] [6747:2504] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:34:24:533] [6747:2504] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[15:34:24:534] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[15:34:24:534] [6747:2504] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[15:34:24:657] [6747:1204] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:34:24:658] [6747:1204] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:34:24:658] [6747:1204] [ERROR][com.freerdp.core.nego] - Protocol Security Negotiation Failure
+[15:34:24:658] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_SECURITY_NEGO_CONNECT_FAILED [0x0002000C]
+[15:34:24:658] [6747:1204] [ERROR][com.freerdp.core.connection] - Error: protocol security negotiation or connection failure
+[15:34:44:780] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:34:44:780] [6747:2504] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:34:44:885] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:34:44:885] [6747:1204] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.249
+[15:35:00:936] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:35:00:936] [6747:2504] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:35:00:965] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:35:00:965] [6747:1204] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.249
+[15:35:15:040] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:35:15:040] [6747:1204] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.249
+[15:35:15:057] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:35:15:057] [6747:2504] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:35:30:222] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:35:30:222] [6747:1204] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.249
+[15:35:30:277] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:35:30:277] [6747:2504] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:35:45:230] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:35:45:231] [6747:1204] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.249
+[15:35:45:328] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:35:45:329] [6747:2504] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:36:00:239] [6747:1204] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:36:00:239] [6747:1204] [ERROR][com.freerdp.core] - failed to connect to 192.168.201.249
+[15:36:00:249] [6747:1204] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:36:00:377] [6747:2504] [ERROR][com.freerdp.core] - freerdp_set_last_error ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:36:00:378] [6747:2504] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:36:00:470] [6747:2504] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+
+(org.remmina.Remmina:6747): Gtk-WARNING **: 16:37:16.583: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:6747): Gtk-WARNING **: 16:37:16.855: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[17:27:33:389] [6747:22580] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+
+(org.remmina.Remmina:6747): Gtk-WARNING **: 19:01:28.514: gtk_menu_detach(): menu is not attached
+Gdk-Message: 19:02:14.864: org.remmina.Remmina: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.
+

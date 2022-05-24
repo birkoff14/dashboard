@@ -85,6 +85,14 @@
                   {{ form.RMA }}
                 </div>
                 <div class="form-group">
+                  <label>RFC</label>
+                  {{ form.RFC }}
+                </div>
+                <div class="form-group">
+                  <label>IM</label>
+                  {{ form.IM }}
+                </div>
+                <div class="form-group">
                   <label>Descripción</label>
                   {{ form.descripcion }}
                 </div>
@@ -170,7 +178,7 @@
 
 <script>
   var b = document.getElementById("id_Fecha");
-  b.setAttribute("class", "form-control datetimepicker-input");
+  b.setAttribute("class", "form-control ");
   b.setAttribute("data-inputmask-alias", "datetime");
   b.setAttribute("data-inputmask-inputformat", "dd/mm/yyyy");
   b.setAttribute("data-mask", "");
@@ -204,6 +212,12 @@
   j.setAttribute("class", "form-control bootstrap-tagsinput");
   j.setAttribute("data-role", "tagsinput");
   //j.setAttribute("class", "")class="bootstrap-tagsinput"
+
+  var k = document.getElementById("id_RFC");
+  k.setAttribute("class", "form-control");
+
+  var l = document.getElementById("id_IM");
+  l.setAttribute("class", "form-control");
 
 </script>
 

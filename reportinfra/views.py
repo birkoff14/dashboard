@@ -69,32 +69,55 @@ def sr(request):
 @login_required(login_url='/')
 def reportes(request):
 
-    idTipo = ""
+    idTipo = request.GET.get("idTipo", "")
     idT = ""
+    
+    fechaIni = request.POST.get("fechaInit", "0")
+    fechaFin = request.POST.get("fechaFin", "0")
 
-    if request.GET.get("idTipo", "") == "0":
+    filtroF = """where date(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
+              SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
+              SUBSTRING_INDEX(Fecha, '/', 1))) between '""" + fechaIni + """' and '""" + fechaFin + """'"""
+
+    filtroC = """ and date(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
+              SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
+              SUBSTRING_INDEX(Fecha, '/', 1))) between '""" + fechaIni + """' and '""" + fechaFin + """'"""
+
+    #print(filtroF)
+
+    if idTipo == "0":
         idT = ""
-    elif request.GET.get("idTipo", "") == "1":
+    elif idTipo == "1":
         idT = "DE SOFTWARE"
-    elif request.GET.get("idTipo", "") == "2":
+    elif idTipo == "2":
         idT = "DE HARDWARE"
-    elif request.GET.get("idTipo", "") == "3":
+    elif idTipo == "3":
         idT = "DE VMWARE"
 
     titulo = "FALLAS " + idT + " POR COMPONENTE"
-    print(idT)
-
+    
     idFalla = request.GET.get("idRep", "")
     queryset = ""
 
     if request.GET.get("idRep", "") == "0":
-        queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas")
+        if fechaIni == "0":
+            queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas")
+        else:
+            queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas " + filtroF)
     else:
-        queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas where Categoria_id = " + idFalla)
+        if fechaIni == "0":
+            queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas where Categoria_id = " + idFalla)
+        else:
+            queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas where Categoria_id = " + idFalla + filtroC)
+
     print(queryset)
+    print(fechaIni)
+
     context = {
         "qry" : queryset,
         "title" : titulo,
+        "idRep" : idFalla,
+        "idTipo" : idTipo,
 
     }
 
@@ -126,7 +149,7 @@ def kpis(request):
 monthname(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
 SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
 SUBSTRING_INDEX(Fecha, '/', 1))) as DateF, count(*) Total
-from reportinfra_reportefallas a inner join reportinfra_componente b
+from reportinfra_reportefallas a left join reportinfra_componente b
 on a.Componente_id = b.idComponente inner join reportinfra_vendor c
 on a.Vendor_id = c.idVendor
 where c.NombreVendor = 'VMware' and """ 
@@ -139,6 +162,8 @@ order by month(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
 SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
 SUBSTRING_INDEX(Fecha, '/', 1)))
                                       """)
+
+    print(qryVM)
 
     qryYear = reporteFallas.objects.raw("select distinct 1 as id, SUBSTRING_INDEX(Fecha, '/', -1) yearF from reportinfra_reportefallas")
     
@@ -184,3 +209,11 @@ def cierre(request, idSR):
     }
 
     return render(request, "comments.html", context)
+
+def recover(request):
+
+    context = {
+        "Titulo" : "Reportes Fallas Infra",
+    }
+
+    return render(request, "recover.html", context)

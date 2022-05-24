@@ -48,7 +48,7 @@ class Componente(models.Model):
         ordering = ['Componente']
 
 class reporteFallas(models.Model):
-    SR = models.CharField(max_length=150, blank=True, verbose_name="Service Request")
+    SR = models.CharField(max_length=150, blank=False, verbose_name="Service Request")
     descripcion = models.TextField(null=True, verbose_name="Descripcion")
     Usuario = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -60,7 +60,9 @@ class reporteFallas(models.Model):
     CambioHW = models.ForeignKey(CambioHW, on_delete=models.CASCADE, null=True, verbose_name="Cambio de hardware")    
     Categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True, verbose_name="Categoria")
     Componente = models.ForeignKey(Componente, on_delete=models.CASCADE, null=True, verbose_name="Componente")
-    RMA = models.CharField(max_length=50, blank=False)
+    RMA = models.CharField(max_length=50, blank=True)
+    RFC = models.CharField(max_length=50, blank=True)
+    IM = models.CharField(max_length=50, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")
 
 class cierreFalla(models.Model):

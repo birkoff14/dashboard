@@ -3,10 +3,6 @@ from django.contrib.auth.models import User
 from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla
 import datetime
 from django.forms import ModelChoiceField
-from bootstrap_datepicker_plus.widgets import DatePickerInput
-
-class MyDatePickerInput(DatePickerInput):
-    template_name = 'templates/date-picker.html'
 
 class UserModelChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
@@ -15,7 +11,7 @@ class UserModelChoiceField(ModelChoiceField):
 class addData(forms.ModelForm):
     class Meta:
         model = reporteFallas
-        fields = ["SR", "Fecha", "Usuario", "Vendor", "Categoria", "Componente", "Ambiente", "CambioHW", "RMA", "descripcion"]
+        fields = ["SR", "Fecha", "Usuario", "Vendor", "Categoria", "Componente", "Ambiente", "CambioHW", "RMA", "RFC", "IM", "descripcion"]
 
         SR = forms.CharField()        
         #Fecha = forms.DateTimeField(initial=datetime.date.today().strftime("%Y-%m-%d"), required=False, label="Fecha orale")
