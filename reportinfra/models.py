@@ -48,7 +48,7 @@ class Componente(models.Model):
         ordering = ['Componente']
 
 class reporteFallas(models.Model):
-    SR = models.CharField(max_length=150, blank=False, verbose_name="Service Request")
+    SR = models.CharField(max_length=150, blank=True, verbose_name="Service Request")
     descripcion = models.TextField(null=True, verbose_name="Descripcion")
     Usuario = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -60,7 +60,7 @@ class reporteFallas(models.Model):
     CambioHW = models.ForeignKey(CambioHW, on_delete=models.CASCADE, null=True, verbose_name="Cambio de hardware")    
     Categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True, verbose_name="Categoria")
     Componente = models.ForeignKey(Componente, on_delete=models.CASCADE, null=True, verbose_name="Componente")
-    RMA = models.CharField(max_length=50, blank=True)
+    RMA = models.CharField(max_length=150, blank=True)
     RFC = models.CharField(max_length=50, blank=True)
     IM = models.CharField(max_length=50, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")
@@ -68,4 +68,15 @@ class reporteFallas(models.Model):
 class cierreFalla(models.Model):
     idFalla = models.CharField(max_length=150, blank=True, verbose_name="Service Request")
     ComentarioCierre = models.TextField(null=True, verbose_name="Comentario")
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")
+
+class actividades(models.Model):
+    TipoActividad = models.CharField(max_length=150, blank=True, verbose_name="Actividad")
+    FechaInicio = models.DateTimeField(default=timezone.now, blank=True, verbose_name="Fecha Inicio")
+    FechaFin = models.DateTimeField(default=timezone.now, blank=True, verbose_name="Fecha Fin")
+    HorasInvertidas = models.CharField(max_length=50, blank=True, verbose_name="Horas invertidas")
+    IM = models.CharField(max_length=150, blank=True, verbose_name="IM")
+    Usuario = models.CharField(max_length=150, blank=True, verbose_name="User")
+    Evento = models.CharField(max_length=150, blank=True)
+    Descripcion = models.CharField(max_length=500, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")

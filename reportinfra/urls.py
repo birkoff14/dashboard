@@ -15,8 +15,9 @@ urlpatterns = [
     path('detailSR/<str:idSR>', views.detailSR, name='detailSR'),
     path('cierre/<str:idSR>', views.cierre, name='cierre'),
     path('recover', views.recover, name='recover'),
+    path('actividades', views.activity, name='actividades'),
     url(r'^ajax/get_componentes/$', get_componentes, name='get_componentes'),  
-    url(r'^ajax/get_vendors/$', get_vendors, name='get_vendors'),          
+    url(r'^ajax/get_vendors/$', get_vendors, name='get_vendors'),  
 ]
 
 admin.site.site_header = "Operación de Aplicaciones Cloud"

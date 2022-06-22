@@ -26,4 +26,4 @@ class ComponenteAdmin(ImportExportModelAdmin):
 
 @admin.register(reporteFallas)
 class reporteFallasAdmin(ImportExportModelAdmin):
-    list_display = ("SR", "descripcion", "Usuario", "Fecha", "Vendor", "Categoria", "Componente", "Ambiente", "CambioHW", "timestamp")
+    list_display = ("id", "SR", "descripcion", "Usuario", "Fecha", "Vendor", "Categoria", "Componente", "Ambiente", "CambioHW", "timestamp")

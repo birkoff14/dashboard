@@ -71,6 +71,18 @@ def reportes(request):
 
     idTipo = request.GET.get("idTipo", "")
     idT = ""
+
+    fields = """select id, 
+                case 
+                    when (LENGTH(SR) = 0 and length(RFC) = 0)  then IM
+                    when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR
+                    when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC
+                    else SR
+                end SR,
+                descripcion, Fecha, RMA, RFC, IM, Ambiente_id, CambioHW_id, Categoria_id, Componente_id, Usuario_id, Vendor_id 
+                from reportinfra_reportefallas"""
+
+
     
     fechaIni = request.POST.get("fechaInit", "0")
     fechaFin = request.POST.get("fechaFin", "0")
@@ -101,14 +113,14 @@ def reportes(request):
 
     if request.GET.get("idRep", "") == "0":
         if fechaIni == "0":
-            queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas")
+            queryset = reporteFallas.objects.raw(fields)
         else:
-            queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas " + filtroF)
+            queryset = reporteFallas.objects.raw(fields + filtroF)
     else:
         if fechaIni == "0":
-            queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas where Categoria_id = " + idFalla)
+            queryset = reporteFallas.objects.raw(fields + " where Categoria_id = " + idFalla)
         else:
-            queryset = reporteFallas.objects.raw("select * from reportinfra_reportefallas where Categoria_id = " + idFalla + filtroC)
+            queryset = reporteFallas.objects.raw(fields + " where Categoria_id = " + idFalla + filtroC)
 
     print(queryset)
     print(fechaIni)
@@ -146,21 +158,21 @@ def kpis(request):
 
     qryVM = reporteFallas.objects.raw("""
                                       select 1 as id,
-monthname(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
-SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
-SUBSTRING_INDEX(Fecha, '/', 1))) as DateF, count(*) Total
-from reportinfra_reportefallas a left join reportinfra_componente b
-on a.Componente_id = b.idComponente inner join reportinfra_vendor c
-on a.Vendor_id = c.idVendor
-where c.NombreVendor = 'VMware' and """ 
-+ qryplus + 
-"""
-group by month(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
-SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
-SUBSTRING_INDEX(Fecha, '/', 1)))
-order by month(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
-SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
-SUBSTRING_INDEX(Fecha, '/', 1)))
+                                    monthname(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
+                                    SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
+                                    SUBSTRING_INDEX(Fecha, '/', 1))) as DateF, count(*) Total
+                                    from reportinfra_reportefallas a left join reportinfra_componente b
+                                    on a.Componente_id = b.idComponente inner join reportinfra_vendor c
+                                    on a.Vendor_id = c.idVendor
+                                    where c.NombreVendor = 'VMware' and """ 
+                                    + qryplus + 
+                                    """
+                                    group by month(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
+                                    SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
+                                    SUBSTRING_INDEX(Fecha, '/', 1)))
+                                    order by month(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
+                                    SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
+                                    SUBSTRING_INDEX(Fecha, '/', 1)))
                                       """)
 
     print(qryVM)
@@ -217,3 +229,44 @@ def recover(request):
     }
 
     return render(request, "recover.html", context)
+
+@login_required(login_url='/')
+def activity(request):
+
+    if request.method == "POST":        
+        qryInsert = actividades.objects.create(
+            TipoActividad=request.POST.get("cmbActividad", ""),
+            FechaInicio=request.POST.get("fInicio", ""),
+            FechaFin=request.POST.get("fFin", ""),
+            HorasInvertidas=request.POST.get("txtHorasInvertidas", ""),
+            IM=request.POST.get("IM", ""),
+            Evento=request.POST.get("cmbTipo", ""),
+            Usuario=request.POST.get("usuario", ""),
+        )
+        print("si entro")
+    else:
+        print("nel")
+
+    #form = dailyLog(request.POST or None)
+
+    username = request.GET.get("idU", "")
+
+    qry = actividades.objects.raw("""select a.id,
+            case 
+            	when (LENGTH(SR) = 0 and length(RFC) = 0)  then IM
+            	when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR
+            	when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC
+            	else SR
+            end SR
+            from reportinfra_reportefallas a
+            inner join auth_user u on a.Usuario_id = u.id 
+            where u.username ='""" + username + """'""")
+
+    print(qry)
+    
+    context = {
+        "titulo" : "Tracking de actividades",        
+        "qry" : qry,
+    }
+
+    return render(request, 'activities.html', context)

@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
-  <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
 
   {% block css %}
   
@@ -27,7 +26,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="{% static 'img/logo-login.png'%}" alt="Triata" height="124" width="425">
+    <img class="animation__wobble" src="{% static 'img/logo.png'%}" alt="Triata">
   </div>
 
   <!-- Navbar -->
@@ -38,8 +37,11 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{% url 'main' %}" class="nav-link">Home</a>
+        <a href="{% url 'main' %}" class="nav-link">Home</a> 
       </li>      
+      <li class="nav-item d-none d-sm-inline-block">
+        <div class="nav-link">{{ user.get_full_name }}</div>
+      </li>
     </ul>
     <div id="SR"></div>
     <!-- Right navbar links -->
@@ -75,13 +77,12 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="align-items:center">
     <!-- Brand Logo -->
-    <a href="{% url 'main' %}" class="brand-link">
-      <img src="{% static 'img/logo-triara-02.png'%}" alt="AdminLTE Logo" class="brand-image " style="opacity: 1">
+    <a  href="{% url 'main' %}" class="brand-link">
+      <img src="{% static 'img/logo.png'%}" alt="Logo Triara" style="opacity: 1">
       <!-- <span class="brand-text font-weight-light">Triara</span> -->
-    </a>
-
+    </a>    
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -106,6 +107,14 @@
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Agregar SR
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'actividades' %}?idU={{ user.username }}" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Agregar actividades
               </p>
             </a>
           </li>
@@ -144,9 +153,15 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Todos</p>
                 </a>
-              </li>            
+              </li>    
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Reporte de actividades</p>
+                </a>
+              </li>        
             </ul>
-          </li>
+          </li>          
           <li class="nav-item">
             <a href="{% url 'logout' %}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>

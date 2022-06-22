@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla
+from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla, actividades
 import datetime
 from django.forms import ModelChoiceField
 
@@ -17,12 +17,12 @@ class addData(forms.ModelForm):
         #Fecha = forms.DateTimeField(initial=datetime.date.today().strftime("%Y-%m-%d"), required=False, label="Fecha orale")
         #Fecha = forms.CharField()
         Categoria = forms.CharField()
-        Usuario = UserModelChoiceField(label="Usuario", queryset=User.objects.filter(is_active=True).order_by('username'))
+        Usuario = UserModelChoiceField(label="Usuario", queryset=User.objects.filter(is_active=True))
         Vendor = ModelChoiceField(queryset=Vendor.objects.all().order_by('NombreVendor'))
         Ambiente = ModelChoiceField(queryset=Ambiente.objects.all().order_by('NombreAmbiente'), widget=forms.Select())
         CambioHW = ModelChoiceField(queryset=CambioHW.objects.all().order_by('NombreHW'))
         Componente = ModelChoiceField(queryset=Componente.objects.all())
-        descripcion = forms.CharField(widget=forms.Textarea(attrs={"rows":30000, "cols":50}))
+        descripcion = forms.CharField(widget=forms.Textarea(attrs={"rows":30000, "cols":15}))
         
 
 class comments(forms.ModelForm):
@@ -31,4 +31,14 @@ class comments(forms.ModelForm):
         fields = ["idFalla", "ComentarioCierre"]
 
         Comentarios = forms.CharField()
-        idFalla = forms.CharField()
+        idFalla = forms.HiddenInput()
+
+
+class dailyLog(forms.ModelForm):
+    class Meta:
+        model = actividades
+        fields = ["TipoActividad", "FechaInicio", "FechaFin", "HorasInvertidas"]
+
+        TipoActividad = ModelChoiceField(queryset=actividades.objects.values_list('id','TipoActividad'))
+        
+        #raw("select case when (LENGTH(SR) = 0 and length(RFC) = 0)  then IM when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC else SR end SR"))

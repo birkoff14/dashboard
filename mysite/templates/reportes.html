@@ -79,6 +79,8 @@
                             <thead>
                                 <tr>
                                     <th>SR</th>
+                                    <th>RFC</th>
+                                    <th>IM</th>
                                     <th>Descripción</th>
                                     <th>Usuario</th>
                                     <th>Fecha</th>
@@ -87,7 +89,7 @@
                                     <th>Componente</th>
                                     <th>Ambiente</th>
                                     <th>Reemplazo de HW</th>
-                                    <th>RMA</th>
+                                    <th>RMA</th>                                    
                                     <th>Comentarios</th>
                                 </tr>
                             </thead>
@@ -97,6 +99,8 @@
                                     <td>
                                         <a href="#" onclick="return abrir_modal('{% url 'detailSR' dt.SR %}');">{{ dt.SR }}</a>                                        
                                     </td>
+                                    <td>{{ dt.RFC }}</td>
+                                    <td>{{ dt.IM }}</td>
                                     <td>{{ dt.descripcion }}</td>
                                     <td>{{ dt.Usuario }}</td>
                                     <td>{{ dt.Fecha }}</td>
@@ -115,6 +119,8 @@
                             <tfoot>
                                 <tr>
                                     <th>SR</th>
+                                    <th>RFC</th>
+                                    <th>IM</th>
                                     <th>Descripción</th>
                                     <th>Usuario</th>
                                     <th>Fecha</th>
