@@ -77,6 +77,6 @@ class actividades(models.Model):
     HorasInvertidas = models.CharField(max_length=50, blank=True, verbose_name="Horas invertidas")
     IM = models.CharField(max_length=150, blank=True, verbose_name="IM")
     Usuario = models.CharField(max_length=150, blank=True, verbose_name="User")
-    Evento = models.CharField(max_length=150, blank=True)
-    Descripcion = models.CharField(max_length=500, blank=True)
+    Evento = models.CharField(max_length=150, blank=True, verbose_name="Evento")
+    Descripcion = models.CharField(max_length=500, blank=True, verbose_name="Descripcion")
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")

@@ -47,7 +47,7 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <label>Tipo de actividad</label>
-                                <select name="cmbActividad" class="form-control select2bs4 select" style="width: 100%;">
+                                <select name="cmbActividad" class="form-control select2bs4 select" style="width: 100%;" id="cmbActividad">
                                     <option selected="0">------------------------</option>
                                     <option value="99999">Sin RFC asociado</option>
                                     {% for dt in qry %}
@@ -56,14 +56,14 @@
                                 </select>
                                 <input type="hidden" name="usuario" value="{{ user.username }}">
                             </div>
-                            <div class="form-group">                                                                
-                                <div id="text_area_appended_here"></div>
+                            <div class="form-group">
+                                <div id="IM"></div>
                             </div>
-                            <div class="form-group">                                                                
+                            <div class="form-group">
                                 <div id="desc"></div>
                             </div>
-                            <div class="form-group">     
-                                <label>Evento o proyecto</label>                                                           
+                            <div class="form-group">
+                                <label>Evento o proyecto</label>
                                 <select name="cmbTipo" class="form-control select" style="width: 100%;">
                                     <option selected="0">------------------------</option>
                                     <option>Evento</option>
@@ -237,23 +237,24 @@
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         })
 
-        $(document).on("change", ".select", function () {
-            var value = $(this).val();            
-            if (value == 99999) {
-                var input = "<input type='text' class='form-control' name='IM'>";                
-                $("#text_area_appended_here")
+        //$(document).on("change", "#cmbActividad", function () {
+        $('#cmbActividad').change(function () {
+            var value = $(this).val();
+            if (value == 99999) {                
+                var input = "<input type='text' class='form-control' name='IM'>";
+                $("#IM")
                     .html('<label>IM</label>')
-                    .append(input)                    
+                    .append(input)
                     .show()
                 //$(this).next('text_area_appended_here').html(input);
-                var input2 = "<input type='text' class='form-control' name='Descripcion'>";                
+                var input2 = "<input type='text' class='form-control' name='Descripcion'>";
                 $("#desc")
                     .html('<label>Descripcion actividad</label>')
-                    .append(input2)                    
+                    .append(input2)
                     .show()
             }
-            else{
-                $("#text_area_appended_here").hide()
+            else {
+                $("#IM").hide()
                 $("#desc").hide()
             }
         });

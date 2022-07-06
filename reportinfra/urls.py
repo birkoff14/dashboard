@@ -16,6 +16,7 @@ urlpatterns = [
     path('cierre/<str:idSR>', views.cierre, name='cierre'),
     path('recover', views.recover, name='recover'),
     path('actividades', views.activity, name='actividades'),
+    path('repactividades', views.repactividades, name='repactividades'),
     url(r'^ajax/get_componentes/$', get_componentes, name='get_componentes'),  
     url(r'^ajax/get_vendors/$', get_vendors, name='get_vendors'),  
 ]

@@ -80,7 +80,7 @@ def reportes(request):
                     else SR
                 end SR,
                 descripcion, Fecha, RMA, RFC, IM, Ambiente_id, CambioHW_id, Categoria_id, Componente_id, Usuario_id, Vendor_id 
-                from reportinfra_reportefallas"""
+                from reportinfra_reportefallas """
 
 
     
@@ -242,6 +242,7 @@ def activity(request):
             IM=request.POST.get("IM", ""),
             Evento=request.POST.get("cmbTipo", ""),
             Usuario=request.POST.get("usuario", ""),
+            Descripcion=request.POST.get("Descripcion", ""),
         )
         print("si entro")
     else:
@@ -270,3 +271,27 @@ def activity(request):
     }
 
     return render(request, 'activities.html', context)
+
+@login_required(login_url='/')
+def repactividades(request):
+
+    username = request.GET.get("idU", "")
+
+    #qry = actividades.objects.filter(Usuario="'" + username + "'")
+    qry = actividades.objects.raw("""select 1 as id,
+            case
+            when TipoActividad = 99999 || TipoActividad = '------------------------' then '' else TipoActividad 
+            end TipoActividad, 
+            FechaInicio, FechaFin, HorasInvertidas, IM, Evento, Descripcion 
+            from reportinfra_actividades where Usuario = '"""            
+            + username + """'""")
+
+    #print(qry)
+
+    context = {
+        "titulo" : "Reporte de actividades",
+        "qry" : qry,
+    }
+
+    return render(request, 'reporteActividades.html', context)
+
