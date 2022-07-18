@@ -33,19 +33,30 @@
                                     <th>Fecha fin</th>
                                     <th>Horas invertidas</th>
                                     <th>IM</th>
+                                    <th>RFC</th>
+                                    <th>SR</th>
                                     <th>Evento</th>
+                                    <th>Ambiente</th>
+                                    <th>Status</th>
+                                    <th>Avance</th>
                                     <th>Descripción</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for dt in qry %}1
+                                {% for dt in qry %}
                                 <tr>
                                     <td>{{ dt.TipoActividad }}</td>
                                     <td>{{ dt.FechaInicio|date }}</td>
                                     <td>{{ dt.FechaFin|date }}</td>
                                     <td>{{ dt.HorasInvertidas }}</td>
                                     <td>{{ dt.IM }}</td>
+                                    <td>{{ dt.RFC }}</td>
+                                    <td>{{ dt.SR }}</td>
                                     <td>{{ dt.Evento }}</td>
+                                    <td>{{ dt.Ambiente }}</td>
+                                    <td>{{ dt.Status }}</td>
+                                    <td>{{ dt.Avance }}</td>
                                     <td>{{ dt.Descripcion }}</td>
                                 </tr>
                                 {% endfor %}
@@ -57,7 +68,12 @@
                                     <th>Fecha fin</th>
                                     <th>Horas invertidas</th>
                                     <th>IM</th>
-                                    <th>Evento</th>
+                                    <th>RFC</th>
+                                    <th>SR</th>
+                                    <th>Evento</th>                                    
+                                    <th>Ambiente</th>
+                                    <th>Status</th>
+                                    <th>Avance</th>
                                     <th>Descripción</th>
                                 </tr>
                             </tfoot>

@@ -240,9 +240,15 @@ def activity(request):
             FechaFin=request.POST.get("fFin", ""),
             HorasInvertidas=request.POST.get("txtHorasInvertidas", ""),
             IM=request.POST.get("IM", ""),
+            RFC=request.POST.get("RFC", ""),
+            SR=request.POST.get("SR", ""),
             Evento=request.POST.get("cmbTipo", ""),
             Usuario=request.POST.get("usuario", ""),
             Descripcion=request.POST.get("Descripcion", ""),
+            Ambiente=request.POST.get("Ambiente", ""),
+            Status=request.POST.get("Status", ""),
+            Avance=request.POST.get("Avance", ""),
+
         )
         print("si entro")
     else:
@@ -263,11 +269,14 @@ def activity(request):
             inner join auth_user u on a.Usuario_id = u.id 
             where u.username ='""" + username + """'""")
 
+    env = actividades.objects.raw("""select 1 as id, idAmbiente, NombreAmbiente from reportinfra_ambiente order by 3 """)
+
     print(qry)
     
     context = {
         "titulo" : "Tracking de actividades",        
         "qry" : qry,
+        "env" : env,
     }
 
     return render(request, 'activities.html', context)
@@ -279,10 +288,12 @@ def repactividades(request):
 
     #qry = actividades.objects.filter(Usuario="'" + username + "'")
     qry = actividades.objects.raw("""select 1 as id,
-            case
-            when TipoActividad = 99999 || TipoActividad = '------------------------' then '' else TipoActividad 
-            end TipoActividad, 
-            FechaInicio, FechaFin, HorasInvertidas, IM, Evento, Descripcion 
+            case             
+	            when (LENGTH(SR) = 0 and length(RFC) = 0)  then IM
+	            when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR
+	            when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC
+            end TipoActividad,  
+            FechaInicio, FechaFin, HorasInvertidas, IM, RFC, SR, Ambiente, Status, Avance, Evento, Descripcion 
             from reportinfra_actividades where Usuario = '"""            
             + username + """'""")
 

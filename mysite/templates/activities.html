@@ -57,7 +57,34 @@
                                 <input type="hidden" name="usuario" value="{{ user.username }}">
                             </div>
                             <div class="form-group">
+                                <label>Ambiente</label>
+                                <select name="Ambiente" class="form-control select" style="width: 100%;" id="Ambiente">
+                                    <option selected="0">------------------------</option>                                    
+                                    {% for dt in env %}
+                                    <option value="{{ dt.idAmbiente }}">{{ dt.NombreAmbiente }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="Status" class="form-control select" style="width: 100%;">
+                                    <option selected="0">------------------------</option>
+                                    <option value="En proceso">En proceso</option>
+                                    <option value="Terminado">Terminado</option>
+                                </select>                                
+                            </div>
+                            <div class="form-group">
+                                <label>Avance</label>
+                                <input type='text' class='form-control' name='Avance'>                            
+                            </div>                            
+                            <div class="form-group">
                                 <div id="IM"></div>
+                            </div>
+                            <div class="form-group">
+                                <div id="RFC"></div>
+                            </div>
+                            <div class="form-group">
+                                <div id="SR_ID"></div>
                             </div>
                             <div class="form-group">
                                 <div id="desc"></div>
@@ -252,13 +279,24 @@
                     .html('<label>Descripcion actividad</label>')
                     .append(input2)
                     .show()
+                var input3 = "<input type='text' class='form-control' name='RFC'>";
+                $("#RFC")
+                    .html('<label>RFC</label>')
+                    .append(input3)
+                    .show()
+                var input4 = "<input type='text' class='form-control' name='SR'>";
+                $("#SR_ID")
+                    .html('<label>SR</label>')
+                    .append(input4)
+                    .show()
             }
             else {
                 $("#IM").hide()
                 $("#desc").hide()
+                $("#RFC").hide()
+                $("#SR_ID").hide()
             }
         });
-
     })
 </script>
 
