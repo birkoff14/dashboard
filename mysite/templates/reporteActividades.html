@@ -40,7 +40,8 @@
                                     <th>Status</th>
                                     <th>Avance</th>
                                     <th>Descripción</th>
-
+                                    <th>Solicitante de la tarea</th>
+                                    <th>Nombre contacto externo</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,6 +59,8 @@
                                     <td>{{ dt.Status }}</td>
                                     <td>{{ dt.Avance }}</td>
                                     <td>{{ dt.Descripcion }}</td>
+                                    <td>{{ dt.Solicitante }}</td>
+                                    <td>{{ dt.NombreTurnos }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -75,6 +78,8 @@
                                     <th>Status</th>
                                     <th>Avance</th>
                                     <th>Descripción</th>
+                                    <th>Solicitante de la tarea</th>
+                                    <th>Nombre contacto externo</th>
                                 </tr>
                             </tfoot>
                         </table>

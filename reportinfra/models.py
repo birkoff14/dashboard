@@ -85,4 +85,5 @@ class actividades(models.Model):
     Ambiente = models.CharField(max_length=150, blank=True, verbose_name="Ambiente")
     Status = models.CharField(max_length=150, blank=True, verbose_name="Status")
     Avance = models.CharField(max_length=150, blank=True, verbose_name="Avance")
-    Solicitante = models.CharField(max_length=150, blank=True, verbose_name="Solicitante")
+    Solicitante = models.CharField(max_length=100, blank=True, verbose_name="Solicitante")
+    NombreTurnos = models.CharField(max_length=100, blank=True, verbose_name="NombreTurnos")

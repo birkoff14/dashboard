@@ -241,13 +241,16 @@ def activity(request):
             HorasInvertidas=request.POST.get("txtHorasInvertidas", ""),
             IM=request.POST.get("IM", ""),
             RFC=request.POST.get("RFC", ""),
-            SR=request.POST.get("SR", ""),
+            #SR=request.POST.get("SR", ""),
             Evento=request.POST.get("cmbTipo", ""),
             Usuario=request.POST.get("usuario", ""),
             Descripcion=request.POST.get("Descripcion", ""),
             Ambiente=request.POST.get("Ambiente", ""),
             Status=request.POST.get("Status", ""),
             Avance=request.POST.get("Avance", ""),
+            Solicitante=request.POST.get("txtSolicitante", ""),
+            NombreTurnos=request.POST.get("NombreTurnos", ""),
+
 
         )
         print("si entro")
@@ -286,6 +289,11 @@ def repactividades(request):
 
     username = request.GET.get("idU", "")
 
+    if (username == 'adrian.martinez' or username == 'cynthia.gutierrez' or username == 'manuel.meneses'):
+        qryWhere = ""
+    else:        
+        qryWhere = "where Usuario = '" + username + """'"""
+
     #qry = actividades.objects.filter(Usuario="'" + username + "'")
     qry = actividades.objects.raw("""select 1 as id,
             case             
@@ -293,11 +301,11 @@ def repactividades(request):
 	            when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR
 	            when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC
             end TipoActividad,  
-            FechaInicio, FechaFin, HorasInvertidas, IM, RFC, SR, Ambiente, Status, Avance, Evento, Descripcion 
-            from reportinfra_actividades where Usuario = '"""            
-            + username + """'""")
+            FechaInicio, FechaFin, HorasInvertidas, IM, RFC, SR, Ambiente, Status, Avance, Evento, Descripcion, Solicitante, NombreTurnos
+            from reportinfra_actividades """            
+            + qryWhere)
 
-    #print(qry)
+    print(qry)
 
     context = {
         "titulo" : "Reporte de actividades",

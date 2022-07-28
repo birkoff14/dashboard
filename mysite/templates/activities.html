@@ -49,7 +49,7 @@
                                 <label>Tipo de actividad</label>
                                 <select name="cmbActividad" class="form-control select2bs4 select" style="width: 100%;" id="cmbActividad">
                                     <option selected="0">------------------------</option>
-                                    <option value="99999">Sin RFC asociado</option>
+                                    <option value="99999">Sin SR asociado</option>
                                     {% for dt in qry %}
                                     <option value="{{ dt.SR }}">{{ dt.SR }}</option>
                                     {% endfor %}
@@ -57,6 +57,29 @@
                                 <input type="hidden" name="usuario" value="{{ user.username }}">
                             </div>
                             <div class="form-group">
+                                <label>Solicitante de la tarea</label>
+                                <select id="txtSolicitante" name="txtSolicitante" class="form-control select" style="width: 100%;">
+                                    <option selected="0">------------------------</option>
+                                    <option>Adrián Martínez</option>
+                                    <option>Luis Alberto Ramírez</option>
+                                    <option>Rodolfo Mena</option>
+                                    <option>------------------------</option>
+                                    <option>Turnos</option>
+                                    <option>Mesa de ayuda</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div id="NombreTurnos"></div>
+                            </div> 
+                            <div class="form-group">
+                                <label>Evento o proyecto</label>
+                                <select name="cmbTipo" class="form-control select" style="width: 100%;" id="cmbTipo">
+                                    <option selected="0">------------------------</option>
+                                    <option>Evento</option>
+                                    <option>Proyecto</option>
+                                </select>
+                            </div>  
+                            <div id="SR_ID" class="form-group">
                                 <label>Ambiente</label>
                                 <select name="Ambiente" class="form-control select" style="width: 100%;" id="Ambiente">
                                     <option selected="0">------------------------</option>                                    
@@ -74,6 +97,9 @@
                                 </select>                                
                             </div>
                             <div class="form-group">
+                                <div id="desc"></div>
+                            </div> 
+                            <div class="form-group">
                                 <label>Avance</label>
                                 <input type='text' class='form-control' name='Avance'>                            
                             </div>                            
@@ -84,19 +110,8 @@
                                 <div id="RFC"></div>
                             </div>
                             <div class="form-group">
-                                <div id="SR_ID"></div>
-                            </div>
-                            <div class="form-group">
-                                <div id="desc"></div>
-                            </div>
-                            <div class="form-group">
-                                <label>Evento o proyecto</label>
-                                <select name="cmbTipo" class="form-control select" style="width: 100%;">
-                                    <option selected="0">------------------------</option>
-                                    <option>Evento</option>
-                                    <option>Proyecto</option>
-                                </select>
-                            </div>
+                                <div id=""></div>
+                            </div>                                                       
                             <div class="form-group">
                                 <label>Fecha inicio</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
@@ -122,7 +137,7 @@
                             <div class="form-group">
                                 <label>Horas invertidas</label>
                                 <input name="txtHorasInvertidas" type="text" class="form-control">
-                            </div>
+                            </div>                            
                             <input type="submit" name="submit" class='btn btn-primary swalDefaultSuccess'
                                 id="submit_btn" value="Agregar datos" />
                         </div>
@@ -276,7 +291,7 @@
                 //$(this).next('text_area_appended_here').html(input);
                 var input2 = "<input type='text' class='form-control' name='Descripcion'>";
                 $("#desc")
-                    .html('<label>Descripcion actividad</label>')
+                    .html('<label><div id="PROYECTO">Descripcion actividad</div></label>')
                     .append(input2)
                     .show()
                 var input3 = "<input type='text' class='form-control' name='RFC'>";
@@ -285,19 +300,52 @@
                     .append(input3)
                     .show()
                 var input4 = "<input type='text' class='form-control' name='SR'>";
-                $("#SR_ID")
-                    .html('<label>SR</label>')
-                    .append(input4)
-                    .show()
+                $("#SR_ID").show()
+                    //.html('<label>SR</label>')
+                    //.append(input4)
+                    //.show()
             }
             else {
                 $("#IM").hide()
                 $("#desc").hide()
                 $("#RFC").hide()
                 $("#SR_ID").hide()
+
             }
         });
-    })
+
+        $('#cmbTipo').change(function () {
+            var value = $(this).val();
+            if (value == "Proyecto") {
+                $("#PROYECTO")
+                    .html('Descripción del subject del correo')
+                    //.append(input)
+                    .show()
+                $("#")
+            }else{
+                $("#PROYECTO")
+                    .html('Descripción actividad')
+                    //.append(input)
+                    .show()
+            }
+        });    
+        
+        $('#txtSolicitante').change(function () {
+            var value = $(this).val();
+            var input5 = "<input type='text' class='form-control' name='NombreTurnos'>";
+            if (value == "Turnos" || value == "Mesa de ayuda") {
+                $("#NombreTurnos")
+                    .html('Nombre contacto externo')
+                    .append(input5)
+                    .show()
+                $("#")
+            }else{
+                $('#NombreTurnos').hide()
+            }
+        }); 
+
+
+    });
 </script>
 
 {% endblock %}
