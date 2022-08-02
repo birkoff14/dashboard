@@ -2883,3 +2883,45 @@ Warning: Remmina is running without a secret plugin. Passwords will be saved in 
 (org.remmina.Remmina:2277): Gtk-WARNING **: 18:57:55.853: gtk_menu_detach(): menu is not attached
 Gdk-Message: 19:03:12.058: org.remmina.Remmina: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.
 
+Remmina plugin glibsecret (type=Secret) has registered but not yet initialized/activated. Initialization order is 2000.
+[glibsecret] unable to get secret service: Error spawning command line ?dbus-launch --autolaunch= --binary-syntax --close-stderr?: Child process exited with code 1
+StatusNotifier/Appindicator support: not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed
+Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.
+
+(org.remmina.Remmina:16160): Gtk-WARNING **: 13:26:50.666: gtk_menu_attach_to_widget(): menu already attached to GtkMenuItem
+
+(org.remmina.Remmina:16160): Gtk-WARNING **: 13:26:51.009: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:16160): libappindicator-WARNING **: 13:26:51.262: Unable to get the session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:16160): LIBDBUSMENU-GLIB-WARNING **: 13:26:51.262: Unable to get session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+[13:26:54:480] [16160:16171] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[13:26:55:648] [16160:16171] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[13:26:55:648] [16160:16171] [WARN][com.freerdp.crypto] - CN = DCOLVERA.LAN.OLVERACONTADORES.COM
+[13:26:59:453] [16160:16171] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d610
+[13:29:04:263] [16160:16171] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007e10
+[13:29:33:935] [16160:16171] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d840
+[13:29:42:182] [16160:16171] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ef90
+[13:29:47:153] [16160:16171] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bb60
+[13:34:41:526] [16160:16180] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[13:34:42:709] [16160:16180] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[13:34:42:709] [16160:16180] [WARN][com.freerdp.crypto] - CN = DCOLVERA.LAN.OLVERACONTADORES.COM
+[13:34:44:784] [16160:16180] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002d00
+[13:40:05:265] [16160:16180] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000046b0
+[13:48:56:514] [16160:16180] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000069c0
+[13:52:50:723] [16160:16180] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e6f0
+[13:52:52:844] [16160:16180] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002d00
+[13:52:55:334] [16160:16180] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c3d0
+[14:58:53:787] [16160:16581] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[14:58:53:086] [16160:16581] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[14:58:53:086] [16160:16581] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[14:58:56:753] [16160:16581] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006b30
+[15:02:00:546] [16160:16581] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002b80
+
+(org.remmina.Remmina:16160): Gtk-WARNING **: 15:44:56.504: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:16160): Gtk-WARNING **: 15:44:56.758: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:16160): Gtk-WARNING **: 19:42:41.147: gtk_menu_detach(): menu is not attached
+Gdk-Message: 19:42:54.614: org.remmina.Remmina: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.
+

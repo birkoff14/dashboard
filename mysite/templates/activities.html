@@ -63,9 +63,11 @@
                                     <option>Adrián Martínez</option>
                                     <option>Luis Alberto Ramírez</option>
                                     <option>Rodolfo Mena</option>
+                                    <option>TEAM OAC</option>
                                     <option>------------------------</option>
                                     <option>Turnos</option>
                                     <option>Mesa de ayuda</option>
+                                    <option>ITOC</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -84,7 +86,7 @@
                                 <select name="Ambiente" class="form-control select" style="width: 100%;" id="Ambiente">
                                     <option selected="0">------------------------</option>                                    
                                     {% for dt in env %}
-                                    <option value="{{ dt.idAmbiente }}">{{ dt.NombreAmbiente }}</option>
+                                    <option value="{{ dt.NombreAmbiente }}">{{ dt.NombreAmbiente }}</option>
                                     {% endfor %}
                                 </select>
                             </div>
@@ -333,9 +335,9 @@
         $('#txtSolicitante').change(function () {
             var value = $(this).val();
             var input5 = "<input type='text' class='form-control' name='NombreTurnos'>";
-            if (value == "Turnos" || value == "Mesa de ayuda") {
+            if (value == "Turnos" || value == "Mesa de ayuda" || value == "TEAM OAC" || value == "ITOC") {
                 $("#NombreTurnos")
-                    .html('Nombre contacto externo')
+                    .html('Nombre contacto')
                     .append(input5)
                     .show()
                 $("#")

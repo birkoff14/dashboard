@@ -301,7 +301,7 @@ def repactividades(request):
 	            when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR
 	            when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC
             end TipoActividad,  
-            FechaInicio, FechaFin, HorasInvertidas, IM, RFC, SR, Ambiente, Status, Avance, Evento, Descripcion, Solicitante, NombreTurnos
+            FechaInicio, FechaFin, HorasInvertidas, IM, RFC, SR, Ambiente, Status, Avance, Evento, Descripcion, Solicitante, NombreTurnos, Usuario
             from reportinfra_actividades """            
             + qryWhere)
 

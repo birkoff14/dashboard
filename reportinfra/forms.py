@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.forms import ModelChoiceField
 from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla, actividades
 import datetime
-from django.forms import ModelChoiceField
+
 
 class UserModelChoiceField(ModelChoiceField):
     def label_from_instance(self, obj):
@@ -17,7 +18,7 @@ class addData(forms.ModelForm):
         #Fecha = forms.DateTimeField(initial=datetime.date.today().strftime("%Y-%m-%d"), required=False, label="Fecha orale")
         #Fecha = forms.CharField()
         Categoria = forms.CharField()
-        Usuario = UserModelChoiceField(label="Usuario", queryset=User.objects.filter(is_active=True))
+        Usuario = UserModelChoiceField(queryset=User.objects)
         Vendor = ModelChoiceField(queryset=Vendor.objects.all().order_by('NombreVendor'))
         Ambiente = ModelChoiceField(queryset=Ambiente.objects.all().order_by('NombreAmbiente'), widget=forms.Select())
         CambioHW = ModelChoiceField(queryset=CambioHW.objects.all().order_by('NombreHW'))

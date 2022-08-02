@@ -28,6 +28,7 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>Usuario</th>
                                     <th>Actividad relacionada</th>
                                     <th>Fecha inicio</th>
                                     <th>Fecha fin</th>
@@ -47,6 +48,7 @@
                             <tbody>
                                 {% for dt in qry %}
                                 <tr>
+                                    <td>{{ dt.Usuario }}</td>
                                     <td>{{ dt.TipoActividad }}</td>
                                     <td>{{ dt.FechaInicio|date }}</td>
                                     <td>{{ dt.FechaFin|date }}</td>
@@ -66,6 +68,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th>Usuario</th>
                                     <th>Actividad relacionada</th>
                                     <th>Fecha inicio</th>
                                     <th>Fecha fin</th>
