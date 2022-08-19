@@ -73,7 +73,7 @@ class cierreFalla(models.Model):
 class actividades(models.Model):
     TipoActividad = models.CharField(max_length=150, blank=True, verbose_name="Actividad")
     FechaInicio = models.DateTimeField(default=timezone.now, blank=True, verbose_name="Fecha Inicio")
-    FechaFin = models.DateTimeField(default=timezone.now, blank=True, verbose_name="Fecha Fin")
+    FechaFin = models.CharField(max_length=150, blank=True, verbose_name="Fecha Fin")
     HorasInvertidas = models.CharField(max_length=50, blank=True, verbose_name="Horas invertidas")
     IM = models.CharField(max_length=150, blank=True, verbose_name="IM")
     RFC = models.CharField(max_length=150, blank=True, verbose_name="RFC")
