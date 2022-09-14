@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label>Tipo de actividad</label>
                                 <select name="cmbActividad" class="form-control select2bs4 select" style="width: 100%;" id="cmbActividad">
-                                    <option selected="0">------------------------</option>
+                                    <option selected>------------------------</option>
                                     <option value="99999">Sin SR asociado</option>
                                     {% for dt in qry %}
                                     <option value="{{ dt.SR }}">{{ dt.SR }}</option>
@@ -83,7 +83,7 @@
                             </div>  
                             <div id="SR_ID" class="form-group">
                                 <label>Ambiente</label>
-                                <select name="Ambiente" class="form-control select" style="width: 100%;" id="Ambiente">
+                                <select name="Ambiente" required class="form-control select" style="width: 100%;" id="Ambiente">
                                     <option selected="0">------------------------</option>                                    
                                     {% for dt in env %}
                                     <option value="{{ dt.NombreAmbiente }}">{{ dt.NombreAmbiente }}</option>
@@ -103,7 +103,7 @@
                             </div> 
                             <div class="form-group">
                                 <label>Avance</label>
-                                <input type='text' class='form-control' name='Avance'>                            
+                                <input type='text' required class='form-control' name='Avance'>                            
                             </div>                            
                             <div class="form-group">
                                 <div id="IM"></div>
@@ -117,7 +117,7 @@
                             <div class="form-group">
                                 <label>Fecha inicio</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input name="fInicio" type="text" class="form-control datetimepicker-input"
+                                    <input name="fInicio" required type="text" class="form-control datetimepicker-input"
                                         data-target="#reservationdate">
                                     <div class="input-group-append" data-target="#reservationdate"
                                         data-toggle="datetimepicker">
@@ -138,7 +138,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Horas invertidas</label>
-                                <input name="txtHorasInvertidas" type="text" class="form-control">
+                                <input name="txtHorasInvertidas" required type="text" class="form-control">
                             </div>                            
                             <input type="submit" name="submit" class='btn btn-primary swalDefaultSuccess'
                                 id="submit_btn" value="Agregar datos" />

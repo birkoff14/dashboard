@@ -1,0 +1,27 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">{{ Titulo }} : {{ idSR }}</h5>
+            <button type="button" onclick="return cerrar_modal()" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <hr />
+            <form name="form1" action="{% url 'editSR' idSR %}" method="POST">
+                <fieldset>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" name="submit" class='btn btn-primary' id="submit_btn" value="Editar SR" />
+                </fieldset>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="return cerrar_modal()" class="btn btn-secondary"
+                data-dismiss="modal">Cerrar</button>
+        </div>
+    </div>
+</div>

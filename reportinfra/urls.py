@@ -14,6 +14,7 @@ urlpatterns = [
     path('kpis', views.kpis, name='kpis'),
     path('detailSR/<str:idSR>', views.detailSR, name='detailSR'),
     path('cierre/<str:idSR>', views.cierre, name='cierre'),
+    path('editSR/<str:idSR>', views.editSR, name='editSR'),
     path('recover', views.recover, name='recover'),
     path('actividades', views.activity, name='actividades'),
     path('repactividades', views.repactividades, name='repactividades'),

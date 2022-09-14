@@ -95,7 +95,9 @@
                 <div class="form-group">
                   <label>Descripción</label>
                   {{ form.descripcion }}
+                  <div id="contador"></div>
                 </div>
+                
                 <input type="submit" name="submit" class='btn btn-primary' id="submit_btn" value="Agregar datos" />
               </fieldset>
 
@@ -176,6 +178,22 @@
   }
 </script>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+  
+      var max_chars = 500;
+  
+      $('#max').html(max_chars);
+  
+      $('#id_descripcion').keyup(function() {
+          var chars = $(this).val().length;
+          var diff = max_chars - chars;
+          $('#contador').html(diff);   
+      });
+  });
+  
+  </script>
+
 <script>
   var b = document.getElementById("id_Fecha");
   b.setAttribute("class", "form-control ");
@@ -186,6 +204,7 @@
 
   var txt = document.getElementById('id_SR');
   txt.setAttribute("class", "form-control");
+  txt.setAttribute("required", "required");
 
   var c = document.getElementById("id_Categoria");
   c.setAttribute("class", "form-control");
@@ -201,12 +220,14 @@
 
   var g = document.getElementById("id_Ambiente");
   g.setAttribute("class", "form-control");
+  g.setAttribute("required", "required");
 
   var h = document.getElementById("id_CambioHW");
   h.setAttribute("class", "form-control");
 
   var i = document.getElementById("id_descripcion");
   i.setAttribute("class", "form-control");
+  i.setAttribute("maxlength", "500")
 
   var j = document.getElementById("id_RMA");
   j.setAttribute("class", "form-control bootstrap-tagsinput");

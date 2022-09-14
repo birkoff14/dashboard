@@ -11,6 +11,56 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
 
+<style>
+    .editbox {
+        display: none
+    }
+
+    td {
+        padding: 7px;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+
+    .editbox {
+        font-size: 14px;
+        width: 270px;
+        background-color: #ffffcc;
+
+        border: solid 1px #000;
+        padding: 4px;
+    }
+
+    .edit_tr:hover {
+        background: url(edit.png) right no-repeat #5d6669;
+        /*cursor: pointer;*/
+    }
+
+
+    th {
+        font-weight: bold;
+        text-align: left;
+        padding: 4px;
+    }
+
+    .head {
+        background-color: #333;
+        color: #FFFFFF
+    }
+
+    .shade {
+        box-shadow: 0px 0px 18px #000000;
+        -moz-box-shadow: 0px 0px 18px #000000;
+        -webkit-box-shadow: 0px 0px 18px #000000;
+        border-radius: 8px;
+        -moz-border-radius: 8px;
+        -webkit-border-radius: 8px;
+    }
+</style>
+
 {% endblock %}
 
 {% block content %}
@@ -78,6 +128,8 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th></th>
+                                    <th>Editar</th>
                                     <th>SR</th>
                                     <th>RFC</th>
                                     <th>IM</th>
@@ -90,14 +142,16 @@
                                     <th>Ambiente</th>
                                     <th>Reemplazo de HW</th>
                                     <th>RMA</th>                                    
-                                    <th>Comentarios</th>
+                                    <th>Comentarios</th>                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for dt in qry %}
-                                <tr>
+                                {% for dt in qry %}                                
+                                <tr id="{{ dt.id }}" class="edit_tr">
+                                    <td></td>
+                                    <td><div><a href="#" onclick="return abrir_modal('{% url 'editSR' dt.SR %}');">Editar</a></div></td>
                                     <td>
-                                        <a href="#" onclick="return abrir_modal('{% url 'detailSR' dt.SR %}');">{{ dt.SR }}</a>                                        
+                                        <a href="#" onclick="return abrir_modal('{% url 'detailSR' dt.SR %}');">{{ dt.SR }}</a>                                                                                
                                     </td>
                                     <td>{{ dt.RFC }}</td>
                                     <td>{{ dt.IM }}</td>
@@ -109,15 +163,16 @@
                                     <td>{{ dt.Componente }}</td>
                                     <td>{{ dt.Ambiente }}</td>
                                     <td>{{ dt.CambioHW }}</td>
-                                    <td>{{ dt.RMA }}</td>
-                                    <td>
-                                        <a href="" onclick="return abrir_modal('{% url 'cierre' dt.SR %}');">Comentarios</a>
-                                    </td>
+                                    <td>{{ dt.RMA }}</td>                                    
+                                    <td><a href=""
+                                        onclick="return abrir_modal('{% url 'cierre' dt.SR %}');">Comentarios</a></td>                                    
                                 </tr>
                                 {% endfor %}
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th></th>
+                                    <th>Editar</th>
                                     <th>SR</th>
                                     <th>RFC</th>
                                     <th>IM</th>
@@ -129,8 +184,8 @@
                                     <th>Componente</th>
                                     <th>Ambiente</th>
                                     <th>Reemplazo de HW</th>
-                                    <th>RMA</th>
-                                    <th>Comentarios</th>
+                                    <th>RMA</th>                                    
+                                    <th>Comentarios</th>                                    
                                 </tr>
                             </tfoot>
                         </table>
@@ -187,6 +242,54 @@
             "autoWidth": false,
             "responsive": true,
         });
+    });
+
+    /* Edición de tabla */
+
+    $(document).ready(function () {
+        $(".edit_trBK").click(function () {
+            var ID = $(this).attr('id');
+            $("#first_" + ID).hide();
+            $("#last_" + ID).hide();
+            $("#descripcion_" + ID).hide();
+            $("#first_input_" + ID).show();
+            $("#last_input_" + ID).show();
+            $("#descripcion_input_" + ID).show();
+        }).change(function () {
+            var ID = $(this).attr('id');
+            var first = $("#first_input_" + ID).val();
+            var last = $("#last_input_" + ID).val();
+            var dataString = 'id=' + ID + '&firstname=' + first + '&lastname=' + last;
+            $("#first_" + ID).html('<img src="load.gif" />');
+
+            if (first.length && last.length > 0) {
+                $.ajax({
+                    type: "POST",
+                    url: "table_edit_ajax.php",
+                    data: dataString,
+                    cache: false,
+                    success: function (html) {
+
+                        $("#first_" + ID).html(first);
+                        $("#last_" + ID).html(last);
+                    }
+                });
+            }
+            else {
+                alert('Enter something.');
+            }
+
+        });
+
+        $(".editbox").mouseup(function () {
+            return false
+        });
+
+        $(document).mouseup(function () {
+            $(".editbox").hide();
+            $(".text").show();
+        });
+
     });
 </script>
 

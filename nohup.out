@@ -2925,3 +2925,513 @@ Warning: Remmina is running without a secret plugin. Passwords will be saved in 
 (org.remmina.Remmina:16160): Gtk-WARNING **: 19:42:41.147: gtk_menu_detach(): menu is not attached
 Gdk-Message: 19:42:54.614: org.remmina.Remmina: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.
 
+Remmina plugin glibsecret (type=Secret) has registered but not yet initialized/activated. Initialization order is 2000.
+[glibsecret] unable to get secret service: Error spawning command line ?dbus-launch --autolaunch= --binary-syntax --close-stderr?: Child process exited with code 1
+StatusNotifier/Appindicator support: not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed
+Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 13:21:56.880: gtk_menu_attach_to_widget(): menu already attached to GtkMenuItem
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 13:21:57.234: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): libappindicator-WARNING **: 13:21:57.511: Unable to get the session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:457): LIBDBUSMENU-GLIB-WARNING **: 13:21:57.511: Unable to get session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+[13:22:02:730] [457:473] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[13:22:03:251] [457:473] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[13:22:03:251] [457:473] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[13:22:05:284] [457:473] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001960
+[13:22:14:978] [457:482] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[13:22:14:222] [457:482] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[13:22:14:222] [457:482] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[13:22:16:198] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a550
+[13:42:09:027] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000de0
+[13:53:14:630] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004ab0
+[13:54:24:969] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006050
+[13:56:28:534] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a1c0
+[13:58:23:770] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dc80
+[14:03:15:954] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000014b0
+[14:05:12:123] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bf50
+[14:08:09:439] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000011c0
+[14:08:33:003] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000acb0
+[14:09:01:734] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f420
+[14:09:01:936] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009c00
+[14:09:02:087] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bf50
+[14:09:33:718] [457:482] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000700
+[15:07:03:398] [457:482] [ERROR][com.freerdp.core.transport] - BIO_read returned a system error 0: Success
+[15:07:03:449] [457:482] [ERROR][com.freerdp.core] - transport_read_layer:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[15:07:04:080] [457:482] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:07:04:080] [457:482] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:07:04:080] [457:482] [ERROR][com.freerdp.core] - transport_write:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[15:07:24:158] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:07:24:159] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:07:35:524] [457:482] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:07:35:524] [457:482] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:07:35:524] [457:482] [ERROR][com.freerdp.core] - transport_write:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[15:07:35:624] [457:482] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:07:35:625] [457:482] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:07:35:625] [457:482] [ERROR][com.freerdp.core] - transport_write:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[15:07:40:635] [457:482] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:07:40:635] [457:482] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:07:40:635] [457:482] [ERROR][com.freerdp.core] - transport_write:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[15:07:45:671] [457:482] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:07:45:671] [457:482] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:07:45:671] [457:482] [ERROR][com.freerdp.core] - transport_write:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[13:22:02:311] [457:473] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[13:22:02:312] [457:473] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[13:22:02:313] [457:473] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[13:22:02:314] [457:473] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[13:22:02:314] [457:473] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[13:22:02:648] [457:473] [INFO][com.freerdp.primitives] - primitives autodetect, using optimized
+[13:22:02:654] [457:473] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[13:22:02:654] [457:473] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[13:22:04:882] [457:473] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[13:22:04:882] [457:473] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[13:22:04:884] [457:473] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[13:22:04:884] [457:473] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[13:22:13:910] [457:482] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[13:22:13:910] [457:482] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[13:22:13:910] [457:482] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[13:22:13:910] [457:482] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[13:22:13:910] [457:482] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[13:22:13:911] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[13:22:13:911] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[13:22:15:935] [457:482] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[13:22:15:935] [457:482] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[13:22:15:936] [457:482] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[13:22:15:936] [457:482] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[15:07:04:080] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:07:04:080] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:07:09:155] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:07:09:155] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:07:24:166] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:07:24:166] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:07:35:624] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:07:35:624] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:07:40:635] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:07:40:635] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:07:45:670] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:07:45:671] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:07:50:692] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:07:50:692] [[15:08:05:693] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:08:05:693] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:08:20:702] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:08:20:702] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:08:35:712] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:08:35:712] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:08:44:218] [457:482] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:08:44:218] [457:482] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:08:44:218] [457:482] [ERROR][com.freerdp.core] - transport_write:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[15:08:44:350] [457:482] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[15:08:44:350] [457:482] [ERROR][com.freerdp.core.transport] - BIO_should_retry returned a system error 32: Broken pipe
+[15:08:44:350] [457:482] [ERROR][com.freerdp.core] - transport_write:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[15:09:04:487] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:09:04:487] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:09:19:495] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:09:19:495] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:09:34:503] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:09:34:503] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:09:49:514] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:09:49:514] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:10:04:523] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:10:04:523] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:10:19:531] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:10:19:531] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:10:34:539] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:10:34:539] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:10:49:548] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:10:49:548] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[15:11:04:556] [457:482] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[15:11:04:556] [457:482] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 16:02:36.163: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 16:02:36.215: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:08:05:701] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:08:05:701] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:08:20:710] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:08:20:710] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:08:35:720] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:08:35:720] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:08:44:349] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:08:44:349] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:08:49:485] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:08:49:485] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:09:04:494] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:09:04:494] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:09:19:502] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:09:19:502] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:09:34:513] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:09:34:513] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:09:49:521] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:09:49:521] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:10:04:530] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:10:04:530] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:10:19:538] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:10:19:538] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:10:34:546] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:10:34:546] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[15:10:49:555] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[15:10:49:555] [457:482] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:53:01:729] [457:2502] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:53:01:729] [457:2502] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:53:01:729] [457:2502] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:53:01:729] [457:2502] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:53:01:729] [457:2502] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:53:01:769] [457:2502] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:53:01:769] [457:2502] [INFO][com.freerd[18:53:01:849] [457:2502] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:53:02:164] [457:2502] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:53:02:164] [457:2502] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[18:53:04:644] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006da0
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 18:54:29.665: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 18:54:29.717: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[18:59:27:622] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cd40
+[19:09:25:881] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003f30
+[19:09:25:882] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003ed0
+[19:09:52:872] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a0c0
+[19:11:52:313] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dd70
+[19:13:37:330] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009db0
+[19:26:40:199] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d200
+[19:26:40:397] [457:2502] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b2a0
+[19:27:22:878] [457:2689] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[19:27:23:120] [457:2689] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[19:27:23:120] [457:2689] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[19:27:25:992] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f910
+[19:28:09:575] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000de50
+[19:28:22:916] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b400
+[19:28:27:444] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e180
+[19:28:39:684] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005ef0
+[19:29:05:471] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004c90
+[19:31:42:358] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc10
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 19:32:00.159: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 19:32:01.314: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 19:43:38.866: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 19:43:40.289: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[19:56:58:283] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004100
+[19:57:05:394] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002570
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 20:01:00.229: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 20:01:00.361: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 20:02:25.839: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 20:02:25.903: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[20:12:53:090] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000033d0
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 20:23:14.753: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 20:23:14.815: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 21:11:17.043: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 21:11:17.288: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 21:23:32.777: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 21:23:32.857: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[21:24:18:832] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003fd0
+[21:24:41:665] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc70
+[21:26:42:411] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000003b0
+[21:26:42:412] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c1b0
+[21:27:27:587] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e2c0
+[21:27:44:523] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000058d0
+[21:27:44:523] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000024a0
+[21:28:02:433] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009a00
+[21:28:15:152] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008a50
+[21:28:15:152] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ef40
+[21:28:32:750] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc70
+[21:28:44:610] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009f60
+[21:28:44:612] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002d10
+[21:29:19:434] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a160
+[21:29:32:475] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a090
+[21:29:32:476] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000039a0
+[21:29:41:579] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002060
+[21:30:18:521] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e650
+[21:30:18:521] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a020
+[21:30:29:147] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e770
+[21:30:34:537] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004a10
+[21:30:34:537] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007290
+[21:31:14:734] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000057a0
+[21:31:14:736] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bca0
+[21:31:23:024] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d600
+[21:33:07:421] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc70
+[21:35:04:412] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009a60
+[21:35:16:776] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008c50
+[21:37:08:972] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a340
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 21:43:57.248: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 21:43:57.401: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[21:51:47:478] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007540
+[21:58:45:557] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000095d0
+[22:18:42:029] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007a00
+[22:18:54:760] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000037d0
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 22:32:13.799: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 22:32:15.799: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[22:32:46:517] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008c10
+[22:32:58:521] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000074e0
+[22:33:02:747] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000057e0
+[22:33:30:366] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008190
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 22:38:03.237: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 22:38:03.327: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[22:39:02:728] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 22:47:52.752: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 22:47:52.830: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[09:27:39:905] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009d50
+[09:28:26:134] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009c00
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 09:30:22.475: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 09:30:22.552: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 09:31:20.010: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 09:31:20.120: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[09:36:07:985] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000017b0
+[09:36:19:163] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009a00
+[09:50:17:271] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004bc0
+[09:59:07:306] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009f90
+[10:07:04:559] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006500
+[10:08:58:473] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bf80
+[10:09:11:218] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000004a0
+[10:09:13:411] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b400
+[10:09:26:248] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004960
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 10:12:04.913: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 10:12:04.987: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 10:17:42.140: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 10:17:43.577: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[10:19:17:928] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002400
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 10:22:50.641: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 10:22:50.697: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[10:25:21:297] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003be0
+[10:41:15:518] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d000
+[10:45:23:220] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e2c0
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 10:45:24.132: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:457): Gtk-WARNING **: 10:45:24.226: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[10:55:08:911] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006920
+[11:14:11:409] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e770
+[11:16:59:519] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d430
+[11:16:59:622] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007760
+[11:22:48:196] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f020
+[11:23:00:333] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a2f0
+[11:28:36:752] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002060
+[11:28:49:763] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003560
+[12:18:56:551] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cdc0
+[12:19:35:743] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009e60
+[12:22:20:905] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007350
+[12:22:24:385] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000d30
+[12:22:35:583] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a340
+[12:22:35:583] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009e60
+[12:22:54:426] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003080
+[12:23:41:089] [457:2689] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cdc0
+Gdk-Message: 12:24:54.056: org.remmina.Remmina: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.
+
+Remmina plugin glibsecret (type=Secret) has registered but not yet initialized/activated. Initialization order is 2000.
+[glibsecret] unable to get secret service: Error spawning command line ?dbus-launch --autolaunch= --binary-syntax --close-stderr?: Child process exited with code 1
+StatusNotifier/Appindicator support: not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed
+Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:25:46.746: gtk_menu_attach_to_widget(): menu already attached to GtkMenuItem
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:25:47.008: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): libappindicator-WARNING **: 12:25:47.649: Unable to get the session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:3116): LIBDBUSMENU-GLIB-WARNING **: 12:25:47.649: Unable to get session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:30:42.095: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:30:42.142: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:36:44.615: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:36:44.728: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 13:40:47.096: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 13:40:47.269: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 14:25:03.803: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 14:25:03.853: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[16:04:43:306] [3116:3133] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:04:43:813] [3116:3133] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[16:04:43:813] [3116:3133] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[16:04:46:390] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000de10
+[16:05:46:006] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ba70
+[16:05:56:506] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d5c0
+[16:06:20:114] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002fd0
+[16:06:48:771] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000091b0
+[16:31:48:606] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c430
+[16:32:27:489] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c430
+[16:35:03:903] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d3a0
+[16:35:18:682] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ac00
+[16:35:49:713] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000be10
+[16:36:07:345] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c2a0
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 16:36:58.358: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 16:36:58.467: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 16:36:58.784: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 16:36:58.963: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[16:37:05:167] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ada0
+[16:38:06:444] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009a40
+[16:38:06:478] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001850
+[16:38:18:271] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009760
+[16:38:18:465] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009050
+[16:42:09:379] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ea90
+[16:59:57:884] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007ba0
+[17:16:35:711] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000037d0
+[17:16:54:173] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d760
+[17:18:12:752] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000082f0
+[18:06:13:200] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009050
+[10:59:58:890] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003e30
+[11:00:01:191] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d000
+[11:00:31:052] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001950
+[11:01:09:538] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a280
+[11:02:26:354] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d210
+[11:02:39:976] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000f70
+[11:12:25:821] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c860
+[11:12:37:221] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006ba0
+[11:21:07:747] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008f30
+[12:03:52:647] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000ec0
+[12:04:42:061] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ba60
+[12:06:43:071] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007d20
+[12:10:56:930] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bad0
+[12:12:03:379] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004f10
+[12:13:07:391] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006c80
+[12:13:28:704] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000086c0
+[12:20:20:781] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006050
+[12:20:40:079] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008600
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:22:42.467: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:22:42.756: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[12:25:24:622] [3116:3133] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004810
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:40:39.218: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 12:40:39.530: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[12:43:32:353] [3116:3227] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[12:43:33:728] [3116:3227] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[12:43:33:728] [3116:3227] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[12:43:35:877] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d270
+[12:44:36:373] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001960
+[12:45:44:492] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d0b0
+[12:45:56:320] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d710
+[13:10:28:890] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000026b0
+[13:10:28:890] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ed80
+[13:11:11:970] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006a60
+[13:11:11:083] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b510
+[13:14:27:118] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000051d0
+[13:16:23:311] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aa20
+[13:16:23:311] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001770
+[13:17:55:121] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d8f0
+[13:18:09:454] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000082e0
+[13:18:15:421] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008a30
+[13:18:21:900] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002640
+[13:24:08:333] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a260
+[13:24:08:333] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009760
+[13:26:30:599] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b990
+[13:26:30:599] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c3f0
+[13:27:31:880] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005610
+[13:27:31:881] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003260
+[16:18:35:640] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ee60
+[16:18:40:970] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a230
+[16:18:48:156] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009000
+[16:30:14:122] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008c10
+[16:38:14:997] [3116:3227] [ERROR][com.freerdp.core.transport] - BIO_read returned a system error 0: Success
+[16:38:14:023] [3116:3227] [ERROR][com.freerdp.core] - transport_read_layer:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[16:38:30:087] [3116:3227] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[16:38:30:087] [3116:3227] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[16:38:39:193] [3116:3227] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:38:42:607] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a730
+[16:41:54:797] [3116:3227] [ERROR][com.freerdp.core.transport] - BIO_read returned a system error 0: Success
+[16:41:54:797] [3116:3227] [ERROR][com.freerdp.core] - transport_read_layer:freerdp_set_last_error_ex ERRCONNECT_CONNECT_TRANSPORT_FAILED [0x0002000D]
+[16:42:09:309] [3116:3227] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[16:42:09:310] [3116:3227] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[16:42:24:318] [3116:3227] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[16:42:24:318] [3116:3227] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[16:42:28:440] [3116:3227] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[16:04:42:783] [3116:3133] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[16:04:42:788] [3116:3133] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[16:04:42:789] [3116:3133] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[16:04:42:790] [3116:3133] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[16:04:42:790] [3116:3133] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[16:04:43:136] [3116:3133] [INFO][com.freerdp.primitives] - primitives autodetect, using optimized
+[16:04:43:230] [3116:3133] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[16:04:43:230] [3116:3133] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[16:04:45:740] [3116:3133] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[16:04:45:740] [3116:3133] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[16:04:45:744] [3116:3133] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[16:04:45:744] [3116:3133] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[12:43:32:257] [3116:3227] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[12:43:32:259] [3116:3227] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[12:43:32:259] [3116:3227] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[12:43:32:259] [3116:3227] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[12:43:32:260] [3116:3227] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[12:43:32:269] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[12:43:32:269] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[12:43:35:686] [3116:3227] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[12:43:35:686] [3116:3227] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[12:43:35:687] [3116:3227] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[12:43:35:687] [3116:3227] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[16:38:15:083] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[16:38:15:084] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[16:38:30:095] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[16:38:30:095] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[16:38:42:385] [3116:3227] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[16:38:42:387] [3116:3227] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[16:41:54:308] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[16:41:54:308] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[16:42:09:317] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[16:42:09:317] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[16:42:24:327] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[16:42:24:327] [3116:3227] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[16:42:30:588] [3116:3227] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[16:42[16:42:30:759] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000096f0
+[16:48:06:129] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b1c0
+[16:48:10:485] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000cc0
+[16:51:16:220] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008e00
+[17:19:18:075] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001da0
+[17:19:20:680] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000720
+[17:37:36:443] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000096f0
+[17:37:41:981] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000026b0
+[17:49:37:982] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000057a0
+[18:02:46:433] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005c60
+[18:02:49:446] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003ef0
+[18:49:49:166] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004080
+[18:49:52:903] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000020d0
+[19:01:03:631] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001f60
+[19:01:29:494] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f2b0
+[19:02:52:843] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006920
+[19:14:22:351] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000098b0
+[09:55:44:350] [3116:3227] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006c30
+
+(org.remmina.Remmina:3116): Gtk-WARNING **: 09:57:17.299: gtk_menu_detach(): menu is not attached
+Gdk-Message: 09:57:38.718: org.remmina.Remmina: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.
+

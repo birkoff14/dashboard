@@ -289,7 +289,7 @@ def repactividades(request):
 
     username = request.GET.get("idU", "")
 
-    if (username == 'adrian.martinez' or username == 'cynthia.gutierrez' or username == 'manuel.meneses'):
+    if (username == 'adrian.martinez' or username == 'cynthia.gutierrez' or username == 'birkoff'):
         qryWhere = ""
     else:        
         qryWhere = "where Usuario = '" + username + """'"""
@@ -314,3 +314,33 @@ def repactividades(request):
 
     return render(request, 'reporteActividades.html', context)
 
+@login_required(login_url='/')
+def editSR(request, idSR):
+
+    #band = Band.objects.get(id=id)
+    #form = BandForm(instance=band)  # prepopulate the form with an existing band
+
+    qry = reporteFallas.objects.get(SR=idSR)
+    print(qry)
+
+    form = addData(request.POST or None, instance=qry)
+
+    if request.method == "POST":
+       if form.is_valid():            
+           print("Si entra")
+           frm = form.save(commit=False)           
+           frm.save()
+           #url = reverse('main')
+           #return HttpResponseRedirect(url)
+           return redirect('/reportes?idRep=0&idTipo=0')
+       else:            
+           print("No se grabo nada :(")
+    
+    context = {
+        "Titulo" : "Edición de SR",
+        "idSR" : idSR,
+        "form": form,
+        "qry" : qry,
+    }
+
+    return render(request, "editSR.html", context)
