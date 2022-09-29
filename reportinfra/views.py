@@ -245,7 +245,7 @@ def activity(request):
             Evento=request.POST.get("cmbTipo", ""),
             Usuario=request.POST.get("usuario", ""),
             Descripcion=request.POST.get("Descripcion", ""),
-            Ambiente=request.POST.get("Ambiente", ""),
+            Ambiente_id=request.POST.get("Ambiente", ""),
             Status=request.POST.get("Status", ""),
             Avance=request.POST.get("Avance", ""),
             Solicitante=request.POST.get("txtSolicitante", ""),
@@ -295,14 +295,16 @@ def repactividades(request):
         qryWhere = "where Usuario = '" + username + """'"""
 
     #qry = actividades.objects.filter(Usuario="'" + username + "'")
-    qry = actividades.objects.raw("""select 1 as id,
+    qry = actividades.objects.raw("""select id,
             case             
 	            when (LENGTH(SR) = 0 and length(RFC) = 0)  then IM
 	            when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR
 	            when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC
             end TipoActividad,  
-            FechaInicio, Cast(FechaFin as date) FechaFin, HorasInvertidas, IM, RFC, SR, Ambiente, Status, Avance, Evento, Descripcion, Solicitante, NombreTurnos, Usuario
-            from reportinfra_actividades """            
+            FechaInicio, Cast(FechaFin as date) FechaFin, HorasInvertidas, IM, RFC, SR, NombreAmbiente, Status, Avance, Evento, Descripcion, Solicitante, NombreTurnos, Usuario
+            from reportinfra_actividades a
+            inner join reportinfra_ambiente b
+            on b.idAmbiente = a.Ambiente_id """            
             + qryWhere)
 
     print(qry)
@@ -320,8 +322,8 @@ def editSR(request, idSR):
     #band = Band.objects.get(id=id)
     #form = BandForm(instance=band)  # prepopulate the form with an existing band
 
-    qry = reporteFallas.objects.get(SR=idSR)
-    print(qry)
+    qry = reporteFallas.objects.get(SR=idSR)    
+    #print(qry)
 
     form = addData(request.POST or None, instance=qry)
 
@@ -344,3 +346,34 @@ def editSR(request, idSR):
     }
 
     return render(request, "editSR.html", context)
+
+@login_required(login_url='/')
+def editActivity(request, idAct, idU):
+
+    qry = actividades.objects.get(id=idAct)
+    username = idU
+
+    URL = '/repactividades?idU=' + username
+    print(URL)
+
+    form = activities(request.POST or None, instance=qry)
+
+    if request.method == "POST":
+       if form.is_valid():            
+           print("Si entra")
+           frm = form.save(commit=False)           
+           frm.save()
+           #url = reverse('main')
+           #return HttpResponseRedirect(url)           
+           return redirect(URL)
+       else:            
+           print("No se grabo nada :(")
+    
+    context = {
+        "Titulo": "Edición de Actividades",
+        "form" : form,
+        "idAct" : idAct,
+        "username" : username,
+    }
+
+    return render(request, "editActivity.html", context)

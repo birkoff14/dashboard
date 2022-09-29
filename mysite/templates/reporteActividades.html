@@ -22,12 +22,14 @@
             <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title"> {{ titulo }} </h3>
+                        <h3 class="card-title"> {{ titulo }} {{ username }} </h3>
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th></th>
+                                    <th>Editar</th>
                                     <th>Usuario</th>
                                     <th>Actividad relacionada</th>
                                     <th>Fecha inicio</th>
@@ -48,6 +50,8 @@
                             <tbody>
                                 {% for dt in qry %}
                                 <tr>
+                                    <td></td>
+                                    <td><div><a href="#" onclick="return abrir_modal('{% url 'editActivity' dt.id dt.Usuario %}');">Editar</a></div></td>
                                     <td>{{ dt.Usuario }}</td>
                                     <td>{{ dt.TipoActividad }}</td>
                                     <td>{{ dt.FechaInicio|date }}</td>
@@ -57,7 +61,7 @@
                                     <td>{{ dt.RFC }}</td>
                                     <td>{{ dt.SR }}</td>
                                     <td>{{ dt.Evento }}</td>
-                                    <td>{{ dt.Ambiente }}</td>
+                                    <td>{{ dt.NombreAmbiente }}</td>
                                     <td>{{ dt.Status }}</td>
                                     <td>{{ dt.Avance }}</td>
                                     <td>{{ dt.Descripcion }}</td>
@@ -68,6 +72,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th></th>
+                                    <th>Editar</th>
                                     <th>Usuario</th>
                                     <th>Actividad relacionada</th>
                                     <th>Fecha inicio</th>
@@ -92,6 +98,11 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="ventana_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+
+</div>
 
 {% endblock %}
 
@@ -127,6 +138,33 @@
             "responsive": true,
         });
     });
+</script>
+
+<script>
+    function abrir_modal(url) {
+        $('#ventana_modal').load(url, function () {
+            $(this).modal({
+                backdrop: 'static',
+                keyboard: false,
+                success: function () {
+                    document.getElementById("SR") = 'block';
+                }
+            })
+
+            $(this).modal('show');
+        });
+
+        return false;
+
+    }
+
+    function cerrar_modal() {
+
+        $('#ventana_modal').modal('hide');
+
+        return false;
+    }
+
 </script>
 
 {% endblock %}

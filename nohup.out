@@ -3435,3 +3435,815 @@ Warning: Remmina is running without a secret plugin. Passwords will be saved in 
 (org.remmina.Remmina:3116): Gtk-WARNING **: 09:57:17.299: gtk_menu_detach(): menu is not attached
 Gdk-Message: 09:57:38.718: org.remmina.Remmina: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.
 
+Remmina plugin glibsecret (type=Secret) has registered but not yet initialized/activated. Initialization order is 2000.
+[glibsecret] unable to get secret service: Error spawning command line ?dbus-launch --autolaunch= --binary-syntax --close-stderr?: Child process exited with code 1
+StatusNotifier/Appindicator support: not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed
+Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.
+
+(org.remmina.Remmina:971): Gtk-WARNING **: 16:55:25.723: gtk_menu_attach_to_widget(): menu already attached to GtkMenuItem
+
+(org.remmina.Remmina:971): Gtk-WARNING **: 16:55:26.025: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:971): libappindicator-WARNING **: 16:55:26.293: Unable to get the session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:971): LIBDBUSMENU-GLIB-WARNING **: 16:55:26.293: Unable to get session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:971): Gtk-WARNING **: 16:56:30.671: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:971): Gtk-WARNING **: 16:56:30.689: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[17:07:34:551] [971:1194] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[17:07:34:905] [971:1194] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[17:07:34:905] [971:1194] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[17:07:36:790] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b110
+[17:07:44:421] [971:1188] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[17:07:44:423] [971:1188] [ERROR][com.freerdp.core] - failed to connect to 10.141.201.250
+[17:10:51:459] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000084e0
+[17:11:36:900] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ea50
+[17:16:09:007] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c9c0
+[17:17:19:506] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aa00
+[17:17:19:726] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f140
+[17:17:27:333] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003400
+[17:32:05:972] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007d90
+[17:34:02:025] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004160
+[17:35:28:094] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000940
+[17:37:03:911] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001540
+[17:42:27:336] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004880
+[17:43:12:404] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000fc0
+[17:43:12:404] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bd50
+[17:44:55:287] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f200
+[17:44:56:471] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007d90
+[17:45:02:961] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004bd0
+[17:46:26:394] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b730
+[17:53:18:322] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d550
+[17:53:29:823] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000c00
+[18:04:33:646] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aee0
+[18:04:44:822] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007430
+[18:04:44:822] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001d90
+[18:10:48:178] [971:2193] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:10:49:773] [971:2193] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:10:49:773] [971:2193] [WARN][com.freerdp.crypto] - CN = ARBUEM-JUMP01.arg.clarocloud.info
+[18:10:49:184] [971:2193] [ERROR][com.freerdp.core.nla] - SPNEGO failed with NTSTATUS: 0xC000018C
+[18:10:49:184] [971:2193] [ERROR][com.freerdp.core] - nla_recv_pdu:freerdp_set_last_error_ex ERRCONNECT_AUTHENTICATION_FAILED [0x00020009]
+[18:10:49:197] [971:2193] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[18:10:49:197] [971:2193] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[18:10:50:433] [971:2193] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:10:54:800] [971:2193] [ERROR][com.freerdp.core.nla] - SPNEGO failed with NTSTATUS: 0xC000018C
+[18:10:54:800] [971:2193] [ERROR][com.freerdp.core] - nla_recv_pdu:freerdp_set_last_error_ex ERRCONNECT_AUTHENTICATION_FAILED [0x00020009]
+[18:10:54:800] [971:2193] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[18:10:54:800] [971:2193] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[17:07:28:052] [971:1188] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[17:07:28:056] [971:1188] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[17:07:28:057] [971:1188] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[17:07:28:058] [971:1188] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[17:07:28:058] [971:1188] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[17:07:29:385] [971:1188] [INFO][com.freerdp.primitives] - primitives autodetect, using optimized
+[17:07:29:401] [971:1188] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[17:07:29:401] [971:1188] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[17:07:34:460] [971:1194] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[17:07:34:460] [971:1194] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[17:07:34:460] [971:1194] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[17:07:34:460] [971:1194] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[17:07:34:460] [971:1194] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[17:07:34:461] [971:1194] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[17:07:34:461] [971:1194] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[17:07:36:560] [971:1194] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[17:07:36:560] [971:1194] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[17:07:36:562] [971:1194] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[17:07:36:563] [971:1194] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[18:10:48:981] [971:2193] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:10:48:981] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:10:48:981] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:10:48:981] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:10:48:981] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:10:48:984] [971:2193] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:10:48:984] [971:2193] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:10:49:206] [971:2193] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:10:49:206] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:10:49:206] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:10:49:206] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:10:49:206] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:10:49:236] [971:2193] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:10:49:236] [971:2193] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:10:54:807] [971:2193] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:10:54:807] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:10:54:807] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:10:54:807] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:10:54:807] [971:2193] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:10:54:838] [971:2193] [INFO][com.freerdp.core] - freerdp_tcp_[18:10:54:030] [971:2193] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:11:10:823] [971:2193] [ERROR][com.freerdp.core] - nla_client_init:freerdp_set_last_error_ex ERRCONNECT_NO_OR_MISSING_CREDENTIALS [0x0002001B]
+[18:11:10:823] [971:2193] [ERROR][com.freerdp.core.transport] - NLA begin failed
+[18:11:55:370] [971:2214] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:11:55:780] [971:2214] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:11:55:780] [971:2214] [WARN][com.freerdp.crypto] - CN = cobog01m-piv001.col.clarocloud.info
+[18:12:02:456] [971:2214] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+[18:12:03:088] [971:2223] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:12:04:685] [971:2223] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:12:04:685] [971:2223] [WARN][com.freerdp.crypto] - CN = ARBUEM-JUMP01.arg.clarocloud.info
+[18:12:06:701] [971:2223] [ERROR][com.freerdp.core.nla] - SPNEGO failed with NTSTATUS: 0xC000018C
+[18:12:06:702] [971:2223] [ERROR][com.freerdp.core] - nla_recv_pdu:freerdp_set_last_error_ex ERRCONNECT_AUTHENTICATION_FAILED [0x00020009]
+[18:12:06:702] [971:2223] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[18:12:06:702] [971:2223] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[18:12:06:924] [971:2223] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:12:15:998] [971:2223] [ERROR][com.freerdp.core.nla] - SPNEGO failed with NTSTATUS: 0xC000018C
+[18:12:15:998] [971:2223] [ERROR][com.freerdp.core] - nla_recv_pdu:freerdp_set_last_error_ex ERRCONNECT_AUTHENTICATION_FAILED [0x00020009]
+[18:12:15:998] [971:2223] [ERROR][com.freerdp.core.rdp] - rdp_recv_callback: CONNECTION_STATE_NLA - nla_recv_pdu() fail
+[18:12:15:998] [971:2223] [ERROR][com.freerdp.core.transport] - transport_check_fds: transport->ReceiveCallback() - -1
+[18:12:15:200] [971:2223] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:12:32:873] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007770
+[18:12:32:873] [971:2214] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:10:54:838] [971:2193] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:11:54:252] [971:2214] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:11:54:252] [971:2214] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:11:54:252] [971:2214] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:11:54:252] [971:2214] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:11:54:252] [971:2214] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:11:54:253] [971:2214] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:11:54:253] [971:2214] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:11:59:528] [971:2214] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[18:11:59:528] [971:2214] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[18:11:59:529] [971:2214] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[18:11:59:532] [971:2214] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[18:12:01:620] [971:2214] [INFO][com.freerdp.core] - rdp_set_error_info:freerdp_set_last_error_ex resetting error state
+[18:12:03:897] [971:2223] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:12:03:897] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:12:03:897] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:12:03:897] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:12:03:897] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:12:03:899] [971:2223] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:12:03:899] [971:2223] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:12:06:711] [971:2223] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:12:06:711] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:12:06:711] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:12:06:711] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:12:06:711] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:12:06:734] [971:2223] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:12:06:734] [971:2223] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:12:15:002] [971:2223] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:12:15:002] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:12:15:002] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:12:15:002] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:12:15:002] [971:2223] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:12:15:012] [971:2223] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:12:15:012] [971:2223] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:14:22:525] [971:2243] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:14:22:525] [971:2243] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:14:22:525] [971:2243] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:14:22:525] [971:2243] [INFO][com.freerd[18:14:22:637] [971:2243] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:14:22:988] [971:2243] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:14:22:989] [971:2243] [WARN][com.freerdp.crypto] - CN = prcap01m-piv001.pur.clarocloud.info
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - The host key for 10.153.201.250:3389 has changed
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - It is also possible that a host key has just been changed.
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - The fingerprint for the host key sent by the remote host is 77:98:7a:5f:4b:5c:26:17:a1:5a:37:33:0b:c1:fe:6b:a0:04:9f:41:f1:b5:85:a6:05:40:03:ca:d1:79:8e:76
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - Please contact your system administrator.
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - Add correct host key in /home/birkoff/.config/freerdp/known_hosts2 to get rid of this message.
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - Host key for 10.153.201.250 has changed and you have requested strict checking.
+[18:14:22:991] [971:2243] [ERROR][com.freerdp.crypto] - Host key verification failed.
+[18:14:22:992] [971:2243] [WARN][com.freerdp.crypto] - The VerifyChangedCertificate callback is deprecated, migrate your application to VerifyChangedCertificateEx
+[18:14:30:387] [971:2243] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000023b0
+[18:15:07:233] [971:2223] [ERROR][com.freerdp.core] - nla_client_init:freerdp_set_last_error_ex ERRCONNECT_NO_OR_MISSING_CREDENTIALS [0x0002001B]
+[18:15:07:233] [971:2223] [ERROR][com.freerdp.core.transport] - NLA begin failed
+[18:16:47:260] [971:2264] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:16:48:699] [971:2264] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:16:48:699] [971:2264] [WARN][com.freerdp.crypto] - CN = dosdq01m-piv001.dom.clarocloud.info
+[18:17:02:257] [971:2264] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007fa0
+[18:22:01:863] [971:2264] [ERROR][com.freerdp.core] - rdp_set_error_info:freerdp_set_last_error_ex ERRINFO_LOGOFF_BY_USER [0x0001000C]
+[18:22:05:729] [971:2243] [ERROR][com.freerdp.core] - rdp_set_error_info:freerdp_set_last_error_ex ERRINFO_LOGOFF_BY_USER [0x0001000C]
+[18:22:11:532] [971:2214] [ERROR][com.freerdp.core] - rdp_set_error_info:freerdp_set_last_error_ex ERRINFO_LOGOFF_BY_USER [0x0001000C]
+[18:25:14:036] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005a30
+[18:25:14:192] [971:1194] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aa10
+[18:28:11:357] [971:2410] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[18:28:11:357] [971:2410] [ERROR][com.freerdp.core] - failed to connect to 10.157.201.250
+Remmina plugin glibsecret (type=Secret) has registered but not yet initialized/activated. Initialization order is 2000.
+[glibsecret] unable to get secret service: Error spawning command line ?dbus-launch --autolaunch= --binary-syntax --close-stderr?: Child process exited with code 1
+StatusNotifier/Appindicator support: not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed
+Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.
+
+(org.remmina.Remmina:2699): Gtk-WARNING **: 18:46:05.100: gtk_menu_attach_to_widget(): menu already attached to GtkMenuItem
+
+(org.remmina.Remmina:2699): Gtk-WARNING **: 18:46:05.393: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:2699): libappindicator-WARNING **: 18:46:05.633: Unable to get the session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:2699): LIBDBUSMENU-GLIB-WARNING **: 18:46:05.633: Unable to get session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+[18:46:17:024] [2699:2715] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:46:17:332] [2699:2715] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:46:17:332] [2699:2715] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[18:46:20:535] [2699:2715] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007820
+[18:46:33:673] [2699:2724] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:46:33:931] [2699:2724] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:46:33:931] [2699:2724] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[18:46:35:802] [2699:2724] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009d50
+[18:46:40:833] [2699:2733] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[18:46:40:096] [2699:2733] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[18:46:40:096] [2699:2733] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[18:46:42:848] [2699:2733] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f8e0
+[18:46:17:606] [2699:2715] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:46:17:608] [2699:2715] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:46:17:609] [2699:2715] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:46:17:611] [2699:2715] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:46:17:611] [2699:2715] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:46:17:943] [2699:2715] [INFO][com.freerdp.primitives] - primitives autodetect, using optimized
+[18:46:17:948] [2699:2715] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:46:17:948] [2699:2715] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:46:19:979] [2699:2715] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[18:46:19:979] [2699:2715] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[18:46:19:981] [2699:2715] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[18:46:19:981] [2699:2715] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[18:46:33:591] [2699:2724] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:46:33:591] [2699:2724] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:46:33:591] [2699:2724] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:46:33:591] [2699:2724] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:46:33:591] [2699:2724] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:46:33:595] [2699:2724] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:46:33:595] [2699:2724] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:46:35:565] [2699:2724] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[18:46:35:565] [2699:2724] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[18:46:35:565] [2699:2724] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[18:46:35:565] [2699:2724] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[18:46:40:713] [2699:2733] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:46:40:713] [2699:2733] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:46:40:713] [2699:2733] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:46:40:713] [2699:2733] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:46:40:713] [2699:2733] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[18:46:40:755] [2699:2733] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[18:46:40:755] [2699:2733] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[18:46:42:627] [2699:2733] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[18:46:42:627] [2699:2733] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[18:46:42:628] [2699:2733] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[18:46:42:628] [2699:2733] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[18:56:36:664] [2699:2742] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[18:56:36:664] [2699:2742] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[18:56:36:664] [2699:2742] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[18:56:36:664] [2699:2742] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[18:56:36:664] [2699:2742] [INFO][com.freerdp.cl[18:56:51:667] [2699:2742] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[18:56:51:667] [2699:2742] [ERROR][com.freerdp.core] - failed to connect to 10.157.201.250
+Remmina plugin glibsecret (type=Secret) has registered but not yet initialized/activated. Initialization order is 2000.
+[glibsecret] unable to get secret service: Error spawning command line ?dbus-launch --autolaunch= --binary-syntax --close-stderr?: Child process exited with code 1
+StatusNotifier/Appindicator support: not supported by desktop. libappindicator will try to fallback to GtkStatusIcon/xembed
+Warning: Remmina is running without a secret plugin. Passwords will be saved in a less secure way.
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 12:24:28.242: gtk_menu_attach_to_widget(): menu already attached to GtkMenuItem
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 12:24:28.602: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): libappindicator-WARNING **: 12:24:29.219: Unable to get the session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+
+(org.remmina.Remmina:3959): LIBDBUSMENU-GLIB-WARNING **: 12:24:29.219: Unable to get session bus: Error spawning command line “dbus-launch --autolaunch= --binary-syntax --close-stderr”: Child process exited with code 1
+[12:37:55:959] [3959:4116] [ERROR][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex ERRCONNECT_CONNECT_FAILED [0x00020006]
+[12:37:55:960] [3959:4116] [ERROR][com.freerdp.core] - failed to connect to 10.138.201.250
+[12:39:47:531] [3959:4122] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[12:39:48:943] [3959:4122] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[12:39:48:943] [3959:4122] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[12:39:51:052] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004540
+[12:46:27:254] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dc70
+[12:46:41:041] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000080f0
+[12:47:54:865] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007e20
+[12:55:17:339] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fda0
+[12:55:40:874] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000fd0
+[12:57:08:051] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009d70
+[12:57:41:045] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d5e0
+[12:58:02:108] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d2f0
+[13:01:41:153] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fda0
+[13:06:08:262] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b5b0
+[13:09:55:202] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002a00
+[13:11:11:063] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005100
+[13:12:18:158] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001650
+[13:14:39:105] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000eaf0
+[13:15:25:791] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ec20
+[13:16:51:583] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001650
+[13:23:37:975] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008390
+[13:30:16:587] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004540
+[13:32:38:085] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005aa0
+[13:33:29:260] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e580
+[13:42:20:114] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007e20
+[13:48:18:738] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002800
+[13:52:07:419] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000fd0
+[15:50:52:114] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009070
+[15:51:13:964] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000210
+[15:51:14:220] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004760
+[15:52:12:966] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005e50
+[15:52:12:456] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004020
+[15:52:18:328] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000faa0
+[15:53:36:799] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d7d0
+[15:53:37:280] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fb20
+[15:54:12:733] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b7a0
+[15:54:13:228] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005e50
+[15:54:40:216] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008470
+[15:55:49:154] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000033d0
+[15:55:51:822] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000074b0
+[15:57:25:933] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008470
+[15:59:08:719] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008470
+[15:59:08:727] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000eaf0
+[15:59:18:832] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000074b0
+[15:59:18:860] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000be50
+[15:59:18:860] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008130
+[15:59:30:213] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005a70
+[15:59:33:790] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008ed0
+[15:59:52:676] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000790
+[15:59:52:680] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005a70
+[15:59:55:259] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005e50
+[16:01:17:199] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000faa0
+[16:01:40:412] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000cf0
+[16:01:40:412] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000074b0
+[16:01:50:613] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000ba0
+[16:01:55:425] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000017f0
+[16:02:01:805] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005a70
+[16:02:45:985] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001bf0
+[16:02:46:360] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000017f0
+[16:03:42:171] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000210
+[16:04:12:813] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000790
+[16:04:15:690] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000faa0
+[16:04:29:996] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005a70
+[16:04:37:436] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000070b0
+[16:04:43:297] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000210
+[16:05:02:954] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001bb0
+[16:06:06:065] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000012c0
+[16:07:22:040] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000faa0
+[16:07:22:041] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005310
+[16:08:06:519] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000faa0
+[16:08:22:969] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008470
+[16:08:22:969] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002d80
+[16:08:36:382] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008130
+[16:08:36:584] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000074b0
+[16:08:36:724] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000012c0
+[16:09:29:261] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000033d0
+[16:10:11:418] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007990
+[16:10:11:418] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008ed0
+[16:10:37:976] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a080
+[16:15:06:327] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002950
+[16:15:27:536] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dba0
+[16:16:58:836] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003d40
+[16:16:59:164] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a5a0
+[16:19:40:479] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fe20
+[16:20:37:490] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c820
+[16:20:37:490] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000093d0
+[16:24:07:578] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005dc0
+[17:08:22:498] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000096a0
+[17:08:25:773] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005a50
+[17:08:53:152] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c070
+[17:08:53:153] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+[17:08:59:003] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c7d0
+[17:09:07:938] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009070
+[17:09:07:008] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007e40
+[17:09:07:008] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000001c0
+[17:09:08:833] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c070
+[17:09:13:016] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007210
+[17:09:13:017] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d090
+[17:09:14:188] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d1f0
+[17:09:27:142] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a5a0
+[17:09:27:754] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+[17:09:30:905] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d1f0
+[17:10:25:918] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000065f0
+[17:11:23:645] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ea90
+[17:11:30:611] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a5a0
+[17:11:50:098] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009070
+[17:12:18:305] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009390
+[17:12:18:687] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000020e0
+[17:12:38:438] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c820
+[17:12:47:773] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003d40
+[17:13:03:675] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dc70
+[17:13:07:784] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004960
+[17:13:18:818] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000047d0
+[17:13:21:847] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000f40
+[17:13:21:848] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000061a0
+[17:13:22:306] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006130
+[17:13:22:645] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+[17:13:32:959] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bcc0
+[17:13:33:807] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007990
+[17:13:35:423] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002570
+[17:13:35:424] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007f40
+[17:13:41:137] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c7d0
+[17:13:41:156] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000038b0
+[17:13:41:157] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ed10
+[17:13:43:431] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004540
+[17:13:46:614] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fe90
+[17:13:47:821] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000adc0
+[17:17:37:830] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004050
+[17:17:38:093] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000faa0
+[17:17:38:313] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bc50
+[17:17:38:534] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004da0
+[17:17:38:718] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004dd0
+[17:17:38:876] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008210
+[17:17:58:119] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cb60
+[17:19:00:079] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c930
+[17:19:35:999] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000a70
+[17:20:06:972] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004760
+[17:20:42:280] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000000e0
+[17:20:42:280] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006130
+[17:20:56:400] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000be50
+[17:20:56:423] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001a00
+[17:20:56:423] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005e50
+[17:21:13:552] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000c0d0
+[17:21:13:815] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002650
+[17:21:27:785] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000000e0
+[17:21:47:168] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002c60
+[17:23:24:023] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000070b0
+[17:25:39:406] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001790
+[17:25:39:407] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bcc0
+[17:25:40:869] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dc70
+[17:25:41:632] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bf00
+[17:26:37:899] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004dd0
+[17:27:16:055] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002c10
+[17:27:20:063] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000ba0
+[17:27:22:164] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009f40
+[17:27:22:165] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006b70
+[17:27:23:895] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006e30
+[17:27:23:589] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000eca0
+[17:27:27:285] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006e00
+[17:27:27:287] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000000e0
+[17:27:27:786] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004240
+[17:27:28:106] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+[17:27:42:103] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000020
+[17:27:42:103] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007ea0
+[17:27:53:658] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006770
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 17:30:18.934: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 17:30:19.045: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 17:48:56.932: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 17:48:57.006: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 17:48:57.315: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 17:48:59.856: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[17:49:05:086] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fe20
+[17:49:11:055] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007830
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 18:21:00.192: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 18:21:00.318: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[18:24:58:783] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002790
+[18:25:00:783] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000abb0
+[18:39:15:091] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002670
+[18:39:20:324] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008f30
+[18:39:38:576] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004540
+[20:00:03:239] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f980
+[20:00:03:239] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001530
+[20:26:17:120] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008130
+[20:32:54:483] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003da0
+[20:46:24:659] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004ee0
+[20:46:25:879] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008400
+[20:46:25:031] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004ef0
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:23:08.484: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:23:08.747: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[09:26:03:996] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002db0
+[09:31:09:259] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007e70
+[09:31:31:129] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004ee0
+[09:32:49:022] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b560
+[09:33:45:438] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007070
+[09:33:48:252] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b7a0
+[09:34:11:995] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003fa0
+[09:34:11:996] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000009d0
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:34:40.505: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:34:40.555: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:34:40.752: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:34:41.565: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[09:34:43:006] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bf30
+[09:34:43:035] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000097d0
+[09:34:43:036] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002d80
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:34:57.963: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:34:58.420: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[09:35:29:392] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008560
+[09:38:16:281] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d540
+[09:38:16:281] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004960
+[09:38:19:243] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a5a0
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:38:22.905: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:38:22.967: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[09:38:23:554] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001a00
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:38:27.312: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:38:27.362: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:38:27.465: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 09:38:27.772: Error loading theme icon 'dialog-information' for stock: Icon 'dialog-information' not present in theme Yaru
+[09:41:55:703] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a630
+[09:42:14:642] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a180
+[09:42:17:431] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007070
+[09:53:59:386] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dfd0
+[09:53:59:386] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000d10
+[09:54:16:981] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000065f0
+[09:55:19:222] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cd30
+[09:55:22:809] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000065f0
+[09:55:33:306] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001850
+[09:55:35:686] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000d10
+[09:55:41:727] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dc70
+[09:58:24:360] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007fd0
+[09:58:24:360] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000065f0
+[09:58:26:433] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000072e0
+[09:58:37:480] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cb60
+[09:58:40:268] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+[10:00:16:178] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004f50
+[10:00:22:239] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008400
+[10:00:34:046] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a0b0
+[10:00:34:046] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008c40
+[10:00:38:870] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004ee0
+[10:16:06:124] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005700
+[10:16:08:022] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002f80
+[10:16:08:022] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000072e0
+[11:23:39:929] [3959:6306] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[11:23:40:967] [3959:6306] [WARN][com.freerdp.crypto] - Certificate verification failure 'self signed certificate (18)' at stack position 0
+[11:23:40:967] [3959:6306] [WARN][com.freerdp.crypto] - CN = GNOME, C = US
+[11:23:40:994] [3959:6306] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[11:23:40:994] [3959:6306] [ERROR][com.freerdp.crypto] - @           WARNING: CERTIFICATE NAME MISMATCH!           @
+[11:23:40:994] [3959:6306] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[11:23:40:994] [3959:6306] [ERROR][com.freerdp.crypto] - The hostname used for this connection (192.168.0.23:3389) 
+[11:23:40:994] [3959:6306] [ERROR][com.freerdp.crypto] - does not match the name given in the certificate:
+[11:23:40:994] [3959:6306] [ERROR][com.freerdp.crypto] - Common Name (CN):
+[11:23:40:994] [3959:6306] [ERROR][com.freerdp.crypto] - 	GNOME
+[11:23:40:994] [3959:6306] [ERROR][com.freerdp.crypto] - A valid certificate for the wrong name should NOT be trusted!
+[11:23:40:994] [3959:6306] [WARN][com.freerdp.crypto] - The VerifyCertificate callback is deprecated, migrate your application to VerifyCertificateEx
+[11:24:21:927] [3959:6306] [ERROR][com.freerdp.core.connection] - Timeout waiting for activation
+[11:24:30:921] [3959:6315] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[11:24:30:039] [3959:6315] [WARN][com.freerdp.crypto] - Certificate verification failure 'self signed certificate (18)' at stack position 0
+[11:24:30:039] [3959:6315] [WARN][com.freerdp.crypto] - CN = GNOME, C = US
+[11:25:59:704] [3959:6315] [ERROR][com.freerdp.core] - nla_client_init:freerdp_set_last_error_ex ERRCONNECT_NO_OR_MISSING_CREDENTIALS [0x0002001B]
+[11:25:59:704] [3959:6315] [ERROR][com.freerdp.core.transport] - NLA begin failed
+[11:26:27:646] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005dd0
+[11:26:30:384] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000065f0
+[11:36:35:840] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001c10
+[11:36:35:841] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009d20
+[11:52:07:850] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003ce0
+[11:52:08:928] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f7d0
+[11:52:11:217] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008130
+[11:52:11:256] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005f50
+[11:52:11:257] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000b50
+[11:53:58:104] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000e50
+[11:53:59:391] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000c30
+[11:56:03:139] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003290
+[11:56:23:837] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ba50
+[12:03:11:431] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004170
+[12:03:38:611] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001450
+[12:03:51:382] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f3d0
+[12:04:55:145] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003450
+[12:05:36:533] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000065d0
+[12:13:39:745] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000e50
+[12:14:49:302] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ba50
+[12:16:04:870] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f3d0
+[12:16:07:354] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ba50
+[12:16:16:460] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003290
+[12:16:16:460] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc00
+[12:24:55:945] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000087f0
+[12:25:07:198] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001630
+[12:39:36:181] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bb50
+[12:39:36:182] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a1b0
+[12:48:31:945] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000adc0
+[12:55:08:762] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a570
+[12:55:13:271] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000000e0
+[12:55:18:913] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001450
+[12:55:44:979] [3959:4122] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000adc0
+[12:37:39:566] [3959:4116] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[12:37:39:570] [3959:4116] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[12:37:39:571] [3959:4116] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[12:37:39:572] [3959:4116] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[12:37:39:572] [3959:4116] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[12:37:40:904] [3959:4116] [INFO][com.freerdp.primitives] - primitives autodetect, using optimized
+[12:37:40:919] [3959:4116] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[12:37:40:919] [3959:4116] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[12:39:47:412] [3959:4122] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[12:39:47:412] [3959:4122] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[12:39:47:412] [3959:4122] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[12:39:47:412] [3959:4122] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[12:39:47:412] [3959:4122] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[12:39:47:415] [3959:4122] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[12:39:47:415] [3959:4122] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[12:39:50:646] [3959:4122] [INFO][com.freerdp.gdi] - Local framebuffer format  PIXEL_FORMAT_BGRX32
+[12:39:50:646] [3959:4122] [INFO][com.freerdp.gdi] - Remote framebuffer format PIXEL_FORMAT_RGB16
+[12:39:50:650] [3959:4122] [INFO][com.freerdp.channels.rdpsnd.client] - [static] Loaded fake backend for rdpsnd
+[12:39:50:650] [3959:4122] [INFO][com.freerdp.channels.drdynvc.client] - Loading Dynamic Virtual Channel disp
+[11:23:38:861] [3959:6306] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[11:23:38:861] [3959:6306] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[11:23:38:861] [3959:6306] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[11:23:38:861] [3959:6306] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[11:23:38:861] [3959:6306] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[11:23:38:862] [3959:6306] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[11:23:38:862] [3959:6306] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+libfreerdp returned code is 00000000
+[11:24:29:827] [3959:6315] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[11:24:29:827] [3959:6315] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[11:24:29:827] [3959:6315] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[11:24:29:827] [3959:6315] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[11:24:29:827] [3959:6315] [INFO][com.freerdp.client.common.cmdline] - loading channelEx drdynvc
+[11:24:29:865] [3959:6315] [INFO][com.freerdp.core] - freerdp_tcp_is_hostname_resolvable:freerdp_set_last_error_ex resetting error state
+[11:24:29:865] [3959:6315] [INFO][com.freerdp.core] - freerdp_tcp_connect:freerdp_set_last_error_ex resetting error state
+[13:02:18:102] [3959:6357] [INFO][com.freerdp.core] - freerdp_connect:freerdp_set_last_error_ex resetting error state
+[13:02:18:102] [3959:6357] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpdr
+[13:02:18:102] [3959:6357] [INFO][com.freerdp.client.common.cmdline] - loading channelEx rdpsnd
+[13:02:18:102] [3959:6357] [INFO][com.freerdp.client.common.cmdline] - loading channelEx cliprdr
+[13:02:18:102] [3959:6357] [INFO][com.freerdp.client.common.cmdline] - loading channelE[13:02:18:233] [3959:6357] [WARN][com.freerdp.core] - setsockopt() SOL_TCP, TCP_USER_TIMEOUT
+[13:02:18:490] [3959:6357] [WARN][com.freerdp.crypto] - Certificate verification failure 'unable to get local issuer certificate (20)' at stack position 0
+[13:02:18:490] [3959:6357] [WARN][com.freerdp.crypto] - CN = USMIA01M-JUMP01.usa.clarocloud.info
+[13:02:20:526] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fd80
+[14:02:43:427] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ff70
+[14:02:43:427] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a490
+[14:02:43:427] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009a70
+[14:02:45:049] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003c70
+[15:10:19:843] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ec20
+[15:10:23:041] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a560
+[15:11:30:963] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ed00
+[15:11:33:779] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e550
+[15:11:46:924] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007610
+[15:11:48:736] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000dad0
+[15:12:34:290] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004d20
+[15:13:11:914] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000250
+[15:26:33:747] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004840
+[15:27:01:750] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e550
+[15:27:02:904] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a900
+[15:27:02:044] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007650
+[15:27:02:188] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a900
+[15:28:04:931] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc30
+[16:00:54:034] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006510
+[16:01:07:978] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fcd0
+[16:01:21:392] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006000
+[16:01:21:546] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009b60
+[16:01:31:242] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009400
+[16:04:12:472] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d300
+[16:05:34:033] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cdf0
+[16:25:15:302] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ade0
+[16:25:16:851] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000002b0
+[16:25:18:586] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005730
+[16:25:21:648] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003890
+[16:25:27:030] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004450
+[16:25:28:839] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004450
+[16:27:21:016] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d190
+[16:27:33:900] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000050d0
+[16:27:38:908] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003890
+[16:27:39:465] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007f30
+[16:28:08:443] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003d70
+[16:28:12:081] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc60
+[16:28:13:892] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004450
+[16:29:58:388] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003b80
+[16:29:58:388] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d190
+[16:34:04:095] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006fb0
+[16:34:09:727] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007e10
+[16:34:12:436] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d5e0
+[16:34:27:444] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d190
+[16:34:34:917] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ba30
+[16:34:35:796] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001070
+[16:38:09:298] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc30
+[16:38:20:784] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008660
+[16:38:23:799] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003860
+[16:38:24:639] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009ea0
+[16:38:39:008] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007d70
+[16:38:42:961] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aec0
+[16:38:42:517] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b520
+[16:38:55:901] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001070
+[16:38:57:663] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e600
+[16:39:04:229] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aa50
+[16:39:58:385] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b850
+[16:40:00:700] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008660
+[16:40:01:544] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc60
+[16:40:14:739] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007560
+[16:40:18:937] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000050d0
+[16:40:18:584] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000077f0
+[16:41:07:267] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a000
+[16:41:10:021] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000010a0
+[16:41:10:605] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002b60
+[16:41:25:729] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001d40
+[16:41:28:955] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004840
+[16:41:28:411] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002790
+[16:42:31:379] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000050d0
+[16:42:41:814] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b200
+[16:42:42:789] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b880
+[16:45:00:479] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d190
+[16:45:00:479] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004450
+[16:45:08:316] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009ec0
+[16:45:20:409] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d0f0
+[16:45:20:410] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002790
+[16:45:20:679] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001130
+[16:45:20:683] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002790
+[16:45:21:060] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005ca0
+[16:45:21:111] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+[16:45:49:612] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002c50
+[16:45:52:449] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000035c0
+[16:45:57:298] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aec0
+[16:46:22:678] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007770
+[16:46:25:235] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aec0
+[16:46:25:871] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bd80
+[16:47:36:210] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000077f0
+[16:47:38:566] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003020
+[16:47:39:304] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc60
+[16:48:18:231] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000003c0
+[16:48:22:303] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d5e0
+[16:48:23:742] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000011f0
+[16:49:01:128] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009e70
+[16:49:03:677] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000010a0
+[16:49:04:118] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004840
+[16:49:43:216] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007300
+[16:49:46:923] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004ad0
+[16:49:46:460] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ce00
+[16:50:25:268] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007300
+[16:50:28:139] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ade0
+[16:50:28:540] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008660
+[16:50:53:204] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000007f0
+[16:50:57:917] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001070
+[16:50:57:436] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d5e0
+[16:52:29:651] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d0f0
+[16:52:32:149] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000003c0
+[16:52:32:501] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000059f0
+[16:52:57:345] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009ea0
+[16:52:57:529] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005ca0
+[16:52:59:856] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fb10
+[16:53:00:654] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cd90
+[16:54:15:227] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d070
+[16:54:18:613] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006fb0
+[16:54:19:741] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d120
+[16:54:41:954] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ad10
+[16:54:44:617] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000ba30
+[16:54:45:018] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009ec0
+[17:11:32:700] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002790
+[17:11:36:419] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a000
+[17:11:37:040] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004450
+[17:15:48:794] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a980
+[17:15:49:418] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005ca0
+[17:16:07:754] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a700
+[17:19:10:725] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d190
+[17:19:10:725] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f720
+[17:33:26:640] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007dd0
+[17:33:26:641] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a950
+[17:34:46:051] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f720
+[17:36:02:957] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000050d0
+[17:36:02:957] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004220
+[17:36:22:338] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006fb0
+[17:36:47:112] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000bd80
+[17:36:47:112] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fb10
+[17:37:02:923] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000db00
+[17:37:02:106] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006b40
+[17:37:54:381] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b200
+[17:37:54:382] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000050d0
+[17:38:26:447] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000098c0
+[17:38:38:206] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00007f30
+[17:38:38:206] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000adb0
+[17:38:54:568] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000014f0
+[17:39:29:979] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006bb0
+[17:39:29:979] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d070
+[17:39:42:360] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f960
+[17:41:28:183] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d010
+[17:41:28:183] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009e70
+[17:42:13:276] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009ec0
+[17:42:13:554] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f1e0
+[17:42:13:708] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002790
+[17:43:29:986] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001070
+[17:44:37:342] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001070
+[17:44:37:342] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003300
+[17:51:16:054] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003300
+[17:56:17:865] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005700
+[17:57:21:524] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004450
+[17:57:53:323] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00006fb0
+[17:58:05:820] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000098c0
+[17:58:05:826] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000aa50
+[17:59:17:210] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000003c0
+[17:59:28:582] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00001be0
+[17:59:32:680] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000e650
+[17:59:43:182] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000077f0
+[17:59:47:521] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002180
+[17:59:53:237] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003d70
+[18:00:14:453] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000fee0
+[18:00:31:027] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b520
+[18:00:47:516] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004220
+[18:01:51:706] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002180
+[18:05:30:117] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000d0f0
+[18:05:43:175] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009ea0
+[18:06:42:317] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003020
+[18:07:01:949] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00002150
+[18:07:01:949] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000a700
+[18:07:13:830] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b200
+[18:07:46:573] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003020
+[18:07:46:573] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004ad0
+[18:09:43:785] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000f720
+[18:15:47:209] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b200
+[18:15:47:209] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00009400
+[18:20:54:948] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 000014f0
+[18:23:48:540] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003c70
+[09:31:36:109] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000b200
+[09:31:39:701] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00008660
+[09:34:30:657] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000a10
+[09:34:35:141] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00000000
+[09:42:09:592] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc00
+[09:42:22:502] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00003020
+[09:50:22:855] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00005cd0
+[09:52:03:957] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 00004ad0
+[09:52:13:170] [3959:6357] [WARN][com.freerdp.channels.cliprdr.common] - [cliprdr_packet_format_list_new] called with invalid type 0000cc80
+
+(org.remmina.Remmina:3959): Gtk-WARNING **: 10:08:12.717: gtk_menu_detach(): menu is not attached
+Gdk-Message: 10:09:18.604: org.remmina.Remmina: Fatal IO error 11 (Resource temporarily unavailable) on X server :0.0.
+

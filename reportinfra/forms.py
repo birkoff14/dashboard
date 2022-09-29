@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.forms import ModelChoiceField
+from django.forms import ModelChoiceField, DateField
 from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla, actividades
 import datetime
 
@@ -43,3 +43,10 @@ class dailyLog(forms.ModelForm):
         TipoActividad = ModelChoiceField(queryset=actividades.objects.values_list('id','TipoActividad'))
         
         #raw("select case when (LENGTH(SR) = 0 and length(RFC) = 0)  then IM when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC else SR end SR"))
+
+class activities(forms.ModelForm):
+    class Meta:
+        model = actividades
+        fields = "__all__"
+
+        Ambiente = ModelChoiceField(queryset=Ambiente.objects.all().order_by('NombreAmbiente'), widget=forms.Select())

@@ -15,6 +15,7 @@ urlpatterns = [
     path('detailSR/<str:idSR>', views.detailSR, name='detailSR'),
     path('cierre/<str:idSR>', views.cierre, name='cierre'),
     path('editSR/<str:idSR>', views.editSR, name='editSR'),
+    path('editActivity/<str:idAct>/<str:idU>', views.editActivity, name='editActivity'),
     path('recover', views.recover, name='recover'),
     path('actividades', views.activity, name='actividades'),
     path('repactividades', views.repactividades, name='repactividades'),
