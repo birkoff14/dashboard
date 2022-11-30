@@ -7,6 +7,12 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import *
 from .models import *
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework import permissions
+from .serializers import actividadesSerializer
+
 # Create your views here.
 
 def login(request):
@@ -48,6 +54,13 @@ def sr(request):
 
     form = addData(request.POST or None)
 
+    usuarios = {'18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', '7':'diego.montoya', 
+        '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '3':'hector.ortiz', 
+        '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
+        '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
+        '17':'ricardo.lopez', '12':'tonatiuh.mata'
+    }
+
     if request.method == "POST":
        if form.is_valid():            
            print("Si entra")
@@ -62,6 +75,7 @@ def sr(request):
     context = {
         "titulo" : "SERVICE REQUESTS GENERALES",
         "form": form,
+        "usuarios" : usuarios
     }
 
     return render(request, 'sr.html', context)
@@ -288,11 +302,18 @@ def activity(request):
 def repactividades(request):
 
     username = request.GET.get("idU", "")
+    fechaIni = request.POST.get("fechaInit", "0")
+    fechaFin = request.POST.get("fechaFin", "0")
 
     if (username == 'adrian.martinez' or username == 'cynthia.gutierrez' or username == 'birkoff'):
         qryWhere = ""
     else:        
         qryWhere = "where Usuario = '" + username + """'"""
+
+    if (fechaIni):
+        qryFecha = " and FechaInicio >= '" + fechaIni + "' and FechaFin <= '" + fechaFin + "'"
+    else:
+        qryFecha = ""
 
     #qry = actividades.objects.filter(Usuario="'" + username + "'")
     qry = actividades.objects.raw("""select id,
@@ -305,13 +326,17 @@ def repactividades(request):
             from reportinfra_actividades a
             inner join reportinfra_ambiente b
             on b.idAmbiente = a.Ambiente_id """            
-            + qryWhere)
+            + qryWhere + qryFecha)
+    
 
+    #print(fechaIni)
+    #print(fechaFin)
     print(qry)
 
     context = {
         "titulo" : "Reporte de actividades",
         "qry" : qry,
+        "username" : username,
     }
 
     return render(request, 'reporteActividades.html', context)
@@ -377,3 +402,18 @@ def editActivity(request, idAct, idU):
     }
 
     return render(request, "editActivity.html", context)
+
+class ActivitiesListApiView(APIView):
+    # add permission to check if user is authenticated
+    permission_classes = [permissions.IsAuthenticated]
+
+    # 1. List all
+    def get(self, request, *args, **kwargs):
+        '''
+        List all the todo items for given requested user
+        '''
+        act = actividades.objects.filter(Usuario = request.user.id)
+        serializer = actividadesSerializer(act, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

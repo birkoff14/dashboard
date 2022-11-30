@@ -58,7 +58,17 @@
                 </div>
                 <div class="form-group">
                   <label>Usuario</label>
-                  {{ form.Usuario }}
+                  <select name="Usuario" required="" id="id_Usuario" class="form-control">
+                                                     
+                    {{usuarios|pprint}}
+                    {% for key, value in usuarios.items %}
+                      {% if user.username == value %}
+                        <option value='{{ key }}' selected> {{ value }}</option>
+                      {% else %}
+                        <option value='{{ key }}'> {{ value }}</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
                 </div>
                 <div class="form-group">
                   <label>Categoría</label>
@@ -76,13 +86,17 @@
                   <label>Ambiente</label>
                   {{ form.Ambiente }}
                 </div>
-                <div class="form-group">
-                  <label>Reemplazo de Hardware</label>
-                  {{ form.CambioHW }}
+                <div id="RH">
+                  <div class="form-group">
+                    <label>Reemplazo de Hardware</label>
+                    {{ form.CambioHW }}
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label>RMA</label>
-                  {{ form.RMA }}
+                <div id="RMA">
+                  <div class="form-group">
+                    <label>RMA</label>
+                    {{ form.RMA }}
+                  </div>
                 </div>
                 <div class="form-group">
                   <label>RFC</label>
@@ -340,6 +354,20 @@
       $(this).bootstrapSwitch('state', $(this).prop('checked'));
     })
 
+    $('#id_Categoria').change(function () {
+            var value = $(this).val();
+            if (value == 3) 
+            {
+              $("#RH").hide()
+              $("#RMA").hide()
+              document.getElementById('id_CambioHW').value = '2'
+            }
+            else 
+            {
+              $("#RH").show()
+              $("#RMA").show()
+            }
+      });
   })
 </script>
 

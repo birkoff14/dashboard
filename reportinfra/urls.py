@@ -3,6 +3,9 @@ from reportinfra import views
 from django.contrib import admin
 from django.conf.urls import url
 from .ajax import get_componentes, get_vendors
+from .views import (
+    ActivitiesListApiView,
+)
 
 
 urlpatterns = [
@@ -20,7 +23,8 @@ urlpatterns = [
     path('actividades', views.activity, name='actividades'),
     path('repactividades', views.repactividades, name='repactividades'),
     url(r'^ajax/get_componentes/$', get_componentes, name='get_componentes'),  
-    url(r'^ajax/get_vendors/$', get_vendors, name='get_vendors'),  
+    url(r'^ajax/get_vendors/$', get_vendors, name='get_vendors'),     
+    path('api', ActivitiesListApiView.as_view()), 
 ]
 
 admin.site.site_header = "Operación de Aplicaciones Cloud"

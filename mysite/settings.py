@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'import_export',
     'bootstrap_datepicker_plus',
     "bootstrap4",
+    'rest_framework',
     'reportinfra'
 ]
 
