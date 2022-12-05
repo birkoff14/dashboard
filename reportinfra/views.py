@@ -310,7 +310,7 @@ def repactividades(request):
     else:        
         qryWhere = "where Usuario = '" + username + """'"""
 
-    if (fechaIni):
+    if (fechaIni != "0"):
         qryFecha = " and FechaInicio >= '" + fechaIni + "' and FechaFin <= '" + fechaFin + "'"
     else:
         qryFecha = ""
@@ -329,7 +329,7 @@ def repactividades(request):
             + qryWhere + qryFecha)
     
 
-    #print(fechaIni)
+    print(fechaIni)
     #print(fechaFin)
     print(qry)
 
