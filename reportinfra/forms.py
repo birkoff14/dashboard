@@ -12,19 +12,14 @@ class UserModelChoiceField(ModelChoiceField):
 class addData(forms.ModelForm):
     class Meta:
         model = reporteFallas
+        
         fields = ["SR", "Fecha", "Usuario", "Vendor", "Categoria", "Componente", "Ambiente", "CambioHW", "RMA", "RFC", "IM", "descripcion"]
 
-        SR = forms.CharField()        
-        #Fecha = forms.DateTimeField(initial=datetime.date.today().strftime("%Y-%m-%d"), required=False, label="Fecha orale")
-        #Fecha = forms.CharField()
-        Categoria = forms.CharField()
-        Usuario = UserModelChoiceField(queryset=User.objects)
-        Vendor = ModelChoiceField(queryset=Vendor.objects.all().order_by('NombreVendor'))
-        Ambiente = ModelChoiceField(queryset=Ambiente.objects.all().order_by('NombreAmbiente'), widget=forms.Select())
-        CambioHW = ModelChoiceField(queryset=CambioHW.objects.all().order_by('NombreHW'))
-        Componente = ModelChoiceField(queryset=Componente.objects.all())
-        descripcion = forms.CharField(widget=forms.Textarea(attrs={"rows":30000, "cols":15}))
-        
+        #Ambiente = ModelChoiceField(queryset=Ambiente.objects.order_by('NombreAmbiente'))
+
+        #def __init__(self, user, *args, **kwargs):            
+        #    super(addData, self).__init__(*args, **kwargs)
+        #    self.fields['Ambiente'].queryset = Ambiente.objects.filter(Area="VMware")
 
 class comments(forms.ModelForm):
     class Meta:
@@ -49,4 +44,4 @@ class activities(forms.ModelForm):
         model = actividades
         fields = "__all__"
 
-        Ambiente = ModelChoiceField(queryset=Ambiente.objects.all().order_by('NombreAmbiente'), widget=forms.Select())
+        AmbienteTest = ModelChoiceField(queryset=Ambiente.objects.all().order_by('NombreAmbiente'), widget=forms.Select())

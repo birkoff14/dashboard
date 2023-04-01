@@ -27,10 +27,10 @@ def login(request):
             password = form.cleaned_data['password']
             
             user = authenticate(username=username, password=password)
-            print(user)
+            #print(user)
             if user is not None:
                 do_login(request, user)
-                return redirect('/main')
+                return redirect('/main?idU='+username)
         else:
             txtError = "Usuario o contraseña incorrectos"            
 
@@ -47,35 +47,130 @@ def logout(request):
 @login_required(login_url='/')
 def main(request):
 
-    return render(request, 'index.html')
+    usuario = request.GET.get("idU", "")
+    print("User: " + usuario)
+    _tipoUser = ""
+
+    hoy = datetime.date.today()
+    lunes = hoy + datetime.timedelta(0 - hoy.weekday())
+    viernes = lunes + datetime.timedelta(days=4)
+
+    qry = actividades.objects.raw("""select 1 as id, Sum(HorasInvertidas) Horas, Usuario
+                                    from reportinfra_actividades
+                                    where FechaInicio >= '""" + str(lunes) +
+                                    """' and (FechaFin <= '""" + str(viernes) + """' and FechaFin <> '')
+                                    and Usuario = '""" + usuario + 
+                                    """' group by Usuario
+                                    order by Usuario""")
+
+    qryTotal = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas), 0) Horas, Usuario
+                from reportinfra_actividades
+                where Usuario = '""" + usuario +
+                """' group by Usuario
+                order by Usuario""")
+
+    qryTotalHO = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas), 0) Horas, Usuario
+                from reportinfra_actividades
+                where Usuario = '""" + usuario +
+                """' and HO = 'Si' group by Usuario
+                order by Usuario""")
+
+    qryDia = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas), 0) Horas, Usuario
+                from reportinfra_actividades
+                where FechaInicio >= '""" + str(hoy) + """'
+                and (FechaFin <= '""" + str(hoy) + """' and FechaFin <> '')
+                and Usuario = '""" + usuario + 
+                """' group by Usuario
+                order by Usuario""")
+
+
+    tipoUser = User.objects.raw("""select 1 as id, TipoUser, username from reportinfra_customuser a
+                                inner join auth_user b
+                                on a.Usuario_id = b.id 
+                                where username = '""" + usuario + """'""")
+
+    for user in tipoUser:
+        print(f'{user.username} es de tipo {user.TipoUser}')
+
+        _tipoUser = user.TipoUser
+
+
+    request.session['tipoUser'] = _tipoUser
+
+    print("Esta es mi sesión de tipo: " + request.session['tipoUser'])
+
+    context = {
+        "semana" : qry,
+        "Total"  : qryTotal,
+        "Diario" : qryDia,
+        "TotalHO" : qryTotalHO,
+        "_tipoUser" : _tipoUser,
+    }
+
+    print(qryTotalHO)
+
+    return render(request, 'index.html', context)
 
 @login_required(login_url='/')
 def sr(request):
 
     form = addData(request.POST or None)
+    username = request.GET.get("idU", "")
+    urlR = '/main?idU=' + username
 
-    usuarios = {'18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', '7':'diego.montoya', 
-        '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '3':'hector.ortiz', 
+    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
+        '7':'diego.montoya', '22' : 'eduardo.gonzalez',
+        '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '32' : 'gladis.garcia', 
+        '3':'hector.ortiz', 
         '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
         '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
-        '17':'ricardo.lopez', '12':'tonatiuh.mata'
+        '17':'ricardo.lopez', '12':'tonatiuh.mata',
+    }
+
+    usuariosStorage = {'29' : 'abraham.castro', '28' : 'angel.urzua', '31' : 'oscar.salinas', 
+        '30' : 'pedro.mendez', '20' : 'rolando.ortega'
+
     }
 
     if request.method == "POST":
+       print(urlR)
        if form.is_valid():            
            print("Si entra")
-           frm = form.save(commit=False)           
+           frm = form.save(commit=False)
            frm.save()
            #url = reverse('main')
-           #return HttpResponseRedirect(url)
-           return redirect('/main')
+           #return HttpResponseRedirect(url)           
+           return redirect(urlR)
        else:            
            print("No se grabo nada :(")
+           print(form.is_valid())
+           print(form.errors)
+
+    tipoUser = User.objects.raw("""select 1 as id, TipoUser, username from reportinfra_customuser a
+                            inner join auth_user b
+                            on a.Usuario_id = b.id 
+                            where username = '""" + username + """'""")
+
+    for user in tipoUser:        
+        _tipoUser = user.TipoUser
+
+    print("Tipo: " + _tipoUser)
+
+    if _tipoUser == "VMware":
+        env = actividades.objects.raw("""select 1 as id, idAmbiente, NombreAmbiente from reportinfra_ambiente where Area = 'VMware' order by 3 """)
+        users = usuarios
+    else:
+        env = actividades.objects.raw("""select 1 as id, idAmbiente, NombreAmbiente from reportinfra_ambiente where Area = 'Storage' order by 3 """)
+        users = usuariosStorage
+
+    #print(env)
+    #print(users)
     
     context = {
         "titulo" : "SERVICE REQUESTS GENERALES",
         "form": form,
-        "usuarios" : usuarios
+        "usuarios" : users,
+        "ambiente" : env
     }
 
     return render(request, 'sr.html', context)
@@ -135,9 +230,6 @@ def reportes(request):
             queryset = reporteFallas.objects.raw(fields + " where Categoria_id = " + idFalla)
         else:
             queryset = reporteFallas.objects.raw(fields + " where Categoria_id = " + idFalla + filtroC)
-
-    print(queryset)
-    print(fechaIni)
 
     context = {
         "qry" : queryset,
@@ -255,7 +347,7 @@ def activity(request):
             HorasInvertidas=request.POST.get("txtHorasInvertidas", ""),
             IM=request.POST.get("IM", ""),
             RFC=request.POST.get("RFC", ""),
-            #SR=request.POST.get("SR", ""),
+            Tipo=request.POST.get("txtTipo", ""),
             Evento=request.POST.get("cmbTipo", ""),
             Usuario=request.POST.get("usuario", ""),
             Descripcion=request.POST.get("Descripcion", ""),
@@ -264,12 +356,11 @@ def activity(request):
             Avance=request.POST.get("Avance", ""),
             Solicitante=request.POST.get("txtSolicitante", ""),
             NombreTurnos=request.POST.get("NombreTurnos", ""),
-
-
+            HO=request.POST.get("HO", "No"),
         )
-        print("si entro")
+        print("Grabo bien los datos del form")
     else:
-        print("nel")
+        print("No se guardo nada")
 
     #form = dailyLog(request.POST or None)
 
@@ -285,13 +376,27 @@ def activity(request):
             from reportinfra_reportefallas a
             inner join auth_user u on a.Usuario_id = u.id 
             where u.username ='""" + username + """'""")
+    
+    tipoUser = User.objects.raw("""select 1 as id, TipoUser, username from reportinfra_customuser a
+                            inner join auth_user b
+                            on a.Usuario_id = b.id 
+                            where username = '""" + username + """'""")
 
-    env = actividades.objects.raw("""select 1 as id, idAmbiente, NombreAmbiente from reportinfra_ambiente order by 3 """)
+    for user in tipoUser:
+        #print(f'{user.username} es de tipo {user.TipoUser}')
+        _tipoUser = user.TipoUser
 
-    print(qry)
+    print("Tipo: " + _tipoUser)
+
+    if _tipoUser == "VMware":
+        env = actividades.objects.raw("""select 1 as id, idAmbiente, NombreAmbiente from reportinfra_ambiente where Area = 'VMware' order by 3 """)
+    else:
+        env = actividades.objects.raw("""select 1 as id, idAmbiente, NombreAmbiente from reportinfra_ambiente where Area = 'Storage' order by 3 """)
+
+    print(env)
     
     context = {
-        "titulo" : "Tracking de actividades",        
+        "titulo" : "Registro de actividades",        
         "qry" : qry,
         "env" : env,
     }

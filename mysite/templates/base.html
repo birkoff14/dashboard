@@ -37,7 +37,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{% url 'main' %}" class="nav-link">Home</a> 
+        <a href="{% url 'main' %}?idU={{ user }}" class="nav-link">Home</a> 
       </li>      
       <li class="nav-item d-none d-sm-inline-block">
         <div class="nav-link">{{ user.get_full_name }}</div>
@@ -79,7 +79,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4" style="align-items:center">
     <!-- Brand Logo -->
-    <a  href="{% url 'main' %}" class="brand-link">
+    <a  href="{% url 'main' %}?idU={{ user }}" class="brand-link">
       <img src="{% static 'img/logo.png'%}" alt="Logo Triara" style="opacity: 1">
       <!-- <span class="brand-text font-weight-light">Triara</span> -->
     </a>    
@@ -103,7 +103,7 @@
           
           <li class="nav-header">MENU</li>          
           <li class="nav-item">
-            <a href="{% url 'sr' %} " class="nav-link">
+            <a href="{% url 'sr' %}?idU={{ user.username }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Agregar SR
@@ -125,7 +125,15 @@
                 Ver estadísticas
               </p>
             </a>
-          </li>          
+          </li>    
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-columns"></i>
+              <p>
+                Ver reporte semanal HO
+              </p>
+            </a>
+          </li>       
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>

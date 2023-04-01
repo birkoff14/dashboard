@@ -79,7 +79,7 @@
                                     <th></th>
                                     <th>Editar</th>
                                     <th>Usuario</th>
-                                    <th>Actividad relacionada</th>
+                                    <th>Descripción</th>
                                     <th>Fecha inicio</th>
                                     <th>Fecha fin</th>
                                     <th>Horas invertidas</th>
@@ -90,7 +90,7 @@
                                     <th>Ambiente</th>
                                     <th>Status</th>
                                     <th>Avance</th>
-                                    <th>Descripción</th>
+                                    <th>Actividad relacionada</th>
                                     <th>Solicitante de la tarea</th>
                                     <th>Nombre contacto externo</th>
                                 </tr>
@@ -101,7 +101,7 @@
                                     <td></td>
                                     <td><div><a href="#" onclick="return abrir_modal('{% url 'editActivity' dt.id dt.Usuario %}');">Editar</a></div></td>
                                     <td>{{ dt.Usuario }}</td>
-                                    <td>{{ dt.TipoActividad }}</td>
+                                    <td>{{ dt.Descripcion }}</td>
                                     <td>{{ dt.FechaInicio|date }}</td>
                                     <td>{{ dt.FechaFin|date }}</td>
                                     <td>{{ dt.HorasInvertidas }}</td>
@@ -112,7 +112,7 @@
                                     <td>{{ dt.NombreAmbiente }}</td>
                                     <td>{{ dt.Status }}</td>
                                     <td>{{ dt.Avance }}</td>
-                                    <td>{{ dt.Descripcion }}</td>
+                                    <td>{{ dt.TipoActividad }}</td>
                                     <td>{{ dt.Solicitante }}</td>
                                     <td>{{ dt.NombreTurnos }}</td>
                                 </tr>
@@ -123,7 +123,7 @@
                                     <th></th>
                                     <th>Editar</th>
                                     <th>Usuario</th>
-                                    <th>Actividad relacionada</th>
+                                    <th>Descripción</th>
                                     <th>Fecha inicio</th>
                                     <th>Fecha fin</th>
                                     <th>Horas invertidas</th>
@@ -134,7 +134,7 @@
                                     <th>Ambiente</th>
                                     <th>Status</th>
                                     <th>Avance</th>
-                                    <th>Descripción</th>
+                                    <th>Actividad relacionada</th>
                                     <th>Solicitante de la tarea</th>
                                     <th>Nombre contacto externo</th>
                                 </tr>

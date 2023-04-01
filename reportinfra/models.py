@@ -1,9 +1,16 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-from django.contrib.auth.models import User
 
 # Create your models here.
+
+class CustomUser(models.Model):
+    TipoUser = models.CharField(max_length=100, blank=False)
+    Usuario = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+
 
 class Categoria(models.Model):
     idTipo = models.AutoField(primary_key=True)
@@ -25,6 +32,7 @@ class Vendor(models.Model):
 class Ambiente(models.Model):
     idAmbiente = models.AutoField(primary_key=True)
     NombreAmbiente = models.CharField(max_length=100, blank=False)
+    Area = models.CharField(max_length=100, blank=False)
     def __str__(self):
         return self.NombreAmbiente
     class Meta:
@@ -87,3 +95,6 @@ class actividades(models.Model):
     Avance = models.CharField(max_length=150, blank=True, verbose_name="Avance")
     Solicitante = models.CharField(max_length=100, blank=True, verbose_name="Solicitante")
     NombreTurnos = models.CharField(max_length=100, blank=True, verbose_name="NombreTurnos")
+    HO = models.CharField(max_length=100, blank=True, verbose_name="Home Office")
+    Tipo = models.CharField(max_length=100, blank=True, verbose_name="Tipo mejora") #debe ser un catálogo
+    

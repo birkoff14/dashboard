@@ -10,7 +10,7 @@ class VendorAdmin(ImportExportModelAdmin):
 
 @admin.register(Ambiente)
 class AmbienteAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("NombreAmbiente", "Area")
 
 @admin.register(CambioHW)
 class CambioHWAdmin(admin.ModelAdmin):
@@ -23,6 +23,7 @@ class CategoriaAdmin(admin.ModelAdmin):
 @admin.register(Componente)
 class ComponenteAdmin(ImportExportModelAdmin):
     list_display = ("idVendor", "Componente")
+    
 
 @admin.register(reporteFallas)
 class reporteFallasAdmin(ImportExportModelAdmin):
@@ -31,3 +32,7 @@ class reporteFallasAdmin(ImportExportModelAdmin):
 @admin.register(actividades)
 class actividadesAdmin(ImportExportModelAdmin):
     list_display = ("FechaInicio", "HorasInvertidas", "Usuario", "Evento", "Descripcion", "Ambiente")
+
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ("Usuario", "TipoUser")

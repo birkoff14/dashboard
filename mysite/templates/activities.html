@@ -46,9 +46,33 @@
                         <div class="card-body">
                             {% csrf_token %}
                             <div class="form-group">
-                                <label>Tipo de actividad</label>
-                                <select name="cmbActividad" class="form-control select2bs4 select" style="width: 100%;" id="cmbActividad">
-                                    <option selected>------------------------</option>
+                                <div
+                                    class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                    <input name="HO" type="checkbox" value="Si" class="custom-control-input"
+                                        id="customSwitch3">
+                                    <label class="custom-control-label" for="customSwitch3">Home Office</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Tipo</label>
+                                <select id="txtTipo" required name="txtTipo" class="form-control select"
+                                    style="width: 100%;">
+                                    <option selected=""></option>
+                                    <option>Actualización recurrente</option>
+                                    <option>Implementación</option>
+                                    <option>Toma operativa</option>
+                                    <option>Trouble shooting falla</option>
+                                    <option>Reuniones de seguimiento</option>
+                                    <option>Investigación</option>
+                                    <option>Actualización recurrente en curso</option>
+                                    <option>Especial</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>SR asociado</label>
+                                <select name="cmbActividad" required class="form-control select2bs4 select" style="width: 100%;"
+                                    id="cmbActividad">
+                                    <option selected></option>
                                     <option value="99999">Sin SR asociado</option>
                                     {% for dt in qry %}
                                     <option value="{{ dt.SR }}">{{ dt.SR }}</option>
@@ -58,33 +82,35 @@
                             </div>
                             <div class="form-group">
                                 <label>Solicitante de la tarea</label>
-                                <select id="txtSolicitante" name="txtSolicitante" class="form-control select" style="width: 100%;">
-                                    <option selected="0">------------------------</option>
+                                <select id="txtSolicitante" required name="txtSolicitante" class="form-control select"
+                                    style="width: 100%;">
+                                    <option selected="""></option>
                                     <option>Adrián Martínez</option>
                                     <option>Luis Alberto Ramírez</option>
-                                    <option>Rodolfo Mena</option>
                                     <option>TEAM OAC</option>
                                     <option>------------------------</option>
                                     <option>Turnos</option>
                                     <option>Mesa de ayuda</option>
                                     <option>ITOC</option>
+                                    <option>AMX</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div id="NombreTurnos"></div>
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <label>Evento o proyecto</label>
                                 <select name="cmbTipo" class="form-control select" style="width: 100%;" id="cmbTipo">
-                                    <option value = 0 selected="0">------------------------</option>
+                                    <option value=0 selected=""></option>
                                     <option>Evento</option>
                                     <option>Proyecto</option>
                                 </select>
-                            </div>  
+                            </div>
                             <div id="SR_ID" class="form-group">
                                 <label>Ambiente</label>
-                                <select name="Ambiente" required class="form-control select" style="width: 100%;" id="Ambiente">
-                                    <option value = 19 selected="0">------------------------</option>                                    
+                                <select name="Ambiente" required class="form-control select" style="width: 100%;"
+                                    id="Ambiente">
+                                    <option value=19 selected="0"></option>
                                     {% for dt in env %}
                                     <option value="{{ dt.idAmbiente }}">{{ dt.NombreAmbiente }}</option>
                                     {% endfor %}
@@ -93,18 +119,18 @@
                             <div class="form-group">
                                 <label>Status</label>
                                 <select name="Status" class="form-control select" style="width: 100%;">
-                                    <option value="0" selected="0">------------------------</option>
+                                    <option value="0" selected="0"></option>
                                     <option value="En proceso">En proceso</option>
                                     <option value="Terminado">Terminado</option>
-                                </select>                                
+                                </select>
                             </div>
                             <div class="form-group">
                                 <div id="desc"></div>
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <label>Avance</label>
-                                <input type='text' required class='form-control' name='Avance'>                            
-                            </div>                            
+                                <input type='text' required class='form-control' name='Avance'>
+                            </div>
                             <div class="form-group">
                                 <div id="IM"></div>
                             </div>
@@ -113,7 +139,7 @@
                             </div>
                             <div class="form-group">
                                 <div id=""></div>
-                            </div>                                                       
+                            </div>
                             <div class="form-group">
                                 <label>Fecha inicio</label>
                                 <div class="input-group date" id="reservationdate" data-target-input="nearest">
@@ -139,7 +165,7 @@
                             <div class="form-group">
                                 <label>Horas invertidas</label>
                                 <input name="txtHorasInvertidas" required type="text" class="form-control">
-                            </div>                            
+                            </div>
                             <input type="submit" name="submit" class='btn btn-primary swalDefaultSuccess'
                                 id="submit_btn" value="Agregar datos" />
                         </div>
@@ -284,7 +310,7 @@
         //$(document).on("change", "#cmbActividad", function () {
         $('#cmbActividad').change(function () {
             var value = $(this).val();
-            if (value == 99999) {                
+            if (value == 99999) {
                 var input = "<input type='text' class='form-control' name='IM'>";
                 $("#IM")
                     .html('<label>IM</label>')
@@ -303,9 +329,9 @@
                     .show()
                 var input4 = "<input type='text' class='form-control' name='SR'>";
                 $("#SR_ID").show()
-                    //.html('<label>SR</label>')
-                    //.append(input4)
-                    //.show()
+                //.html('<label>SR</label>')
+                //.append(input4)
+                //.show()
             }
             else {
                 $("#IM").hide()
@@ -324,27 +350,27 @@
                     //.append(input)
                     .show()
                 $("#")
-            }else{
+            } else {
                 $("#PROYECTO")
                     .html('Descripción actividad')
                     //.append(input)
                     .show()
             }
-        });    
-        
+        });
+
         $('#txtSolicitante').change(function () {
             var value = $(this).val();
             var input5 = "<input type='text' class='form-control' name='NombreTurnos'>";
-            if (value == "Turnos" || value == "Mesa de ayuda" || value == "TEAM OAC" || value == "ITOC") {
+            if (value == "Turnos" || value == "Mesa de ayuda" || value == "TEAM OAC" || value == "ITOC" || value == "AMX") {
                 $("#NombreTurnos")
                     .html('Nombre contacto')
                     .append(input5)
                     .show()
                 $("#")
-            }else{
+            } else {
                 $('#NombreTurnos').hide()
             }
-        }); 
+        });
 
 
     });

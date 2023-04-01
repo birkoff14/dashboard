@@ -36,6 +36,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+
+
 IMPORT_EXPORT_USE_TRANSACTIONS = True 
 
 # Application definition
