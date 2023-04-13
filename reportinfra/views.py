@@ -53,7 +53,7 @@ def main(request):
 
     hoy = datetime.date.today()
     lunes = hoy + datetime.timedelta(0 - hoy.weekday())
-    viernes = lunes + datetime.timedelta(days=4)
+    viernes = lunes + datetime.timedelta(days=6)
 
     qry = actividades.objects.raw("""select 1 as id, Sum(HorasInvertidas) Horas, Usuario
                                     from reportinfra_actividades
@@ -107,7 +107,7 @@ def main(request):
         "_tipoUser" : _tipoUser,
     }
 
-    print(qryTotalHO)
+    print(qry)
 
     return render(request, 'index.html', context)
 
@@ -522,3 +522,52 @@ class ActivitiesListApiView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@login_required(login_url='/')
+def reporteSemanal(request):
+    
+    usuario = request.GET.get("idU", "")
+    print("User: " + usuario)
+
+    hoy = datetime.date.today()
+    lunes = hoy + datetime.timedelta(0 - hoy.weekday())
+    viernes = lunes + datetime.timedelta(days=6)
+
+
+    qry = actividades.objects.raw("""select 1 as id, sum(`HorasInvertidas`) HorasInvertidas, 
+                dayname(`FechaInicio`) Dia,
+                CONCAT(day(`FechaInicio`), "-", MONTH(`FechaInicio`), "-", YEAR(`FechaInicio`)) as Fecha
+                from reportinfra_actividades
+                where `Usuario` = '""" + usuario  
+                #+ """' and `FechaInicio` >= '""" + str(lunes) + """' and (FechaFin <= '""" + str(viernes) 
+                #+ """' and FechaFin <> '')"""
+                + """' and `FechaInicio` >= '2023-03-27' and (FechaFin <= '2023-04-09' and FechaFin <> '') 
+                group by day(`FechaInicio`), `FechaInicio`
+                order by `FechaInicio`;""")
+
+    print(qry) 
+
+    context = {
+        "qry" : qry,
+        "userqry" : usuario
+    }
+
+    return render(request, "reporteSemanal.html", context)
+
+
+@login_required(login_url='/')
+def detailSemanal(request, fecha, usuario):
+
+    fechaCompuesta = fecha
+
+    my_list = fechaCompuesta.split("-")
+    
+    qry = actividades.objects.raw("""select * from reportinfra_actividades 
+                    where FechaInicio >= '""" + my_list[2] + """-""" + my_list[1] + """-""" + my_list[0] + """ 00:00:00.000000' 
+                    and FechaInicio <= '""" + my_list[2] + """-""" + my_list[1] + """-""" + my_list[0] + """ 23:59:00.000000'
+                    and Usuario = '""" + usuario + """'""")
+       
+    context = {
+        "qry" : qry
+    }
+    return render(request, "detalleSemana.html", context)

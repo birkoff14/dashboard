@@ -1,0 +1,45 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">{{ Titulo }}</h5>
+            <button type="button" onclick="return cerrar_modal()" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <hr />
+            <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Tipo</th>
+                    <th>IM</th>
+                    <th>SR</th>
+                    <th>RFC</th>
+                    <th>Horas</th>
+                    <th>Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for dt in qry %}
+                  <tr aria-expanded="false">
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ dt.Evento }}</td>
+                    <td>{{ dt.IM}}</td>
+                    <td>{{ dt.SR}}</td>
+                    <td>{{ dt.RFC }}</td>
+                    <td>{{ dt.HorasInvertidas }}</td>
+                    <td>{{ dt.Descripcion }}</td>
+                  </tr>     
+                  {% endfor %}                         
+                </tbody>
+              </table>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="return cerrar_modal()" class="btn btn-secondary"
+                data-dismiss="modal">Cerrar</button>
+        </div>
+    </div>
+</div>

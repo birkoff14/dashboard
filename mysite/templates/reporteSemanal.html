@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+
+    {% block css %}
+
+    {% endblock %}
+
+    {% block content %}
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Reporte semanal</h3>
+
+                <div class="card-tools">
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%" class="text-center">
+
+                            </th>
+                            <th style="width: 30%">
+                                Dia de la semana
+                            </th>
+                            <th style="width: 30%">
+                                Horas
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Estatus
+                            </th>
+                            <th style="width: 30%" class="text-center">
+                                Actividades
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dt in qry %}
+                        <tr>
+                            <td>
+                                {{ forloop.counter }}
+                            </td>
+                            <td>
+                                <a>
+                                    {{ dt.Dia }}
+                                </a>
+                                <br />
+                                <small>
+                                    Fecha {{ dt.Fecha }}
+                                </small>
+                            </td>
+                            <td>
+                                {{ dt.HorasInvertidas }} horas
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">Success</span>
+                            </td>
+                            <td class="project-actions text-center">
+                                <a class="btn btn-primary btn-sm" onclick="return abrir_modal('{% url 'detailSemanal' dt.Fecha userqry %}');"
+                                    href="#">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+
+    <div class="modal fade" id="ventana_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+
+    </div>
+    {% endblock %}
+
+    {% block js %}
+
+    <script>
+        function abrir_modal(url) {
+            $('#ventana_modal').load(url, function () {
+                $(this).modal({
+                    backdrop: 'static',
+                    keyboard: false,
+                    success: function () {
+                        document.getElementById("SR") = 'block';
+                    }
+                })
+
+                $(this).modal('show');
+            });
+
+            return false;
+
+        }
+
+        function cerrar_modal() {
+
+            $('#ventana_modal').modal('hide');
+
+            return false;
+        }
+
+    </script>
+
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- overlayScrollbars -->
+    <script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+    <!-- AdminLTE App -->
+    <script src="{% static 'js/adminlte.js' %}"></script>
+
+    <!-- PAGE PLUGINS -->
+    <!-- jQuery Mapael -->
+    <script src="{% static 'plugins/jquery-mousewheel/jquery.mousewheel.js' %}"></script>
+    <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery-mapael/jquery.mapael.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery-mapael/maps/usa_states.min.js' %}"></script>
+
+    {% endblock %}

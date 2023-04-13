@@ -25,6 +25,9 @@ urlpatterns = [
     url(r'^ajax/get_componentes/$', get_componentes, name='get_componentes'),  
     url(r'^ajax/get_vendors/$', get_vendors, name='get_vendors'),     
     path('api', ActivitiesListApiView.as_view()), 
+    path('reporteSemanal', views.reporteSemanal, name='reporteSemanal'),
+    path('detailSemanal/<str:fecha>/<str:usuario>', views.detailSemanal, name='detailSemanal'),
+
 ]
 
 admin.site.site_header = "Operación de Aplicaciones Cloud"

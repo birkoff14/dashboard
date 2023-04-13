@@ -103,7 +103,7 @@
           
           <li class="nav-header">MENU</li>          
           <li class="nav-item">
-            <a href="{% url 'sr' %}?idU={{ user.username }}" class="nav-link">
+            <a href="{% url 'sr' %}?idU={{ user }}" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>
                 Agregar SR
@@ -111,7 +111,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'actividades' %}?idU={{ user.username }}" class="nav-link">
+            <a href="{% url 'actividades' %}?idU={{ user }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Agregar actividades
@@ -127,7 +127,7 @@
             </a>
           </li>    
           <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{% url 'reporteSemanal'%}?idU={{ user }}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>
               <p>
                 Ver reporte semanal HO
@@ -163,7 +163,7 @@
                 </a>
               </li>    
               <li class="nav-item">
-                <a href="{% url 'repactividades' %}?idU={{ user.username }}" class="nav-link">
+                <a href="{% url 'repactividades' %}?idU={{ user }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Reporte de actividades</p>
                 </a>
