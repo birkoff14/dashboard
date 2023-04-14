@@ -539,10 +539,10 @@ def reporteSemanal(request):
                 CONCAT(day(`FechaInicio`), "-", MONTH(`FechaInicio`), "-", YEAR(`FechaInicio`)) as Fecha
                 from reportinfra_actividades
                 where `Usuario` = '""" + usuario  
-                #+ """' and `FechaInicio` >= '""" + str(lunes) + """' and (FechaFin <= '""" + str(viernes) 
-                #+ """' and FechaFin <> '')"""
-                + """' and `FechaInicio` >= '2023-03-27' and (FechaFin <= '2023-04-09' and FechaFin <> '') 
-                group by day(`FechaInicio`), `FechaInicio`
+                + """' and `FechaInicio` >= '""" + str(lunes) + """' and (FechaFin <= '""" + str(viernes) 
+                + """' and FechaFin <> '')"""
+                #+ """' and `FechaInicio` >= '2023-03-27' and (FechaFin <= '2023-04-09' and FechaFin <> '') 
+                + """ group by day(`FechaInicio`), `FechaInicio`
                 order by `FechaInicio`;""")
 
     print(qry) 
@@ -566,6 +566,8 @@ def detailSemanal(request, fecha, usuario):
                     where FechaInicio >= '""" + my_list[2] + """-""" + my_list[1] + """-""" + my_list[0] + """ 00:00:00.000000' 
                     and FechaInicio <= '""" + my_list[2] + """-""" + my_list[1] + """-""" + my_list[0] + """ 23:59:00.000000'
                     and Usuario = '""" + usuario + """'""")
+    
+    print(qry)
        
     context = {
         "qry" : qry

@@ -57,7 +57,14 @@
                                 {{ dt.HorasInvertidas }} horas
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">Success</span>
+                                {% if dt.HorasInvertidas > 5.6 %}
+                                    <span class="badge badge-success">Bien</span>
+                                {% elif dt.HorasInvertidas <= 5.5 and dt.HorasInvertidas >= 2.1 %}
+                                    <span class="badge badge-warning">Regular</span>
+                                {% elif dt.HorasInvertidas <= 2.0 %}
+                                    <span class="badge badge-danger">Mal</span>
+                                {% endif %}
+
                             </td>
                             <td class="project-actions text-center">
                                 <a class="btn btn-primary btn-sm" onclick="return abrir_modal('{% url 'detailSemanal' dt.Fecha userqry %}');"
