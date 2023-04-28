@@ -47,12 +47,74 @@
                   {{ form.SR }}
                 </div>
                 <div class="form-group">
-                  <label>Fecha</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                    </div>
+                  <label>Fecha registro SR</label>
+                  <div class="input-group date" id="reservationdate" data-target-input="nearest">
                     {{ form.Fecha }}
+                    <div class="input-group-append" data-target="#reservationdate"
+                      data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Fecha solicitud</label>
+                        <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
+                          {{ form.FechaHoraSolicitud }}
+                          <div class="input-group-append" data-target="#reservationdatetime"
+                            data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Fecha primer contacto</label>
+                        <div class="input-group date" id="reservationdatetime2" data-target-input="nearest">
+                          {{ form.FechaPrimerContacto }}
+                          <div class="input-group-append" data-target="#reservationdatetime2"
+                            data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                          </div>
+                        </div>                        
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Fecha cierre</label>
+                        <div class="input-group date" id="reservationdatetime3" data-target-input="nearest">
+                          {{ form.FechaCierre }}
+                          <div class="input-group-append" data-target="#reservationdatetime3"
+                            data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                          </div>
+                        </div>                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Estatus SR</label>
+                        {{ form.EstatusSR }}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Severidad</label>
+                        {{ form.Severidad }}
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Resolución</label>
+                        {{ form.Resolucion }}
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">
@@ -74,11 +136,11 @@
                 </div>
                 <div class="form-group">
                   <label>Proveedor</label>
-                  {{ form.Vendor }}                  
+                  {{ form.Vendor }}
                 </div>
                 <div class="form-group">
                   <label>Componente</label>
-                  {{ form.Componente }}                  
+                  {{ form.Componente }}
                 </div>
                 <div class="form-group">
                   <label>Ambiente</label>
@@ -87,8 +149,8 @@
                     {{ambiente|pprint}}
                     {% for env in ambiente %}
                     <option value="{{ env.idAmbiente }}"> {{ env.NombreAmbiente }}</option>
-                    {% endfor %}               
-                  </select>                  
+                    {% endfor %}
+                  </select>
                 </div>
                 <div id="RH">
                   <div class="form-group">
@@ -212,11 +274,8 @@
 
 <script>
   var b = document.getElementById("id_Fecha");
-  b.setAttribute("class", "form-control ");
-  b.setAttribute("data-inputmask-alias", "datetime");
-  b.setAttribute("data-inputmask-inputformat", "dd/mm/yyyy");
-  b.setAttribute("data-mask", "");
-  b.setAttribute("inputmode", "numeric");
+  b.setAttribute("class", "form-control datetimepicker-input");
+  b.setAttribute("data-target", "#reservationdate");
 
   var txt = document.getElementById('id_SR');
   txt.setAttribute("class", "form-control");
@@ -255,6 +314,27 @@
 
   var l = document.getElementById("id_IM");
   l.setAttribute("class", "form-control");
+
+  var m = document.getElementById("id_FechaHoraSolicitud");
+  m.setAttribute("class", "form-control datetimepicker-input");
+  m.setAttribute("data-target", "#reservationdatetime");
+
+  var n = document.getElementById("id_FechaPrimerContacto");
+  n.setAttribute("class", "form-control datetimepicker-input");
+  n.setAttribute("data-target", "#reservationdatetime");
+
+  var o = document.getElementById("id_FechaCierre");
+  o.setAttribute("class", "form-control datetimepicker-input");
+  o.setAttribute("data-target", "#reservationdatetime");
+
+  var p = document.getElementById("id_EstatusSR");
+  p.setAttribute("class", "form-control");
+
+  var q = document.getElementById("id_Severidad");
+  q.setAttribute("class", "form-control");
+
+  var r = document.getElementById("id_Resolucion");
+  r.setAttribute("class", "form-control");
 
 </script>
 
@@ -305,6 +385,9 @@
 
     //Date and time picker
     $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+    $('#reservationdatetime2').datetimepicker({ icons: { time: 'far fa-clock' } });
+    $('#reservationdatetime3').datetimepicker({ icons: { time: 'far fa-clock' } });
+    $('#reservationdatetime4').datetimepicker({ icons: { time: 'far fa-clock' } });
 
     //Date range picker
     $('#reservation').daterangepicker()

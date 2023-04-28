@@ -72,6 +72,12 @@ class reporteFallas(models.Model):
     RFC = models.CharField(max_length=50, blank=True)
     IM = models.CharField(max_length=50, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name="Fecha")
+    FechaHoraSolicitud = models.CharField(max_length=150, blank=True, verbose_name="Fecha Solicitud")
+    FechaPrimerContacto = models.CharField(max_length=150, blank=True, verbose_name="Fecha Primer Contacto")
+    FechaCierre = models.CharField(max_length=150, blank=True, verbose_name="Fecha Cierre")
+    EstatusSR = models.CharField(max_length=150, blank=True, verbose_name="Estatus")
+    Severidad = models.CharField(max_length=150, blank=True, verbose_name="Severidad")
+    Resolucion = models.CharField(max_length=150, blank=True, verbose_name="Resolución")
 
 class cierreFalla(models.Model):
     idFalla = models.CharField(max_length=150, blank=True, verbose_name="Service Request")

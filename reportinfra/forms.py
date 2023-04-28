@@ -12,14 +12,8 @@ class UserModelChoiceField(ModelChoiceField):
 class addData(forms.ModelForm):
     class Meta:
         model = reporteFallas
-        
-        fields = ["SR", "Fecha", "Usuario", "Vendor", "Categoria", "Componente", "Ambiente", "CambioHW", "RMA", "RFC", "IM", "descripcion"]
 
-        #Ambiente = ModelChoiceField(queryset=Ambiente.objects.order_by('NombreAmbiente'))
-
-        #def __init__(self, user, *args, **kwargs):            
-        #    super(addData, self).__init__(*args, **kwargs)
-        #    self.fields['Ambiente'].queryset = Ambiente.objects.filter(Area="VMware")
+        fields = ['SR', 'Fecha', 'Usuario', 'Vendor', 'Categoria', 'Componente', 'Ambiente', 'CambioHW', 'RMA', 'RFC', 'IM', 'descripcion',  'FechaHoraSolicitud', 'FechaPrimerContacto', 'FechaCierre', 'EstatusSR', 'Severidad', 'Resolucion']
 
 class comments(forms.ModelForm):
     class Meta:
