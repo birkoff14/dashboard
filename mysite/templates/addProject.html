@@ -1,0 +1,240 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Agregar nuevo proyecto</h5>
+            <button type="button" onclick="return cerrar_modal()" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <hr />
+            <form class="needs-validation" name="form1" action="{% url url param  %}" method="POST">
+                <div class="card-body">
+                    <fieldset>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Ing. Asignado</label>
+                            <select name="NombreIngeniero" required="required" id="id_NombreIngeniero"
+                                class="form-control">
+                                <option value="" selected="">---------</option>
+                                {{user|pprint}}
+                                {{ qry.NombreIngeniero }}
+                                {% for key, value in user.items %}
+                                {% if key == qry.NombreIngeniero %}
+                                <option value='{{ key }}' selected> {{ value }}</option>
+                                {% else %}
+                                <option value='{{ key }}'> {{ value }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Proyecto</label>
+                            {{ form.Proyecto }}
+                        </div>
+                        <div class="form-group">
+                            <label>Avance</label>
+                            {{ form.Avance }}
+                        </div>
+                        <div class="form-group">
+                            <label>Estatus</label>
+                            <select name="Status" required="required" id="id_Status" class="form-control">
+                                <option value="" selected="">---------</option>
+                                {{state|pprint}}
+                                {% for key, value in state.items %}
+                                {% if key == qry.Status %}
+                                <option value='{{ key }}' selected> {{ value }}</option>
+                                {% else %}
+                                <option value='{{ key }}'> {{ value }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha Asignación de Proyecto</label>
+                            {{ form.FechaAsignacion }}
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha Final del Proyecto</label>
+                            {{ form.FechaFinal }}
+                        </div>
+                        <input type="submit" name="submit" class='btn btn-primary' id="submit_btn"
+                            value="{{ boton }}" />
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="return cerrar_modal()" class="btn btn-secondary"
+                data-dismiss="modal">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+{% block js %}
+
+<script src="{% static 'js/tagsinput.js' %}"></script>
+
+<!-- date-range-picker -->
+<script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+
+<script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
+
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+
+<script src="{% static 'plugins/bs-stepper/js/bs-stepper.min.js' %}"></script>
+
+<script src="{% static 'plugins/dropzone/min/dropzone.min.js' %}"></script>
+
+<script>
+    var a = document.getElementById("id_NombreIngeniero");
+    a.setAttribute("class", "form-control");
+
+    var b = document.getElementById("id_Proyecto");
+    b.setAttribute("class", "form-control");
+
+    var c = document.getElementById("id_Avance");
+    c.setAttribute("class", "form-control");
+
+    var d = document.getElementById("id_Status");
+    d.setAttribute("class", "form-control");
+
+    var e = document.getElementById("id_FechaAsignacion");
+    e.setAttribute("class", "form-control");
+    e.setAttribute('placeholder', 'mm/dd/yyyy');
+    e.setAttribute("required", "required")
+    valor = e.value;
+    var year = valor.substring(0, 4);
+    console.log(year);
+    var month = valor.slice(5, -12); // Los meses en JavaScript se indexan desde 0
+    console.log(month);
+    var day = valor.slice(8, -9);
+    console.log(day);
+    var formattedDate = month + "/" + day + "/" + year;
+    //alert(valor);
+    if(formattedDate.length > 3) {
+        e.value = formattedDate;
+    }else{
+        e.value = ''
+    }
+
+    var f = document.getElementById("id_FechaFinal");
+    f.setAttribute("class", "form-control");
+    f.setAttribute('placeholder', 'mm/dd/yyyy');
+    f.setAttribute("required", "required")
+    valor2 = f.value;
+
+    var year2 = valor2.substring(0, 4);
+    console.log(year2);
+    var month2 = valor2.slice(5, -12); // Los meses en JavaScript se indexan desde 0
+    console.log(month2);
+    var day2 = valor2.slice(8, -9);
+    console.log(day2);
+    var formattedDate2 = month2 + "/" + day2 + "/" + year2;
+    //alert(valor);
+    if(formattedDate.length > 3) {
+        f.value = formattedDate2;
+    }else{
+        f.value = ''
+    }
+
+
+</script>
+
+<script>
+    $(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+        //Money Euro
+        $('[data-mask]').inputmask()
+
+        //Date picker
+        $('#reservationdate').datetimepicker({
+            format: 'L'
+        });
+
+        $('#reservationdate2').datetimepicker({
+            format: 'L'
+        });
+
+        //Date and time picker
+        $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+        $('#reservationdatetime2').datetimepicker({ icons: { time: 'far fa-clock' } });
+        $('#reservationdatetime3').datetimepicker({ icons: { time: 'far fa-clock' } });
+        $('#reservationdatetime4').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+        //Date range picker
+        $('#reservation').daterangepicker()
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            locale: {
+                format: 'MM/DD/YYYY hh:mm A'
+            }
+        })
+        //Date range as a button
+        $('#daterange-btn').daterangepicker(
+            {
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
+            },
+            function (start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+            }
+        )
+
+        //Timepicker
+        $('#timepicker').datetimepicker({
+            format: 'LT'
+        })
+
+        //Bootstrap Duallistbox
+        $('.duallistbox').bootstrapDualListbox()
+
+        //Colorpicker
+        $('.my-colorpicker1').colorpicker()
+        //color picker with addon
+        $('.my-colorpicker2').colorpicker()
+
+        $('.my-colorpicker2').on('colorpickerChange', function (event) {
+            $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+        })
+
+        $("input[data-bootstrap-switch]").each(function () {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        })
+    });
+</script>
+
+{% endblock %}

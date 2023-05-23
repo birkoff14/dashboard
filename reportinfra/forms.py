@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelChoiceField, DateField
-from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla, actividades
+from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla, actividades, ingActividad
 import datetime
 
 
@@ -39,3 +39,8 @@ class activities(forms.ModelForm):
         fields = "__all__"
 
         AmbienteTest = ModelChoiceField(queryset=Ambiente.objects.all().order_by('NombreAmbiente'), widget=forms.Select())
+
+class ingProject(forms.ModelForm):
+    class Meta:
+        model = ingActividad
+        fields = ['NombreIngeniero', 'Proyecto', 'Avance', 'Status', 'FechaAsignacion', 'FechaFinal']

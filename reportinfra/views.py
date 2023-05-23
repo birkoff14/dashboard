@@ -119,7 +119,7 @@ def sr(request):
     urlR = '/main?idU=' + username
 
     usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
-        '7':'diego.montoya', '22' : 'eduardo.gonzalez',
+        '33': 'carlos.rodriguez', '7':'diego.montoya', '22' : 'eduardo.gonzalez',
         '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '32' : 'gladis.garcia', 
         '3':'hector.ortiz', 
         '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
@@ -230,6 +230,8 @@ def reportes(request):
             queryset = reporteFallas.objects.raw(fields + " where Categoria_id = " + idFalla)
         else:
             queryset = reporteFallas.objects.raw(fields + " where Categoria_id = " + idFalla + filtroC)
+
+    print(queryset)
 
     context = {
         "qry" : queryset,
@@ -410,7 +412,7 @@ def repactividades(request):
     fechaIni = request.POST.get("fechaInit", "0")
     fechaFin = request.POST.get("fechaFin", "0")
 
-    if (username == 'adrian.martinez' or username == 'cynthia.gutierrez' or username == 'birkoff'):
+    if (username == 'adrian.martinez' or username == 'cynthia.gutierrez' or username == 'birkoff' or username == 'luis.ramirez'):
         qryWhere = ""
     else:        
         qryWhere = "where Usuario = '" + username + """'"""
@@ -573,3 +575,99 @@ def detailSemanal(request, fecha, usuario):
         "qry" : qry
     }
     return render(request, "detalleSemana.html", context)
+
+@login_required(login_url='/')
+def projects(request):
+
+    qry = ingActividad.objects.raw("""select a.id, a.NombreIngeniero, a.Proyecto, a.Avance, 
+        a.Status, a.FechaAsignacion,
+        a.FechaFinal, b.first_name, b.last_name
+        from reportinfra_ingactividad a
+        inner join auth_user b
+        on a.NombreIngeniero = b.id """)
+
+    context = {
+        "qry" : qry,
+        
+    }
+
+    return render(request, "projects.html", context)
+
+def addProject(request, idP):
+
+    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
+        '33': 'carlos.rodriguez', '7':'diego.montoya', '22' : 'eduardo.gonzalez',
+        '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '32' : 'gladis.garcia', 
+        '3':'hector.ortiz', 
+        '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
+        '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
+        '17':'ricardo.lopez', '12':'tonatiuh.mata',
+    }
+
+    estatus = {'1':'Iniciado', '2' : 'En progreso', '3' : 'Terminado'}
+
+    form = ingProject(request.POST or None)
+
+    if request.method == "POST":
+       if form.is_valid():            
+           print("Si entra")
+           frm = form.save(commit=False)
+           frm.save()       
+           return redirect("/projects")
+       else:            
+           print("No se grabo nada :(")
+           print(form.is_valid())
+           print(form.errors)
+
+    context = {
+        "form" : form,
+        "user" : usuarios,
+        "state" : estatus,
+        "boton" : "Agregar proyecto",
+        "url" : "addProject",
+        "param" : idP,
+    }
+
+    return render(request, "addProject.html", context)
+
+
+
+def editProject(request, idP):
+
+    qry = ingActividad.objects.get(id=idP)    
+    print(qry)
+
+    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
+        '7':'diego.montoya', '22' : 'eduardo.gonzalez',
+        '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '32' : 'gladis.garcia', 
+        '3':'hector.ortiz', 
+        '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
+        '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
+        '17':'ricardo.lopez', '12':'tonatiuh.mata',
+    }
+
+    estatus = {'1':'Iniciado', '2' : 'En progreso', '3' : 'Terminado'}
+
+    form = ingProject(request.POST or None, instance=qry)
+
+    if request.method == "POST":
+       if form.is_valid():            
+           print("Si entra")
+           frm = form.save(commit=False)           
+           frm.save()
+           return redirect('/projects')
+       else:            
+           print("No se grabo nada :(")
+    
+    context = {
+        "Titulo" : "Edición de SR",
+        "form": form,
+        "qry" : qry,
+        "boton" : "Editar proyecto",
+        "user" : usuarios,
+        "state" : estatus,
+        "url" : "editProject",
+        "param" : idP,
+    }
+
+    return render(request, "addProject.html", context)

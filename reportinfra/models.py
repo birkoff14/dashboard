@@ -103,4 +103,11 @@ class actividades(models.Model):
     NombreTurnos = models.CharField(max_length=100, blank=True, verbose_name="NombreTurnos")
     HO = models.CharField(max_length=100, blank=True, verbose_name="Home Office")
     Tipo = models.CharField(max_length=100, blank=True, verbose_name="Tipo mejora") #debe ser un catálogo
-    
+
+class ingActividad(models.Model):
+    NombreIngeniero = models.CharField(max_length=150, blank=True, verbose_name="Ing. Asignado")
+    Proyecto = models.CharField(max_length=150, blank=True, verbose_name="Proyecto")
+    Avance = models.CharField(max_length=150, blank=True, verbose_name="Avance")
+    Status = models.CharField(max_length=150, blank=True, verbose_name="Status")
+    FechaAsignacion = models.DateTimeField(blank=True, verbose_name="Fecha asignación")
+    FechaFinal = models.DateTimeField(blank=True, verbose_name="Fecha final")

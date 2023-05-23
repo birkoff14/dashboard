@@ -27,6 +27,11 @@ urlpatterns = [
     path('api', ActivitiesListApiView.as_view()), 
     path('reporteSemanal', views.reporteSemanal, name='reporteSemanal'),
     path('detailSemanal/<str:fecha>/<str:usuario>', views.detailSemanal, name='detailSemanal'),
+    path('projects', views.projects, name='projects'),
+    path('addProject/<str:idP>', views.addProject, name='addProject'),
+    path('editProject/<str:idP>', views.editProject, name='editProject'),
+
+
 
 ]
 

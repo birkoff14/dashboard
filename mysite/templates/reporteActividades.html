@@ -102,8 +102,8 @@
                                     <td><div><a href="#" onclick="return abrir_modal('{% url 'editActivity' dt.id dt.Usuario %}');">Editar</a></div></td>
                                     <td>{{ dt.Usuario }}</td>
                                     <td>{{ dt.Descripcion }}</td>
-                                    <td>{{ dt.FechaInicio|date }}</td>
-                                    <td>{{ dt.FechaFin|date }}</td>
+                                    <td>{{ dt.FechaInicio|date:"d/m/Y" }}</td>
+                                    <td>{{ dt.FechaFin|date:"d/m/Y" }}</td>
                                     <td>{{ dt.HorasInvertidas }}</td>
                                     <td>{{ dt.IM }}</td>
                                     <td>{{ dt.RFC }}</td>
