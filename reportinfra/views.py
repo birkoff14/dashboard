@@ -4,6 +4,7 @@ from django.contrib.auth import login as do_login
 from django.contrib.auth import logout as do_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.views.decorators.csrf import csrf_exempt
 from .forms import *
 from .models import *
 
@@ -581,14 +582,19 @@ def projects(request):
 
     qry = ingActividad.objects.raw("""select a.id, a.NombreIngeniero, a.Proyecto, a.Avance, 
         a.Status, a.FechaAsignacion,
-        a.FechaFinal, b.first_name, b.last_name
+        a.FechaFinal, b.first_name, b.last_name, c.username LiderTecnico
         from reportinfra_ingactividad a
         inner join auth_user b
-        on a.NombreIngeniero = b.id """)
+        on a.NombreIngeniero = b.id 
+        left join auth_user c
+        on a.LiderTecnico = c.id 
+        where a.Status != '3' """)
+    
+    qryTerminado = ingActividad.objects.raw("""select count(*) as Total from reportinfra_ingactividad where Status = 3""")
 
     context = {
         "qry" : qry,
-        
+        "qryTerminado" : qryTerminado,        
     }
 
     return render(request, "projects.html", context)
@@ -604,6 +610,8 @@ def addProject(request, idP):
         '17':'ricardo.lopez', '12':'tonatiuh.mata',
     }
 
+    lider = {'6' : 'erik.arroyo', '3' : 'hector.ortiz', '11' : 'manuel.meneses', '12' : 'tonatiuh.mata'}
+ 
     estatus = {'1':'Iniciado', '2' : 'En progreso', '3' : 'Terminado'}
 
     form = ingProject(request.POST or None)
@@ -626,6 +634,8 @@ def addProject(request, idP):
         "boton" : "Agregar proyecto",
         "url" : "addProject",
         "param" : idP,
+        "Titulo" : "Agregar proyecto",
+        "lider" : lider,
     }
 
     return render(request, "addProject.html", context)
@@ -635,7 +645,6 @@ def addProject(request, idP):
 def editProject(request, idP):
 
     qry = ingActividad.objects.get(id=idP)    
-    print(qry)
 
     usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
         '7':'diego.montoya', '22' : 'eduardo.gonzalez',
@@ -648,19 +657,27 @@ def editProject(request, idP):
 
     estatus = {'1':'Iniciado', '2' : 'En progreso', '3' : 'Terminado'}
 
+    lider = {'6' : 'erik.arroyo', '3' : 'hector.ortiz', '11' : 'manuel.meneses', '12' : 'tonatiuh.mata'}
+
     form = ingProject(request.POST or None, instance=qry)
 
     if request.method == "POST":
        if form.is_valid():            
            print("Si entra")
-           frm = form.save(commit=False)           
+           valores = request.POST.getlist('NombreIngeniero')
+           for valor in valores:
+               print("Valores: " + valor)
+               frm = ingActividad(NombreIngeniero=valor)
+               #val.save()
+               #print(val)
+           frm = form.save(commit=False)                      
            frm.save()
            return redirect('/projects')
        else:            
            print("No se grabo nada :(")
     
     context = {
-        "Titulo" : "Edición de SR",
+        "Titulo" : "Editar proyecto",
         "form": form,
         "qry" : qry,
         "boton" : "Editar proyecto",
@@ -668,6 +685,17 @@ def editProject(request, idP):
         "state" : estatus,
         "url" : "editProject",
         "param" : idP,
+        "lider" : lider,
     }
 
     return render(request, "addProject.html", context)
+
+def keepass(request):
+
+    qry = Keepass.objects.all()
+
+    context = {
+        "qry" : qry,
+    }
+
+    return render(request, "keepass.html", context)

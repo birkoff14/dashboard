@@ -1,10 +1,18 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+{% block css%}
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css'%}">
+  <link rel="stylesheet" href="{% static 'plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
+{% endblock %}
+
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Agregar nuevo proyecto</h5>
+            <h5 class="modal-title" id="exampleModalCenterTitle">{{ Titulo }}</h5>
             <button type="button" onclick="return cerrar_modal()" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
@@ -17,9 +25,8 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <label>Ing. Asignado</label>
-                            <select name="NombreIngeniero" required="required" id="id_NombreIngeniero"
-                                class="form-control">
-                                <option value="" selected="">---------</option>
+                            <select name="NombreIngeniero" multiple="multiple" required="required" id="id_NombreIngeniero"
+                                class="select2">
                                 {{user|pprint}}
                                 {{ qry.NombreIngeniero }}
                                 {% for key, value in user.items %}
@@ -61,6 +68,20 @@
                             <label>Fecha Final del Proyecto</label>
                             {{ form.FechaFinal }}
                         </div>
+                        <div class="form-group">
+                            <label>Lider técnico</label>
+                            <select name="LiderTecnico" required="required" id="id_LiderTecnico" class="form-control">
+                                <option value="" selected="">---------</option>
+                                {{state|pprint}}
+                                {% for key, value in lider.items %}
+                                {% if key == qry.LiderTecnico %}
+                                <option value='{{ key }}' selected> {{ value }}</option>
+                                {% else %}
+                                <option value='{{ key }}'> {{ value }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
                         <input type="submit" name="submit" class='btn btn-primary' id="submit_btn"
                             value="{{ boton }}" />
                     </fieldset>
@@ -78,25 +99,29 @@
 
 <script src="{% static 'js/tagsinput.js' %}"></script>
 
-<!-- date-range-picker -->
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Select2 -->
 <script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
-
+<!-- Bootstrap4 Duallistbox -->
 <script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
-
+<!-- InputMask -->
 <script src="{% static 'plugins/moment/moment.min.js' %}"></script>
 <script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
-
+<!-- date-range-picker -->
 <script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
-
+<!-- bootstrap color picker -->
 <script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
-
+<!-- Tempusdominus Bootstrap 4 -->
 <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
-
-<script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
-
+<!-- BS-Stepper -->
 <script src="{% static 'plugins/bs-stepper/js/bs-stepper.min.js' %}"></script>
-
+<!-- dropzonejs -->
 <script src="{% static 'plugins/dropzone/min/dropzone.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'js/adminlte.min.js' %}"></script>
 
 <script>
     var a = document.getElementById("id_NombreIngeniero");

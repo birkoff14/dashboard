@@ -30,9 +30,7 @@ urlpatterns = [
     path('projects', views.projects, name='projects'),
     path('addProject/<str:idP>', views.addProject, name='addProject'),
     path('editProject/<str:idP>', views.editProject, name='editProject'),
-
-
-
+    path('keepass', views.keepass, name='keepass'),
 ]
 
 admin.site.site_header = "Operación de Aplicaciones Cloud"

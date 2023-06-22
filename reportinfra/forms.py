@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import ModelChoiceField, DateField
-from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla, actividades, ingActividad
+from .models import reporteFallas, Vendor, CambioHW, Ambiente, Componente, cierreFalla, actividades, ingActividad, Keepass
 import datetime
 
 
@@ -43,4 +43,9 @@ class activities(forms.ModelForm):
 class ingProject(forms.ModelForm):
     class Meta:
         model = ingActividad
-        fields = ['NombreIngeniero', 'Proyecto', 'Avance', 'Status', 'FechaAsignacion', 'FechaFinal']
+        fields = ['NombreIngeniero', 'Proyecto', 'Avance', 'Status', 'FechaAsignacion', 'FechaFinal', 'LiderTecnico']
+
+class keepass(forms.ModelForm):
+    class Meta:
+        model = Keepass
+        fields = "__all__"

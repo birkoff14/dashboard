@@ -105,9 +105,19 @@ class actividades(models.Model):
     Tipo = models.CharField(max_length=100, blank=True, verbose_name="Tipo mejora") #debe ser un catálogo
 
 class ingActividad(models.Model):
-    NombreIngeniero = models.CharField(max_length=150, blank=True, verbose_name="Ing. Asignado")
+    NombreIngeniero = models.CharField(max_length=1000, blank=True, verbose_name="Ing. Asignado")
     Proyecto = models.CharField(max_length=150, blank=True, verbose_name="Proyecto")
     Avance = models.CharField(max_length=150, blank=True, verbose_name="Avance")
     Status = models.CharField(max_length=150, blank=True, verbose_name="Status")
     FechaAsignacion = models.DateTimeField(blank=True, verbose_name="Fecha asignación")
     FechaFinal = models.DateTimeField(blank=True, verbose_name="Fecha final")
+    LiderTecnico = models.CharField(max_length=150, blank=True, verbose_name="Lider Técnico")
+
+class Keepass(models.Model):
+    Cloud = models.CharField(max_length=150, blank=True, verbose_name="Cloud")
+    Titulo = models.CharField(max_length=150, blank=True, verbose_name="Titulo")
+    Usuario = models.CharField(max_length=150, blank=True, verbose_name="Usuario")
+    Password = models.CharField(max_length=150, blank=True, verbose_name="Password")
+    URL = models.CharField(max_length=150, blank=True, verbose_name="URL")
+    FechaExpiracion = models.DateTimeField(blank=True, verbose_name="Fecha Expiración")
+    Nota = models.CharField(max_length=150, blank=True, verbose_name="Nota")

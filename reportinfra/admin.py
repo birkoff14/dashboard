@@ -37,3 +37,8 @@ class actividadesAdmin(ImportExportModelAdmin):
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ("Usuario", "TipoUser")
+
+@admin.register(ingActividad)
+class ingActividadAdmin(admin.ModelAdmin):
+    list_display = ('NombreIngeniero', 'Proyecto', 'Avance', 'Status', 'FechaAsignacion', 'FechaFinal', 'LiderTecnico')
+    list_filter = ["NombreIngeniero", "Status"]

@@ -155,8 +155,8 @@
                             <div class="form-group">
                                 <label>Fecha finalización</label>
                                 <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                                    <input name="fFin" type="text" class="form-control datetimepicker-input"
-                                        data-target="#reservationdate2">
+                                    <input readonly="yes" name="fFin" type="text" class="form-control datetimepicker-input"
+                                        data-target="#reservationdate2" id="id_FechaFinal">
                                     <div class="input-group-append" data-target="#reservationdate2"
                                         data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
@@ -211,6 +211,10 @@
 <!-- SweetAlert2 -->
 <script src="{% static 'plugins/sweetalert2/sweetalert2.min.js' %}"></script>
 
+<script>
+    var b = document.getElementById("id_FechaFinal");
+    b.setAttribute("readonly", "yes");
+</script>
 
 <script>
     $(function () {
