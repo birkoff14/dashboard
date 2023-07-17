@@ -63,6 +63,7 @@ class reporteFallas(models.Model):
         on_delete=models.CASCADE,
     ) 
     Fecha = models.CharField(max_length=50, blank=False)
+    FechaFix = models.DateTimeField(default=timezone.now, blank=True)
     Vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, null=True, verbose_name="Vendor")
     Ambiente = models.ForeignKey(Ambiente, on_delete=models.CASCADE, null=True, verbose_name="Ambiente")
     CambioHW = models.ForeignKey(CambioHW, on_delete=models.CASCADE, null=True, verbose_name="Cambio de hardware")    
@@ -111,7 +112,7 @@ class ingActividad(models.Model):
     Status = models.CharField(max_length=150, blank=True, verbose_name="Status")
     FechaAsignacion = models.DateTimeField(blank=True, verbose_name="Fecha asignación")
     FechaFinal = models.DateTimeField(blank=True, verbose_name="Fecha final")
-    LiderTecnico = models.CharField(max_length=150, blank=True, verbose_name="Lider Técnico")
+    LiderTecnico = models.CharField(max_length=150, blank=True, verbose_name="Ing. Asignado")
 
 class Keepass(models.Model):
     Cloud = models.CharField(max_length=150, blank=True, verbose_name="Cloud")

@@ -136,12 +136,17 @@
                                     <th>Descripción</th>
                                     <th>Usuario</th>
                                     <th>Fecha</th>
+                                    <th>Fecha cierre</th>
+                                    <th>Fecha Hora Solicitud</th>
+                                    <th>Fecha Primer Contacto</th>
                                     <th>Categoría</th>
                                     <th>Vendor</th>
                                     <th>Componente</th>
                                     <th>Ambiente</th>
                                     <th>Reemplazo de HW</th>
                                     <th>RMA</th>                                    
+                                    <th>Resolución</th>                                    
+                                    <th>Severidad</th>                                    
                                     <th>Comentarios</th>                                    
                                 </tr>
                             </thead>
@@ -157,13 +162,18 @@
                                     <td>{{ dt.IM }}</td>
                                     <td>{{ dt.descripcion }}</td>
                                     <td>{{ dt.Usuario }}</td>
-                                    <td>{{ dt.Fecha }}</td>
+                                    <td>{{ dt.FechaFix|date:"d/m/Y" }}</td>
+                                    <td>{{ dt.FechaCierre }}</td>
+                                    <td>{{ dt.FechaHoraSolicitud }}</td>
+                                    <td>{{ dt.FechaPrimerContacto }}</td>
                                     <td>{{ dt.Categoria }}</td>
                                     <td>{{ dt.Vendor }}</td>
                                     <td>{{ dt.Componente }}</td>
                                     <td>{{ dt.Ambiente }}</td>
                                     <td>{{ dt.CambioHW }}</td>
                                     <td>{{ dt.RMA }}</td>                                    
+                                    <td>{{ dt.Resolucion }}</td>                                    
+                                    <td>{{ dt.Severidad }}</td>                                    
                                     <td><a href=""
                                         onclick="return abrir_modal('{% url 'cierre' dt.SR %}');">Comentarios</a></td>                                    
                                 </tr>
@@ -179,12 +189,17 @@
                                     <th>Descripción</th>
                                     <th>Usuario</th>
                                     <th>Fecha</th>
+                                    <th>Fecha cierre</th>
+                                    <th>Fecha Hora Solicitud</th>
+                                    <th>Fecha Primer Contacto</th>
                                     <th>Categoría</th>
                                     <th>Vendor</th>
                                     <th>Componente</th>
                                     <th>Ambiente</th>
                                     <th>Reemplazo de HW</th>
                                     <th>RMA</th>                                    
+                                    <th>Resolución</th>                                    
+                                    <th>Severidad</th>                                    
                                     <th>Comentarios</th>                                    
                                 </tr>
                             </tfoot>

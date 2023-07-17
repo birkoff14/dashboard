@@ -13,7 +13,7 @@ class addData(forms.ModelForm):
     class Meta:
         model = reporteFallas
 
-        fields = ['SR', 'Fecha', 'Usuario', 'Vendor', 'Categoria', 'Componente', 'Ambiente', 'CambioHW', 'RMA', 'RFC', 'IM', 'descripcion',  'FechaHoraSolicitud', 'FechaPrimerContacto', 'FechaCierre', 'EstatusSR', 'Severidad', 'Resolucion']
+        fields = ['SR', 'FechaFix', 'Usuario', 'Vendor', 'Categoria', 'Componente', 'Ambiente', 'CambioHW', 'RMA', 'RFC', 'IM', 'descripcion',  'FechaHoraSolicitud', 'FechaPrimerContacto', 'FechaCierre', 'EstatusSR', 'Severidad', 'Resolucion']
 
 class comments(forms.ModelForm):
     class Meta:

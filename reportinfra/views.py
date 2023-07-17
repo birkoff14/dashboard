@@ -189,7 +189,7 @@ def reportes(request):
                     when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC
                     else SR
                 end SR,
-                descripcion, Fecha, RMA, RFC, IM, Ambiente_id, CambioHW_id, Categoria_id, Componente_id, Usuario_id, Vendor_id 
+                descripcion, FechaFix, RMA, RFC, IM, Ambiente_id, CambioHW_id, Categoria_id, Componente_id, Usuario_id, Vendor_id 
                 from reportinfra_reportefallas """
 
 
@@ -197,13 +197,17 @@ def reportes(request):
     fechaIni = request.POST.get("fechaInit", "0")
     fechaFin = request.POST.get("fechaFin", "0")
 
-    filtroF = """where date(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
-              SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
-              SUBSTRING_INDEX(Fecha, '/', 1))) between '""" + fechaIni + """' and '""" + fechaFin + """'"""
+    #filtroF = """where date(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
+    #          SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
+    #          SUBSTRING_INDEX(Fecha, '/', 1))) between '""" + fechaIni + """' and '""" + fechaFin + """'"""
 
-    filtroC = """ and date(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
-              SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
-              SUBSTRING_INDEX(Fecha, '/', 1))) between '""" + fechaIni + """' and '""" + fechaFin + """'"""
+    #filtroC = """ and date(concat(SUBSTRING_INDEX(Fecha, '/', -1), "-",
+    #          SUBSTRING_INDEX(SUBSTRING_INDEX(Fecha, '/', 2),'/', -1), "-",
+    #          SUBSTRING_INDEX(Fecha, '/', 1))) between '""" + fechaIni + """' and '""" + fechaFin + """'"""
+
+    filtroF = """ where FechaFix between '""" + fechaIni + """ 00:00:00.000000' and '""" + fechaFin + """ 23:59:59.000000'"""
+
+    filtroC = """ and FechaFix between '""" + fechaIni + """ 00:00:00.000000' and '""" + fechaFin + """ 23:59:59.000000'"""
 
     #print(filtroF)
 

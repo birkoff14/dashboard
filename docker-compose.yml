@@ -1,0 +1,58 @@
+version: '2'
+
+services:
+  
+  python:
+    #build: .
+    tty: true # Enables debugging capabilities when attached to this container.
+    image: python:3.9
+    command: > 
+      bash -c "cd /app
+      && pip install -r requirements.txt
+      && python manage.py makemigrations
+      && python manage.py migrate 
+      && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    links:
+      - mariadb:mariadb
+    depends_on:
+      - mariadb
+    volumes:
+      - .:/app
+ 
+#  nginx:
+#    image: bitnami/nginx:1.21
+#    ports:
+#      - '8080:8080'
+#    environment:
+#      NGINX_STATIC_CONTENT_OPEN_FILE_CACHE: "off"
+#      NGINX_ERROR_LOG_LEVEL: debug
+#      NGINX_BACKEND_HOST: django
+#      NGINX_SERVER_ROOT: /var/www/html/docroot
+#      NGINX_SERVER_NAME: localhost
+#    links:
+#      - mariadb:mariadb
+#    depends_on:
+#      - python
+#    volumes_from:
+#      - python
+
+  mariadb:
+    image: wodby/mariadb:10.3-3.6.0
+    container_name: "mariadb"
+    volumes:
+      #- ./db:/var/lib/mysql
+        #Uncomment next line if you need restore a db backup
+      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here
+
+    environment:
+      MYSQL_DATABASE: ${DB}
+      #MYSQL_USER: ${User}
+      MYSQL_PASSWORD: ${Password}
+      MYSQL_ROOT_PASSWORD: d8root
+      #MARIADB_ROOT_PASSWORD: d8root
+
+volumes:
+  db:
+    driver: local

@@ -23,11 +23,6 @@ class Migration(migrations.Migration):
                 ('Nota', models.CharField(blank=True, max_length=150, verbose_name='Nota')),
             ],
         ),
-        migrations.AddField(
-            model_name='ingactividad',
-            name='LiderTecnico',
-            field=models.CharField(blank=True, max_length=150, verbose_name='Lider Técnico'),
-        ),
         migrations.AlterField(
             model_name='ingactividad',
             name='NombreIngeniero',
