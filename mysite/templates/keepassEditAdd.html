@@ -1,0 +1,201 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css%}
+<!-- daterange picker -->
+<link rel="stylesheet" href="{% static 'css/tagsinput.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bs-stepper/css/bs-stepper.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/dropzone/min/dropzone.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/toastr/toastr.min.css' %}">
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="{% static 'plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css' %}">
+{% endblock %}
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Agregar entrada keepass</h5>
+            <button type="button" onclick="return cerrar_modal()" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <hr />
+            <form class="needs-validation" name="form" action="" method="POST">
+                <div class="card-body">
+                    <fieldset>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Cloud</label>
+                            <select name="Cloud" required="required" id="id_Cloud" class="select2">
+                                {{form|pprint}}
+                                <option value='0'>-------------------</option>
+                                {% for items in cloud %}
+                                {% if form.Cloud == items.idCloud %}
+                                hola
+                                <option value='{{ items.idCloud }}' selected> {{ items.Cloud }}</option>
+                                {% else %}
+                                <option value='{{ items.idCloud }}'> {{ items.Cloud }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Titulo</label>
+                            {{ form.Titulo }}
+                        </div>
+                        <div class="form-group">
+                            <label>Usuario</label>
+                            {{ form.Usuario }}
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            {{ form.Password }}
+                        </div>
+                        <div class="form-group">
+                            <label>URL</label>
+                            {{ form.URL }}
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de expiración</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                {{ form.FechaExpiracion }}
+                                <div class="input-group-append" data-target="#reservationdate"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Nota</label>
+                            {{ form.Nota }}
+                        </div>
+                        <div class="form-group">
+                            <label>Folder</label>
+                            <select name="Folder" required="required" id="id_Folder" class="select2">
+                                {{user|pprint}}
+                            </select>
+                        </div>
+                        <input type="submit" name="submit" class='btn btn-primary' id="submit_btn"
+                            value="Agregar entrada" />
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="return cerrar_modal()" class="btn btn-secondary"
+                data-dismiss="modal">Cerrar</button>
+        </div>
+    </div>
+</div>
+
+{% block js %}
+
+<script src="{% static 'js/tagsinput.js' %}"></script>
+
+<!-- date-range-picker -->
+<script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+
+<script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
+
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+<script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+
+<script src="{% static 'plugins/bs-stepper/js/bs-stepper.min.js' %}"></script>
+
+<script src="{% static 'plugins/dropzone/min/dropzone.min.js' %}"></script>
+
+<script>
+
+    var a = document.getElementById("id_Cloud");
+    a.setAttribute("class", "form-control");
+
+    var b = document.getElementById("id_Titulo");
+    b.setAttribute("class", "form-control");
+
+    var c = document.getElementById("id_Usuario");
+    c.setAttribute("class", "form-control");
+
+    var g = document.getElementById("id_Password");
+    g.setAttribute("class", "form-control");
+    g.setAttribute("type", "password");
+
+    var d = document.getElementById("id_URL");
+    d.setAttribute("class", "form-control");
+
+    var e = document.getElementById("id_Nota");
+    e.setAttribute("class", "form-control");
+    e.setAttribute("maxlength", "500")
+
+    var f = document.getElementById("id_Folder");
+    f.setAttribute("class", "form-control");
+
+    var h = document.getElementById("id_FechaExpiracion");
+    h.setAttribute("class", "form-control datetimepicker-input");
+    h.setAttribute("readonly", "yes");
+    //    h.setAttribute("data-target", "#reservationdate");
+
+    $(document).ready(function () {
+        $("#id_Cloud").on("change", getFolders);
+        $("#id_Vid_Folderendor").html("<option value='' selected='selected'>---------</option>");
+    });
+
+    function getFolders() {
+        var id_Cloud = $("#id_Cloud").val();
+
+        if (id_Cloud) {
+            // Eliminamos las opciones anteriores del select
+            $("#id_Folder").html("");
+            var request = $.ajax({
+                type: "GET",
+                url: "{% url 'get_folder' %}",
+                data: {
+                    "id_Cloud": id_Cloud,
+                },
+            });
+
+            request.done(function (response) {
+                // Agregamos los resultados al select                    
+                $("#id_Folder").html(response.folders);
+                $("#id_Folder").trigger("change");
+            });
+        } else {
+            $("#id_Folder").html("<option value='' selected='selected'>---------</option>");
+            $("#id_Folder").trigger("change");
+        }
+    }
+
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        //format: 'L'
+        format: 'DD-MM-YYYY'
+    });
+</script>
+
+{% endblock %}

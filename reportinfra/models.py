@@ -114,11 +114,27 @@ class ingActividad(models.Model):
     FechaFinal = models.DateTimeField(blank=True, verbose_name="Fecha final")
     LiderTecnico = models.CharField(max_length=150, blank=True, verbose_name="Ing. Asignado")
 
+class Cloud(models.Model):
+    idCloud = models.AutoField(primary_key=True)
+    Cloud = models.CharField(max_length=200, blank=True, verbose_name="Cloud")
+    def __str__(self):
+        return self.Cloud
+
+class Folder(models.Model):
+    idCloud = models.ForeignKey(Cloud, on_delete=models.CASCADE, null=True, verbose_name="Cloud")
+    Folder = models.CharField(max_length=200, blank=True, verbose_name="Folder")
+    def __str__(self):
+        return self.Folder
+    
+
 class Keepass(models.Model):
-    Cloud = models.CharField(max_length=150, blank=True, verbose_name="Cloud")
+    Cloud = models.ForeignKey(Cloud, on_delete=models.CASCADE, null=True, verbose_name="Cloud")
     Titulo = models.CharField(max_length=150, blank=True, verbose_name="Titulo")
     Usuario = models.CharField(max_length=150, blank=True, verbose_name="Usuario")
     Password = models.CharField(max_length=150, blank=True, verbose_name="Password")
     URL = models.CharField(max_length=150, blank=True, verbose_name="URL")
     FechaExpiracion = models.DateTimeField(blank=True, verbose_name="Fecha Expiración")
-    Nota = models.CharField(max_length=150, blank=True, verbose_name="Nota")
+    Nota = models.TextField(null=True, verbose_name="Nota")
+    Folder = models.ForeignKey(Folder, on_delete=models.CASCADE, null=True, verbose_name="Folder")
+    Fecha = models.DateTimeField(blank=True, verbose_name="Fecha modificación")
+    idUsuario = models.CharField(max_length=50, blank=True, verbose_name="ID User")

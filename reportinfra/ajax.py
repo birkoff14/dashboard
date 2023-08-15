@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.core import serializers
 from django.http import HttpResponse
 
-from .models import Componente, Vendor
+from .models import Componente, Vendor, Folder
 
 def get_componentes(request):
     id_Vendor = request.GET.get('id_Vendor')
@@ -33,6 +33,23 @@ def get_vendors(request):
         )
     response = {}
     response['categorias'] = options
+    return JsonResponse(response)
+
+def get_folder(request):
+    id_Cloud = request.GET.get('id_Cloud')
+    folders = Folder.objects.none()
+    options = '<option value="" selected="selected">---------</option>'
+    if id_Cloud:
+        folders = Folder.objects.filter(idCloud=id_Cloud)
+        print(folders.query)
+    for folder in folders:
+        options += '<option value="%s">%s</option>' % (
+            folder.idCloud,
+            folder.Folder,
+        )
+    response = {}
+    response['folders'] = options
+
     return JsonResponse(response)
 
 

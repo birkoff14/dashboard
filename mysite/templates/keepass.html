@@ -2,9 +2,291 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-
 {% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title"> Keepass Global OAC </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-sm-4">
+
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <a href="#" onclick="return abrir_modal('{% url 'addKeepass' 'idK' %}');"
+                                    class="btn btn-block btn-secondary">Agregar nueva entrada</a>
+                            </div>
+                            <div class="col-12 col-sm-4">
+                                <input class="form-control" type="text" id="filtro" placeholder="Filtrar por...">
+                            </div>
+                            <div class="col-12 col-sm-4"></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-primary card-tabs">
+                                    <div class="card-header p-0 pt-1">
+                                        <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="custom-tabs-one-home-tab"
+                                                    data-toggle="pill" href="#custom-tabs-one-home" role="tab"
+                                                    aria-controls="custom-tabs-one-home" aria-selected="false"
+                                                    onclick="return loadKeepass('1');">Nube AMX</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
+                                                    href="#custom-tabs-one-home" role="tab"
+                                                    aria-controls="custom-tabs-one-profile" aria-selected="false"
+                                                    onclick="return loadKeepass('2');">Nube
+                                                    AMCO</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill"
+                                                    href="#custom-tabs-one-home" role="tab"
+                                                    aria-controls="custom-tabs-one-messages" aria-selected="false"
+                                                    onclick="return loadKeepass('3');">Nube
+                                                    NPE</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill"
+                                                    href="#custom-tabs-one-home" role="tab"
+                                                    aria-controls="custom-tabs-one-settings" aria-selected="false"
+                                                    onclick="return loadKeepass('4'); ">Nube
+                                                    NPV</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill"
+                                                    href="#custom-tabs-one-home" role="tab"
+                                                    aria-controls="custom-tabs-one-settings" aria-selected="false"
+                                                    onclick="return loadKeepass('5'); ">Nube
+                                                    OpenStack</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content" id="custom-tabs-one-tabContent">
+                                            <div class="tab-pane fade show active" id="custom-tabs-one-home"
+                                                role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-4">
+                                                        <div class="card" style="background-color:#3f6791;">
+                                                            <div class="card-header">
+                                                                Folders
+                                                            </div>
+                                                            <ul class="list-group">
+                                                                <ul class="list-group list-group-flush">
+                                                                    <div id="cloud-container"></div>
+                                                                </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 col-sm-4"
+                                                        style="overflow: auto; max-height: 100vh;">
+                                                        <div class="card" style="background-color:#3f6791;">
+                                                            <div class="card-header">
+                                                                Entradas
+                                                            </div>
+                                                            <ul class="list-group">
+                                                                <div id="info-container"></div>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 col-sm-4">
+                                                        <div class="card" style="background-color:#3f6791;">
+                                                            <div class="card-header">
+                                                                Detalle
+                                                            </div>
+                                                            <ul class="list-group">
+                                                                <div id="detail-container"></div>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="ventana_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    function folder(id) {
+        //event.preventDefault();
+        //Despliega la entrada del keepass
+
+        $.ajax({
+            url: '{% url "get_info" %}',
+            method: 'GET',
+            data: {
+                'item_id': id,
+            },
+            dataType: 'json',
+            success: function (response) {
+                const infoContainer = $('#info-container');
+                infoContainer.empty();  // Limpia el contenedor si había información previa
+
+                // Agrega la información obtenida al contenedor
+                for (let i = 0; i < response.length; i++) {
+                    infoContainer.append('<li class="list-group-item"><ion-icon name="key-outline"></ion-icon>' +
+                        '<div class="row"><div class="col-8"><h5 class="card-title"><a href = "#" onclick="return detail(' + response[i].id + ');">' +
+                        response[i].Titulo + '</a></h5>' +
+                        '<p class="card-text">' + response[i].Usuario + '</p>' +
+                        '</div><div class="col-4" style="text-align: right;"><a href="#" onclick="return abrir_modal(\'/editKeepass/' + response[i].id + '\');" ' +
+                        'class="btn btn-block btn-secondary">Editar</div></div></li>');
+                }
+            },
+            error: function () {
+                alert('Hubo un error al obtener la información.');
+            }
+        });
+    }
+</script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+
+    function formatearFecha(fecha) {
+        const fechaObj = new Date(fecha);
+        const anio = fechaObj.getFullYear();
+        const mes = String(fechaObj.getMonth() + 1).padStart(2, '0');
+        const dia = String(fechaObj.getDate()).padStart(2, '0');
+        return `${dia}-${mes}-${anio}`;
+    }
+
+    function detail(id) {
+        //Despliega el detalle del keepass
+
+        var item_id = id;
+
+        $.ajax({
+            url: '{% url "get_info_detail" %}',
+            method: 'GET',
+            data: {
+                'item_id': item_id,
+            },
+            dataType: 'json',
+            success: function (response) {
+
+                const infoContainer = $('#detail-container');
+
+                infoContainer.empty();
+
+                for (let i = 0; i < response.length; i++) {
+                    infoContainer.append('<ul class="list-group list-group-flush">' +
+                        '<li class="list-group-item"><h5>Usuario</h5><p class="card-text">' + response[i].Usuario + '</p></li>' +
+                        '<li class="list-group-item"><h5>Password</h5><p class="card-text">' + response[i].Password + '</p></li>' +
+                        '<li class="list-group-item"><h5>URL</h5><p class="card-text">' + response[i].URL + '</p></li>' +
+                        '<li class="list-group-item"><h5>Ubicación</h5><p class="card-text">' + response[i].Ubicacion + '</p></li>' +
+                        '<li class="list-group-item"><h5>Nota</h5><p class="card-text">' + response[i].Nota + '</p></li>' +
+                        '<li class="list-group-item"><h5>Editado por</h5><p class="card-text">' + response[i].Editado + '</p></li>' +
+                        '<li class="list-group-item"><h5>Fecha actualización</h5><p class="card-text">' + formatearFecha(response[i].Fecha) + '</p></li>' +
+                        '</ul>');
+                }
+            },
+            error: function () {
+                alert('Hubo un error al obtener la información.');
+            }
+        });
+    };
+</script>
+
+<script>
+    function loadKeepass(cloud) {
+        //Despliega los folders
+
+        $.ajax({
+            url: '{% url "keepass_load" %}',
+            method: 'GET',
+            data: {
+                'item_id': cloud,
+            },
+            dataType: 'json',
+            success: function (response) {
+
+                const infoContainer = $('#cloud-container');
+                infoContainer.empty();
+                const infoC = $('#detail-container');
+                infoC.empty();
+                const infor = $('#info-container');
+                infor.empty();
+
+                for (let i = 0; i < response.length; i++) {
+                    infoContainer.append(
+                        '<li class="list-group-item"><a href = "#" onclick="return folder(\'' + response[i].id + '\');"><p class="card-text">' + response[i].Folder + '</a></p></li>'
+                    );
+                }
+            },
+            error: function () {
+                alert('Hubo un error al obtener la información.');
+            }
+        });
+    }
+</script>
+
+<script>
+    function abrir_modal(url) {
+        $('#ventana_modal').load(url, function () {
+            $(this).modal({
+                backdrop: 'static',
+                keyboard: false,
+                success: function () {
+                    document.getElementById("SR") = 'block';
+                }
+            })
+
+            $(this).modal('show');
+        });
+
+        return false;
+
+    }
+
+    function cerrar_modal() {
+
+        $('#ventana_modal').modal('hide');
+
+        return false;
+    }
+
+    document.getElementById('filtro').addEventListener('input', function () {
+        var filtro = this.value.toLowerCase(); // Obtener el valor del filtro en minúsculas
+        var elementos = document.getElementById('info-container').getElementsByTagName('li'); // Obtener los elementos <p> dentro del div
+
+        for (var i = 0; i < elementos.length; i++) {
+            var texto = elementos[i].textContent.toLowerCase(); // Obtener el texto del elemento en minúsculas
+
+            if (texto.includes(filtro)) {
+                elementos[i].style.display = 'block'; // Mostrar el elemento si coincide con el filtro
+            } else {
+                elementos[i].style.display = 'none'; // Ocultar el elemento si no coincide con el filtro
+            }
+        }
+    });
 
 
+</script>
 
 {% endblock %}

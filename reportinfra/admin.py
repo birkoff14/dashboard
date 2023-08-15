@@ -42,3 +42,16 @@ class CustomUserAdmin(admin.ModelAdmin):
 class ingActividadAdmin(admin.ModelAdmin):
     list_display = ('NombreIngeniero', 'Proyecto', 'Avance', 'Status', 'FechaAsignacion', 'FechaFinal', 'LiderTecnico')
     list_filter = ["NombreIngeniero", "Status"]
+
+
+@admin.register(Keepass)
+class ComponenteAdmin(ImportExportModelAdmin):
+    list_display = ('Cloud', 'Titulo', 'Usuario', 'Password', 'URL', 'FechaExpiracion', 'Folder')
+
+@admin.register(Folder)
+class FolderAdmin(ImportExportModelAdmin):
+    list_display = ('idCloud', 'Folder')
+
+@admin.register(Cloud)
+class CloudAdmin(admin.ModelAdmin):
+    pass

@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as do_login
@@ -5,6 +6,7 @@ from django.contrib.auth import logout as do_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q
 from .forms import *
 from .models import *
 
@@ -603,6 +605,7 @@ def projects(request):
 
     return render(request, "projects.html", context)
 
+@login_required(login_url='/')
 def addProject(request, idP):
 
     usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
@@ -645,7 +648,7 @@ def addProject(request, idP):
     return render(request, "addProject.html", context)
 
 
-
+@login_required(login_url='/')
 def editProject(request, idP):
 
     qry = ingActividad.objects.get(id=idP)    
@@ -694,12 +697,135 @@ def editProject(request, idP):
 
     return render(request, "addProject.html", context)
 
+@login_required(login_url='/')
 def keepass(request):
 
-    qry = Keepass.objects.all()
+    return render(request, "keepass.html")
+
+
+@login_required(login_url='/')
+def keepass_load(request):
+
+    cloud = request.GET.get('item_id')
+    #print(cloud)
+
+    try:
+        #qryFolder = Folder.objects.filter(Q(idCloud_id=cloud)).values_list('id', 'Folder', flat=False).distinct()
+        qryFolder = Folder.objects.filter(Q(idCloud_id=cloud))
+        #print(qryFolder.query)
+
+        items_list = []
+        
+        for item in qryFolder:       
+            #print(item)     
+            item_data = {
+                'id': item.id,
+                'Folder': item.Folder,               
+            }
+
+            items_list.append(item_data)
+
+        return JsonResponse(items_list, safe=False)
+
+    except Exception as e:
+            return JsonResponse({'error_message': str(e)}, status=500)
+
+    
+@login_required(login_url='/')
+def get_info(request):
+
+    item_id = request.GET.get('item_id')
+    print(item_id)
+
+    try:
+        items = Keepass.objects.filter(Q(Folder=item_id))
+        
+        #print(items.query)        
+
+        items_list = []
+        for item in items:            
+            item_data = {
+                'id': item.id,
+                'Titulo': item.Titulo,
+                'Usuario' : item.Usuario,
+            }
+            items_list.append(item_data)
+        
+        return JsonResponse(items_list, safe=False)
+    
+    except Exception as e:
+        return JsonResponse({'error_message': str(e)}, status=500)
+    
+
+def get_info_detail(request):
+
+    item_id = request.GET.get('item_id')
+    print(item_id)
+
+    try:
+        items = Keepass.objects.filter(Q(id=item_id))
+        
+        print(items.query)        
+
+        items_list = []
+        for item in items:            
+            item_data = {
+                'id': item.id,
+                'Titulo': item.Titulo,
+                'Usuario' : item.Usuario,
+                'Password' : item.Password,
+                'URL' : item.URL,
+                'Nota' : item.Nota,
+                'Ubicacion' : item.Folder_id,
+                'Fecha' : item.Fecha,
+                'Editado' : item.idUsuario,
+            }
+
+            items_list.append(item_data)
+        
+        return JsonResponse(items_list, safe=False)
+    
+    except Exception as e:
+        return JsonResponse({'error_message': str(e)}, status=500)
+    
+def addKeepass(request, idK):
+
+    print(idK)
+
+    cloud = Cloud.objects.all()
+
+    form = keepassForm(request.POST or None)
 
     context = {
-        "qry" : qry,
+        "form": form,
+        "cloud" : cloud,
     }
 
-    return render(request, "keepass.html", context)
+    return render(request, "keepassEditAdd.html", context)
+
+def editKeepass(request, idK):
+
+    print(idK)
+    cloud = Cloud.objects.all()
+    qry = Keepass.objects.get(id=idK)    
+    print(cloud)
+
+    form = keepassForm(request.POST or None, instance=qry)
+
+    if request.method == "POST":
+       if form.is_valid():            
+           print("Si entra")
+           frm = form.save(commit=False)           
+           frm.save()
+           #url = reverse('main')
+           #return HttpResponseRedirect(url)
+           return redirect('/keepass')
+       else:            
+           print("No se grabo nada :(")
+
+    context = {
+        "form" : form, 
+        "cloud" : cloud,
+    }
+
+    return render(request, 'keepassEditAdd.html', context)

@@ -45,7 +45,7 @@ class ingProject(forms.ModelForm):
         model = ingActividad
         fields = ['NombreIngeniero', 'Proyecto', 'Avance', 'Status', 'FechaAsignacion', 'FechaFinal', 'LiderTecnico']
 
-class keepass(forms.ModelForm):
+class keepassForm(forms.ModelForm):
     class Meta:
         model = Keepass
         fields = "__all__"
