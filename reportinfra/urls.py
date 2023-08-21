@@ -35,7 +35,7 @@ urlpatterns = [
     path('keepass_load/', views.keepass_load, name='keepass_load'),
     path('get_info/', views.get_info, name='get_info'),
     path('get_info_detail/', views.get_info_detail, name='get_info_detail'),
-    path('addKeepass/<str:idK>', views.addKeepass, name='addKeepass'),
+    path('addKeepass/', views.addKeepass, name='addKeepass'),
     path('editKeepass/<str:idK>', views.editKeepass, name='editKeepass'),
 ]
 

@@ -13,7 +13,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Horas totales</span>
 						{% for dt in Total %}
-                        <span class="info-box-number">{{ dt.Horas }}</span>
+                        <span class="info-box-number">{{ dt.Horas|floatformat:2 }}</span>
 						{% endfor %}
                         <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
@@ -31,7 +31,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Horas diarias</span>
 						{% for dt in Diario %}
-                        <span class="info-box-number">{{ dt.Horas }}</span>
+                        <span class="info-box-number">{{ dt.Horas|floatformat:2 }}</span>
 						{% endfor %}
                         <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
@@ -49,7 +49,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Horas semana</span>
 						{% for dt in semana %}
-                        <span class="info-box-number">{{ dt.Horas }}</span>						
+                        <span class="info-box-number">{{ dt.Horas|floatformat:2 }}</span>						
                         <div class="progress">
                             <div class="progress-bar" style="width:100%"></div>
                         </div>
@@ -67,7 +67,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Horas de Home Office</span>
                         {% for dt in TotalHO %}
-                        <span class="info-box-number">{{ dt.Horas }}</span>
+                        <span class="info-box-number">{{ dt.Horas|floatformat:2 }}</span>
 						{% endfor %}
                         <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>

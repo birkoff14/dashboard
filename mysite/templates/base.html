@@ -91,7 +91,7 @@
           <img src="" class="img-circle elevation-2" alt="User Image">
         </div> -->
         <div class="info">
-          <a href="#" class="d-block">{{ _tipoUser }}</a>
+          <a href="#" class="d-block">{{ tipoUser }}</a>
         </div>
       </div>
 
@@ -180,6 +180,7 @@
             </a>
           </li> 
           {% endif %}
+          {% if user.username == 'abraham.desantiago' or user.username == 'adrian.martinez' or user.username == 'angel.lozano' or user.username == 'carlos.rodriguez' or user.username == 'diego.montoya' or user.username == 'eduardo.gonzalez' or user.username == 'erik.arroyo' or user.username == 'esdras.orizaba' or user.username == 'eugenio.garcia' or user.username == 'gladis.garcia' or user.username == 'hector.ortiz'  or user.username == 'ivan.parra' or user.username == 'javier.alvarez' or user.username == 'jorge.ramirez' or user.username == 'jorge.soto' or user.username == 'luis.ramirez' or user.username == 'manuel.meneses' or user.username == 'miguel.banthi' or user.username == 'patricio.silva' or user.username == 'ricardo.lopez' or user.username == 'tonatiuh.mata'%}
           <li class="nav-item">
             <a href="{% url 'keepass' %}" class="nav-link">
               <i class="nav-icon fas fa-key"></i>
@@ -187,7 +188,8 @@
                 KEEPASS (Nuevo)
               </p>
             </a>
-          </li> 
+          </li>
+          {% endif %} 
           <li class="nav-item">
             <a href="{% url 'logout' %}" class="nav-link">
               <i class="nav-icon fas fa-columns"></i>

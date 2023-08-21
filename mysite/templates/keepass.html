@@ -18,7 +18,7 @@
 
                             </div>
                             <div class="col-12 col-sm-4">
-                                <a href="#" onclick="return abrir_modal('{% url 'addKeepass' 'idK' %}');"
+                                <a href="#" onclick="return abrir_modal('{% url 'addKeepass' %}');"
                                     class="btn btn-block btn-secondary">Agregar nueva entrada</a>
                             </div>
                             <div class="col-12 col-sm-4">
@@ -64,9 +64,18 @@
                                                 <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill"
                                                     href="#custom-tabs-one-home" role="tab"
                                                     aria-controls="custom-tabs-one-settings" aria-selected="false"
+                                                    onclick="return loadKeepass('6'); ">Nube
+                                                    Condumex</a>
+                                            </li>
+                                            {% if user.username == 'manuel.meneses' or user.username == 'luis.ramirez' or user.username == 'ivan.parra' %}
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="custom-tabs-one-settings-tab" data-toggle="pill"
+                                                    href="#custom-tabs-one-home" role="tab"
+                                                    aria-controls="custom-tabs-one-settings" aria-selected="false"
                                                     onclick="return loadKeepass('5'); ">Nube
                                                     OpenStack</a>
                                             </li>
+                                            {% endif %}
                                         </ul>
                                     </div>
                                     <div class="card-body">

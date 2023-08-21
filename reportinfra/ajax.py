@@ -44,7 +44,7 @@ def get_folder(request):
         print(folders.query)
     for folder in folders:
         options += '<option value="%s">%s</option>' % (
-            folder.idCloud,
+            folder.id,
             folder.Folder,
         )
     response = {}

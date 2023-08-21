@@ -15,6 +15,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
 from .serializers import actividadesSerializer
+#from datetime import datetime
 
 # Create your views here.
 
@@ -107,7 +108,7 @@ def main(request):
         "Total"  : qryTotal,
         "Diario" : qryDia,
         "TotalHO" : qryTotalHO,
-        "_tipoUser" : _tipoUser,
+        "tipoUser" : _tipoUser,
     }
 
     print(qry)
@@ -121,7 +122,7 @@ def sr(request):
     username = request.GET.get("idU", "")
     urlR = '/main?idU=' + username
 
-    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
+    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', 
         '33': 'carlos.rodriguez', '7':'diego.montoya', '22' : 'eduardo.gonzalez',
         '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '32' : 'gladis.garcia', 
         '3':'hector.ortiz', 
@@ -145,8 +146,7 @@ def sr(request):
            #return HttpResponseRedirect(url)           
            return redirect(urlR)
        else:            
-           print("No se grabo nada :(")
-           print(form.is_valid())
+           print("No se grabo nada :(")           
            print(form.errors)
 
     tipoUser = User.objects.raw("""select 1 as id, TipoUser, username from reportinfra_customuser a
@@ -608,7 +608,7 @@ def projects(request):
 @login_required(login_url='/')
 def addProject(request, idP):
 
-    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
+    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', 
         '33': 'carlos.rodriguez', '7':'diego.montoya', '22' : 'eduardo.gonzalez',
         '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '32' : 'gladis.garcia', 
         '3':'hector.ortiz', 
@@ -788,27 +788,46 @@ def get_info_detail(request):
     except Exception as e:
         return JsonResponse({'error_message': str(e)}, status=500)
     
-def addKeepass(request, idK):
-
-    print(idK)
+def addKeepass(request):
+    
+    fecha_actual = datetime.date.today()
+    #print(fecha_actual)
 
     cloud = Cloud.objects.all()
+    print(cloud.query)
+    print(request.POST.get("Cloud", ""))
 
     form = keepassForm(request.POST or None)
+
+    if request.method == "POST":
+         
+        if form.is_valid():
+           print("Si entra")
+           frm = form.save(commit=False)           
+           frm.save()
+           #url = reverse('main')
+           #return HttpResponseRedirect(url)
+           return redirect('/keepass')
+        else:            
+           print("No se grabo nada :(")
+           print(form.errors)            
 
     context = {
         "form": form,
         "cloud" : cloud,
+        "timestamp" : fecha_actual,
+        "btn" : "Agregar entrada",
+        "urlAction" : "/addKeepass/",
     }
 
     return render(request, "keepassEditAdd.html", context)
 
 def editKeepass(request, idK):
 
-    print(idK)
+    fecha_actual = datetime.date.today()
     cloud = Cloud.objects.all()
+    folder = Folder.objects.all()
     qry = Keepass.objects.get(id=idK)    
-    print(cloud)
 
     form = keepassForm(request.POST or None, instance=qry)
 
@@ -822,10 +841,16 @@ def editKeepass(request, idK):
            return redirect('/keepass')
        else:            
            print("No se grabo nada :(")
+           print(form.errors)
 
     context = {
         "form" : form, 
         "cloud" : cloud,
+        "timestamp" : fecha_actual,
+        "btn" : "Editar entrada",
+        "urlAction" : "/editKeepass/" + idK,
+        "qry" : qry,
+        "folder" : folder,
     }
 
     return render(request, 'keepassEditAdd.html', context)

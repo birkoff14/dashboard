@@ -32,25 +32,22 @@
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Agregar entrada keepass</h5>
+            <h5 class="modal-title" id="exampleModalCenterTitle">{{ btn }} keepass</h5>
             <button type="button" onclick="return cerrar_modal()" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
         <div class="modal-body">
-            <hr />
-            <form class="needs-validation" name="form" action="" method="POST">
+            <form class="needs-validation" name="form1" action="{{ urlAction }}" method="POST">
                 <div class="card-body">
                     <fieldset>
                         {% csrf_token %}
                         <div class="form-group">
                             <label>Cloud</label>
                             <select name="Cloud" required="required" id="id_Cloud" class="select2">
-                                {{form|pprint}}
-                                <option value='0'>-------------------</option>
+                                <option value=''>-------------------</option>
                                 {% for items in cloud %}
-                                {% if form.Cloud == items.idCloud %}
-                                hola
+                                {% if items.idCloud == qry.Cloud_id %}
                                 <option value='{{ items.idCloud }}' selected> {{ items.Cloud }}</option>
                                 {% else %}
                                 <option value='{{ items.idCloud }}'> {{ items.Cloud }}</option>
@@ -90,12 +87,18 @@
                         </div>
                         <div class="form-group">
                             <label>Folder</label>
-                            <select name="Folder" required="required" id="id_Folder" class="select2">
-                                {{user|pprint}}
+                            <select name="Folder" required id="id_Folder" class="select2">
+                                {% for items in folder %}
+                                {{ items.id }}
+                                {% if items.id == qry.Folder_id %}
+                                <option value='{{ items.idCloud }}' selected> {{ items.Cloud }}</option>
+                                {% endif %}
+                                {% endfor %}
                             </select>
                         </div>
-                        <input type="submit" name="submit" class='btn btn-primary' id="submit_btn"
-                            value="Agregar entrada" />
+                        <input type="hidden" name="Fecha" id="id_Fecha" value="{{ timestamp|date:" Y-m-d" }}">
+                        <input type="hidden" name="idUsuario" id="id_idUsuario" value="{{ user.username }}">
+                        <input type="submit" name="submit" class='btn btn-primary' id="submit_btn" value="{{ btn }}" />
                     </fieldset>
                 </div>
             </form>
@@ -151,7 +154,7 @@
 
     var e = document.getElementById("id_Nota");
     e.setAttribute("class", "form-control");
-    e.setAttribute("maxlength", "500")
+    //e.setAttribute("maxlength", "500")
 
     var f = document.getElementById("id_Folder");
     f.setAttribute("class", "form-control");
@@ -163,7 +166,7 @@
 
     $(document).ready(function () {
         $("#id_Cloud").on("change", getFolders);
-        $("#id_Vid_Folderendor").html("<option value='' selected='selected'>---------</option>");
+        $("#id_Folder").html("<option value='' selected='selected'>---------</option>");
     });
 
     function getFolders() {
@@ -171,7 +174,7 @@
 
         if (id_Cloud) {
             // Eliminamos las opciones anteriores del select
-            $("#id_Folder").html("");
+            //$("#id_Folder").html("");
             var request = $.ajax({
                 type: "GET",
                 url: "{% url 'get_folder' %}",
@@ -194,7 +197,7 @@
     //Date picker
     $('#reservationdate').datetimepicker({
         //format: 'L'
-        format: 'DD-MM-YYYY'
+        format: 'YYYY-MM-DD'
     });
 </script>
 
