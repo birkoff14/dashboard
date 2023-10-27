@@ -419,7 +419,7 @@ def repactividades(request):
     fechaIni = request.POST.get("fechaInit", "0")
     fechaFin = request.POST.get("fechaFin", "0")
 
-    if (username == 'adrian.martinez' or username == 'cynthia.gutierrez' or username == 'birkoff' or username == 'luis.ramirez'):
+    if (username == 'adrian.martinez' or username == 'pedro.mendez' or username == 'angel.urzua' or username == 'jorge.soto' or username == 'birkoff' or username == 'luis.ramirez'):
         qryWhere = ""
     else:        
         qryWhere = "where Usuario = '" + username + """'"""
@@ -489,11 +489,28 @@ def editSR(request, idSR):
 @login_required(login_url='/')
 def editActivity(request, idAct, idU):
 
+    sr = reporteFallas.objects.values("SR").distinct().order_by("SR")
+    
+    ambiente = Ambiente.objects.all()
+    print(ambiente.query)
+    
+    tipo = {'1':'Actualización recurrente', '2':'Implementación', '3':'Toma operativa', 
+        '4': 'Trouble shooting falla', '5':'Reuniones de seguimiento', '6' : 'Investigación',
+        '7':'Actualización recurrente en curso', '8':'Especial', '9':'Operación',
+    }
+    
+    evento = {'1': 'Evento', '2':'Proyecto'}
+    
+    estatus = {'1':'En proceso', '2':'Terminado'}
+    
+    HO = {'1':'Si', '2':'No'}
+    
+    Solicitante = {'1': 'Adrián Martínez','2': 'Luis Alberto Ramírez','3': 'TEAM OAC','4': 'Turnos', 
+                   '5': 'Mesa de ayuda', '6': 'ITOC', '7': 'AMX', '8':'Equipo Triara'}
+    
     qry = actividades.objects.get(id=idAct)
     username = idU
-
     URL = '/repactividades?idU=' + username
-    print(URL)
 
     form = activities(request.POST or None, instance=qry)
 
@@ -513,6 +530,14 @@ def editActivity(request, idAct, idU):
         "form" : form,
         "idAct" : idAct,
         "username" : username,
+        "sr" : sr,
+        "ambiente" : ambiente,
+        "tipo" : tipo,
+        "evento" : evento,
+        "estatus" : estatus,
+        "HO" : HO,
+        "qry" : qry,
+        "solicitante" : Solicitante,
     }
 
     return render(request, "editActivity.html", context)
@@ -653,7 +678,7 @@ def editProject(request, idP):
 
     qry = ingActividad.objects.get(id=idP)    
 
-    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', '14':'cynthia.gutierrez', 
+    usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', 
         '7':'diego.montoya', '22' : 'eduardo.gonzalez',
         '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '32' : 'gladis.garcia', 
         '3':'hector.ortiz', 
@@ -854,3 +879,15 @@ def editKeepass(request, idK):
     }
 
     return render(request, 'keepassEditAdd.html', context)
+
+
+def buscaAllKeepass(request):
+    if request.is_ajax():
+        filtro = request.GET.get('filtro', None)
+        print(filtro)
+        if filtro:
+            resultados = Keepass.objects.filter(Titulo__icontains=filtro)
+            print(resultados.query)
+            datos = [{'Titulo': resultado.Titulo, 'Usuario': resultado.Usuario} for resultado in resultados]
+            return JsonResponse({'datos': datos})
+    return JsonResponse({'error': 'No se pudo realizar la búsqueda'})

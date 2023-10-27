@@ -1,6 +1,32 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+{% block css%}
+
+<!-- daterange picker -->
+<link rel="stylesheet" href="{% static 'css/tagsinput.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/bs-stepper/css/bs-stepper.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'plugins/dropzone/min/dropzone.min.css' %}">
+{% endblock %}
+
+
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -10,13 +36,155 @@
             </button>
         </div>
         <div class="modal-body">
-            <hr />
-            <form name="form1" action="{% url 'editActivity' idAct username %}" method="POST">
-                <fieldset>
+            <form class="needs-validation" name="form1" action="{% url 'editActivity' idAct username %}" method="POST">
+                <div class="card-body">
                     {% csrf_token %}
-                    {{ form|crispy }}
-                    <input type="submit" name="submit" class='btn btn-primary' id="submit_btn" value="Editar SR" />
-                </fieldset>
+                    <div class="form-group">
+                        <label>Home Office</label>
+                        <select id="id_HO" required name="id_HO" class="form-control select" style="width: 100%;">
+                            <option selected=""></option>
+                            {% for key, value in HO.items %}
+                            {% if value == qry.HO %}
+                            <option value='{{ value }}' selected> {{ value }}</option>
+                            {% else %}
+                            <option value="{{ value }}"> {{ value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select id="txtTipo" required name="txtTipo" class="form-control select" style="width: 100%;">
+                            {{ qry.Tipo }}
+                            <option selected=""></option>
+                            {% for key, value in tipo.items %}
+                            {% if value == qry.Tipo %}
+                            <option value='{{ value }}' selected> {{ value }}</option>
+                            {% else %}
+                            <option value="{{ value }}"> {{ value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>SR asociado</label>
+                        <select name="cmbActividad" required class="form-control select2bs4 select" style="width: 100%;"
+                            id="cmbActividad">
+                            <option selected></option>
+                            {{ qry.SR }}
+                            {% for dt in sr %}
+                            {% if dt.SR == qry.SR %}
+                            <option value="99999" selected>Sin SR asociado</option>
+                            {% else %}
+                            <option value="{{ dt.SR }}">{{ dt.SR }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                        <input type="hidden" name="usuario" value="{{ user.username }}">
+                    </div>
+                    <div class="form-group">
+                        <label>Solicitante de la tarea</label>
+                        <select id="txtSolicitante" required name="txtSolicitante" class="form-control select"
+                            style="width: 100%;">
+                            <option selected=""></option>
+                            {% for key, value in solicitante.items %}
+                            {% if value == qry.Solicitante %}
+                            <option value="{{ value }}" selected> {{ value }}</option>
+                            {% else %}
+                            <option value="{{ value }}"> {{ value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class=" form-group">
+                        <label>Nombre contacto</label>
+                        {{ form.NombreTurnos }}
+                    </div>
+                    <div class="form-group">
+                        <label>Evento o proyecto</label>
+                        <select name="cmbTipo" class="form-control select" style="width: 100%;" id="cmbTipo">
+                            <option value=0 selected=""></option>
+                            {% for key, value in evento.items %}
+                            {% if value == qry.Evento %}
+                            <option value="{{ value }}" selected> {{ value }}</option>
+                            {% else %}
+                            <option value="{{ value }}"> {{ value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ambiente</label>
+                        <select name="Ambiente" required class="form-control select" style="width: 100%;" id="Ambiente">
+                            <option value=19 selected="0"></option>
+                            {{ qry.Ambiente }}
+                            {% for dt in ambiente %}
+                            {% if dt.idAmbiente == qry.Ambiente_id %}
+                            <option value="{{ dt.idAmbiente }}" selected> {{ dt.NombreAmbiente }}</option>
+                            {% else %}
+                            <option value="{{ dt.idAmbiente }}">{{ dt.NombreAmbiente }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="Status" class="form-control select" style="width: 100%;">
+                            <option value="0" selected="0"></option>
+                            {% for key, value in estatus.items %}
+                            {% if value == qry.Status %}
+                            <option value="{{ value }}" selected> {{ value }}</option>
+                            {% else %}
+                            <option value="{{ value }}"> {{ value }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        {{ form.Descripcion }}
+                    </div>
+                    <div class="form-group">
+                        <label>Avance</label>
+                        {{ form.Avance }}
+                    </div>
+                    <div class="form-group">
+                        <label>IM</label>
+                        {{ form.IM }}
+                    </div>
+                    <div class="form-group">
+                        <label>RFC</label>
+                        {{ form.RFC }}
+                    </div>
+                    <div class="form-group">
+                        <div id=""></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha inicio</label>
+                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                            {{ form.FechaInicio }}
+                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha finalización</label>
+                        <div class="input-group date" id="reservationdate2" data-target-input="nearest">
+                            {{ form.FechaFin }}
+                            <div class="input-group-append" data-target="#reservationdate2"
+                                data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Horas invertidas</label>
+                        {{ form.HorasInvertidas }}
+                    </div>
+                    <input type="submit" name="submit" class='btn btn-primary swalDefaultSuccess' id="submit_btn"
+                        value="Editar actividad" />
+                </div>
             </form>
         </div>
         <div class="modal-footer">
@@ -29,18 +197,130 @@
 {% block js %}
 
 <script>
+
+    //atributos del form
+    var a = document.getElementById("id_HO");
+    a.setAttribute("class", "form-control");
+
+    var b = document.getElementById("id_Descripcion");
+    b.setAttribute("class", "form-control");
+
     var c = document.getElementById("id_FechaInicio");
-    c.setAttribute("class", "form-control ");   
+    c.setAttribute("class", "form-control datetimepicker-input");
+    c.setAttribute("data-target", "#reservationdate2");
     var myArray = c.value.split("-");
     c.value = myArray[0].toString() + "-" + myArray[1].toString() + "-" + myArray[2].toString();
-    
 
     var d = document.getElementById("id_FechaFin");
-    d.setAttribute("class", "form-control ");   
+    d.setAttribute("class", "form-control datetimepicker-input");
+    d.setAttribute("data-target", "#reservationdate2");
     var myArray = d.value.split("-");
     d.value = myArray[0].toString() + "-" + myArray[1].toString() + "-" + myArray[2].toString();
     d.setAttribute("placeholder", "yyyy-mm-dd");
 
+    var e = document.getElementById("id_Avance");
+    e.setAttribute("class", "form-control");
+
+    var f = document.getElementById("id_IM");
+    f.setAttribute("class", "form-control");
+
+    var g = document.getElementById("id_RFC");
+    g.setAttribute("class", "form-control");
+
+    var h = document.getElementById("id_HorasInvertidas");
+    h.setAttribute("class", "form-control");
+
+    var i = document.getElementById("id_NombreTurnos");
+    i.setAttribute("class", "form-control");
+
 </script>
 
+<!-- date-range-picker -->
+<script src="{% static 'plugins/select2/js/select2.full.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js' %}"></script>
+<script src="{% static 'plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'plugins/inputmask/jquery.inputmask.min.js' %}"></script>
+<script src="{% static 'plugins/daterangepicker/daterangepicker.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+<script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-switch/js/bootstrap-switch.min.js' %}"></script>
+<script src="{% static 'plugins/bs-stepper/js/bs-stepper.min.js' %}"></script>
+<script src="{% static 'plugins/dropzone/min/dropzone.min.js' %}"></script>
+
+<script>
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        //format: 'L'
+        format: 'YYYY-MM-DD'
+    });
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        //format: 'L'
+        format: 'YYYY-MM-DD'
+    });
+
+    $('#reservationdate2').datetimepicker({
+        //format: 'L'
+        format: 'YYYY-MM-DD'
+    });
+
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY hh:mm A'
+        }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+        {
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment()
+        },
+        function (start, end) {
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+        }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+        format: 'LT'
+    })
+
+    $('#txtSolicitante').change(function () {
+            var value = $(this).val();
+            var input5 = "<input type='text' class='form-control' name='NombreTurnos'>";
+            if (value == "Turnos" || value == "Mesa de ayuda" || value == "TEAM OAC" || value == "ITOC" || value == "AMX" || value == "Equipo Triara") {
+                $("#NombreTurnos")
+                    .html('Nombre contacto')
+                    .append(input5)
+                    .show()
+                $("#")
+            } else {
+                $('#NombreTurnos').hide()
+            }
+        });
+</script>
 {% endblock %}

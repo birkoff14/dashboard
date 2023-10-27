@@ -37,6 +37,7 @@ urlpatterns = [
     path('get_info_detail/', views.get_info_detail, name='get_info_detail'),
     path('addKeepass/', views.addKeepass, name='addKeepass'),
     path('editKeepass/<str:idK>', views.editKeepass, name='editKeepass'),
+    path('buscaAllKeepass/', views.buscaAllKeepass, name='buscaAllKeepass'),
 ]
 
 admin.site.site_header = "Operación de Aplicaciones Cloud"

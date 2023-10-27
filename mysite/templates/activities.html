@@ -71,25 +71,19 @@
                             </div>
                             <div class="form-group">
                                 <label>SR asociado</label>
-                                <select name="cmbActividad" required class="form-control select2bs4 select" style="width: 100%;"
-                                    id="cmbActividad">
-                                    <option selected></option>
-                                    <option value="99999">Sin SR asociado</option>
-                                    {% for dt in qry %}
-                                    <option value="{{ dt.SR }}">{{ dt.SR }}</option>
-                                    {% endfor %}
-                                </select>
+                                <input type="text" id="cmbActividad" class="form-control" name="cmbActividad">
                                 <input type="hidden" name="usuario" value="{{ user.username }}">
                             </div>
                             <div class="form-group">
                                 <label>Solicitante de la tarea</label>
                                 <select id="txtSolicitante" required name="txtSolicitante" class="form-control select"
                                     style="width: 100%;">
-                                    <option selected="""></option>
+                                    <option selected=""></option>
                                     <option>Adrián Martínez</option>
                                     <option>Luis Alberto Ramírez</option>
                                     <option>TEAM OAC</option>
                                     <option>------------------------</option>
+                                    <option>Equipo Triara</option>
                                     <option>Turnos</option>
                                     <option>Mesa de ayuda</option>
                                     <option>ITOC</option>
@@ -126,20 +120,20 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <div id="desc"></div>
+                                <div id="desc"><label><div id="PROYECTO">Descripción</div>
+                                </label><textarea type="text" class="form-control" name="Descripcion"></textarea></div>
                             </div>
                             <div class="form-group">
                                 <label>Avance</label>
                                 <input type='text' required class='form-control' name='Avance'>
                             </div>
                             <div class="form-group">
-                                <div id="IM"></div>
+                                <label>IM</label>
+                                <input type='text' class='form-control' name='IM'>
                             </div>
                             <div class="form-group">
-                                <div id="RFC"></div>
-                            </div>
-                            <div class="form-group">
-                                <div id=""></div>
+                                <label>RFC</label>
+                                <input type='text' class='form-control' name='RFC'>
                             </div>
                             <div class="form-group">
                                 <label>Fecha inicio</label>
@@ -313,7 +307,7 @@
         })
 
         //$(document).on("change", "#cmbActividad", function () {
-        $('#cmbActividad').change(function () {
+        /*$('#cmbActividad').change(function () {
             var value = $(this).val();
             if (value == 99999) {
                 var input = "<input type='text' class='form-control' name='IM'>";
@@ -345,7 +339,7 @@
                 $("#SR_ID").hide()
 
             }
-        });
+        });*/
 
         $('#cmbTipo').change(function () {
             var value = $(this).val();
@@ -366,7 +360,7 @@
         $('#txtSolicitante').change(function () {
             var value = $(this).val();
             var input5 = "<input type='text' class='form-control' name='NombreTurnos'>";
-            if (value == "Turnos" || value == "Mesa de ayuda" || value == "TEAM OAC" || value == "ITOC" || value == "AMX") {
+            if (value == "Turnos" || value == "Mesa de ayuda" || value == "TEAM OAC" || value == "ITOC" || value == "AMX" || value == "Equipo Triara") {
                 $("#NombreTurnos")
                     .html('Nombre contacto')
                     .append(input5)

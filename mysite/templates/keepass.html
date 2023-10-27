@@ -20,10 +20,14 @@
                             <div class="col-12 col-sm-4">
                                 <a href="#" onclick="return abrir_modal('{% url 'addKeepass' %}');"
                                     class="btn btn-block btn-secondary">Agregar nueva entrada</a>
-                            </div>
-                            <div class="col-12 col-sm-4">
-                                <input class="form-control" type="text" id="filtro" placeholder="Filtrar por...">
-                            </div>
+                            </div>                            
+                                <div class="col-12 col-sm-4">
+                                    <form id="buscar-form">
+                                    <input class="form-control" name="filtro" type="text" id="filtro"
+                                        placeholder="Filtrar por...">
+                                    <button type="submit">Buscar</button>
+                                </form>
+                                </div>                            
                             <div class="col-12 col-sm-4"></div>
                         </div>
                     </div>
@@ -105,6 +109,12 @@
                                                                 <div id="info-container"></div>
                                                             </ul>
                                                         </div>
+
+                                                        <div id="resultados">
+                                                            <!-- Los resultados se mostrarán aquí -->
+                                                        </div>
+
+
                                                     </div>
 
                                                     <div class="col-12 col-sm-4">
@@ -280,7 +290,7 @@
         return false;
     }
 
-    document.getElementById('filtro').addEventListener('input', function () {
+    document.getElementById('filtrossss').addEventListener('input', function () {
         var filtro = this.value.toLowerCase(); // Obtener el valor del filtro en minúsculas
         var elementos = document.getElementById('info-container').getElementsByTagName('li'); // Obtener los elementos <p> dentro del div
 
@@ -295,7 +305,32 @@
         }
     });
 
+</script>
 
+<script>
+    $(document).ready(function () {
+        $('#buscar-form').on('submit', function (event) {
+            event.preventDefault();
+            const datoABuscar = $('#filtro').val();
+
+            $.ajax({
+                url: '/buscaAllKeepass/',
+                type: 'GET',
+                data: { filtro: datoABuscar },
+                success: function (response) {
+                    if (response.datos) {
+                        const resultados = response.datos.map(resultado => `<p>${resultado.Titulo}: ${resultado.Usuario}</p>`);
+                        $('#resultados').html(resultados.join(''));
+                    } else {
+                        $('#resultados').html('<p>No se encontraron resultados.</p>');
+                    }
+                },
+                error: function () {
+                    $('#resultados').html('<p>Error al buscar datos.</p>');
+                }
+            });
+        });
+    });
 </script>
 
 {% endblock %}

@@ -25,3 +25,11 @@
         </div>
     </div>
 </div>
+
+{% block js %}
+<script>
+var b = document.getElementById("id_FechaFix");
+b.setAttribute("class", "form-control datetimepicker-input");
+b.setAttribute("data-target", "#reservationdate");
+</script>
+{% endblocl %}

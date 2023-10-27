@@ -36,7 +36,7 @@ class actividadesAdmin(ImportExportModelAdmin):
 
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ("Usuario", "TipoUser")
+    list_display = ("Usuario", "TipoUser", "Perfil")
 
 @admin.register(ingActividad)
 class ingActividadAdmin(admin.ModelAdmin):

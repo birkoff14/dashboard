@@ -6,6 +6,7 @@ from django.utils import timezone
 
 class CustomUser(models.Model):
     TipoUser = models.CharField(max_length=100, blank=False)
+    Perfil = models.CharField(max_length=100, blank=False)
     Usuario = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -87,7 +88,7 @@ class cierreFalla(models.Model):
 
 class actividades(models.Model):
     TipoActividad = models.CharField(max_length=150, blank=True, verbose_name="Actividad")
-    FechaInicio = models.DateTimeField(default=timezone.now, blank=True, verbose_name="Fecha Inicio")
+    FechaInicio = models.DateTimeField(blank=True, verbose_name="Fecha Inicio")
     FechaFin = models.CharField(max_length=150, blank=True, verbose_name="Fecha Fin")
     HorasInvertidas = models.CharField(max_length=50, blank=True, verbose_name="Horas invertidas")
     IM = models.CharField(max_length=150, blank=True, verbose_name="IM")
