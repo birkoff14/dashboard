@@ -145,3 +145,4 @@ nohup.out
 
 #Static Files
 static/
+mysite/static/

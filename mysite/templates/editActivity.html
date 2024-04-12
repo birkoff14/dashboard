@@ -41,7 +41,7 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <label>Home Office</label>
-                        <select id="id_HO" required name="id_HO" class="form-control select" style="width: 100%;">
+                        <select id="id_HO" required name="HO" class="form-control select" style="width: 100%;">
                             <option selected=""></option>
                             {% for key, value in HO.items %}
                             {% if value == qry.HO %}
@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label>Tipo</label>
-                        <select id="txtTipo" required name="txtTipo" class="form-control select" style="width: 100%;">
+                        <select id="id_Tipo" required name="Tipo" class="form-control select" style="width: 100%;">
                             {{ qry.Tipo }}
                             <option selected=""></option>
                             {% for key, value in tipo.items %}
@@ -68,23 +68,12 @@
                     </div>
                     <div class="form-group">
                         <label>SR asociado</label>
-                        <select name="cmbActividad" required class="form-control select2bs4 select" style="width: 100%;"
-                            id="cmbActividad">
-                            <option selected></option>
-                            {{ qry.SR }}
-                            {% for dt in sr %}
-                            {% if dt.SR == qry.SR %}
-                            <option value="99999" selected>Sin SR asociado</option>
-                            {% else %}
-                            <option value="{{ dt.SR }}">{{ dt.SR }}</option>
-                            {% endif %}
-                            {% endfor %}
-                        </select>
-                        <input type="hidden" name="usuario" value="{{ user.username }}">
+                        {{ form.SR }}
+                        <input id="id_Usuario" type="hidden" name="Usuario" value="{{ username }}">
                     </div>
                     <div class="form-group">
                         <label>Solicitante de la tarea</label>
-                        <select id="txtSolicitante" required name="txtSolicitante" class="form-control select"
+                        <select id="id_Solicitante" required name="Solicitante" class="form-control select"
                             style="width: 100%;">
                             <option selected=""></option>
                             {% for key, value in solicitante.items %}
@@ -102,7 +91,7 @@
                     </div>
                     <div class="form-group">
                         <label>Evento o proyecto</label>
-                        <select name="cmbTipo" class="form-control select" style="width: 100%;" id="cmbTipo">
+                        <select name="Evento" class="form-control select" style="width: 100%;" id="id_Evento">
                             <option value=0 selected=""></option>
                             {% for key, value in evento.items %}
                             {% if value == qry.Evento %}
@@ -115,7 +104,7 @@
                     </div>
                     <div class="form-group">
                         <label>Ambiente</label>
-                        <select name="Ambiente" required class="form-control select" style="width: 100%;" id="Ambiente">
+                        <select name="Ambiente" required class="form-control select" style="width: 100%;" id="id_Ambiente">
                             <option value=19 selected="0"></option>
                             {{ qry.Ambiente }}
                             {% for dt in ambiente %}
@@ -129,7 +118,7 @@
                     </div>
                     <div class="form-group">
                         <label>Status</label>
-                        <select name="Status" class="form-control select" style="width: 100%;">
+                        <select name="Status" class="form-control select" style="width: 100%;" id="id_Status">
                             <option value="0" selected="0"></option>
                             {% for key, value in estatus.items %}
                             {% if value == qry.Status %}
@@ -199,7 +188,7 @@
 <script>
 
     //atributos del form
-    var a = document.getElementById("id_HO");
+    var a = document.getElementById("id_SR");
     a.setAttribute("class", "form-control");
 
     var b = document.getElementById("id_Descripcion");

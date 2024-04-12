@@ -128,7 +128,7 @@ def sr(request):
         '3':'hector.ortiz', 
         '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
         '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
-        '17':'ricardo.lopez', '12':'tonatiuh.mata',
+        '17':'ricardo.lopez', '12':'tonatiuh.mata', '25':'daniel.salcedo',
     }
 
     usuariosStorage = {'29' : 'abraham.castro', '28' : 'angel.urzua', '31' : 'oscar.salinas', 
@@ -443,7 +443,7 @@ def repactividades(request):
             + qryWhere + qryFecha)
     
 
-    print(fechaIni)
+    print("Fecha inicio: " + fechaIni)
     #print(fechaFin)
     print(qry)
 
@@ -492,7 +492,6 @@ def editActivity(request, idAct, idU):
     sr = reporteFallas.objects.values("SR").distinct().order_by("SR")
     
     ambiente = Ambiente.objects.all()
-    print(ambiente.query)
     
     tipo = {'1':'Actualización recurrente', '2':'Implementación', '3':'Toma operativa', 
         '4': 'Trouble shooting falla', '5':'Reuniones de seguimiento', '6' : 'Investigación',
@@ -639,7 +638,7 @@ def addProject(request, idP):
         '3':'hector.ortiz', 
         '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
         '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
-        '17':'ricardo.lopez', '12':'tonatiuh.mata',
+        '17':'ricardo.lopez', '12':'tonatiuh.mata','25':'daniel.salcedo'
     }
 
     lider = {'6' : 'erik.arroyo', '3' : 'hector.ortiz', '11' : 'manuel.meneses', '12' : 'tonatiuh.mata'}
@@ -684,7 +683,7 @@ def editProject(request, idP):
         '3':'hector.ortiz', 
         '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
         '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
-        '17':'ricardo.lopez', '12':'tonatiuh.mata',
+        '17':'ricardo.lopez', '12':'tonatiuh.mata','25':'daniel.salcedo'
     }
 
     estatus = {'1':'Iniciado', '2' : 'En progreso', '3' : 'Terminado'}
