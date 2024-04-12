@@ -353,7 +353,8 @@ def activity(request):
             TipoActividad=request.POST.get("cmbActividad", ""),
             FechaInicio=request.POST.get("fInicio", ""),
             FechaFin=request.POST.get("fFin", ""),
-            HorasInvertidas=request.POST.get("txtHorasInvertidas", ""),
+            HorasInvertidas=request.POST.get("cmbHoras", ""),
+            MinutosInvertidos=request.POST.get("cmbMinutos", ""),
             IM=request.POST.get("IM", ""),
             RFC=request.POST.get("RFC", ""),
             Tipo=request.POST.get("txtTipo", ""),
@@ -366,6 +367,7 @@ def activity(request):
             Solicitante=request.POST.get("txtSolicitante", ""),
             NombreTurnos=request.POST.get("NombreTurnos", ""),
             HO=request.POST.get("HO", "No"),
+            
         )
         print("Grabo bien los datos del form")
     else:

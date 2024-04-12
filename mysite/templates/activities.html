@@ -87,10 +87,10 @@
                                     <option>AMX</option>
                                     <option>Calidad</option>
                                     <option>Coordinación de RFC</option>
-                                    <option>Equipo Triara</option>                                    
+                                    <option>Equipo Triara</option>
                                     <option>ITOC</option>
                                     <option>Mesa de ayuda</option>
-                                    <option>Turnos</option>                               
+                                    <option>Turnos</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -123,8 +123,10 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <div id="desc"><label><div id="PROYECTO">Descripción</div>
-                                </label><textarea type="text" class="form-control" name="Descripcion"></textarea></div>
+                                <div id="desc"><label>
+                                        <div id="PROYECTO">Descripción</div>
+                                    </label><textarea type="text" class="form-control" name="Descripcion"></textarea>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Avance</label>
@@ -152,17 +154,62 @@
                             <div class="form-group">
                                 <label>Fecha finalización</label>
                                 <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                                    <input readonly="yes" name="fFin" type="text" class="form-control datetimepicker-input"
-                                        data-target="#reservationdate2" id="id_FechaFinal">
+                                    <input readonly="yes" name="fFin" type="text"
+                                        class="form-control datetimepicker-input" data-target="#reservationdate2"
+                                        id="id_FechaFinal">
                                     <div class="input-group-append" data-target="#reservationdate2"
                                         data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Horas invertidas</label>
-                                <input name="txtHorasInvertidas" required type="text" class="form-control">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Horas invertidas</label>
+                                        <select name="cmbHoras" class="form-control select" style="width: 100%;"
+                                            id="cmbHoras" required>
+                                            <option value=0 selected=""></option>
+                                            <option>1 hora</option>
+                                            <option>2 horas</option>
+                                            <option>3 horas</option>
+                                            <option>4 horas</option>
+                                            <option>5 horas</option>
+                                            <option>6 horas</option>
+                                            <option>7 horas</option>
+                                            <option>8 horas</option>
+                                            <option>9 horas</option>
+                                            <option>10 horas</option>
+                                            <option>11 horas</option>
+                                            <option>12 horas</option>
+                                            <option>13 horas</option>
+                                            <option>14 horas</option>
+                                            <option>15 horas</option>
+                                            <option>16 horas</option>
+                                            <option>17 horas</option>
+                                            <option>18 horas</option>
+                                            <option>19 horas</option>
+                                            <option>20 horas</option>
+                                            <option>21 horas</option>
+                                            <option>22 horas</option>
+                                            <option>23 horas</option>
+                                            <option>24 horas</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Minutos invertidos</label>
+                                        <select name="cmbMinutos" class="form-control select" style="width: 100%;"
+                                            id="cmbMinutos" required>
+                                            <option value=0 selected=""></option>
+                                            <option>00 min</option>
+                                            <option>15 min</option>
+                                            <option>30 min</option>
+                                            <option>45 min</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <input type="submit" name="submit" class='btn btn-primary swalDefaultSuccess'
                                 id="submit_btn" value="Agregar datos" />

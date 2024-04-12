@@ -104,7 +104,8 @@
                     </div>
                     <div class="form-group">
                         <label>Ambiente</label>
-                        <select name="Ambiente" required class="form-control select" style="width: 100%;" id="id_Ambiente">
+                        <select name="Ambiente" required class="form-control select" style="width: 100%;"
+                            id="id_Ambiente">
                             <option value=19 selected="0"></option>
                             {{ qry.Ambiente }}
                             {% for dt in ambiente %}
@@ -167,9 +168,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Horas invertidas</label>
-                        {{ form.HorasInvertidas }}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Horas invertidas</label>
+                                {{ form.HorasInvertidas }}
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Minutos invertidos</label>
+                                {{ form.MinutosInvertidos }}
+                            </div>
+                        </div>
                     </div>
                     <input type="submit" name="submit" class='btn btn-primary swalDefaultSuccess' id="submit_btn"
                         value="Editar actividad" />
@@ -217,6 +228,9 @@
     g.setAttribute("class", "form-control");
 
     var h = document.getElementById("id_HorasInvertidas");
+    h.setAttribute("class", "form-control");
+
+    var h = document.getElementById("id_MinutosInvertidos");
     h.setAttribute("class", "form-control");
 
     var i = document.getElementById("id_NombreTurnos");
@@ -299,17 +313,17 @@
     })
 
     $('#txtSolicitante').change(function () {
-            var value = $(this).val();
-            var input5 = "<input type='text' class='form-control' name='NombreTurnos'>";
-            if (value == "Turnos" || value == "Mesa de ayuda" || value == "TEAM OAC" || value == "ITOC" || value == "AMX" || value == "Equipo Triara") {
-                $("#NombreTurnos")
-                    .html('Nombre contacto')
-                    .append(input5)
-                    .show()
-                $("#")
-            } else {
-                $('#NombreTurnos').hide()
-            }
-        });
+        var value = $(this).val();
+        var input5 = "<input type='text' class='form-control' name='NombreTurnos'>";
+        if (value == "Turnos" || value == "Mesa de ayuda" || value == "TEAM OAC" || value == "ITOC" || value == "AMX" || value == "Equipo Triara") {
+            $("#NombreTurnos")
+                .html('Nombre contacto')
+                .append(input5)
+                .show()
+            $("#")
+        } else {
+            $('#NombreTurnos').hide()
+        }
+    });
 </script>
 {% endblock %}
