@@ -302,6 +302,33 @@ def kpis(request):
 
     return render(request, 'kpis.html', context)
 
+@login_required(login_url='/')
+def kpis_supervisor(request):
+    
+    hoy = datetime.date.today()
+    lunes = hoy + datetime.timedelta(0 - hoy.weekday())
+    viernes = lunes + datetime.timedelta(days=6)
+    
+    diaInicio = str(lunes)[-2:]
+    diaFin = str(viernes)[-2:]
+    mes = str(lunes)[5:7]
+ 
+    qry = actividades.objects.raw("""select 1 as id, sum(HorasInvertidas+MinutosInvertidos) Horas, Usuario 
+                                    from reportinfra_actividades
+                                    where FechaInicio >= '""" + str(lunes) + """'
+                                    and (FechaFin <= '""" + str(viernes) + """' or FechaFin <> '')
+                                    group by Usuario""")
+    
+    print(qry)
+    context = {
+        "qry" : qry,
+        "di" : diaInicio,
+        "df" : diaFin,
+        "mes" : mes,
+    }
+    
+    return render(request, 'kpis_supervisor.html', context)
+
 def detailSR(request, idSR):
 
     form = comments(request.POST or None)
@@ -620,8 +647,8 @@ def projects(request):
         on a.NombreIngeniero = b.id 
         left join auth_user c
         on a.LiderTecnico = c.id 
-        where a.Status != '3' """)
-    
+        where a.Status = '3' """)
+        
     qryTerminado = ingActividad.objects.raw("""select count(*) as Total from reportinfra_ingactividad where Status = 3""")
 
     context = {
