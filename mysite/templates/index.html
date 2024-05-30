@@ -78,7 +78,26 @@
                     </div>
                 </div>
             </div>
-        </div>            
+        </div>     
+        <div class="row">
+            <div class="col-12">
+                <div class="info-box" >
+                    <span class="info-box-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Horas del mes</span>
+                        {% for dt in mes %}
+                        <span class="info-box-number">{{ dt.Horas|floatformat:2 }}</span>
+						{% endfor %}
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%"></div>
+                        </div>
+                        <span class="progress-description">
+                            ...
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>       
     </div>
 </section>
 {% endblock %}

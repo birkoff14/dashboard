@@ -15,7 +15,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
 from .serializers import actividadesSerializer
-#from datetime import datetime
+import datetime
+import calendar
 
 # Create your views here.
 
@@ -58,6 +59,15 @@ def main(request):
     hoy = datetime.date.today()
     lunes = hoy + datetime.timedelta(0 - hoy.weekday())
     viernes = lunes + datetime.timedelta(days=6)
+    
+    primer_dia_mes = hoy.replace(day=1)
+    ultimo_dia_mes = hoy.replace(day=calendar.monthrange(hoy.year, hoy.month)[1])
+    
+    print("Primer día del mes:", primer_dia_mes)
+    print("Último día del mes:", ultimo_dia_mes)
+    
+    
+    
 
     qry = actividades.objects.raw("""select 1 as id, Sum(HorasInvertidas) Horas, Usuario
                                     from reportinfra_actividades
@@ -86,8 +96,15 @@ def main(request):
                 and Usuario = '""" + usuario + 
                 """' group by Usuario
                 order by Usuario""")
-
-
+    
+    qryMes = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas), 0) Horas, Usuario
+                from reportinfra_actividades
+                where FechaInicio >= '""" + str(primer_dia_mes) + """'
+                and (FechaFin <= '""" + str(ultimo_dia_mes) + """' and FechaFin <> '')
+                and Usuario = '""" + usuario + 
+                """' group by Usuario
+                order by Usuario""")
+    
     tipoUser = User.objects.raw("""select 1 as id, TipoUser, username from reportinfra_customuser a
                                 inner join auth_user b
                                 on a.Usuario_id = b.id 
@@ -105,6 +122,7 @@ def main(request):
 
     context = {
         "semana" : qry,
+        "mes" : qryMes,
         "Total"  : qryTotal,
         "Diario" : qryDia,
         "TotalHO" : qryTotalHO,
