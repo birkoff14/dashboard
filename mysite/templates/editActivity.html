@@ -172,13 +172,31 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Horas invertidas</label>
-                                {{ form.HorasInvertidas }}
+                                <select name="HorasInvertidas" class="form-control select" style="width: 100%;" id="id_HorasInvertidas">
+                                    <option value="0" selected="0"></option>                                    
+                                    {% for key, value in hrs.items %}
+                                    {% if key == qry.HorasInvertidas %}
+                                    <option value="{{ key }}" selected> {{ value }}</option>
+                                    {% else %}
+                                    <option value="{{ key }}"> {{ value }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Minutos invertidos</label>
-                                {{ form.MinutosInvertidos }}
+                                <label>Minutos invertidos</label>                        
+                                <select name="MinutosInvertidos" class="form-control select" style="width: 100%;" id="id_MinutosInvertidos">
+                                    <option value="0" selected="0"></option>                                    
+                                    {% for key, value in min.items %}
+                                    {% if key == qry.MinutosInvertidos %}
+                                    <option value="{{ key }}" selected> {{ value }}</option>
+                                    {% else %}
+                                    <option value="{{ key }}"> {{ value }}</option>
+                                    {% endif %}
+                                    {% endfor %}
+                                </select>
                             </div>
                         </div>
                     </div>

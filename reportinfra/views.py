@@ -69,7 +69,7 @@ def main(request):
     
     
 
-    qry = actividades.objects.raw("""select 1 as id, Sum(HorasInvertidas) Horas, Usuario
+    qry = actividades.objects.raw("""select 1 as id, Sum(HorasInvertidas+MinutosInvertidos) Horas, Usuario
                                     from reportinfra_actividades
                                     where FechaInicio >= '""" + str(lunes) +
                                     """' and (FechaFin <= '""" + str(viernes) + """' and FechaFin <> '')
@@ -77,19 +77,19 @@ def main(request):
                                     """' group by Usuario
                                     order by Usuario""")
 
-    qryTotal = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas), 0) Horas, Usuario
+    qryTotal = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas+MinutosInvertidos), 0) Horas, Usuario
                 from reportinfra_actividades
                 where Usuario = '""" + usuario +
                 """' group by Usuario
                 order by Usuario""")
 
-    qryTotalHO = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas), 0) Horas, Usuario
+    qryTotalHO = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas+MinutosInvertidos), 0) Horas, Usuario
                 from reportinfra_actividades
                 where Usuario = '""" + usuario +
                 """' and HO = 'Si' group by Usuario
                 order by Usuario""")
 
-    qryDia = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas), 0) Horas, Usuario
+    qryDia = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas+MinutosInvertidos), 0) Horas, Usuario
                 from reportinfra_actividades
                 where FechaInicio >= '""" + str(hoy) + """'
                 and (FechaFin <= '""" + str(hoy) + """' and FechaFin <> '')
@@ -97,7 +97,7 @@ def main(request):
                 """' group by Usuario
                 order by Usuario""")
     
-    qryMes = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas), 0) Horas, Usuario
+    qryMes = actividades.objects.raw("""select 1 as id, IFNULL(Sum(HorasInvertidas+MinutosInvertidos), 0) Horas, Usuario
                 from reportinfra_actividades
                 where FechaInicio >= '""" + str(primer_dia_mes) + """'
                 and (FechaFin <= '""" + str(ultimo_dia_mes) + """' and FechaFin <> '')
@@ -552,7 +552,17 @@ def editActivity(request, idAct, idU):
     HO = {'1':'Si', '2':'No'}
     
     Solicitante = {'1': 'Adrián Martínez','2': 'Luis Alberto Ramírez','3': 'TEAM OAC','4': 'Turnos', 
-                   '5': 'Mesa de ayuda', '6': 'ITOC', '7': 'AMX', '8':'Equipo Triara'}
+                   '5': 'Mesa de ayuda', '6': 'ITOC', '7': 'AMX', '8':'Equipo Triara', '9' : 'Calidad', 
+                   '10':'Coordinación de RFC'}
+    
+    horas = {'1' : '1 hora', '2' : '2 horas', '3' : '3 horas', '4' : '4 horas', '5' : '5 horas', '6' : '6 horas',
+             '7' : '7 horas', '8' : '8 horas', '9' : '9 horas', '10' : '10 horas', '11' : '11 horas', '12' : '12 horas',
+             '13' : '13 horas', '14' : '14 horas', '15' : '15 horas', '16' : '16 horas', '17' : '17 horas',
+             '18' : '18 horas', '19' : '19 horas', '20' : '20 horas', '21' : '21 horas', '22' : '22 horas',
+             '23' : '23 horas', '24' : '24 horas'}
+    
+    minutos = {'0': '00 min', '0.15' : '15 min', '0.30' : '30 min', '0.45' : '45 min'}
+    
     
     qry = actividades.objects.get(id=idAct)
     username = idU
@@ -584,6 +594,8 @@ def editActivity(request, idAct, idU):
         "HO" : HO,
         "qry" : qry,
         "solicitante" : Solicitante,
+        "min" : minutos,
+        "hrs" : horas,
     }
 
     return render(request, "editActivity.html", context)
@@ -614,7 +626,7 @@ def reporteSemanal(request):
     viernes = lunes + datetime.timedelta(days=6)
 
 
-    qry = actividades.objects.raw("""select 1 as id, sum(`HorasInvertidas`) HorasInvertidas, 
+    qry = actividades.objects.raw("""select 1 as id, sum(HorasInvertidas+MinutosInvertidos) HorasInvertidas, 
                 dayname(`FechaInicio`) Dia,
                 CONCAT(day(`FechaInicio`), "-", MONTH(`FechaInicio`), "-", YEAR(`FechaInicio`)) as Fecha
                 from reportinfra_actividades
