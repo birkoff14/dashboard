@@ -461,12 +461,24 @@ def activity(request):
 
 @login_required(login_url='/')
 def repactividades(request):
+    
+    hoy = datetime.date.today()
+    lunes = hoy + datetime.timedelta(0 - hoy.weekday())
+    viernes = lunes + datetime.timedelta(days=6)
+    
+    diaInicio = str(lunes)[-2:]
+    diaFin = str(viernes)[-2:]
+    mes = str(lunes)[5:7]
 
     username = request.GET.get("idU", "")
-    fechaIni = request.POST.get("fechaInit", "0")
-    fechaFin = request.POST.get("fechaFin", "0")
+    fechaIni = request.POST.get("fechaInit", str(lunes))
+    fechaFin = request.POST.get("fechaFin", str(viernes))
+    
+    print(fechaFin)
 
-    if (username == 'adrian.martinez' or username == 'pedro.mendez' or username == 'angel.urzua' or username == 'jorge.soto' or username == 'birkoff' or username == 'luis.ramirez'):
+    if (username == 'adrian.martinez' or username == 'pedro.mendez' or username == 'angel.urzua' 
+        or username == 'jorge.soto' or username == 'birkoff' or username == 'luis.ramirez'
+        or username == 'tonatiuh.mata' or username == 'hector.ortiz' or username == 'erik.arroyo'):
         qryWhere = ""
     else:        
         qryWhere = "where Usuario = '" + username + """'"""
@@ -563,6 +575,12 @@ def editActivity(request, idAct, idU):
     
     minutos = {'0': '00 min', '0.15' : '15 min', '0.30' : '30 min', '0.45' : '45 min'}
     
+    act = {'0' : 'Renovación de certificados', '1' : 'Depuración de particiones', '2' : 'Depuración de unidad windows', 
+           '3' : 'Actualización de sistema operativo', '4' : 'Actualización de componentes VMware',
+           '5' : 'Rotación de password', '6' : 'Eliminación de password', '7' : 'Atención de RFC (Inicio - Seguimiento - Apoyo)', 
+           '8' : 'MPLS ABC', '9' : 'External Network', '10' : 'Sesión', '11' : 'Atención de IM escalado', 
+           '12' : 'Actividad no categorizada'}
+    
     
     qry = actividades.objects.get(id=idAct)
     username = idU
@@ -596,6 +614,7 @@ def editActivity(request, idAct, idU):
         "solicitante" : Solicitante,
         "min" : minutos,
         "hrs" : horas,
+        "actividades" : act,
     }
 
     return render(request, "editActivity.html", context)

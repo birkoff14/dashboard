@@ -106,6 +106,8 @@ class actividades(models.Model):
     NombreTurnos = models.CharField(max_length=100, blank=True, verbose_name="NombreTurnos")
     HO = models.CharField(max_length=100, blank=True, verbose_name="Home Office")
     Tipo = models.CharField(max_length=100, blank=True, verbose_name="Tipo mejora") #debe ser un catálogo
+    Actividades = models.CharField(max_length=100, blank=True, verbose_name="Actividades") #debe ser un catálogo
+    
 
 class ingActividad(models.Model):
     NombreIngeniero = models.CharField(max_length=1000, blank=True, verbose_name="Ing. Asignado")

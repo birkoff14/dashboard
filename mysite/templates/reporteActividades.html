@@ -27,8 +27,9 @@
                     <div class="card-body">
                         <form name="form1" method="post"
                         action="{% url 'repactividades'%}?idU={{ username }}">
+                        <p class="text-danger" style="text-align: center;"><b>IMPORTANTE: El reporte inicial solo muestra la semana actual. Si requieres más datos, por favor usa el filtro de fechas.</b></p>
                         {% csrf_token %}
-                        <div class="row align-items-start">
+                        <div class="row align-items-start">                            
                             <div class="col">
                                 Inicio:
                             </div>
@@ -79,7 +80,7 @@
                                     <th></th>
                                     <th>Editar</th>
                                     <th>Usuario</th>
-                                    <th>Descripción</th>
+                                    <th>Actividad</th>
                                     <th>Fecha inicio</th>
                                     <th>Fecha fin</th>
                                     <th>Horas invertidas</th>
@@ -87,6 +88,7 @@
                                     <th>IM</th>
                                     <th>RFC</th>
                                     <th>SR</th>
+                                    <th>Descripción</th>
                                     <th>Evento</th>
                                     <th>Ambiente</th>
                                     <th>Status</th>
@@ -102,7 +104,7 @@
                                     <td></td>
                                     <td><div><a href="#" onclick="return abrir_modal('{% url 'editActivity' dt.id dt.Usuario %}');">Editar</a></div></td>
                                     <td>{{ dt.Usuario }}</td>
-                                    <td>{{ dt.Descripcion }}</td>
+                                    <td>{{ dt.Actividades }} </td>
                                     <td>{{ dt.FechaInicio|date:"d/m/Y" }}</td>
                                     <td>{{ dt.FechaFin|date:"d/m/Y" }}</td>
                                     <td>{{ dt.HorasInvertidas }}</td>
@@ -110,6 +112,7 @@
                                     <td>{{ dt.IM }}</td>
                                     <td>{{ dt.RFC }}</td>
                                     <td>{{ dt.SR }}</td>
+                                    <td>{{ dt.Descripcion }}</td>
                                     <td>{{ dt.Evento }}</td>
                                     <td>{{ dt.NombreAmbiente }}</td>
                                     <td>{{ dt.Status }}</td>
@@ -125,7 +128,7 @@
                                     <th></th>
                                     <th>Editar</th>
                                     <th>Usuario</th>
-                                    <th>Descripción</th>
+                                    <th>Actividad</th>
                                     <th>Fecha inicio</th>
                                     <th>Fecha fin</th>
                                     <th>Horas invertidas</th>
@@ -133,6 +136,7 @@
                                     <th>IM</th>
                                     <th>RFC</th>
                                     <th>SR</th>
+                                    <th>Descripción</th>
                                     <th>Evento</th>                                    
                                     <th>Ambiente</th>
                                     <th>Status</th>
