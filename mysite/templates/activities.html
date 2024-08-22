@@ -124,7 +124,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Actividades</label>
-                                <select name="Status" class="form-control select" style="width: 100%;">
+                                <select name="Actividades" class="form-control select" style="width: 100%;" id="Actividades">
                                     <option value="0" selected="0"></option>
                                     <option>Renovación de certificados</option>
                                     <option>Depuración de particiones</option>
@@ -132,12 +132,24 @@
                                     <option>Actualización de sistema operativo</option>
                                     <option>Actualización de componentes VMware</option>
                                     <option>Rotación de password</option>
-                                    <option>Eliminación de password</option>
+                                    <option>Recuperación de contraseña</option>
                                     <option>Atención de RFC (Inicio - Seguimiento - Apoyo)</option>
                                     <option>MPLS ABC</option>
                                     <option>External Network</option>
                                     <option>Sesión</option>
                                     <option>Atención de IM escalado</option>
+                                    <option>Healthcheck Guardia</option>
+                                    <option>Sanity AMX</option>
+                                    <option>Auto-estudio</option>
+                                    <option>VLAN VSYS</option>
+                                    <option>Alta de usuario</option>
+                                    <option>Baja de usuario</option>
+                                    <option>Generación de reporte</option>
+                                    <option>Actvidades de Auditorias</option>
+                                    <option>Actividades de Coordinacion de RFC</option>
+                                    <option>Reemplazo de SFP / NIC</option>
+                                    <option>Reemplazo de memoria</option>
+                                    <option>Reemplazo de disco</option>
                                     <option>Actividad no categorizada</option>
                                 </select>
                             </div>
@@ -441,6 +453,19 @@
         });
 
 
+    });
+</script>
+
+<script>
+    function ordenarSelect(id_componente) {
+        var selectToSort = jQuery('#' + id_componente);
+        var optionActual = selectToSort.val();
+        selectToSort.html(selectToSort.children('option').sort(function (a, b) {
+            return a.text === b.text ? 0 : a.text < b.text ? -1 : 1;
+        })).val(optionActual);
+    }
+    $(document).ready(function () {
+        ordenarSelect('Actividades');
     });
 </script>
 

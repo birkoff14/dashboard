@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from .forms import *
 from .models import *
-
+from django.core import serializers
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -146,7 +146,8 @@ def sr(request):
         '3':'hector.ortiz', 
         '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
         '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
-        '17':'ricardo.lopez', '12':'tonatiuh.mata', '25':'daniel.salcedo',
+        '17':'ricardo.lopez', '12':'tonatiuh.mata', '25':'daniel.salcedo', '41' : 'alejandro.godinez', '39' : 'cecilia.lim', 
+        '42' : 'diego.abundis','35':'dolores.chavez', '38':'juan.cordova', '37':'miriam.lule', '36':'jose.gomez'
     }
 
     usuariosStorage = {'29' : 'abraham.castro', '28' : 'angel.urzua', '31' : 'oscar.salinas', 
@@ -412,7 +413,7 @@ def activity(request):
             Solicitante=request.POST.get("txtSolicitante", ""),
             NombreTurnos=request.POST.get("NombreTurnos", ""),
             HO=request.POST.get("HO", "No"),
-            
+            Actividades=request.POST.get("Actividades", ""),            
         )
         print("Grabo bien los datos del form")
     else:
@@ -494,13 +495,12 @@ def repactividades(request):
 	            when (LENGTH(SR) = 0 and length(RFC) = 0)  then IM
 	            when (LENGTH(IM) = 0 and length(RFC) = 0)  then SR
 	            when (LENGTH(SR) = 0 and length(IM) = 0)  then RFC
-            end TipoActividad,  
+            end TipoActividad,  Actividades,
             FechaInicio, Cast(FechaFin as date) FechaFin, HorasInvertidas, IM, RFC, SR, NombreAmbiente, Status, Avance, Evento, Descripcion, Solicitante, NombreTurnos, Usuario
             from reportinfra_actividades a
             inner join reportinfra_ambiente b
             on b.idAmbiente = a.Ambiente_id """            
-            + qryWhere + qryFecha)
-    
+            + qryWhere + qryFecha)    
 
     print("Fecha inicio: " + fechaIni)
     #print(fechaFin)
@@ -516,9 +516,6 @@ def repactividades(request):
 
 @login_required(login_url='/')
 def editSR(request, idSR):
-
-    #band = Band.objects.get(id=id)
-    #form = BandForm(instance=band)  # prepopulate the form with an existing band
 
     qry = reporteFallas.objects.get(SR=idSR)    
     #print(qry)
@@ -577,9 +574,15 @@ def editActivity(request, idAct, idU):
     
     act = {'0' : 'Renovación de certificados', '1' : 'Depuración de particiones', '2' : 'Depuración de unidad windows', 
            '3' : 'Actualización de sistema operativo', '4' : 'Actualización de componentes VMware',
-           '5' : 'Rotación de password', '6' : 'Eliminación de password', '7' : 'Atención de RFC (Inicio - Seguimiento - Apoyo)', 
+           '5' : 'Rotación de password', '6' : 'Recuperación de contraseña', '7' : 'Atención de RFC (Inicio - Seguimiento - Apoyo)', 
            '8' : 'MPLS ABC', '9' : 'External Network', '10' : 'Sesión', '11' : 'Atención de IM escalado', 
-           '12' : 'Actividad no categorizada'}
+           '12' : 'Actividad no categorizada', '13' : 'Healthcheck Guardia', '14' : 'Sanity AMX', '15' : 'Auto-estudio', 
+           '16' : 'Guardia Facturación NPE', '17' : 'VLAN VSYS', '18' : 'Alta de usuario', '19' : 'Baja de usuario',
+           '20' : 'Generación de reporte', '21' : 'Actvidades de Auditorias', '22' : 'Actividades de Coordinacion de RFC',
+           '23' : 'Reemplazo de SFP / NIC'}
+    
+    claves = dict(sorted(act.items()))
+    print(claves)    
     
     
     qry = actividades.objects.get(id=idAct)
@@ -614,7 +617,7 @@ def editActivity(request, idAct, idU):
         "solicitante" : Solicitante,
         "min" : minutos,
         "hrs" : horas,
-        "actividades" : act,
+        "actividades" : claves,
     }
 
     return render(request, "editActivity.html", context)
@@ -696,7 +699,7 @@ def projects(request):
         on a.NombreIngeniero = b.id 
         left join auth_user c
         on a.LiderTecnico = c.id 
-        where a.Status = '3' """)
+        where a.Status != '3' """)
         
     qryTerminado = ingActividad.objects.raw("""select count(*) as Total from reportinfra_ingactividad where Status = 3""")
 
@@ -711,12 +714,14 @@ def projects(request):
 def addProject(request, idP):
 
     usuarios = {'27':'abraham.desantiago', '18':'adrian.martinez', '2':'angel.lozano', 
-        '33': 'carlos.rodriguez', '7':'diego.montoya', '22' : 'eduardo.gonzalez',
+        '7':'diego.montoya', '22' : 'eduardo.gonzalez',
         '6':'erik.arroyo', '10':'esdras.orizaba', '19':'eugenio.garcia', '32' : 'gladis.garcia', 
         '3':'hector.ortiz', 
         '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
         '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
-        '17':'ricardo.lopez', '12':'tonatiuh.mata','25':'daniel.salcedo'
+        '17':'ricardo.lopez', '12':'tonatiuh.mata','25':'daniel.salcedo', '41':'alejandro.godinez', 
+        '39':'cecilia.lim', '42':'diego.abundis', '35':'dolores.chavez', '36':'jose.gomez', 
+        '37':'miriam.lule', '38':'juan.cordova', 
     }
 
     lider = {'6' : 'erik.arroyo', '3' : 'hector.ortiz', '11' : 'manuel.meneses', '12' : 'tonatiuh.mata'}
@@ -761,9 +766,19 @@ def editProject(request, idP):
         '3':'hector.ortiz', 
         '23':'ivan.parra', '24':'javier.alvarez', '8':'jorge.ramirez', '26':'jorge.soto', 
         '4':'luis.ramirez', '11':'manuel.meneses', '21':'miguel.banthi ', '16':'patricio.silva', 
-        '17':'ricardo.lopez', '12':'tonatiuh.mata','25':'daniel.salcedo'
+        '17':'ricardo.lopez', '12':'tonatiuh.mata','25':'daniel.salcedo', '41':'alejandro.godinez', 
+        '39':'cecilia.lim', '42':'diego.abundis', '35':'dolores.chavez', '36':'jose.gomez', 
+        '37':'miriam.lule', '38':'juan.cordova', 
     }
-
+    
+    #usuarios = """SELECT a.id, a.username FROM auth_user a 
+    #    inner JOIN reportinfra_customuser b
+    #    on a.id = b.Usuario_id
+    #    where b.TipoUser = 'VMware'
+    #    order by username"""
+    
+    #data = serializers.serialize('json', ingActividad.objects.raw(usuarios),fields=('id', 'username'))
+    
     estatus = {'1':'Iniciado', '2' : 'En progreso', '3' : 'Terminado'}
 
     lider = {'6' : 'erik.arroyo', '3' : 'hector.ortiz', '11' : 'manuel.meneses', '12' : 'tonatiuh.mata'}

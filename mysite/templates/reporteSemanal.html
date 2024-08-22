@@ -54,10 +54,10 @@
                                 </small>
                             </td>
                             <td>
-                                {{ dt.HorasInvertidas }} horas
+                                {{ dt.HorasInvertidas|floatformat:2 }} horas
                             </td>
                             <td class="project-state">
-                                {% if dt.HorasInvertidas > 5.6 %}
+                                {% if dt.HorasInvertidas >= 5.6 %}
                                     <span class="badge badge-success">Bien</span>
                                 {% elif dt.HorasInvertidas <= 5.5 and dt.HorasInvertidas >= 2.1 %}
                                     <span class="badge badge-warning">Regular</span>

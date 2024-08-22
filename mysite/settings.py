@@ -34,9 +34,11 @@ SECRET_KEY = 'django-insecure-u=j$4d5$r4bteq0@cxbzj11m6q+agu59l$=0+s=0@v54#j3loc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.201.214', 'http://triara.dashboard.com']
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'http://triara.dashboard.com'
+]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True 
 
