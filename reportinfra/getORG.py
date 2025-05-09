@@ -7,6 +7,7 @@ from datetime import datetime
 import mysql.connector
 from termcolor import colored
 import logging
+import uuid
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -46,9 +47,9 @@ def insertDB(sql, val, nube):
     try:
         
         mydb = mysql.connector.connect(
-            host="127.0.0.1",
-            user="root",
-            password="root",
+            host="172.30.2.132",
+            user="svcdev",
+            password="IDy.8kY(9.05IZtl",
             database="triara"
         )
         #ORG, fullName, fechaAlta, VDC, vAppOrg, vm_name, sistemaOpe, totalUsr, 3
@@ -64,13 +65,13 @@ def insertDB(sql, val, nube):
     
     except Exception as error:
         print("Error en la DB: " + str(error))
-        logging.error("No se puede conectar a la DB, favor de validar: " + str(nube))
+        #logging.error("No se puede conectar a la DB, favor de validar: " + str(nube))
         #exit()
         
     finally:
         mydb.close()
         
-def metaData(URL, token, orgID, ORG, fullname):
+def metaData(URL, token, orgID, ORG, fullname, UUID):
 
     headers = {
         'Accept' : 'application/*+json;version=36.0',
@@ -82,19 +83,27 @@ def metaData(URL, token, orgID, ORG, fullname):
     print("Obteniendo metadata ORG")
     #print(req)
     try:
-        data1 = req["metadataEntry"][0]
-        data2 = req["metadataEntry"][1]
-        data3 = req["metadataEntry"][2]
+        dat = [0,0,0]
+        try:
+            data1 = req["metadataEntry"][0]
+        except:
+            data1 = dat[0]
+        try:
+            data2 = req["metadataEntry"][1]
+        except:
+            data2 = dat[0]
+        try:
+            data3 = req["metadataEntry"][2]
+        except:
+            data3 = dat[0]
 
         SAP = data1['typedValue']['value']
         TipoContratacion = data2['typedValue']['value']
-        SA_Panel = data3['typedValue']['value']       
+        SA_Panel = data3['typedValue']['value']                  
 
-            
-
-        sql = """INSERT INTO reportinfra_metadataorg (idORG, ORGname, SAP, TipoContratacion, SA_Panel) values (%s, %s, %s, %s, %s)"""
-        val = (ORG, fullname, SAP, TipoContratacion, SA_Panel)
-        #print("Valores de metadata: " + str(val))
+        sql = """INSERT INTO reportinfra_metadataorg (idORG, ORGname, SAP, TipoContratacion, SA_Panel, UUID) values (%s, %s, %s, %s, %s, %s)"""
+        val = (ORG, fullname, SAP, TipoContratacion, SA_Panel, str(UUID))
+        print("Valores de metadata: " + str(val))
         
         insertDB(sql, val, URL)
         
@@ -102,7 +111,7 @@ def metaData(URL, token, orgID, ORG, fullname):
     except Exception as error:
         print(error)    
 
-def metaVDC(URL, token, org):
+def metaVDC(URL, token, org, UUID):
     headers = {
         'Accept' : 'application/*+json;version=36.0',
         'Authorization' : 'Bearer ' + token
@@ -123,22 +132,25 @@ def metaVDC(URL, token, org):
             vdc = var[6]
 
             req = (requests.request("GET", "https://" + URL + "/api/admin/vdc/" + vdc + "/metadata", headers=headers, verify=False)).json()
-            print("Obteniendo metadata OrgVDC: " + str(vdcName))
+            print("Intentando obtener la metadata OrgVDC: " + str(vdcName))
+            try:
 
-            for data in req["metadataEntry"]:
-                #print(str(data["key"]) + " - " + str(data["typedValue"]["value"]))
-                c = data["key"]
-                v = data["typedValue"]["value"]
+                for data in req["metadataEntry"]:
+                    #print(str(data["key"]) + " - " + str(data["typedValue"]["value"]))
+                    c = data["key"]
+                    v = data["typedValue"]["value"]
 
-                sql = """INSERT INTO reportinfra_metadataorgvdc (idORG, Campo, Valor) values (%s, %s, %s)"""
-                val = (vdcName, c, v)
+                    sql = """INSERT INTO reportinfra_metadataorgvdc (idORG, Campo, Valor, UUID, UUIDVCD) values (%s, %s, %s, %s, %s)"""
+                    val = (vdcName, c, v, str(UUID), )
 
-                insertDB(sql, val, URL)   
-    except:
-        print("No existe metadata para este vCD")
+                    insertDB(sql, val, URL)   
+            except Exception as err:
+                print("No existe metadata para este vCD: " + str(err))
+    except Exception as err:
+        print("Ocurrio un error al extraer la metadata: " + str(err))
         
         
-def metadataVM(URL, token, vm, ORG, nameVM):
+def metadataVM(URL, token, vm, ORG, nameVM, UUID):
     #print(token)
     headers = {
         'Accept' : 'application/*+json;version=36.0',
@@ -146,30 +158,42 @@ def metadataVM(URL, token, vm, ORG, nameVM):
         'Authorization' : 'Bearer ' + token
     }
     url = "https://" + URL + "/api/vApp/" + vm
-    
+    print("URL VM: " + url)
     metaVM = (requests.request("GET", url, headers=headers, verify=False)).json()    
     print("Extrae metadata VM")
     
-    print("Nombre: " + str(metaVM["name"]))
-    print("CPU: " + str(metaVM["section"][0]["numCpus"]))
-    print("Memory: " + str(metaVM["section"][0]["memoryResourceMb"]["configured"]))
-    print("ESX: " + str(metaVM["vCloudExtension"][0]["any"][0]["hostVimObjectRef"]["moRef"]))
-    print("Compute: " + str(metaVM["vdcComputePolicy"]["name"]))
+    #print("Nombre: " + str(metaVM["name"]))
+    #print("CPU: " + str(metaVM["section"][0]["numCpus"]))
+    #print("Memory: " + str(metaVM["section"][0]["memoryResourceMb"]["configured"]))
+    #print("ESX: " + str(metaVM["vCloudExtension"][0]["any"][0]["hostVimObjectRef"]["moRef"]))
+    #print("Compute: " + str(metaVM["vdcComputePolicy"]["name"]))
+    #print("ID VM: " + str(metaVM["vCloudExtension"][0]["any"][0]["vmVimObjectRef"]["moRef"]))
     
     name = metaVM["name"]
     cpu = metaVM["section"][0]["numCpus"]
     memory = metaVM["section"][0]["memoryResourceMb"]["configured"]
     esx = metaVM["vCloudExtension"][0]["any"][0]["hostVimObjectRef"]["moRef"]
     policy = metaVM["vdcComputePolicy"]["name"]
+    IDVM = metaVM["vCloudExtension"][0]["any"][0]["vmVimObjectRef"]["moRef"]
     
-    sql = """INSERT INTO reportinfra_metadatavm (idORG, cpu, host, memoria, VM, computePolicy) values (%s, %s, %s, %s, %s, %s)"""
-    val = (ORG, cpu, esx, memory, name, policy)
+    try:
+        allDisk=0
+        for info in metaVM['section']:
+            for disk in info['diskSection']['diskSettings']:
+                allDisk+=int(disk['sizeMb'])
+                #print("Tamaño disco: " + str(allDisk/1024))
+    except Exception as err:
+        print("Error Disco: " + str(err))
+    
+    sql = """INSERT INTO reportinfra_metadatavm (idORG, cpu, host, memoria, VM, computePolicy, idVM, hdd, UUID) values (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+    val = (ORG, cpu, esx, memory, name, policy, IDVM, allDisk, str(UUID))
     
     insertDB(sql, val, URL)
 
 def processCloud(cloud, auth, idCloud): 
     cloud = cloud
     print(cloud)
+    myuuid = ""
     
     token = obtain_credentials(cloud, auth)
     #print(token)
@@ -182,32 +206,37 @@ def processCloud(cloud, auth, idCloud):
 
     print("Se obtienen las ORG......")
 
-    valorORG = "LUISGGGG"
+    valorORG = "LUISG"    
     #Se obtienen las ORG
     req = (requests.request("GET", "https://" + cloud + "/api/org/",headers=headers, verify=False)).json()
     #print(req)
     for org in req["org"]:
-        ORG = org["name"]
+        ORG = org["name"]     
         
+        #myuuid = str(uuid.uuid4()).replace("-", "")                
+        #print(myuuid)
         urlORG = org["href"]
-        uuid = urlORG.split("/")        
+        #print(urlORG)
+        uuidORG = urlORG.split("/")        
+        myuuid = uuidORG[5].replace("-","")
         vappOK = 0
-        if ORG != valorORG:            
+        if ORG == valorORG:
             try:
+                               
                 print("ORG: " + ORG)
                 #Se obtiene la fecha de registro de la ORG
                 infoOrg = (requests.request("GET", urlORG, headers=headers, verify=False,timeout=60)).json()
 
                 fullName = infoOrg['fullName'].replace(',','')
-                x = "https://" + cloud + "/api/admin/org/" + uuid[5]
-                #print("inserta metadatos: " + cloud + ' - ' + auth + ' - ' + uuid[5] + ' - ' + ORG + ' - ' + fullName)
+                x = "https://" + cloud + "/api/admin/org/" + uuidORG[5]
+                #print("inserta metadatos: " + cloud + ' - ' + auth + ' - ' + uuidORG[5] + ' - ' + ORG + ' - ' + fullName)
                 
-                metaData(cloud, token, uuid[5], ORG, fullName)
+                metaData(cloud, token, uuidORG[5], ORG, fullName, myuuid)
                 #print(x)
                 metadata = x + "/metadata/SYSTEM/FECHA_ALTA"
                 #print(metadata)
                 
-                metaVDC(cloud, token, uuid[5])
+                metaVDC(cloud, token, uuidORG[5], myuuid)
 
                 fechaAlta = requests.get(metadata, headers=headers, verify=False,timeout=60)
                 JsonFecha = fechaAlta.json()
@@ -222,7 +251,7 @@ def processCloud(cloud, auth, idCloud):
                     #print("Fecha alta alternativo ORG: " + str(fechaAlta))
 
                 #Obtener el número de usuarios de la ORG
-                urlUsers = "https://" + cloud + "/api/query?type=adminUser&filter=org==" + uuid[5]
+                urlUsers = "https://" + cloud + "/api/query?type=adminUser&filter=org==" + uuidORG[5]
                 users = (requests.request("GET", urlUsers, headers=headers, verify=False,timeout=60)).json()
                 totalUsr = users["total"]
                 #print("Usuarios tenant: " + str(totalUsr))
@@ -230,73 +259,99 @@ def processCloud(cloud, auth, idCloud):
                 #obtener los ORGvDC
                 detailVDC = (requests.request("GET", x, headers=headers, verify=False, timeout=60)).json()       
                 suscription = detailVDC["description"]
-                print(suscription)         
+                #print(suscription)         
                 #print(detailVDC)
                 try:
                     print("Obtiene ORGvDC")
                     for vdc in detailVDC["vdcs"]["vdc"]:
+                        #print(vdc)
                         urlVDC = vdc["href"]
                         VDC = vdc["name"]
-                        #print("ORGvDC: " + VDC)
+                        print("ORGvDC: " + VDC + " " + urlVDC)
 
                         #obtener vApp por cada OrgVDC
                         vapps = (requests.request("GET", urlVDC, headers=headers, verify=False, timeout=60)).json()
                         print("Intentando obtener vAPPs")
-                        for vapp in vapps["resourceEntities"]["resourceEntity"]:
-                            urlvApp = vapp["href"]
-                            vAppOrg = vapp["name"]
-                            vappOK = 1
-                            #print(urlvApp)
-                            print("vApp: " + vAppOrg)
+                        try:                                         
+                            if not vapps["resourceEntities"]["resourceEntity"]:
+                                print("NO existen vAPPS, se agregará solamente la ORG")
+                                print(colored("Valores insertados: ", "green") + ORG + " - " + fullName + " - " + str(fechaAlta) + " - " + VDC + " - " 
+                                + str(totalUsr) + " - " + idCloud)
+                                sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id, UUID) 
+                                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                                val = (suscription, ORG, VDC, fullName, '', '', '', totalUsr, fechaAlta, datetime.now(), idCloud, myuuid)
 
-                            #obtener VMs de la vApp
-                            VMs = (requests.request("GET", urlvApp, headers=headers, verify=False, timeout=60)).json()
-                            print("Intentando obtener VM")
-                            try:
-                                for vm in VMs["children"]["vm"]:
-                                    vm_name = vm["name"]
-                                    #print("VM: " + vm_name)
-                                    print("URL VM: " + vm["href"])
-                                    vmUuid = vm["href"].split("/")
-                                    
-                                    metadataVM(cloud, token, vmUuid[5], ORG, vm_name)
+                                insertDB(sql, val, cloud)
+                                print("Se inserta nada más la pura ORG")
+                            else:
+                                for vapp in vapps["resourceEntities"]["resourceEntity"]:
+                                    urlvApp = vapp["href"]
+                                    vAppOrg = vapp["name"]                            
+                                    #print(urlvApp)
+                                    print("vApp: " + urlvApp)
 
-                                    for os in vm["section"]:          
-                                        if os["_type"] == "OperatingSystemSectionType":                                
-                                            os = str(os['description']['value'])
-                                            sistemaOpe = str(os)                                
-                                            print(colored("Valores insertados: ", "green") + ORG + " - " + fullName + " - " + str(fechaAlta) + " - " + VDC + " - " 
-                                            + vAppOrg + " - " + str(vm_name) + " - " + str(sistemaOpe) + " - " + str(totalUsr) + " - " + '3')
+                                    #obtener VMs de la vApp
+                                    VMs = (requests.request("GET", urlvApp, headers=headers, verify=False, timeout=60)).json()
+                                    uuidvcd = urlvApp.split("/")
+                                    print("Intentando obtener VM")
+                                    try:
+                                        if not VMs["children"]["vm"]:
+                                            print("Inserta solamente la ORGvDC")
+                                            sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id, UUID) 
+                                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                                            val = (suscription, ORG, VDC, fullName, vAppOrg, "", "", totalUsr, fechaAlta, datetime.now(), idCloud, myuuid)                    
+                                            insertDB(sql, val, cloud)
+                                            print("Se inserta nada más la pura ORGvDC")                                                                                    
+                                        else:
+                                            for vm in VMs["children"]["vm"]:
+                                                vm_name = vm["name"]
+                                                print("VM: " + vm_name)
+                                                #print("URL VM: " + vm["href"])
+                                                vmUuid = vm["href"].split("/")
+                                                try:
+                                                    metadataVM(cloud, token, vmUuid[5], ORG, vm_name, myuuid)
+                                                except:
+                                                    print("No hubo metadata para la VM: " + vm_name)
 
-                                            sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id) 
-                                                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-                                            val = (suscription, ORG, VDC, fullName, vAppOrg, vm_name, sistemaOpe, totalUsr, fechaAlta, datetime.now(), idCloud)
+                                                for os in vm["section"]:          
+                                                    if os["_type"] == "OperatingSystemSectionType":                                
+                                                        os = str(os['description']['value'])
+                                                        sistemaOpe = str(os)                                
+                                                        vappOK = 1
+                                                        print(colored("Valores insertados: ", "green") + ORG + " - " + fullName + " - " + str(fechaAlta) + " - " + VDC + " - " 
+                                                        + vAppOrg + " - " + str(vm_name) + " - " + str(sistemaOpe) + " - " + str(totalUsr) + " - " + '3')
 
-                                            #insertDB(ORG, VDC, fullName, vAppOrg, vm_name, sistemaOpe, fechaAlta, totalUsr, idCloud)
-                                            insertDB(sql, val, cloud)     
-                                            print("Primer insert")     
-                                            print("")                              
-                            except Exception as err:
-                                print("No hay VM" + str(err)) 
-                                print("")
+                                                        sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id, UUID) 
+                                                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                                                        val = (suscription, ORG, VDC, fullName, vAppOrg, vm_name, sistemaOpe, totalUsr, fechaAlta, datetime.now(), idCloud, myuuid)
 
-                    if vappOK == 0:
-                        print(colored("Valores insertados: ", "green") + ORG + " - " + fullName + " - " + str(fechaAlta) + " - " + VDC + " - " 
-                        + "vAppOrg" + " - " + "str(vm_name)" + " - " + "str(sistemaOpe)" + " - " + str(totalUsr) + " - " + '3')
-                        sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id) 
-                                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-                        val = (suscription, ORG, VDC, fullName, vAppOrg, vm_name, sistemaOpe, totalUsr, fechaAlta, datetime.now(), idCloud)
-                        
-                        insertDB(sql, val, cloud)
-                        print("Segundo insert")
-                        print("")
-                            
+                                                        #insertDB(ORG, VDC, fullName, vAppOrg, vm_name, sistemaOpe, fechaAlta, totalUsr, idCloud)
+                                                        insertDB(sql, val, cloud)     
+                                                        print("Primer insert")     
+                                                        print("")                                                                        
+                                    except Exception as err:
+                                        print("No hay VM" + str(err)) 
+                                        print("")
+
+                                    if vappOK == 0:
+                                        print(colored("Valores insertados: ", "green") + ORG + " - " + fullName + " - " + str(fechaAlta) + " - " + VDC + " - " 
+                                        + "vAppOrg" + " - " + "str(vm_name)" + " - " + "str(sistemaOpe)" + " - " + str(totalUsr) + " - " + idCloud)
+                                        sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id, UUID) 
+                                                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                                        val = (suscription, ORG, VDC, fullName, vAppOrg, vm_name, sistemaOpe, totalUsr, fechaAlta, datetime.now(), idCloud, myuuid)
+
+                                        insertDB(sql, val, cloud)
+                                        print("Segundo insert")
+                                        print("")
+                                
+                        except Exception as err:
+                            print(err)                            
                 except:
                     print("La OrgVDC no tiene vApps ni VM")
                     
-                    sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id) 
-                                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-                    val = (suscription, ORG, "", fullName, "", "", "", "", "", datetime.now(), idCloud)                    
+                    sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id, UUID) 
+                                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                    val = (suscription, ORG, VDC, fullName, vAppOrg, "", "", totalUsr, fechaAlta, datetime.now(), idCloud, myuuid)                    
                     insertDB(sql, val, cloud)
                     print("Tercer insert")
                     print("")
@@ -305,9 +360,9 @@ def processCloud(cloud, auth, idCloud):
 
             except Exception as error:
                 
-                sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id) 
-                                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-                val = ('123456789', ORG, "", fullName, "", "", "", "", "", datetime.now(), idCloud)
+                sql = """INSERT INTO reportinfra_kpisorg (Suscripcion, ORG, ORGvDC, NombreORG, vApp, VM, OS, NoUsuarios, FechaAlta, timestamp, idCloud_id, UUID) 
+                                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+                val = ('123456789', ORG, "", fullName, "", "", "", "", fechaAlta, datetime.now(), idCloud, myuuid)
                 
                 print(colored("ERROR: No hay vCD que agregar", 'red'))
                 insertDB(sql, val, cloud)
@@ -317,7 +372,7 @@ def processCloud(cloud, auth, idCloud):
 
 
 def main():
-    #AMX - bWFudWVsLm1lbmVzZXNAc3lzdGVtOlRyMTRyNEAyMDIx - 4
+    #AMX - bWFudWVsLm1lbmVzZXNAc3lzdGVtOlRyMTRyNEAyMDIx - 1
     #NPE - bW1lbmVzZXNAc3lzdGVtOk00bjM0QnJpbCNUM21wMHJhITIwMjQ= - 3
     #AMCO - b3N2V0ZzdmNAc3lzdGVtOms3MjZOQk16dVdtSzlYejFEMGhr - 2
     #NET 3 - b3N2LXZyb3BjbGQtc3ZjQHN5c3RlbTpMcFZfVHNya1A/ZTh3U2dXLmovNkJxXE1L - 7
@@ -338,7 +393,7 @@ def main():
         {
             "cloud" : "NPE",
             "vcloud": "pubm-nube.telmex.com",
-            "key": "bW1lbmVzZXNAc3lzdGVtOkZGaTJsaGZPIXNaMjdHRipydHFe",
+            "key": "bW1lbmVzZXNAc3lzdGVtOjVaYjFsd3RQOEBVU3lJNmNAS0Ek",
             "idCloud": "3",
         },
 		{
@@ -358,6 +413,7 @@ def main():
 
 logging.info("Termina el proceso")
 main()
+print("Termina el proceso")
 
 #metadataVM("prvq-nube.telmex.com", "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhOTNjOWRiOS03NDcxLTMxOTItOGQwOS1hOGY3ZWVkYTg1ZjlAOGNmNTEzNzYtOWFjYi00MDIxLWJiZjMtYzM5NzZlYWFhNzQwIiwic3ViIjoib3N2LXZyb3BjbGQtc3ZjIiwiZXhwIjoxNzM5NDYyODcxLCJ2ZXJzaW9uIjoidmNsb3VkXzEuMCIsImp0aSI6Ijk3OWY0ZDIxMzMwMjQ0NWI5ODk4NzUwMjM3Njc3Y2RiIn0.YHEAiavOJW93g06x_YlzUmKT71K5iM54gdVHqJTIvrrcEucZMD5gKmdJIPGUPv5umzrKJXI0cOYviP7qHkEDXrGHMwKFd1Mh-KcrR8kMiJO1n9azwoOQXHcPDo1-YqDChcSfxtT-wUJiwtuQ-MUk_A3ooTLzZ7KqEHqc6AKA9YptEzPUCu9Tc3-IqD-Evmit9iHT3BaadwklzPgLSpNTHOPl5mH91UWft50rWwJRKkB61xBHPc9mOn4zU0h89o4_pQVTYN_zATrKCtF9un0e6AyFFyzofgul1EMmxJrgJarm4fOA35zcJA9D2Db1reJDwYiSF3vpBQrByvrrKhlaTw", "vm-1d702871-1d10-4b71-a9ad-92505348e117")
 
