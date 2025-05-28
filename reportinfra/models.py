@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+import uuid
 
 # Create your models here.
 
@@ -121,6 +122,7 @@ class ingActividad(models.Model):
 class Cloud(models.Model):
     idCloud = models.AutoField(primary_key=True)
     Cloud = models.CharField(max_length=200, blank=True, verbose_name="Cloud")
+    metadata = models.CharField(max_length=20, blank=True, verbose_name="tipoMetadata")
     def __str__(self):
         return self.Cloud
 
@@ -142,3 +144,62 @@ class Keepass(models.Model):
     Folder = models.ForeignKey(Folder, on_delete=models.CASCADE, null=True, verbose_name="Folder")
     Fecha = models.DateTimeField(blank=True, verbose_name="Fecha modificación")
     idUsuario = models.CharField(max_length=50, blank=True, verbose_name="ID User")
+
+class kpisORG(models.Model):
+    idCloud = models.ForeignKey(Cloud, on_delete=models.CASCADE, null=True, verbose_name="Cloud")
+    ORG = models.CharField(max_length=150, blank=True, verbose_name="Organización")
+    ORGvDC = models.CharField(max_length=150, blank=True, verbose_name="Nombre OrgvDC")
+    NombreORG = models.CharField(max_length=150, blank=True, verbose_name="Nombre Organización")
+    vApp = models.CharField(max_length=150, blank=True, verbose_name="Nombre vApp")
+    VM = models.CharField(max_length=150, blank=True, verbose_name="Nombre VM")
+    OS = models.CharField(max_length=150, blank=True, verbose_name="Sistema Operativo")
+    NoUsuarios = models.CharField(max_length=150, blank=True, verbose_name="No Usuarios")
+    FechaAlta = models.CharField(max_length=150, blank=True, verbose_name="Fecha Alta")
+    timestamp = models.DateTimeField(blank=True, verbose_name="Timestamp")
+    Suscripcion = models.CharField(max_length=150, blank=True, verbose_name="Suscripcion")
+    UUID = models.UUIDField(default=uuid.uuid4, editable=True)
+    UUIDVM = models.UUIDField(default=uuid.uuid4, editable=True, verbose_name="UUIDVM")
+
+class metadataORG(models.Model):
+    idORG = models.CharField(max_length=150, blank=True, verbose_name="ID Org")
+    ORGname = models.CharField(max_length=150, blank=True, verbose_name="Nombre")
+    SAP = models.CharField(max_length=5000, blank=True, verbose_name="SAP")
+    TipoContratacion = models.CharField(max_length=5000, blank=True, verbose_name="Tipo Contratacion")
+    SA_Panel = models.CharField(max_length=5000, blank=True, verbose_name="SA Panel")
+    UUID = models.UUIDField(default=uuid.uuid4, editable=True, verbose_name="UUID")
+    
+class metadataORGvDC(models.Model):
+    idORG = models.CharField(max_length=150, blank=True, verbose_name="ID Org")
+    Campo = models.CharField(max_length=20, blank=True, verbose_name="Campo")
+    Valor = models.CharField(max_length=250, blank=True, verbose_name="Valor")
+    UUID = models.UUIDField(default=uuid.uuid4, editable=True, verbose_name="UUID")
+    UUIDVDC = models.UUIDField(default=uuid.uuid4, editable=True, verbose_name="UUIDVCD")
+   
+class metadataVM(models.Model):
+    idORG = models.CharField(max_length=150, blank=True, verbose_name="ID Org")
+    VM = models.CharField(max_length=250, blank=True, verbose_name="VM")
+    cpu = models.CharField(max_length=150, blank=True, verbose_name="CPU")
+    memoria = models.CharField(max_length=150, blank=True, verbose_name="Memoria")
+    host = models.CharField(max_length=150, blank=True, verbose_name="ESX")
+    computePolicy = models.CharField(max_length=150, blank=True, verbose_name="Compute")
+    idVM = models.CharField(max_length=150, blank=True, verbose_name="IDVM")
+    hdd = models.CharField(max_length=150, blank=True, verbose_name="HDD")
+    UUID = models.UUIDField(default=uuid.uuid4, editable=True)
+    UUIDVDC = models.UUIDField(default=uuid.uuid4, editable=True, verbose_name="UUIDVCD")
+    UUIDVM = models.UUIDField(default=uuid.uuid4, editable=True, verbose_name="UUIDVM")
+        
+class esx(models.Model):
+    idvCenter = models.CharField(max_length=150, blank=True, verbose_name="vCenter")
+    ESX = models.CharField(max_length=150, blank=True, verbose_name="ESX")
+    Vendor = models.CharField(max_length=150, blank=True, verbose_name="Vendor")
+    Host = models.CharField(max_length=150, blank=True, verbose_name="Host")
+    idCloud = models.ForeignKey(Cloud, on_delete=models.CASCADE, null=True, verbose_name="Cloud")
+    #UUID = models.UUIDField(default=uuid.uuid4, editable=True)
+    
+class vmESX(models.Model):
+    idvCenter = models.CharField(max_length=150, blank=True, verbose_name="vCenter")
+    name = models.CharField(max_length=150, blank=True, verbose_name="Nombre")
+    VM = models.CharField(max_length=150, blank=True, verbose_name="VM")
+    State = models.CharField(max_length=150, blank=True, verbose_name="Estado")
+    idCloud = models.ForeignKey(Cloud, on_delete=models.CASCADE, null=True, verbose_name="Cloud")
+    #UUID = models.UUIDField(default=uuid.uuid4, editable=True)

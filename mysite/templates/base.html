@@ -9,13 +9,17 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Font Awesome Icons 
+  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}"> -->
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
 
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
   {% block css %}
   
   {% endblock %}
@@ -25,9 +29,9 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!--<div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__wobble" src="{% static 'img/logo.png'%}" alt="Triata">
-  </div>
+  </div>-->
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark">
@@ -101,10 +105,48 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           
-          <li class="nav-header">MENU</li>          
+          <li class="nav-header">MENU</li>
+
+          <li class="nav-item ">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Reportes KPI
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'kpiCloud' %}?idCloud=2&id=AMCO" class="nav-link">
+                  <i class="fas fa-cloud"></i>
+                  <p>Nube AMCO</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'kpiCloud' %}?idCloud=1&id=AMX" class="nav-link">
+                  <i class="fas fa-cloud"></i>     
+                  <span class="oi oi-hard-drive"></span>            
+                  <p>Nube AMX</p>
+                </a>
+              </li>               
+              <li class="nav-item">
+                <a href="{% url 'kpiCloud' %}?idCloud=3&id=NPE" class="nav-link">
+                  <i class="fas fa-cloud"></i>
+                  <p>Nube NPE</p>
+                </a>
+              </li>    
+              <li class="nav-item">
+                <a href="{% url 'kpiCloud' %}?idCloud=7&id=NET" class="nav-link">
+                  <i class="fas fa-cloud"></i>
+                  <p>Nube NET</p>
+                </a>
+              </li>        
+            </ul>
+          </li>  
+
           <li class="nav-item">
             <a href="{% url 'sr' %}?idU={{ user }}" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="fas fa-plus"></i>
               <p>
                 Agregar SR
               </p>
@@ -112,7 +154,7 @@
           </li>
           <li class="nav-item">
             <a href="{% url 'actividades' %}?idU={{ user }}" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+              <i class="fas fa-plus"></i>
               <p>
                 Agregar actividades
               </p>
@@ -120,7 +162,7 @@
           </li>
           <li class="nav-item">
             <a href="{% url 'kpis_supervisor' %}" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+              <i class="fas fa-chart-bar"></i>
               <p>
                 Ver estadísticas
               </p>
@@ -128,14 +170,14 @@
           </li>    
           <li class="nav-item">
             <a href="{% url 'reporteSemanal'%}?idU={{ user }}" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+              <i class="fas fa-clipboard-list"></i>
               <p>
                 Ver reporte semanal
               </p>
             </a>
           </li>       
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Reportes
@@ -173,14 +215,14 @@
           {% if user.username == 'manuel.meneses' or user.username == 'adrian.martinez' or  user.username == 'erik.arroyo' or user.username == 'luis.ramirez' or user.username == 'tonatiuh.mata' or user.username == 'hector.ortiz' or user.username == 'carlos.rodriguez' or user.username == 'jorge.soto' %}    
           <li class="nav-item">
             <a href="{% url 'projects' %}" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+              <i class="fas fa-briefcase"></i>
               <p>
                 Proyectos asignados
               </p>
             </a>
           </li> 
           {% endif %}
-          {% if user.username == 'abraham.desantiago' or user.username == 'adrian.martinez' or user.username == 'angel.lozano' or user.username == 'carlos.rodriguez' or user.username == 'diego.montoya' or user.username == 'eduardo.gonzalez' or user.username == 'erik.arroyo' or user.username == 'esdras.orizaba' or user.username == 'eugenio.garcia' or user.username == 'gladis.garcia' or user.username == 'hector.ortiz'  or user.username == 'ivan.parra' or user.username == 'javier.alvarez' or user.username == 'jorge.ramirez' or user.username == 'jorge.soto' or user.username == 'luis.ramirez' or user.username == 'manuel.meneses' or user.username == 'miguel.banthi' or user.username == 'patricio.silva' or user.username == 'ricardo.lopez' or user.username == 'tonatiuh.mata' or user.username == 'dolores.chavez' or user.username == 'jose.gomez' or user.username == 'daniel.salcedo' or user.username == 'miriam.lule' or user.username == 'cecilia.lim' or user.username == 'juan.cordova' or user.username == 'alma.arreaga' %}
+          {% if user.username == 'abraham.desantiago' or user.username == 'adrian.martinez' or user.username == 'angel.lozano' or user.username == 'carlos.rodriguez' or user.username == 'diego.montoya' or user.username == 'eduardo.gonzalez' or user.username == 'erik.arroyo' or user.username == 'esdras.orizaba' or user.username == 'eugenio.garcia' or user.username == 'gladis.garcia' or user.username == 'hector.ortiz'  or user.username == 'ivan.parra' or user.username == 'javier.alvarez' or user.username == 'jorge.ramirez' or user.username == 'jorge.soto' or user.username == 'luis.ramirez' or user.username == 'manuel.meneses' or user.username == 'miguel.banthi' or user.username == 'patricio.silva' or user.username == 'ricardo.lopez' or user.username == 'tonatiuh.mata' or user.username == 'dolores.chavez' or user.username == 'jose.gomez' or user.username == 'daniel.salcedo' or user.username == 'miriam.lule' or user.username == 'cecilia.lim' or user.username == 'juan.cordova' or user.username == 'alma.arreaga' or user.username == 'luis.tamayo' or user.username == 'laura.cazares' %}
           <li class="nav-item">
             <a href="{% url 'keepass' %}" class="nav-link">
               <i class="nav-icon fas fa-key"></i>
@@ -192,7 +234,7 @@
           {% endif %} 
           <li class="nav-item">
             <a href="{% url 'logout' %}" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+              <i class="fas fa-door-open"></i>
               <p>
                 Salir
               </p>
@@ -241,10 +283,10 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2022 <a href="#">Triara</a>.</strong>
+    <strong>Copyright &copy; 2025 <a href="#">Triara</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.1.8
+      <b>Version</b> 1.1.8 ♡
     </div>
   </footer>
 </div>

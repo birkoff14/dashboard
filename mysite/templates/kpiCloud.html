@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block css%}
+<!-- DataTables -->
+<link rel="stylesheet" href="{% static 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+<style>
+  table {
+    /*font-family: Verdana, sans-serif;*/
+    font-size: 12px;
+    /* Tamaño de letra */
+  }
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-12 col-sm-12">
+        <div class="card card-primary card-tabs">
+          <div class="card-header p-0 pt-1">
+            <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+              <li class="pt-2 px-3">
+                <h3 class="card-title"><b>Reporte KPIS {{ tag }}</b></h3>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home"
+                  role="tab" aria-controls="custom-tabs-two-home" aria-selected="false">Reporte principal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile"
+                  role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Reporte ORG - ORGvDC</a>
+              </li>
+              <!--
+              <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill"
+                  href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages"
+                  aria-selected="false">Reporte Sistemas Operativos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill"
+                  href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages"
+                  aria-selected="false">Reporte ORG - VM</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill"
+                  href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages"
+                  aria-selected="false">Reporte IP Spaces</a>
+              </li>
+            -->
+            </ul>
+          </div>
+          <div class="card-body">
+            <div class="tab-content" id="custom-tabs-two-tabContent">
+              <div class="tab-pane fade active show" id="custom-tabs-two-home" role="tabpanel"
+                aria-labelledby="custom-tabs-two-home-tab">
+
+                <div class="row">
+                  <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-info">
+                      <div class="inner">
+                        {% for dt in totalORG %}
+                        <h3>{{ dt.ORG }}</h3>
+                        {% endfor %}
+                        <p>Total de ORG</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-users"></i>
+                      </div>
+                      <a href="{% url 'detailORG' %}?idCloud={{ cloud }}&id={{ tag }}" class="small-box-footer">
+                        Más info <i class="fas fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-success">
+                      <div class="inner">
+                        {% for dt in totalVM %}
+                        <h3>{{ dt.VM }}</h3>
+                        {% endfor %}
+                        <p>Total de VM</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-desktop"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">
+                        Más info <i class="fas fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-warning">
+                      <div class="inner">
+                        {% for dt in win %}
+                        <h3>{{ dt.Windows }}</h3>
+                        {% endfor %}
+                        <p>Total VM Windows</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fab fa-windows"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">
+                        Más info <i class="fas fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                  <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-danger">
+                      <div class="inner">
+                        {% for dt in linux %}
+                        <h3>{{ dt.Linux }}</h3>
+                        {% endfor %}
+                        <p>Total VM Linux</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fab fa-linux"></i>
+                      </div>
+                      <a href="#" class="small-box-footer">
+                        Más info <i class="fas fa-arrow-circle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- ./col -->
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-8">
+                    <!-- small card -->
+                    <div class="small-box bg-navy">
+                      <div class="inner">
+                        {% for dt in total %}
+                        <h3>{{ dt.CPU|intcomma }}</h3>
+                        {% endfor %}
+                        <p>Total CPU</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-microchip"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-8">
+                    <!-- small card -->
+                    <div class="small-box bg-navy">
+                      <div class="inner">
+                        {% for dt in total %}
+                        <h3>{{ dt.memoria|floatformat:2|intcomma }} TB</h3>
+                        {% endfor %}
+                        <p>Total Memoria</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-memory"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-8">
+                    <!-- small card -->
+                    <div class="small-box bg-navy">
+                      <div class="inner">
+                        {% for dt in total %}
+                        <h3>{{ dt.HDD|floatformat:2|intcomma }} TB</h3>
+                        {% endfor %}
+                        <p>Total Disco</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-hdd"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="tab-pane fade" id="custom-tabs-two-profile" role="tabpanel"
+                aria-labelledby="custom-tabs-two-profile-tab">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Organizaciones</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                      <div class="row">
+                        <div class="col-sm-12" style="overflow-x: auto; max-width: 100%;">
+                          <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
+                            aria-describedby="example1_info">
+                            <thead>
+                              <tr>
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                  colspan="1" aria-sort="ascending"
+                                  aria-label="Rendering engine: activate to sort column descending">
+                                  Suscripción</th>
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
+                                  colspan="1" aria-sort="ascending"
+                                  aria-label="Rendering engine: activate to sort column descending">
+                                  Organización</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  OrgvDC</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  vApps</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  VM</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  CPU</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Memoria</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Disco</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Host</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  vCenter</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  OS</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Regla</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for dt in qry %}
+                              <tr class="odd">
+                                <td class="dtr-control sorting_1" tabindex="0">{{ dt.Suscripcion }}</td>
+                                <td>{{ dt.ORG }}</td>
+                                <td>{{ dt.ORGvDC }}</td>
+                                <td>{{ dt.vApp }}</td>
+                                <td>{{ dt.VM }}</td>
+                                <td>{{ dt.cpu }}</td>
+                                <td>{{ dt.memoria }}</td>
+                                <td>{{ dt.hdd }}</td>
+                                <td>{{ dt.ESX }}</td>
+                                <td>{{ dt.idvCenter }}</td>
+                                <td>{{ dt.OS }}</td>
+                                <td>{{ dt.Rule }}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                <th rowspan="1" colspan="1">Suscripción</th>
+                                <th rowspan="1" colspan="1">Nombre ORG</th>
+                                <th rowspan="1" colspan="1">OrgvDC</th>
+                                <th rowspan="1" colspan="1">vApps</th>
+                                <th rowspan="1" colspan="1">VM</th>
+                                <th rowspan="1" colspan="1">CPU</th>
+                                <th rowspan="1" colspan="1">Memoria</th>
+                                <th rowspan="1" colspan="1">Disco</th>
+                                <th rowspan="1" colspan="1">Host</th>
+                                <th rowspan="1" colspan="1">vCenter</th>
+                                <th rowspan="1" colspan="1">OS</th>
+                                <th rowspan="1" colspan="1">Regla</th>
+                              </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+              </div>
+              <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel"
+                aria-labelledby="custom-tabs-two-messages-tab">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Sistemas Operativos</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <table id="example2" class="table table-bordered table-striped dataTable dtr-inline"
+                            aria-describedby="example2_info">
+                            <thead>
+                              <tr>
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                  colspan="1" aria-sort="ascending"
+                                  aria-label="Rendering engine: activate to sort column descending">
+                                  Organización</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                  aria-label="Browser: activate to sort column ascending">
+                                  Sistema Operativo</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Total de VM's</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for dt in OS %}
+                              <tr class="odd">
+                                <td class="dtr-control sorting_1" tabindex="0">{{ dt.ORG }}</td>
+                                <td>{{ dt.OS }}</td>
+                                <td>{{ dt.Total }}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                            <tfoot>
+                              <tr>
+                                <th rowspan="1" colspan="1">Organización</th>
+                                <th rowspan="1" colspan="1">Sistema Operativo</th>
+                                <th rowspan="1" colspan="1">Total de VM's</th>
+                              </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block js %}
+
+<!-- DataTables  & Plugins -->
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'plugins/jszip/jszip.min.js' %}"></script>
+<script src="{% static 'plugins/pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'plugins/pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+
+<script>
+
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+</script>
+
+<script>
+
+  $(function () {
+    $("#example2").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+  });
+
+</script>
+
+{% endblock %}

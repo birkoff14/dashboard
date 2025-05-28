@@ -6,6 +6,7 @@ from .ajax import get_componentes, get_vendors, get_folder
 from .views import (
     ActivitiesListApiView,
 )
+from .views import obtener_datos_ajax, tabla_paginada
 
 
 urlpatterns = [
@@ -39,6 +40,10 @@ urlpatterns = [
     path('addKeepass/', views.addKeepass, name='addKeepass'),
     path('editKeepass/<str:idK>', views.editKeepass, name='editKeepass'),
     path('buscaAllKeepass/', views.buscaAllKeepass, name='buscaAllKeepass'),
+    path('kpiCloud', views.kpiCloud, name='kpiCloud'),
+    path('detailORG', views.detailORG, name='detailORG'),
+    path("api/datos/", obtener_datos_ajax, name="obtener_datos_ajax"),
+    path("tabla/", tabla_paginada, name="tabla_paginada"),
 ]
 
 admin.site.site_header = "Operación de Aplicaciones Cloud"

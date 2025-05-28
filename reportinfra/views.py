@@ -1,11 +1,14 @@
 from django.http import JsonResponse
+from django.db import connection
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as do_login
 from django.contrib.auth import logout as do_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.views.decorators.csrf import csrf_exempt
+#from django.views.decorators.csrf import csrf_exempt
+from django.core.paginator import Paginator
+from django.db.models import Count
 from django.db.models import Q
 from .forms import *
 from .models import *
@@ -15,8 +18,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
 from .serializers import actividadesSerializer
-import datetime
+#import datetime
+from datetime import date, timedelta
 import calendar
+import json
 
 # Create your views here.
 
@@ -396,7 +401,7 @@ def activity(request):
 
     if request.method == "POST":        
         qryInsert = actividades.objects.create(
-            TipoActividad=request.POST.get("cmbActividad", ""),
+            SR=request.POST.get("cmbActividad", ""),
             FechaInicio=request.POST.get("fInicio", ""),
             FechaFin=request.POST.get("fFin", ""),
             HorasInvertidas=request.POST.get("cmbHoras", ""),
@@ -983,3 +988,145 @@ def buscaAllKeepass(request):
             datos = [{'Titulo': resultado.Titulo, 'Usuario': resultado.Usuario} for resultado in resultados]
             return JsonResponse({'datos': datos})
     return JsonResponse({'error': 'No se pudo realizar la búsqueda'})
+
+def kpiCloud(request):
+
+    idCloud = request.GET.get("idCloud")    
+    tagCloud = request.GET.get("id")
+    
+    
+    if tagCloud == 'NET':
+        filter = " and ORGvDC like concat(char(37), 'FLEX', char(37))  "
+        suscription = " and d.Campo = 'Subscription_ID' "
+    else:
+        filter = ""
+        suscription = ""
+        
+        
+    hoy = datetime.date.today()
+    print(hoy)
+    
+    #totalORG = kpisORG.objects.raw("select 1 as id, count(distinct ORG) ORG from reportinfra_kpisorg where timestamp > '" + str(hoy - timedelta(days=4)) + "'and idCloud_id = " + idCloud + filter)
+    totalORG = kpisORG.objects.raw("select 1 as id, count(distinct ORG) ORG from reportinfra_kpisorg where timestamp > '" + str(hoy) + "'and idCloud_id = " + idCloud + filter)
+    #print(totalORG)
+    #totalvDC = kpisORG.objects.raw(f"select count(distinct orgvdc) orgvdc from reportinfra_kpisorg where timestamp > '" + str(hoy) + "' and idCloud_id = 7  order by 1")
+    #totalORG = kpisORG.objects.filter(idCloud_id=idCloud).aggregate(ORG=Count("ORG", distinct=True))
+    totalVM = kpisORG.objects.raw("select 1 as id, count(id) VM from reportinfra_kpisorg where idCloud_id = " + idCloud + filter + " and VM != '' and timestamp > '" + str(hoy) + "'")
+    totalWin = kpisORG.objects.raw("select 1 as id, count(id) Windows from reportinfra_kpisorg where idCloud_id = " + idCloud + filter + " and OS != '' and OS like concat(char(37), 'Wind', char(37)) and timestamp > '" + str(hoy) + "' order by 1")
+    #totalWin = kpisORG.objects.filter(idCloud_id=idCloud, OS__isnull=False, OS__gt="", OS__startswith="Wind").aggregate(Windows=Count("OS"))
+    totalLinux = kpisORG.objects.raw("select 1 as id, count(id) Linux from reportinfra_kpisorg where idCloud_id = " + idCloud + filter + " and OS != '' and OS not like concat(char(37), 'Wind', char(37)) and timestamp > '" + str(hoy) +  "' order by 1")
+    totalOS = kpisORG.objects.raw("""select 1 as id, ORG, OS,  count(id) Total
+                                     from reportinfra_kpisorg 
+                                     where idCloud_id = """ + idCloud + filter + """ and OS != '' 
+                                     and `timestamp` > '""" + str(hoy) +
+                                     """' group by OS, ORG
+                                     order by 1"""
+    )
+    
+    total = kpisORG.objects.raw("""select 1 as id, Sum(b.CPU) CPU, SUM(b.memoria)/1024/1024 memoria, sum(b.hdd)/1024/1024 HDD
+                                    from reportinfra_kpisorg a
+                                    inner join reportinfra_metadatavm b
+                                    on a.VM = b.VM and a.UUID = b.UUID
+                                    where idCloud_id = """ + idCloud)
+
+    #print(totalWin)
+    #qry = kpisORG.objects.raw("""select DISTINCT 1 as id, ORG, NombreOrg, ORGvDC, NoUsuarios from reportinfra_kpisorg 
+    #        where idCloud_id = """ + idCloud + filter +
+    #        """ order by 1""")
+    
+    page_length = int(request.GET.get('length', 10))  # Número de registros por página
+    start = int(request.GET.get('start', 0))  # Desde qué registro empezar
+    
+    qry = kpisORG.objects.raw("""
+                            select distinct 1 as id, a.ORG, a.ORGvDC, a.NombreORG, a.vApp, a.VM, b.cpu, (b.memoria/1024) memoria, (b.hdd/1024) hdd, f.State, e.ESX, c.Cloud, a.OS, b.computePolicy, SUBSTRING(b.computePolicy, 1,2) Rule,
+                            timestamp, e.idvCenter,
+                            case
+                                when d.Valor is null then a.Suscripcion else d.Valor 
+                            end Suscripcion
+                            from reportinfra_kpisorg a
+                            inner join reportinfra_metadatavm b
+                            on a.ORG = b.idORG 
+                            inner join reportinfra_cloud c
+                            on a.idCloud_id = c.idCloud
+                            left join reportinfra_metadataorgvdc d
+                            on a.ORGvDC = d.idORG 
+                            left join reportinfra_esx e
+                            on b.host = e.Host and a.idCloud_id = e.idCloud_id 
+                            left join reportinfra_vmesx f
+                            on b.idVM = f.VM and a.idCloud_id = f.idCloud_id
+                            where a.idCloud_id = """ + idCloud + suscription + filter +                             
+                            #""" #and a.`timestamp` > '""" + str(hoy - timedelta(days=4)) 
+                            """ and a.`timestamp` > '""" + str(hoy) +
+                            """' order by 1 LIMIT 10 OFFSET 1"""
+                            )
+    print(qry)
+    
+    
+    with connection.cursor() as cursor:
+        # Consulta SQL
+        cursor.execute("SELECT ORG, ORGvDC from reportinfra_kpisorg")  
+        columns = [col[0] for col in cursor.description]  # Obtener nombres de columnas
+        data = [dict(zip(columns, row)) for row in cursor.fetchall()]  # Convertir a diccionario
+
+    json_data = json.dumps(data, indent=4)
+    
+    #print(json_data)  # Ver JSON en consola
+    
+    cursor.close()
+    
+    context = {
+        "qry" : qry,
+        "totalORG" : totalORG,
+        "totalVM" : totalVM, 
+        "total" : total,      
+        "win" : totalWin,
+        "linux" : totalLinux,
+        "OS": totalOS,
+        "tag" : tagCloud,
+        "cloud" : idCloud,
+        "tag" : tagCloud,
+    }
+
+    return render(request, 'kpiCloud.html', context)
+
+def detailORG(request):
+    
+    idCloud = request.GET.get("idCloud")    
+    tagCloud = request.GET.get("id")
+    
+    
+    if tagCloud == 'NET':
+        filter = " and ORGvDC like concat(char(37), 'FLEX', char(37)) "
+    else:
+        filter = ""
+    
+    
+    qry = kpisORG.objects.raw("""select distinct 1 as id, a.ORG, c.vApp, Count(a.VM) VM, Sum(b.cpu) CPU, Sum(b.memoria) Memory, Sum(b.hdd) HDD
+    from reportinfra_kpisorg a
+    left join reportinfra_metadatavm b
+    on a.VM = b.VM and a.UUID = b.UUID
+    inner join vApp c
+    on a.ORG = c.ORG
+    where idCloud_id = """ + idCloud + filter +
+    """ group by a.ORG
+    order by 1""")
+    
+    print(qry)
+    
+    context = {
+        "qry" : qry,
+    }
+    
+    return render(request, 'detailORG.html', context)
+
+def obtener_datos_ajax(request):
+    objetos = list(kpisORG.objects.values("id", "ORG", "ORGvDC"))
+    return JsonResponse({"data": objetos})
+
+def tabla_paginada(request):
+    objetos = kpisORG.objects.all()
+    paginator = Paginator(objetos, 10)  # 10 registros por página
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "test.html", {"page_obj": page_obj})
