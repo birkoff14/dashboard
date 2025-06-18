@@ -584,7 +584,7 @@ def editActivity(request, idAct, idU):
            '12' : 'Actividad no categorizada', '13' : 'Healthcheck Guardia', '14' : 'Sanity AMX', '15' : 'Auto-estudio', 
            '16' : 'Guardia Facturación NPE', '17' : 'VLAN VSYS', '18' : 'Alta de usuario', '19' : 'Baja de usuario',
            '20' : 'Generación de reporte', '21' : 'Actvidades de Auditorias', '22' : 'Actividades de Coordinacion de RFC',
-           '23' : 'Reemplazo de SFP / NIC'}
+           '23' : 'Reemplazo de SFP / NIC', '24' : 'Documentación, análisis y desarrollo de mejora'}
     
     claves = dict(sorted(act.items()))
     print(claves)    
