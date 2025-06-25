@@ -132,7 +132,7 @@
                     </div>
                     <div class="form-group">
                         <label>Actividades</label>
-                        <select name="Actividades" class="form-control select" style="width: 100%;">
+                        <select name="Actividades" class="form-control select" style="width: 100%;" id="Actividades">
                             <option value="0" selected="0"></option>
                             {% for key, value in actividades.items %}
                             {% if value == qry.Actividades %}
@@ -236,6 +236,7 @@
     var b = document.getElementById("id_Descripcion");
     b.setAttribute("class", "form-control");
 
+
     var c = document.getElementById("id_FechaInicio");
     c.setAttribute("class", "form-control datetimepicker-input");
     c.setAttribute("data-target", "#reservationdate2");
@@ -267,6 +268,19 @@
     var i = document.getElementById("id_NombreTurnos");
     i.setAttribute("class", "form-control");
 
+</script>
+
+<script>
+    function ordenarSelect(id_componente) {
+        var selectToSort = jQuery('#' + id_componente);
+        var optionActual = selectToSort.val();
+        selectToSort.html(selectToSort.children('option').sort(function (a, b) {
+            return a.text === b.text ? 0 : a.text < b.text ? -1 : 1;
+        })).val(optionActual);
+    }
+    $(document).ready(function () {
+        ordenarSelect('Actividades');
+    });
 </script>
 
 <!-- date-range-picker -->

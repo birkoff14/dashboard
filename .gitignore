@@ -2,3 +2,4 @@ migrations/
 reportinfra/migrations/
 mysite/static/
 static/
+env/

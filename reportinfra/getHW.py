@@ -131,7 +131,7 @@ def main():
     #auth = "bW1lbmVzZXNAb3N2Y2xvdWQ6XiQjNXV4MDZTRnVkMWlKISZHRlY="
     #idCloud = "7"
     
-    URL = "172.23.23.33"
+    URL = "172.30.168.10"
     auth = "bWFudWVsLm1lbmVzZXNAbnViZXRlbG1leC5sb2NhbDpEXjdWTVd2IUFAOTgyR2Q="
     idCloud = "2"
     

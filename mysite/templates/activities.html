@@ -54,156 +54,201 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Tipo</label>
-                                <select id="txtTipo" required name="txtTipo" class="form-control select"
-                                    style="width: 100%;">
-                                    <option selected=""></option>
-                                    <option>Actualización recurrente</option>
-                                    <option>Calidad</option>
-                                    <option>Implementación</option>
-                                    <option>Toma operativa</option>
-                                    <option>Trouble shooting falla</option>
-                                    <option>Reuniones de seguimiento</option>
-                                    <option>Investigación</option>
-                                    <option>Actualización recurrente en curso</option>
-                                    <option>Especial</option>
-                                    <option>Operación</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>SR asociado</label>
-                                <input type="text" id="cmbActividad" class="form-control" name="cmbActividad">
-                                <input type="hidden" name="usuario" value="{{ user.username }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Solicitante de la tarea</label>
-                                <select id="txtSolicitante" required name="txtSolicitante" class="form-control select"
-                                    style="width: 100%;">
-                                    <option selected=""></option>
-                                    <option>Adrián Martínez</option>
-                                    <option>Luis Alberto Ramírez</option>
-                                    <option>TEAM OAC</option>
-                                    <option>------------------------</option>
-                                    <option>AMX</option>
-                                    <option>Calidad</option>
-                                    <option>Coordinación de RFC</option>
-                                    <option>Equipo Triara</option>
-                                    <option>ITOC</option>
-                                    <option>Mesa de ayuda</option>
-                                    <option>Turnos</option>
-                                </select>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Tipo</label>
+                                            <select id="txtTipo" required name="txtTipo" class="form-control select"
+                                                style="width: 100%;">
+                                                <option selected=""></option>
+                                                <option>Actualización recurrente</option>
+                                                <option>Calidad</option>
+                                                <option>Implementación</option>
+                                                <option>Toma operativa</option>
+                                                <option>Trouble shooting falla</option>
+                                                <option>Reuniones de seguimiento</option>
+                                                <option>Investigación</option>
+                                                <option>Actualización recurrente en curso</option>
+                                                <option>Especial</option>
+                                                <option>Operación</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>SR asociado</label>
+                                            <input type="text" id="cmbActividad" class="form-control"
+                                                name="cmbActividad">
+                                            <input type="hidden" name="usuario" value="{{ user.username }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Solicitante de la tarea</label>
+                                            <select id="txtSolicitante" required name="txtSolicitante"
+                                                class="form-control select" style="width: 100%;">
+                                                <option selected=""></option>
+                                                <option>Adrián Martínez</option>
+                                                <option>Luis Alberto Ramírez</option>
+                                                <option>TEAM OAC</option>
+                                                <option>------------------------</option>
+                                                <option>AMX</option>
+                                                <option>Calidad</option>
+                                                <option>Coordinación de RFC</option>
+                                                <option>Equipo Triara</option>
+                                                <option>ITOC</option>
+                                                <option>Mesa de ayuda</option>
+                                                <option>Turnos</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div id="NombreTurnos"></div>
                             </div>
                             <div class="form-group">
-                                <label>Evento o proyecto</label>
-                                <select name="cmbTipo" class="form-control select" style="width: 100%;" id="cmbTipo">
-                                    <option value=0 selected=""></option>
-                                    <option>Evento</option>
-                                    <option>Proyecto</option>
-                                </select>
-                            </div>
-                            <div id="SR_ID" class="form-group">
-                                <label>Ambiente</label>
-                                <select name="Ambiente" required class="form-control select" style="width: 100%;"
-                                    id="Ambiente">
-                                    <option value=19 selected="0"></option>
-                                    {% for dt in env %}
-                                    <option value="{{ dt.idAmbiente }}">{{ dt.NombreAmbiente }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Estatus</label>
-                                <select name="Status" class="form-control select" style="width: 100%;">
-                                    <option value="0" selected="0"></option>
-                                    <option value="En proceso">En proceso</option>
-                                    <option value="Terminado">Terminado</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Actividades</label>
-                                <select name="Actividades" class="form-control select" style="width: 100%;" id="Actividades">
-                                    <option value="0" selected="0"></option>
-                                    <option>Renovación de certificados</option>
-                                    <option>Depuración de particiones</option>
-                                    <option>Depuración de unidad windows</option>
-                                    <option>Actualización de sistema operativo</option>
-                                    <option>Actualización de componentes VMware</option>
-                                    <option>Rotación de password</option>
-                                    <option>Recuperación de contraseña</option>
-                                    <option>Atención de RFC (Inicio - Seguimiento - Apoyo)</option>
-                                    <option>MPLS ABC</option>
-                                    <option>External Network</option>
-                                    <option>Sesión</option>
-                                    <option>Atención de IM escalado</option>
-                                    <option>Healthcheck Guardia</option>
-                                    <option>Sanity AMX</option>
-                                    <option>Auto-estudio</option>
-                                    <option>VLAN VSYS</option>
-                                    <option>Alta de usuario</option>
-                                    <option>Baja de usuario</option>
-                                    <option>Generación de reporte</option>
-                                    <option>Actvidades de Auditorias</option>
-                                    <option>Actividades de Coordinacion de RFC</option>
-                                    <option>Reemplazo de SFP / NIC</option>
-                                    <option>Reemplazo de memoria</option>
-                                    <option>Reemplazo de disco</option>
-                                    <option>Actividad no categorizada</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <div id="desc"><label>
-                                        <div id="PROYECTO">Descripción</div>
-                                    </label><textarea type="text" class="form-control" name="Descripcion" id="id_descripcion" cols="40" rows="10" required maxlength="500"></textarea>
-                                </div>
-                                <div id="contador"></div>
-                            </div>
-                            <div class="form-group">
-                                <label>Avance</label>
-                                <select name="Avance" class="form-control select" style="width: 100%;">
-                                    <option value="0" selected="0"></option>
-                                    <option value="10">10 %</option>
-                                    <option value="20">20 %</option>
-                                    <option value="30">30 %</option>
-                                    <option value="40">40 %</option>
-                                    <option value="50">50 %</option>
-                                    <option value="60">60 %</option>
-                                    <option value="70">70 %</option>
-                                    <option value="80">80 %</option>
-                                    <option value="90">90 %</option>
-                                    <option value="100">100 %</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>IM</label>
-                                <input type='text' class='form-control' name='IM'>
-                            </div>
-                            <div class="form-group">
-                                <label>RFC</label>
-                                <input type='text' class='form-control' name='RFC'>
-                            </div>
-                            <div class="form-group">
-                                <label>Fecha inicio</label>
-                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                    <input name="fInicio" required type="text" class="form-control datetimepicker-input"
-                                        data-target="#reservationdate">
-                                    <div class="input-group-append" data-target="#reservationdate"
-                                        data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Evento o proyecto</label>
+                                            <select name="cmbTipo" class="form-control select" style="width: 100%;"
+                                                id="cmbTipo">
+                                                <option value=0 selected=""></option>
+                                                <option>Evento</option>
+                                                <option>Proyecto</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div id="SR_ID" class="form-group">
+                                            <label>Ambiente</label>
+                                            <select name="Ambiente" required class="form-control select"
+                                                style="width: 100%;" id="Ambiente">
+                                                <option value=19 selected="0"></option>
+                                                {% for dt in env %}
+                                                <option value="{{ dt.idAmbiente }}">{{ dt.NombreAmbiente }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Estatus</label>
+                                            <select name="Status" class="form-control select" style="width: 100%;">
+                                                <option value="0" selected="0"></option>
+                                                <option value="En proceso">En proceso</option>
+                                                <option value="Terminado">Terminado</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Fecha finalización</label>
-                                <div class="input-group date" id="reservationdate2" data-target-input="nearest">
-                                    <input readonly="yes" name="fFin" type="text"
-                                        class="form-control datetimepicker-input" data-target="#reservationdate2"
-                                        id="id_FechaFinal">
-                                    <div class="input-group-append" data-target="#reservationdate2"
-                                        data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Actividades</label>
+                                            <select name="Actividades" class="form-control select" style="width: 100%;"
+                                                id="Actividades">
+                                                <option value="0" selected="0"></option>
+                                                <option>Renovación de certificados</option>
+                                                <option>Depuración de particiones</option>
+                                                <option>Depuración de unidad windows</option>
+                                                <option>Actualización de sistema operativo</option>
+                                                <option>Actualización de componentes VMware</option>
+                                                <option>Rotación de password</option>
+                                                <option>Recuperación de contraseña</option>
+                                                <option>Atención de RFC (Inicio - Seguimiento - Apoyo)</option>
+                                                <option>MPLS ABC</option>
+                                                <option>External Network</option>
+                                                <option>Sesión</option>
+                                                <option>Atención de IM escalado</option>
+                                                <option>Healthcheck Guardia</option>
+                                                <option>Sanity AMX</option>
+                                                <option>Auto-estudio</option>
+                                                <option>VLAN VSYS</option>
+                                                <option>Alta de usuario</option>
+                                                <option>Baja de usuario</option>
+                                                <option>Generación de reporte</option>
+                                                <option>Actvidades de Auditorias</option>
+                                                <option>Actividades de Coordinacion de RFC</option>
+                                                <option>Reemplazo de SFP / NIC</option>
+                                                <option>Reemplazo de memoria</option>
+                                                <option>Reemplazo de disco</option>
+                                                <option>Actividad no categorizada</option>
+                                                <option>Documentación, análisis y desarrollo de mejora</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Avance</label>
+                                            <select name="Avance" class="form-control select" style="width: 100%;">
+                                                <option value="0" selected="0"></option>
+                                                <option value="10">10 %</option>
+                                                <option value="20">20 %</option>
+                                                <option value="30">30 %</option>
+                                                <option value="40">40 %</option>
+                                                <option value="50">50 %</option>
+                                                <option value="60">60 %</option>
+                                                <option value="70">70 %</option>
+                                                <option value="80">80 %</option>
+                                                <option value="90">90 %</option>
+                                                <option value="100">100 %</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>IM</label>
+                                            <input type='text' class='form-control' name='IM'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>RFC</label>
+                                            <input type='text' class='form-control' name='RFC'>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Fecha inicio</label>
+                                            <div class="input-group date" id="reservationdate"
+                                                data-target-input="nearest">
+                                                <input name="fInicio" required type="text"
+                                                    class="form-control datetimepicker-input"
+                                                    data-target="#reservationdate">
+                                                <div class="input-group-append" data-target="#reservationdate"
+                                                    data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Fecha finalización</label>
+                                            <div class="input-group date" id="reservationdate2"
+                                                data-target-input="nearest">
+                                                <input readonly="yes" name="fFin" type="text"
+                                                    class="form-control datetimepicker-input"
+                                                    data-target="#reservationdate2" id="id_FechaFinal">
+                                                <div class="input-group-append" data-target="#reservationdate2"
+                                                    data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="far fa-calendar-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -254,6 +299,14 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="desc"><label>
+                                        <div id="PROYECTO">Descripción</div>
+                                    </label><textarea type="text" class="form-control" name="Descripcion"
+                                        id="id_descripcion" cols="40" rows="5" required maxlength="500"></textarea>
+                                </div>
+                                <div id="contador"></div>
                             </div>
                             <input type="submit" name="submit" class='btn btn-primary swalDefaultSuccess'
                                 id="submit_btn" value="Agregar datos" />
@@ -398,42 +451,7 @@
 
         $("input[data-bootstrap-switch]").each(function () {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
-        })
-
-        //$(document).on("change", "#cmbActividad", function () {
-        /*$('#cmbActividad').change(function () {
-            var value = $(this).val();
-            if (value == 99999) {
-                var input = "<input type='text' class='form-control' name='IM'>";
-                $("#IM")
-                    .html('<label>IM</label>')
-                    .append(input)
-                    .show()
-                //$(this).next('text_area_appended_here').html(input);
-                var input2 = "<input type='text' class='form-control' name='Descripcion'>";
-                $("#desc")
-                    .html('<label><div id="PROYECTO">Descripcion actividad</div></label>')
-                    .append(input2)
-                    .show()
-                var input3 = "<input type='text' class='form-control' name='RFC'>";
-                $("#RFC")
-                    .html('<label>RFC</label>')
-                    .append(input3)
-                    .show()
-                var input4 = "<input type='text' class='form-control' name='SR'>";
-                $("#SR_ID").show()
-                //.html('<label>SR</label>')
-                //.append(input4)
-                //.show()
-            }
-            else {
-                $("#IM").hide()
-                $("#desc").hide()
-                $("#RFC").hide()
-                $("#SR_ID").hide()
-
-            }
-        });*/
+        })      
 
         $('#cmbTipo').change(function () {
             var value = $(this).val();
@@ -484,18 +502,18 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-  
-      var max_chars = 500;
-  
-      $('#max').html(max_chars);
-  
-      $('#id_descripcion').keyup(function () {
-        var chars = $(this).val().length;
-        var diff = max_chars - chars;
-        $('#contador').html(diff);
-      });
+
+        var max_chars = 500;
+
+        $('#max').html(max_chars);
+
+        $('#id_descripcion').keyup(function () {
+            var chars = $(this).val().length;
+            var diff = max_chars - chars;
+            $('#contador').html(diff);
+        });
     });
-  
-  </script>
+
+</script>
 
 {% endblock %}

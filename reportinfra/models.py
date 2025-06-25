@@ -194,6 +194,9 @@ class esx(models.Model):
     Vendor = models.CharField(max_length=150, blank=True, verbose_name="Vendor")
     Host = models.CharField(max_length=150, blank=True, verbose_name="Host")
     idCloud = models.ForeignKey(Cloud, on_delete=models.CASCADE, null=True, verbose_name="Cloud")
+    Model = models.CharField(max_length=150, blank=True, verbose_name="Modelo")
+    SerialN = models.CharField(max_length=150, blank=True, verbose_name="Numero de serie")
+    ServiceTag = models.CharField(max_length=150, blank=True, verbose_name="ServiceTag")
     #UUID = models.UUIDField(default=uuid.uuid4, editable=True)
     
 class vmESX(models.Model):
@@ -202,4 +205,56 @@ class vmESX(models.Model):
     VM = models.CharField(max_length=150, blank=True, verbose_name="VM")
     State = models.CharField(max_length=150, blank=True, verbose_name="Estado")
     idCloud = models.ForeignKey(Cloud, on_delete=models.CASCADE, null=True, verbose_name="Cloud")
-    #UUID = models.UUIDField(default=uuid.uuid4, editable=True)
+
+    
+class kpiORGv2(models.Model):
+    UUID = models.UUIDField(default=uuid.uuid4, editable=True)
+    idCloud = models.ForeignKey(Cloud, on_delete=models.CASCADE, null=True, verbose_name="Cloud")
+    ORG = models.CharField(max_length=150, blank=True, verbose_name="Organización")    
+    NombreORG = models.CharField(max_length=150, blank=True, verbose_name="Nombre Organización")
+    NoUsuarios = models.CharField(max_length=150, blank=True, verbose_name="No Usuarios")
+    FechaAlta = models.CharField(max_length=150, blank=True, verbose_name="Fecha Alta")
+    timestamp = models.DateTimeField(blank=True, verbose_name="Timestamp")
+    Suscripcion = models.CharField(max_length=150, blank=True, verbose_name="Suscripcion")
+    
+class kpiORGvDCv2(models.Model):
+    UUID = models.ForeignKey(kpiORGv2, on_delete=models.CASCADE, null=True, verbose_name="ORGvDC")
+    idVDC = models.UUIDField(default=uuid.uuid4, editable=True)
+    ORGvDC = models.CharField(max_length=150, blank=True, verbose_name="Nombre OrgvDC")
+    
+class kpivAppv2(models.Model):
+    idVDC = models.ForeignKey(kpiORGvDCv2, on_delete=models.CASCADE, null=True, verbose_name="ORGvDC")
+    idvApp = models.UUIDField(default=uuid.uuid4, editable=True)
+    vApp = models.CharField(max_length=150, blank=True, verbose_name="Nombre vApp")
+    
+class kpiVMv2(models.Model):
+    idvApp = models.ForeignKey(kpivAppv2, on_delete=models.CASCADE, null=True, verbose_name="vAPP")
+    idVM = models.UUIDField(default=uuid.uuid4, editable=True)
+    VM = models.CharField(max_length=150, blank=True, verbose_name="Nombre VM")
+    OS = models.CharField(max_length=150, blank=True, verbose_name="Sistema Operativo")
+    UUIDVM = models.UUIDField(default=uuid.uuid4, editable=True)
+    
+#class kpimetadataORGv2(models.Model):
+#    UUID = models.ForeignKey(kpiORGv2, on_delete=models.CASCADE, null=True, verbose_name="ORG")
+#    ORGname = models.CharField(max_length=150, blank=True, verbose_name="Nombre")
+#    SAP = models.CharField(max_length=5000, blank=True, verbose_name="SAP")
+#    TipoContratacion = models.CharField(max_length=5000, blank=True, verbose_name="Tipo Contratacion")
+#    SA_Panel = models.CharField(max_length=5000, blank=True, verbose_name="SA Panel")
+    #UUID = models.UUIDField(default=uuid.uuid4, editable=True, verbose_name="UUID")
+    
+#class kpimetadataORGvDCv2(models.Model):
+#    UUID = models.ForeignKey(kpiORGvDCv2, on_delete=models.CASCADE, null=True, verbose_name="ORGvDC")
+#    Campo = models.CharField(max_length=20, blank=True, verbose_name="Campo")
+#    Valor = models.CharField(max_length=250, blank=True, verbose_name="Valor")
+#    #UUID = models.UUIDField(default=uuid.uuid4, editable=True, verbose_name="UUID")
+    
+class kpimetadataVMv2(models.Model):
+    idvApp = models.ForeignKey(kpiVMv2, on_delete=models.CASCADE, null=True, verbose_name="vAPP")
+    VM = models.CharField(max_length=250, blank=True, verbose_name="VM")
+    cpu = models.IntegerField(blank=True, verbose_name="CPU")
+    memoria = models.IntegerField(blank=True, verbose_name="Memoria")
+    host = models.CharField(max_length=150, blank=True, verbose_name="ESX")
+    computePolicy = models.CharField(max_length=150, blank=True, verbose_name="Compute")
+    idVM = models.CharField(max_length=150, blank=True, verbose_name="IDVM")
+    hdd = models.IntegerField(blank=True, verbose_name="HDD")
+    UUID = models.UUIDField(default=uuid.uuid4, editable=True)

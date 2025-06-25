@@ -996,7 +996,7 @@ def kpiCloud(request):
     
     
     if tagCloud == 'NET':
-        filter = " and ORGvDC like concat(char(37), 'FLEX', char(37))  "
+        filter = " and ORGvDC like concat(char(37), '_FLEX', char(37))  "
         suscription = " and d.Campo = 'Subscription_ID' "
     else:
         filter = ""
@@ -1007,81 +1007,95 @@ def kpiCloud(request):
     print(hoy)
     
     #totalORG = kpisORG.objects.raw("select 1 as id, count(distinct ORG) ORG from reportinfra_kpisorg where timestamp > '" + str(hoy - timedelta(days=4)) + "'and idCloud_id = " + idCloud + filter)
-    totalORG = kpisORG.objects.raw("select 1 as id, count(distinct ORG) ORG from reportinfra_kpisorg where timestamp > '" + str(hoy) + "'and idCloud_id = " + idCloud + filter)
+    totalORG = kpisORG.objects.raw("select 1 as id, count(*) ORG from reportinfra_kpiorgv2 where timestamp > '" + str(hoy) + "' and idCloud_id = " + idCloud)
     #print(totalORG)
-    #totalvDC = kpisORG.objects.raw(f"select count(distinct orgvdc) orgvdc from reportinfra_kpisorg where timestamp > '" + str(hoy) + "' and idCloud_id = 7  order by 1")
-    #totalORG = kpisORG.objects.filter(idCloud_id=idCloud).aggregate(ORG=Count("ORG", distinct=True))
-    totalVM = kpisORG.objects.raw("select 1 as id, count(id) VM from reportinfra_kpisorg where idCloud_id = " + idCloud + filter + " and VM != '' and timestamp > '" + str(hoy) + "'")
-    totalWin = kpisORG.objects.raw("select 1 as id, count(id) Windows from reportinfra_kpisorg where idCloud_id = " + idCloud + filter + " and OS != '' and OS like concat(char(37), 'Wind', char(37)) and timestamp > '" + str(hoy) + "' order by 1")
-    #totalWin = kpisORG.objects.filter(idCloud_id=idCloud, OS__isnull=False, OS__gt="", OS__startswith="Wind").aggregate(Windows=Count("OS"))
-    totalLinux = kpisORG.objects.raw("select 1 as id, count(id) Linux from reportinfra_kpisorg where idCloud_id = " + idCloud + filter + " and OS != '' and OS not like concat(char(37), 'Wind', char(37)) and timestamp > '" + str(hoy) +  "' order by 1")
-    totalOS = kpisORG.objects.raw("""select 1 as id, ORG, OS,  count(id) Total
-                                     from reportinfra_kpisorg 
-                                     where idCloud_id = """ + idCloud + filter + """ and OS != '' 
-                                     and `timestamp` > '""" + str(hoy) +
-                                     """' group by OS, ORG
-                                     order by 1"""
-    )
+    totalVDC = kpisORG.objects.raw("""select 1 as id, count(*) VDC from reportinfra_kpiorgvdcv2 a inner join reportinfra_kpiorgv2 b
+                                    on a.UUID_id = b.id where timestamp > '""" + str(hoy) + """'and idCloud_id = """ + idCloud + filter)
+    #print(totalVDC)
+    totalvPPA = kpisORG.objects.raw("""select 1 as id, count(*) vApps from reportinfra_kpiorgv2 a inner join reportinfra_kpiorgvdcv2 b
+                                     on a.id = b.UUID_id inner join reportinfra_kpivappv2 c on b.id = c.idVDC_id 
+                                     inner join reportinfra_kpivmv2 d on c.id = d.idvApp_id left join reportinfra_kpimetadatavmv2 e on d.id = e.idvApp_id
+                                     where timestamp > '""" + str(hoy) + """'and idCloud_id = """ + idCloud + """ and LENGTH(vApp) < 40 """ + filter)
     
-    total = kpisORG.objects.raw("""select 1 as id, Sum(b.CPU) CPU, SUM(b.memoria)/1024/1024 memoria, sum(b.hdd)/1024/1024 HDD
-                                    from reportinfra_kpisorg a
-                                    inner join reportinfra_metadatavm b
-                                    on a.VM = b.VM and a.UUID = b.UUID
-                                    where idCloud_id = """ + idCloud)
-
+    #print(totalvPPA)
+    
+    totalVM = kpisORG.objects.raw("""select 1 as id, count(*) VM from reportinfra_kpiorgv2 a inner join reportinfra_kpiorgvdcv2 b
+                                  on a.id = b.UUID_id inner join reportinfra_kpivappv2 c on b.id = c.idVDC_id 
+                                  inner join reportinfra_kpivmv2 d on c.id = d.idvApp_id left join reportinfra_kpimetadatavmv2 e on d.id = e.idvApp_id 
+                                  where timestamp > '""" + str(hoy) + """' and idCloud_id = """ + idCloud + filter)
+    #print(totalVM)
+    totalWin = kpisORG.objects.raw("""select 1 as id, count(*) Windows from reportinfra_kpiorgv2 a inner join reportinfra_kpiorgvdcv2 b
+                                   on a.id = b.UUID_id inner join reportinfra_kpivappv2 c on b.id = c.idVDC_id 
+                                   inner join reportinfra_kpivmv2 d on c.id = d.idvApp_id left join reportinfra_kpimetadatavmv2 e on d.id = e.idvApp_id
+                                   where a.idCloud_id = """ + idCloud + """ and timestamp > '""" + str(hoy) + """' and OS like concat(char(37), 'Windows', char(37)) """ + filter)
     #print(totalWin)
-    #qry = kpisORG.objects.raw("""select DISTINCT 1 as id, ORG, NombreOrg, ORGvDC, NoUsuarios from reportinfra_kpisorg 
-    #        where idCloud_id = """ + idCloud + filter +
-    #        """ order by 1""")
+    totalLinux = kpisORG.objects.raw("""select 1 as id, count(*) Linux from reportinfra_kpiorgv2 a inner join reportinfra_kpiorgvdcv2 b
+                                   on a.id = b.UUID_id inner join reportinfra_kpivappv2 c on b.id = c.idVDC_id 
+                                   inner join reportinfra_kpivmv2 d on c.id = d.idvApp_id left join reportinfra_kpimetadatavmv2 e on d.id = e.idvApp_id
+                                   where a.idCloud_id = """ + idCloud + """ and timestamp > '""" + str(hoy) + """' and OS not like concat(char(37), 'Windows', char(37)) """ + filter)
+    
+    #print(totalLinux)
+    
+    reporteORG = kpisORG.objects.raw("""select 1 as id, ORG, ORGvDC, vApp, d.VM, OS, cpu, memoria, hdd 
+                                     from reportinfra_kpiorgv2 a inner join reportinfra_kpiorgvdcv2 b on a.id = b.UUID_id
+                                     inner join reportinfra_kpivappv2 c on b.id = c.idVDC_id left join reportinfra_kpivmv2 d
+                                     on c.id = d.idvApp_id left join reportinfra_kpimetadatavmv2 e on d.id = e.idvApp_id
+                                     where idCloud_id = """ + idCloud + """ and timestamp >  '""" + str(hoy) + """' and d.VM is not null """ + filter) 
+    
+    distros = kpisORG.objects.raw("""select 1 as id,
+                                  case
+	                                  when OS like concat(char(37), 'Windows', char(37)) then "Windows"
+	                                  when OS like concat(char(37), 'CentOS', char(37)) then "CentOS"
+	                                  when OS like concat(char(37), 'Debian', char(37)) then "Debian"
+	                                  when OS like concat(char(37), 'FreeBSD', char(37)) then "FreeBSD"
+	                                  when OS like concat(char(37), 'Oracle', char(37)) then "Oracle"
+	                                  when OS like concat(char(37), 'Other', char(37)) then "Linux"
+	                                  when OS like concat(char(37), 'Red Hat', char(37)) then "Red Hat"
+	                                  when OS like concat(char(37), 'SUSE', char(37)) then "SUSE"
+	                                  when OS like concat(char(37), 'UBuntu', char(37)) then "Ubuntu"
+	                                  when OS like concat(char(37), 'Photon', char(37)) then "Photon"
+	                                  when OS like concat(char(37), 'VMware', char(37)) then "VMware"
+	                                  when OS like concat(char(37), 'Amazon', char(37)) then "Amazon"
+                                      when OS like concat(char(37), 'Rocky', char(37)) then "Rocky"
+                                      when OS like concat(char(37), 'Alma', char(37)) then "AlmaLinux"
+                                  end OSClean, Count(*) Total from reportinfra_kpiorgv2 a inner join reportinfra_kpiorgvdcv2 b on a.id = b.UUID_id
+                                  inner join reportinfra_kpivappv2 c on b.id = c.idVDC_id inner join reportinfra_kpivmv2 d
+                                  on c.id = d.idvApp_id left join reportinfra_kpimetadatavmv2 e on d.id = e.idvApp_id
+                                  where idCloud_id = """ + idCloud + """ and timestamp > '""" + str(hoy) + """'""" + filter + """  group by OSClean order by 1 """)
+    #print(distros)
+    
+    ESX = kpisORG.objects.raw("""select * from reportinfra_esx where idCloud_id = """ + idCloud + """ order by ESX """)
+    
+    CPU = kpisORG.objects.raw("""
+                              """)
+    
     
     page_length = int(request.GET.get('length', 10))  # Número de registros por página
     start = int(request.GET.get('start', 0))  # Desde qué registro empezar
-    
-    qry = kpisORG.objects.raw("""
-                            select distinct 1 as id, a.ORG, a.ORGvDC, a.NombreORG, a.vApp, a.VM, b.cpu, (b.memoria/1024) memoria, (b.hdd/1024) hdd, f.State, e.ESX, c.Cloud, a.OS, b.computePolicy, SUBSTRING(b.computePolicy, 1,2) Rule,
-                            timestamp, e.idvCenter,
-                            case
-                                when d.Valor is null then a.Suscripcion else d.Valor 
-                            end Suscripcion
-                            from reportinfra_kpisorg a
-                            inner join reportinfra_metadatavm b
-                            on a.ORG = b.idORG 
-                            inner join reportinfra_cloud c
-                            on a.idCloud_id = c.idCloud
-                            left join reportinfra_metadataorgvdc d
-                            on a.ORGvDC = d.idORG 
-                            left join reportinfra_esx e
-                            on b.host = e.Host and a.idCloud_id = e.idCloud_id 
-                            left join reportinfra_vmesx f
-                            on b.idVM = f.VM and a.idCloud_id = f.idCloud_id
-                            where a.idCloud_id = """ + idCloud + suscription + filter +                             
-                            #""" #and a.`timestamp` > '""" + str(hoy - timedelta(days=4)) 
-                            """ and a.`timestamp` > '""" + str(hoy) +
-                            """' order by 1 LIMIT 10 OFFSET 1"""
-                            )
-    print(qry)
-    
-    
-    with connection.cursor() as cursor:
-        # Consulta SQL
-        cursor.execute("SELECT ORG, ORGvDC from reportinfra_kpisorg")  
-        columns = [col[0] for col in cursor.description]  # Obtener nombres de columnas
-        data = [dict(zip(columns, row)) for row in cursor.fetchall()]  # Convertir a diccionario
-
-    json_data = json.dumps(data, indent=4)
+    #
+    #
+    #with connection.cursor() as cursor:
+    #    # Consulta SQL
+    #    cursor.execute("SELECT ORG, ORGvDC from reportinfra_kpisorg")  
+    #    columns = [col[0] for col in cursor.description]  # Obtener nombres de columnas
+    #    data = [dict(zip(columns, row)) for row in cursor.fetchall()]  # Convertir a diccionario
+#
+    #json_data = json.dumps(data, indent=4)
     
     #print(json_data)  # Ver JSON en consola
     
-    cursor.close()
+    #cursor.close()
     
     context = {
-        "qry" : qry,
+        "ESX" : ESX,
+        "distros" : distros,
+        "reporteORG" : reporteORG,
+        "totalLinux" : totalLinux,
+        "totalWin" : totalWin,
+        "totalVM" : totalVM,
+        "totalvPPA" : totalvPPA,
         "totalORG" : totalORG,
-        "totalVM" : totalVM, 
-        "total" : total,      
-        "win" : totalWin,
-        "linux" : totalLinux,
-        "OS": totalOS,
+        "totalVDC" : totalVDC,
         "tag" : tagCloud,
         "cloud" : idCloud,
         "tag" : tagCloud,
@@ -1101,20 +1115,20 @@ def detailORG(request):
         filter = ""
     
     
-    qry = kpisORG.objects.raw("""select distinct 1 as id, a.ORG, c.vApp, Count(a.VM) VM, Sum(b.cpu) CPU, Sum(b.memoria) Memory, Sum(b.hdd) HDD
-    from reportinfra_kpisorg a
-    left join reportinfra_metadatavm b
-    on a.VM = b.VM and a.UUID = b.UUID
-    inner join vApp c
-    on a.ORG = c.ORG
-    where idCloud_id = """ + idCloud + filter +
-    """ group by a.ORG
-    order by 1""")
+    #qry = kpisORG.objects.raw("""select distinct 1 as id, a.ORG, c.vApp, Count(a.VM) VM, Sum(b.cpu) CPU, Sum(b.memoria) Memory, Sum(b.hdd) HDD
+    #from reportinfra_kpisorg a
+    #left join reportinfra_metadatavm b
+    #on a.VM = b.VM and a.UUID = b.UUID
+    #inner join vApp c
+    #on a.ORG = c.ORG
+    #where idCloud_id = """ + idCloud + filter +
+    #""" group by a.ORG
+    #order by 1""")
     
-    print(qry)
+    #print(qry)
     
     context = {
-        "qry" : qry,
+     #   "qry" : qry,
     }
     
     return render(request, 'detailORG.html', context)

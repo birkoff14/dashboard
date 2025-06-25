@@ -210,7 +210,7 @@ def processCloud(cloud, auth, idCloud):
 
     print("Se obtienen las ORG......")
 
-    valorORG = "COCULA"    
+    valorORG != "COCULAss"    
     #Se obtienen las ORG
     req = (requests.request("GET", "https://" + cloud + "/api/org/",headers=headers, verify=False)).json()
     #print(req)

@@ -38,6 +38,16 @@
                 <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile"
                   role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">Reporte ORG - ORGvDC</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill"
+                  href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages"
+                  aria-selected="false">Sistemas Operativos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="ESX-Infra-tab" data-toggle="pill"
+                  href="#ESX-Infra" role="tab" aria-controls="ESX-Infra"
+                  aria-selected="false">ESX Infra</a>
+              </li>
               <!--
               <li class="nav-item">
                 <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill"
@@ -75,15 +85,40 @@
                       <div class="icon">
                         <i class="fas fa-users"></i>
                       </div>
-                      <a href="{% url 'detailORG' %}?idCloud={{ cloud }}&id={{ tag }}" class="small-box-footer">
-                        Más info <i class="fas fa-arrow-circle-right"></i>
-                      </a>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-cyan">
+                      <div class="inner">
+                        {% for dt in totalVDC %}
+                        <h3>{{ dt.VDC }}</h3>
+                        {% endfor %}
+                        <p>Total de ORGvDC</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-desktop"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-6">
+                    <!-- small card -->
+                    <div class="small-box bg-cyan">
+                      <div class="inner">
+                        {% for dt in totalvPPA %}
+                        <h3>{{ dt.vApps }}</h3>
+                        {% endfor %}
+                        <p>Total de vAPPS</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-desktop"></i>
+                      </div>
                     </div>
                   </div>
                   <!-- ./col -->
                   <div class="col-lg-3 col-6">
                     <!-- small card -->
-                    <div class="small-box bg-success">
+                    <div class="small-box bg-cyan">
                       <div class="inner">
                         {% for dt in totalVM %}
                         <h3>{{ dt.VM }}</h3>
@@ -93,17 +128,17 @@
                       <div class="icon">
                         <i class="fas fa-desktop"></i>
                       </div>
-                      <a href="#" class="small-box-footer">
-                        Más info <i class="fas fa-arrow-circle-right"></i>
-                      </a>
                     </div>
                   </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-6"></div>
                   <!-- ./col -->
                   <div class="col-lg-3 col-6">
                     <!-- small card -->
-                    <div class="small-box bg-warning">
+                    <div class="small-box bg-blue">
                       <div class="inner">
-                        {% for dt in win %}
+                        {% for dt in totalWin %}
                         <h3>{{ dt.Windows }}</h3>
                         {% endfor %}
                         <p>Total VM Windows</p>
@@ -119,9 +154,9 @@
                   <!-- ./col -->
                   <div class="col-lg-3 col-6">
                     <!-- small card -->
-                    <div class="small-box bg-danger">
+                    <div class="small-box bg-white">
                       <div class="inner">
-                        {% for dt in linux %}
+                        {% for dt in totalLinux %}
                         <h3>{{ dt.Linux }}</h3>
                         {% endfor %}
                         <p>Total VM Linux</p>
@@ -135,44 +170,45 @@
                     </div>
                   </div>
                   <!-- ./col -->
+
                 </div>
                 <div class="row">
-                  <div class="col-lg-3 col-8">
+                  <div class="col-md-4">
                     <!-- small card -->
                     <div class="small-box bg-navy">
                       <div class="inner">
                         {% for dt in total %}
                         <h3>{{ dt.CPU|intcomma }}</h3>
                         {% endfor %}
-                        <p>Total CPU</p>
+                        <p>Total CPU Utilizado</p>
                       </div>
                       <div class="icon">
                         <i class="fas fa-microchip"></i>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-8">
+                  <div class="col-md-4">
                     <!-- small card -->
                     <div class="small-box bg-navy">
                       <div class="inner">
                         {% for dt in total %}
                         <h3>{{ dt.memoria|floatformat:2|intcomma }} TB</h3>
                         {% endfor %}
-                        <p>Total Memoria</p>
+                        <p>Total Memoria Utilizada</p>
                       </div>
                       <div class="icon">
                         <i class="fas fa-memory"></i>
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-3 col-8">
+                  <div class="col-md-4">
                     <!-- small card -->
                     <div class="small-box bg-navy">
                       <div class="inner">
                         {% for dt in total %}
                         <h3>{{ dt.HDD|floatformat:2|intcomma }} TB</h3>
                         {% endfor %}
-                        <p>Total Disco</p>
+                        <p>Total Disco Utilizado</p>
                       </div>
                       <div class="icon">
                         <i class="fas fa-hdd"></i>
@@ -200,20 +236,20 @@
                                 <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                   colspan="1" aria-sort="ascending"
                                   aria-label="Rendering engine: activate to sort column descending">
-                                  Suscripción</th>
+                                  ORG</th>
                                 <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                   colspan="1" aria-sort="ascending"
                                   aria-label="Rendering engine: activate to sort column descending">
-                                  Organización</th>
+                                  ORGvDC</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                   aria-label="Platform(s): activate to sort column ascending">
-                                  OrgvDC</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                  aria-label="Platform(s): activate to sort column ascending">
-                                  vApps</th>
+                                  vAPP</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                   aria-label="Platform(s): activate to sort column ascending">
                                   VM</th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  OS</th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                   aria-label="Platform(s): activate to sort column ascending">
                                   CPU</th>
@@ -223,35 +259,19 @@
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                   aria-label="Platform(s): activate to sort column ascending">
                                   Disco</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                  aria-label="Platform(s): activate to sort column ascending">
-                                  Host</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                  aria-label="Platform(s): activate to sort column ascending">
-                                  vCenter</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                  aria-label="Platform(s): activate to sort column ascending">
-                                  OS</th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                  aria-label="Platform(s): activate to sort column ascending">
-                                  Regla</th>
                               </tr>
                             </thead>
                             <tbody>
-                              {% for dt in qry %}
+                              {% for dt in reporteORG %}
                               <tr class="odd">
-                                <td class="dtr-control sorting_1" tabindex="0">{{ dt.Suscripcion }}</td>
-                                <td>{{ dt.ORG }}</td>
+                                <td class="dtr-control sorting_1" tabindex="0">{{ dt.ORG }}</td>
                                 <td>{{ dt.ORGvDC }}</td>
                                 <td>{{ dt.vApp }}</td>
                                 <td>{{ dt.VM }}</td>
+                                <td>{{ dt.OS }}</td>
                                 <td>{{ dt.cpu }}</td>
                                 <td>{{ dt.memoria }}</td>
                                 <td>{{ dt.hdd }}</td>
-                                <td>{{ dt.ESX }}</td>
-                                <td>{{ dt.idvCenter }}</td>
-                                <td>{{ dt.OS }}</td>
-                                <td>{{ dt.Rule }}</td>
                               </tr>
                               {% endfor %}
                             </tbody>
@@ -265,10 +285,6 @@
                                 <th rowspan="1" colspan="1">CPU</th>
                                 <th rowspan="1" colspan="1">Memoria</th>
                                 <th rowspan="1" colspan="1">Disco</th>
-                                <th rowspan="1" colspan="1">Host</th>
-                                <th rowspan="1" colspan="1">vCenter</th>
-                                <th rowspan="1" colspan="1">OS</th>
-                                <th rowspan="1" colspan="1">Regla</th>
                               </tr>
                             </tfoot>
                           </table>
@@ -281,45 +297,108 @@
               </div>
               <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel"
                 aria-labelledby="custom-tabs-two-messages-tab">
+                <div class="card">                  
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <div class="content">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <!-- BAR CHART -->
+                            <div class="card card-success">
+                              <div class="card-header">
+                                <h3 class="card-title">Versiones de OS</h3>
+                                <div class="card-tools">
+                                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="card-body">
+                                <div class="chart">
+                                  <canvas id="barChart"
+                                    style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                </div>
+                              </div>
+                              <!-- /.card-body -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="ESX-Infra" role="tabpanel"
+                aria-labelledby="ESX-Infra-tab">
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Sistemas Operativos</h3>
+                    <h3 class="card-title">Infra ESX</h3>
                   </div>
-                  <!-- /.card-header -->
                   <div class="card-body">
                     <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                       <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="overflow-x: auto; max-width: 100%;">
                           <table id="example2" class="table table-bordered table-striped dataTable dtr-inline"
-                            aria-describedby="example2_info">
+                            aria-describedby="example2">
                             <thead>
                               <tr>
                                 <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
                                   colspan="1" aria-sort="ascending"
                                   aria-label="Rendering engine: activate to sort column descending">
-                                  Organización</th>
-                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                  aria-label="Browser: activate to sort column ascending">
-                                  Sistema Operativo</th>
+                                  vCenter</th>
+                                <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                  colspan="1" aria-sort="ascending"
+                                  aria-label="Rendering engine: activate to sort column descending">
+                                  ESX</th>
                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                   aria-label="Platform(s): activate to sort column ascending">
-                                  Total de VM's</th>
+                                  Vendor</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  HOST</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Cloud</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Modelo</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Serial</th>
+                                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                  aria-label="Platform(s): activate to sort column ascending">
+                                  Service Tag</th>
                               </tr>
                             </thead>
                             <tbody>
-                              {% for dt in OS %}
+                              {% for dt in ESX %}
                               <tr class="odd">
-                                <td class="dtr-control sorting_1" tabindex="0">{{ dt.ORG }}</td>
-                                <td>{{ dt.OS }}</td>
-                                <td>{{ dt.Total }}</td>
+                                <td class="dtr-control sorting_1" tabindex="0">{{ dt.idvCenter }}</td>
+                                <td>{{ dt.ESX }}</td>
+                                <td>{{ dt.Vendor }}</td>
+                                <td>{{ dt.Host }}</td>
+                                <td>{{ dt.idCloud }}</td>
+                                <td>{{ dt.Model }}</td>
+                                <td>{{ dt.SerialN }}</td>
+                                <td>{{ dt.ServiceTag }}</td>
                               </tr>
                               {% endfor %}
                             </tbody>
                             <tfoot>
                               <tr>
-                                <th rowspan="1" colspan="1">Organización</th>
-                                <th rowspan="1" colspan="1">Sistema Operativo</th>
-                                <th rowspan="1" colspan="1">Total de VM's</th>
+                                <th rowspan="1" colspan="1">vCenter</th>
+                                <th rowspan="1" colspan="1">ESX</th>
+                                <th rowspan="1" colspan="1">Vendor</th>
+                                <th rowspan="1" colspan="1">HOST</th>
+                                <th rowspan="1" colspan="1">Cloud</th>
+                                <th rowspan="1" colspan="1">Modelo</th>
+                                <th rowspan="1" colspan="1">Serial</th>
+                                <th rowspan="1" colspan="1">Service Tag</th>
                               </tr>
                             </tfoot>
                           </table>
@@ -327,16 +406,15 @@
                       </div>
                     </div>
                   </div>
-                  <!-- /.card-body -->
-                </div>
+                  
+                </div>              
               </div>
             </div>
+            <!-- /.card -->
           </div>
-          <!-- /.card -->
         </div>
       </div>
     </div>
-  </div>
 </section>
 
 {% endblock %}
@@ -357,6 +435,8 @@
 <script src="{% static 'plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
 <script src="{% static 'plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
 
+<script src="{% static 'plugins/chart.js/Chart.min.js' %}"></script>
+
 <script>
 
   $(function () {
@@ -375,6 +455,76 @@
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
   });
+
+
+  $(function () {
+                //var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+
+                var areaChartData = {
+                    //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    labels: [{%for data in distros %} '{{data.OSClean}}', {% endfor %}], //loop through queryset,
+                datasets: [
+                {
+                    label: 'Sistemas operativos',
+                    backgroundColor: 'rgba(60,141,188,0.9)',
+                    borderColor: 'rgba(60,141,188,0.8)',
+                    pointRadius: false,
+                    pointColor: '#3b8bba',
+                    pointStrokeColor: 'rgba(60,141,188,1)',
+                    pointHighlightFill: '#fff',
+                    pointHighlightStroke: 'rgba(60,141,188,1)',
+                    data: [{%for data in distros %}{{ data.Total }}, {% endfor %}]
+                    },                    
+                ]
+            }
+
+            //-------------
+            //- BAR CHART -
+            //-------------            
+            var barChartCanvas = $('#barChart').get(0).getContext('2d')
+            var barChartData = $.extend(true, {}, areaChartData)
+            var temp0 = areaChartData.datasets[0]
+            //var temp1 = areaChartData.datasets[1]
+            barChartData.datasets[0] = temp0
+            //barChartData.datasets[1] = temp0
+
+            var barChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                datasetFill: false
+            }
+
+            new Chart(barChartCanvas, {
+                type: 'bar',
+                data: barChartData,
+                options: barChartOptions
+            })
+
+            //---------------------
+            //- STACKED BAR CHART -
+            //---------------------
+            var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
+            var stackedBarChartData = $.extend(true, {}, barChartData)
+
+            var stackedBarChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    xAxes: [{
+                        stacked: true,
+                    }],
+                    yAxes: [{
+                        stacked: true
+                    }]
+                }
+            }
+
+            new Chart(stackedBarChartCanvas, {
+                type: 'bar',
+                data: stackedBarChartData,
+                options: stackedBarChartOptions
+            })            
+        });
 
 </script>
 
