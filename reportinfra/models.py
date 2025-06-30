@@ -258,3 +258,21 @@ class kpimetadataVMv2(models.Model):
     idVM = models.CharField(max_length=150, blank=True, verbose_name="IDVM")
     hdd = models.IntegerField(blank=True, verbose_name="HDD")
     UUID = models.UUIDField(default=uuid.uuid4, editable=True)
+    
+class historicoTiemposAprov(models.Model):
+    Pais = models.CharField(max_length=250, null=True, blank=True, verbose_name="País")
+    Region = models.CharField(max_length=250, null=True, blank=True, verbose_name="Region")
+    ORGvDC = models.CharField(max_length=250, null=True, blank=True, verbose_name="ORGvDC")
+    Componente = models.CharField(max_length=250, null=True, blank=True, verbose_name="Componente")
+    TiempoHistorico = models.CharField(max_length=250, null=True, blank=True, verbose_name="Tiempo Histórico")
+    timestamp = models.DateTimeField(blank=True, verbose_name="Timestamp")
+    
+class tiempoAprovisionamiento(models.Model):
+    Pais = models.CharField(max_length=250, null=True, blank=True, verbose_name="País")
+    Region = models.CharField(max_length=250, null=True, blank=True, verbose_name="Región")
+    ORGvDC = models.CharField(max_length=250, null=True, blank=True, verbose_name="ORGvDC")
+    Componente = models.CharField(max_length=250, null=True, blank=True, verbose_name="Componente")
+    TiempoTranscurrido = models.CharField(max_length=250, null=True, blank=True, verbose_name="Tiempo Transcurrido")
+    ErrorGenerado = models.CharField(max_length=250, null=True, blank=True, verbose_name="Error Generado")
+    timestamp = models.DateTimeField(blank=True, verbose_name="Timestamp")
+    

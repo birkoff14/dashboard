@@ -21,15 +21,15 @@ logging.basicConfig(
 def obtain_credentials(cloud, auth):
     if cloud == 'prvq-nube.telmex.com':
         URL_TOKEN = "https://" + cloud + "/cloudapi/1.0.0/sessions/provider"
-        api = 39.1
+        api = "application/json;version=39.1"
     else:
         URL_TOKEN = "https://" + cloud + "/api/sessions"
-        api = 36.0
+        api = "application/*+json;version=36.0"
     credentials = {}    
     payload = {}
 
     headers = {        
-        'Accept': 'application/*+json;version=' + str(api), # Change from xml to json
+        'Accept': api, # Change from xml to json
         'Authorization': 'Basic ' + auth
     }
     #print(headers)
@@ -81,10 +81,15 @@ def insertDB(sql, val):
         
 def getORGvDC(token, cloud, uuid, last):
     
+    if cloud == 'prvq-nube.telmex.com':
+        api = "application/*+json;version=39.1"
+    else:
+        api = "application/*+json;version=36.0"
+
     URL = "https://" + cloud + "/api/admin/org/" + uuid
-    
+    print(URL)
     headers = {
-        'Accept' : 'application/*+json;version=36.0',
+        'Accept' : api,
         'Authorization' : 'Bearer ' + str(token)
     }
     detailVDC = (requests.request("GET", URL, headers=headers, verify=False, timeout=60)).json()
@@ -111,10 +116,19 @@ def getORGvDC(token, cloud, uuid, last):
         
 def getvApp(url, token, last_id):
     
+    nube = url.split("/")
+    #print(nube)
+    #print(nube[2])
+    print(url)
+    if nube[2] == 'prvq-nube.telmex.com':
+        api = "application/*+json;version=39.1"
+    else:
+        api = "application/*+json;version=36.0"
+    
     print("Obteniendo vAPPs")
     
     headers = {
-        'Accept' : 'application/*+json;version=36.0',
+        'Accept' : api,
         'Authorization' : 'Bearer ' + str(token)
     }
     
@@ -150,6 +164,7 @@ def getvApp(url, token, last_id):
                                 #print("VM: " + vm_name)
                                 #print("URL VM: " + vm["href"])
                                 vmUuid = vm["href"].split("/")
+                                #print(vmUuid)
                                 for os in vm["section"]:          
                                     if os["_type"] == "OperatingSystemSectionType":                                
                                         os = str(os['description']['value'])
@@ -158,11 +173,13 @@ def getvApp(url, token, last_id):
 
                                         sql = """INSERT INTO reportinfra_kpivmv2 (idVM, VM, OS, UUIDVM, idvApp_id)
                                               VALUES (%s, %s, %s, %s, %s)"""
-                                        val = ('', vm_name, sistemaOpe, '', last_vapp)
+                                        val = ('', vm_name, sistemaOpe, vmUuid[5].replace("vm", "").replace("-", ""), last_vapp)
 
                                         last_vm = insertDB(sql, val)
+                                        
+                                        #print(vm["href"])
 
-                            metadataVM(vm["href"], token, last_vm)
+                        metadataVM(vm["href"], token, last_vm)
 
                     except Exception as err:
                         print(err)                       
@@ -172,25 +189,34 @@ def getvApp(url, token, last_id):
         
         
 def metadataVM(URL, token, last_vm):
+    nube = URL.split("/")
+    if nube[2] == 'prvq-nube.telmex.com':
+        api = "application/*+json;version=39.1"
+    else:
+        api = "application/*+json;version=36.0"
+    
     headers = {
-        'Accept' : 'application/*+json;version=36.0',
+        'Accept' : api,
         #'x-vcloud-authorization' : '979f4d213302445b9898750237677cdb'
         'Authorization' : 'Bearer ' + token
     }
     
-    #print(URL)
+    print(URL)
     
     metaVM = (requests.request("GET", URL, headers=headers, verify=False)).json() 
     print("Extrae metadata VM")
-    
-    name = metaVM["name"]
-    print(name)
-    cpu = metaVM["section"][0]["numCpus"]
-    memory = metaVM["section"][0]["memoryResourceMb"]["configured"]
-    esx = metaVM["vCloudExtension"][0]["any"][0]["hostVimObjectRef"]["moRef"]
-    policy = metaVM["vdcComputePolicy"]["name"]
-    IDVM = metaVM["vCloudExtension"][0]["any"][0]["vmVimObjectRef"]["moRef"]
-    
+    try:
+        
+        name = metaVM["name"]
+        print(name)
+        cpu = metaVM["section"][0]["numCpus"]
+        memory = metaVM["section"][0]["memoryResourceMb"]["configured"]
+        esx = metaVM["vCloudExtension"][0]["any"][0]["hostVimObjectRef"]["moRef"]
+        policy = metaVM["vdcComputePolicy"]["name"]
+        IDVM = metaVM["vCloudExtension"][0]["any"][0]["vmVimObjectRef"]["moRef"]
+    except Exception as err:
+        print(err)
+            
     try:
         allDisk=0
         for info in metaVM['section']:
@@ -212,8 +238,14 @@ def metadataVM(URL, token, last_vm):
 def processCloud(cloud, auth, idCloud):
     token = obtain_credentials(cloud, auth)    
     
+    if cloud == 'prvq-nube.telmex.com':
+        api = "application/*+json;version=39.1"
+    else:
+        api = "application/*+json;version=36.0"
+    
+    
     headers = {
-        'Accept' : 'application/*+json;version=36.0',
+        'Accept' : api,
         'Authorization' : 'Bearer ' + str(token)
     }
     
@@ -228,7 +260,7 @@ def processCloud(cloud, auth, idCloud):
         uuidORG = urlORG.split("/")        
         myuuid = uuidORG[5].replace("-","")        
         if ORG != valorORG: #<-- AQUI SE CAMBIA LA ORG A FILTRAR
-            #print(ORG)
+            print(ORG)
             #logging.info(ORG)
             infoOrg = (requests.request("GET", urlORG, headers=headers, verify=False,timeout=60)).json()        
             fullName = infoOrg['fullName'].replace(',','')
@@ -278,7 +310,7 @@ def main():
     logging.info(str(datetime.now()) + ' Inicia el proceso de extracción')
     print(str(datetime.now()) + " - Inicia proceso")
     
-    cloudsxxx = [
+    clouds = [
         {
             "cloud" : "NET 3",
             "vcloud": "prvq-nube.telmex.com",
@@ -305,12 +337,12 @@ def main():
         }		
     ]
     
-    clouds = [
+    xxclouds = [
         {
-            "cloud" : "NET 3",
-            "vcloud": "prvq-nube.telmex.com",
-            "key": "b3N2LXZyb3BjbGQtc3ZjQHN5c3RlbTorQlxQO3EhWCErejdQLGthLUoubHdtZWpx",
-            "idCloud": "7",
+            "cloud" : "NPE",
+            "vcloud": "pubm-nube.telmex.com",
+            "key": "bW1lbmVzZXNAc3lzdGVtOjVaYjFsd3RQOEBVU3lJNmNAS0Ek",
+            "idCloud": "3",
         }
     ]
 
