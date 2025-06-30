@@ -3,6 +3,7 @@ reportinfra/migrations/
 mysite/static/
 static/
 env/
+env
 reportinfra/__pycache__/
 *.log
 .gitignore
